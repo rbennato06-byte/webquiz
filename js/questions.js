@@ -9,8 +9,9 @@
  * semestre filtro 2025 (primo e secondo appello) su unità di misura, cinematica, dinamica,
  * lavoro-energia-potenza, integrate con domande originali sugli stessi argomenti.
  * Biologia: slide del corso (macromolecole biologiche, amminoacidi e proteine, enzimi e
- * metabolismo, lipidi, membrane cellulari) + domande ufficiali delle prove del semestre filtro
- * 2025 (primo e secondo appello) + Syllabus ufficiale Biologia 2026/27 (MUR).
+ * metabolismo, lipidi, membrane cellulari, teoria cellulare, cellula procariotica e virus) +
+ * domande ufficiali delle prove del semestre filtro 2025 (primo e secondo appello) + Syllabus
+ * ufficiale Biologia 2026/27 (MUR).
  * Formato coerente con le prove ufficiali del semestre filtro 2025/26: domande a risposta
  * multipla (5 opzioni A-E, una sola corretta) e domande a completamento.
  *
@@ -67,6 +68,8 @@ const TOPICS = {
   proteine:     { name: "Amminoacidi e proteine",               color: "#0d9488", area: "biologia", unit: 1 },
   enzimi:       { name: "Enzimi e metabolismo",                 color: "#ca8a04", area: "biologia", unit: 1 },
   lipidi:       { name: "Lipidi",                               color: "#be123c", area: "biologia", unit: 1 },
+  procarioti:   { name: "Teoria cellulare e cellula procariotica", color: "#0369a1", area: "biologia", unit: 1 },
+  virus:        { name: "Virus e cicli replicativi",            color: "#b91c1c", area: "biologia", unit: 1 },
   membrane:     { name: "Membrane cellulari",                   color: "#7c3aed", area: "biologia", unit: 5 }
 };
 
@@ -2206,7 +2209,239 @@ const QUESTIONS = [
 
 { id:"membr-24", topic:"membrane", type:"fill",
   q:"Le membrane cellulari sono pochissimo permeabili agli ________, che richiedono canali o trasportatori specifici per attraversarle.",
-  answer:"IONI" }
+  answer:"IONI" },
+
+/* ============================= TEORIA CELLULARE E CELLULA PROCARIOTICA ============================= */
+
+{ id:"proc-01", topic:"procarioti", type:"mc",
+  q:"Chi enunciò il principio secondo cui ogni cellula deriva da una cellula preesistente (\"Omnis cellula e cellula\")?",
+  options:["Robert Hooke","Theodor Schwann","Matthias Schleiden","Rudolf Virchow","Louis Pasteur"], correct:3 },
+
+{ id:"proc-02", topic:"procarioti", type:"mc",
+  q:"Chi utilizzò per primo il termine \"cellula\", osservando al microscopio sezioni di sughero?",
+  options:["Theodor Schwann","Matthias Schleiden","Rudolf Virchow","Robert Hooke","Louis Pasteur"], correct:3 },
+
+{ id:"proc-03", topic:"procarioti", type:"mc",
+  q:"Quale delle seguenti affermazioni NON fa parte dei principi della teoria cellulare?",
+  options:["Tutti gli esseri viventi sono costituiti da una o più cellule","Le cellule si originano da altre cellule preesistenti","Le cellule contengono le informazioni ereditarie dell'organismo","Le reazioni chimiche di un organismo vivente hanno luogo dentro le cellule","Le cellule si formano per generazione spontanea dalla materia inanimata"], correct:4 },
+
+{ id:"proc-04", topic:"procarioti", type:"mc",
+  q:"Secondo la teoria cellulare, le reazioni chimiche di un organismo vivente, compresi i meccanismi di liberazione dell'energia e le reazioni di biosintesi, hanno luogo:",
+  options:["Esclusivamente nel nucleo","Dentro le cellule","Nello spazio extracellulare","Solo nei mitocondri","Solo nei cloroplasti"], correct:1 },
+
+{ id:"proc-05", topic:"procarioti", type:"mc",
+  q:"A differenza di una singola cellula di un organismo pluricellulare, un organismo unicellulare è in grado di:",
+  options:["Dividersi soltanto","Accrescersi soltanto","Vivere e riprodursi autonomamente come organismo indipendente","Sintetizzare proteine soltanto","Contenere DNA soltanto"], correct:2 },
+
+{ id:"proc-06", topic:"procarioti", type:"mc",
+  q:"Quali sono, in ordine crescente di complessità, i livelli di organizzazione di un organismo pluricellulare?",
+  options:["Molecole, cellule, tessuti, organi, sistemi, organismo","Organismo, sistemi, organi, tessuti, cellule, molecole","Cellule, molecole, tessuti, organi, organismo, sistemi","Tessuti, organi, cellule, sistemi, molecole, organismo","Sistemi, cellule, tessuti, organi, molecole, organismo"], correct:0 },
+
+{ id:"proc-07", topic:"procarioti", type:"mc",
+  q:"La principale differenza strutturale tra cellula procariotica ed eucariotica riguarda:",
+  options:["La presenza della membrana plasmatica","La presenza di un vero nucleo delimitato da membrana","La presenza di DNA","La capacità di riprodursi","La presenza di ribosomi"], correct:1 },
+
+{ id:"proc-08", topic:"procarioti", type:"mc",
+  q:"Le dimensioni tipiche di una cellula batterica sono dell'ordine di:",
+  options:["Pochi nanometri","Pochi micrometri","Pochi millimetri","Alcuni centimetri","Alcuni decimetri"], correct:1 },
+
+{ id:"proc-09", topic:"procarioti", type:"mc",
+  q:"La parete cellulare dei batteri è costituita principalmente da:",
+  options:["Cellulosa","Chitina","Peptidoglicano","Cheratina","Fosfolipidi"], correct:2 },
+
+{ id:"proc-10", topic:"procarioti", type:"mc",
+  q:"Considerando le principali differenze strutturali tra le pareti cellulari dei batteri Gram-positivi e Gram-negativi, quale delle seguenti affermazioni è corretta?",
+  options:["La disposizione di flagelli e pili","La presenza di lipopolisaccaridi nei Gram positivi e di acido teicoico nei Gram negativi","Nessuna delle affermazioni enunciate è corretta","Il diverso spessore dello strato di peptidoglicano e l'assenza della membrana esterna nei Gram-positivi e la sua presenza nei Gram-negativi","L'assenza di pili e flagelli nei Gram-negativi e la presenza nei Gram positivi"], correct:3,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello)." },
+
+{ id:"proc-11", topic:"procarioti", type:"mc",
+  q:"Nella colorazione di Gram, i batteri Gram-positivi trattengono il colorante violetto di genziana grazie a:",
+  options:["Una spessa membrana esterna","Uno spesso strato di peptidoglicano","L'assenza di parete cellulare","La presenza di lipopolisaccaridi","La capsula"], correct:1 },
+
+{ id:"proc-12", topic:"procarioti", type:"mc",
+  q:"I batteri Gram-negativi possiedono, a differenza dei Gram-positivi:",
+  options:["Uno strato di peptidoglicano più spesso","Una membrana esterna contenente lipopolisaccaridi","L'assenza di membrana plasmatica","Una parete di chitina","Nessuna delle precedenti"], correct:1 },
+
+{ id:"proc-13", topic:"procarioti", type:"mc",
+  q:"Le appendici filiformi utilizzate dai batteri per il movimento sono:",
+  options:["I pili comuni","Le fimbrie","I flagelli","La capsula","Il glicocalice"], correct:2 },
+
+{ id:"proc-14", topic:"procarioti", type:"mc",
+  q:"Le fimbrie (o pili comuni) nei batteri svolgono principalmente una funzione:",
+  options:["Di movimento","Adesiva","Fotosintetica","Riproduttiva","Respiratoria"], correct:1 },
+
+{ id:"proc-15", topic:"procarioti", type:"mc",
+  q:"Il pilo sessuale è coinvolto principalmente:",
+  options:["Nel movimento del batterio","Nel trasferimento di materiale genetico durante la coniugazione","Nella fotosintesi","Nella divisione per scissione binaria","Nella respirazione cellulare"], correct:1 },
+
+{ id:"proc-16", topic:"procarioti", type:"mc",
+  q:"La struttura mucosa esterna che protegge alcuni batteri dalla fagocitosi è:",
+  options:["Il flagello","Il pilo sessuale","La capsula","Lo spazio periplasmico","Il nucleoide"], correct:2 },
+
+{ id:"proc-17", topic:"procarioti", type:"mc",
+  q:"Il trasferimento genico orizzontale in cui un batterio capta direttamente frammenti di DNA nudo dall'ambiente è detto:",
+  options:["Coniugazione","Trasduzione","Trasformazione","Trascrizione","Ricombinazione sito-specifica"], correct:2 },
+
+{ id:"proc-18", topic:"procarioti", type:"mc",
+  q:"Il trasferimento di materiale genetico tra due batteri mediante contatto diretto e pilo sessuale è detto:",
+  options:["Trasformazione","Trasduzione","Coniugazione","Endocitosi","Esocitosi"], correct:2 },
+
+{ id:"proc-19", topic:"procarioti", type:"mc",
+  q:"Il trasferimento di DNA batterico mediato da un batteriofago è detto:",
+  options:["Trasformazione","Coniugazione","Trasduzione","Traduzione","Replicazione"], correct:2 },
+
+{ id:"proc-20", topic:"procarioti", type:"mc",
+  q:"Il mondo vivente è oggi suddiviso in tre domini principali, ovvero:",
+  options:["Animalia, Plantae, Fungi","Bacteria, Archaea, Eukarya","Procarioti, Eucarioti, Virus","Monere, Protisti, Metazoi","Procarioti, Protisti, Animalia"], correct:1 },
+
+{ id:"proc-21", topic:"procarioti", type:"mc",
+  q:"Secondo la teoria endosimbiontica, i mitocondri delle cellule eucariotiche deriverebbero da:",
+  options:["Invaginazioni della membrana plasmatica","Frammenti del nucleo","Batteri endosimbionti inglobati da una cellula ospite ancestrale","Vescicole del reticolo endoplasmatico","Virus integrati nel genoma dell'ospite"], correct:2 },
+
+{ id:"proc-22", topic:"procarioti", type:"mc",
+  q:"Nei procarioti, l'RNA ribosomale è rappresentato da molecole con i seguenti coefficienti di sedimentazione:",
+  options:["23, 16 e 5 Svedberg","18, 28 e 5 Svedberg","18, 28, 5.8 e 5 Svedberg","12 e 16 Svedberg","16 e 23 Svedberg"], correct:0,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello)." },
+
+{ id:"proc-23", topic:"procarioti", type:"fill",
+  q:"Il principio secondo cui ogni cellula deriva da una cellula preesistente (\"Omnis cellula e cellula\") fu enunciato da ________.",
+  answer:"VIRCHOW" },
+
+{ id:"proc-24", topic:"procarioti", type:"fill",
+  q:"Un gruppo di cellule simili che svolgono una funzione comune costituisce un ________.",
+  answer:"TESSUTO" },
+
+{ id:"proc-25", topic:"procarioti", type:"fill",
+  q:"La cellula priva di un vero nucleo delimitato da membrana è detta cellula ________.",
+  answer:"PROCARIOTE" },
+
+{ id:"proc-26", topic:"procarioti", type:"fill",
+  q:"Lo spazio compreso tra la membrana plasmatica e la membrana esterna nei batteri Gram-negativi è detto spazio ________.",
+  answer:"PERIPLASMICO" },
+
+{ id:"proc-27", topic:"procarioti", type:"fill",
+  q:"Il processo di captazione di DNA libero dall'ambiente da parte di un batterio è detto ________.",
+  answer:"TRASFORMAZIONE" },
+
+{ id:"proc-28", topic:"procarioti", type:"fill",
+  q:"Il processo di trasferimento genico mediato da un virus batterico è detto ________.",
+  answer:"TRASDUZIONE" },
+
+{ id:"proc-29", topic:"procarioti", type:"fill",
+  q:"L'acronimo ________ indica l'ultimo antenato comune universale di tutti gli organismi viventi.",
+  answer:"LUCA" },
+
+{ id:"proc-30", topic:"procarioti", type:"fill",
+  q:"Secondo la teoria endosimbiontica, i mitocondri deriverebbero da ________ endosimbionti inglobati da una cellula ospite ancestrale.",
+  answer:"BATTERI" },
+
+{ id:"proc-31", topic:"procarioti", type:"fill",
+  q:"I batteri si riproducono in modo asessuato tramite un processo chiamato scissione ________.",
+  answer:"BINARIA" },
+
+/* ============================= VIRUS E CICLI REPLICATIVI ============================= */
+
+{ id:"vir-01", topic:"virus", type:"mc",
+  q:"I virus sono:",
+  options:["Organismi cellulari autonomi","Parassiti endocellulari obbligati","Organismi procarioti","Organismi eucarioti unicellulari","Organelli cellulari"], correct:1 },
+
+{ id:"vir-02", topic:"virus", type:"mc",
+  q:"Tutti i virus….",
+  options:["Hanno come acido nucleico il DNA","Infettano cellule","Infettano solo cellule eucariotiche","Hanno come acido nucleico l'RNA","Infettano solo cellule animali"], correct:1,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello)." },
+
+{ id:"vir-03", topic:"virus", type:"mc",
+  q:"Il rivestimento proteico che racchiude l'acido nucleico di un virus è detto:",
+  options:["Envelope","Capside","Pericapside","Tegumento","Glicocalice"], correct:1 },
+
+{ id:"vir-04", topic:"virus", type:"mc",
+  q:"L'involucro membranoso, derivato dalla membrana della cellula ospite, che alcuni virus possiedono esternamente al capside è detto:",
+  options:["Capside","Envelope (pericapside)","Periplasma","Parete","Glicocalice"], correct:1 },
+
+{ id:"vir-05", topic:"virus", type:"mc",
+  q:"I virus privi di envelope sono detti:",
+  options:["Virus temperati","Virus nudi","Virus litici","Virioni maturi","Virus difettivi"], correct:1 },
+
+{ id:"vir-06", topic:"virus", type:"mc",
+  q:"Le dimensioni dei virus sono generalmente comprese tra:",
+  options:["10 nm e 250-300 nm","1 e 10 µm","100 µm e 1 mm","1 e 5 mm","0,1 e 1 nm"], correct:0 },
+
+{ id:"vir-07", topic:"virus", type:"mc",
+  q:"La struttura a simmetria icosaedrica e quella a simmetria elicoidale sono due tipi di:",
+  options:["Organizzazione della parete batterica","Morfologia del capside virale","Disposizione dei ribosomi","Struttura della membrana plasmatica","Organizzazione del nucleo"], correct:1 },
+
+{ id:"vir-08", topic:"virus", type:"mc",
+  q:"I virus animali vengono classificati principalmente in base:",
+  options:["Alla loro dimensione soltanto","Al tipo di acido nucleico e alla modalità di replicazione","Alla presenza di flagelli","Alla loro capacità fotosintetica","Alla presenza di parete cellulare"], correct:1 },
+
+{ id:"vir-09", topic:"virus", type:"mc",
+  q:"Il ciclo di un batteriofago in cui il virus si replica immediatamente, causando la lisi della cellula ospite, è detto ciclo:",
+  options:["Lisogenico","Litico","Di latenza","Di trasformazione","Di coniugazione"], correct:1 },
+
+{ id:"vir-10", topic:"virus", type:"mc",
+  q:"Nel ciclo lisogenico, il genoma del batteriofago:",
+  options:["Viene immediatamente replicato e la cellula viene lisata","Si integra nel cromosoma batterico come profago e viene replicato passivamente con esso","Viene degradato dagli enzimi batterici","Esce subito dalla cellula","Non entra mai nella cellula ospite"], correct:1 },
+
+{ id:"vir-11", topic:"virus", type:"mc",
+  q:"Un batteriofago il cui genoma è integrato, in forma silente, nel cromosoma batterico è detto:",
+  options:["Virione","Capside","Profago","Plasmide","Episoma virale"], correct:2 },
+
+{ id:"vir-12", topic:"virus", type:"mc",
+  q:"Le fasi del ciclo litico di un batteriofago, nel corretto ordine, sono:",
+  options:["Attacco, penetrazione, liberazione dell'acido nucleico, replicazione e biosintesi, assemblaggio, rilascio","Attacco, replicazione, rilascio, penetrazione","Rilascio, attacco, penetrazione, replicazione","Biosintesi, attacco, assemblaggio, penetrazione","Penetrazione, rilascio, attacco, biosintesi"], correct:0 },
+
+{ id:"vir-13", topic:"virus", type:"mc",
+  q:"Il rilascio dei nuovi virioni da una cellula ospite può avvenire per:",
+  options:["Fagocitosi o pinocitosi","Lisi (virus nudi) o gemmazione/esocitosi (virus con envelope)","Mitosi","Scissione binaria","Sporulazione"], correct:1 },
+
+{ id:"vir-14", topic:"virus", type:"mc",
+  q:"I retrovirus sono caratterizzati dal possesso di:",
+  options:["DNA polimerasi soltanto","Trascrittasi inversa e integrasi","RNA polimerasi DNA-dipendente soltanto","Lisozima","Peptidoglicano"], correct:1 },
+
+{ id:"vir-15", topic:"virus", type:"mc",
+  q:"La trascrittasi inversa, enzima tipico dei retrovirus, catalizza:",
+  options:["La sintesi di DNA a partire da uno stampo di RNA","La sintesi di RNA a partire da uno stampo di DNA","La degradazione dell'RNA virale","La sintesi proteica","La duplicazione del capside"], correct:0 },
+
+{ id:"vir-16", topic:"virus", type:"mc",
+  q:"Molti virus animali entrano nella cellula ospite sfruttando:",
+  options:["La fagocitosi esclusivamente","L'endocitosi, mediante il macchinario molecolare della cellula ospite","La scissione binaria","La coniugazione","La trasformazione"], correct:1 },
+
+{ id:"vir-17", topic:"virus", type:"mc",
+  q:"Il tropismo cellulare di un virus, cioè la sua selettività d'ingresso in un determinato tipo cellulare, dipende dal legame con:",
+  options:["I lipidi di membrana in modo aspecifico","Recettori specifici della cellula ospite","Il nucleo cellulare","I ribosomi","Il citoscheletro"], correct:1 },
+
+{ id:"vir-18", topic:"virus", type:"mc",
+  q:"Quali di queste affermazioni sugli oggetti biologici NON è corretta?",
+  options:["I virus hanno un citoscheletro ancestrale","Le cellule procariotiche sono prive di citoscheletro complesso ma hanno un sistema di proteine strutturali con funzioni analoghe a quelle del citoscheletro eucariotico","Il citoscheletro è una componente strutturale presente in tutte le cellule eucariotiche","Alcuni organismi monocellulari sintetizzano molecole di ATP utilizzando l'energia liberata dalla fermentazione","Alcune cellule procariotiche possono operare la fotosintesi"], correct:0,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello)." },
+
+{ id:"vir-19", topic:"virus", type:"fill",
+  q:"Il rivestimento proteico che racchiude l'acido nucleico di un virus è detto ________.",
+  answer:"CAPSIDE" },
+
+{ id:"vir-20", topic:"virus", type:"fill",
+  q:"L'involucro membranoso esterno al capside, presente in alcuni virus, è detto ________ o pericapside.",
+  answer:"ENVELOPE" },
+
+{ id:"vir-21", topic:"virus", type:"fill",
+  q:"I virus privi di involucro membranoso esterno sono detti virus ________.",
+  answer:"NUDI" },
+
+{ id:"vir-22", topic:"virus", type:"fill",
+  q:"Nel ciclo ________, il genoma del batteriofago si integra nel cromosoma batterico come profago.",
+  answer:"LISOGENICO" },
+
+{ id:"vir-23", topic:"virus", type:"fill",
+  q:"Un batteriofago il cui genoma è integrato, in forma silente, nel cromosoma batterico è detto ________.",
+  answer:"PROFAGO" },
+
+{ id:"vir-24", topic:"virus", type:"fill",
+  q:"I retrovirus possiedono l'enzima ________, che sintetizza DNA a partire da uno stampo di RNA.",
+  answer:"TRASCRITTASI INVERSA", answerAlt:["RETROTRASCRITTASI"] },
+
+{ id:"vir-25", topic:"virus", type:"fill",
+  q:"I virus che infettano specificamente i batteri sono detti ________ (o fagi).",
+  answer:"BATTERIOFAGI" }
 
 ];
 
