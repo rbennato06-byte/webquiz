@@ -1,7 +1,9 @@
 /*
  * Banca dati domande - Quiz Semestre Filtro: Chimica e Fisica
  * Chimica: slide del corso (Stati di aggregazione della materia, Stato aeriforme, Stato liquido,
- * Termodinamica delle reazioni chimiche) + quiz proposti nelle slide stesse.
+ * Termodinamica delle reazioni chimiche, Atomo, Il sistema periodico degli elementi, Legami,
+ * Composti inorganici) + quiz proposti nelle slide stesse + domande ufficiali delle prove del
+ * semestre filtro 2025 (primo e secondo appello).
  * Fisica: slide del corso (Cinematica, Lavoro ed energia) + domande ufficiali delle prove del
  * semestre filtro 2025 (primo e secondo appello) su unità di misura, cinematica, dinamica,
  * lavoro-energia-potenza, integrate con domande originali sugli stessi argomenti.
@@ -19,6 +21,11 @@ const TOPICS = {
   gas:          { name: "Stato aeriforme (i gas)",             color: "#0ea5e9", area: "chimica" },
   liquido:      { name: "Stato liquido",                       color: "#14b8a6", area: "chimica" },
   termodinamica:{ name: "Termodinamica",                       color: "#f59e0b", area: "chimica" },
+  atomo:        { name: "Struttura dell'atomo",                color: "#d946ef", area: "chimica" },
+  tavola:       { name: "Tavola periodica degli elementi",     color: "#65a30d", area: "chimica" },
+  legami:       { name: "Legami chimici",                      color: "#0891b2", area: "chimica" },
+  nomenclatura: { name: "Nomenclatura chimica",                color: "#db2777", area: "chimica" },
+  geometria:    { name: "Struttura e geometria molecolare",    color: "#9333ea", area: "chimica" },
   misure:       { name: "Unità di misura e grandezze fisiche", color: "#e11d48", area: "fisica" },
   cinematica:   { name: "Cinematica",                          color: "#ea580c", area: "fisica" },
   dinamica:     { name: "Dinamica",                            color: "#7c3aed", area: "fisica" },
@@ -1027,7 +1034,647 @@ const QUESTIONS = [
 
 { id:"en-30", topic:"energia", type:"fill",
   q:"Il lavoro compiuto da una forza il cui angolo con lo spostamento è acuto (o nullo) si definisce lavoro ________.",
-  answer:"MOTORE" }
+  answer:"MOTORE" },
+
+/* ============================= STRUTTURA DELL'ATOMO ============================= */
+
+{ id:"atom-01", topic:"atomo", type:"mc",
+  q:"Il numero atomico di un elemento è:",
+  options:["La somma del numero di protoni ed elettroni","La somma del numero di protoni e neutroni","Il numero totale di elettroni","Il numero di protoni contenuti nel nucleo","Il numero di neutroni contenuti nel nucleo"], correct:3,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello)." },
+
+{ id:"atom-02", topic:"atomo", type:"mc",
+  q:"Gli isotopi di un elemento sono atomi che hanno lo stesso numero:",
+  options:["Atomico","Di massa","Di elettroni e neutroni","Di elettroni nel nucleo","Di neutroni"], correct:0,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). Gli isotopi hanno lo stesso $Z$ ma diverso numero di massa $A$, perché differiscono per il numero di neutroni." },
+
+{ id:"atom-03", topic:"atomo", type:"mc",
+  q:"L'atomo con struttura elettronica $1s^2\\,2s^2\\,2p^5$ è:",
+  options:["Ossigeno","Azoto","Neon","Fluoro","Argon"], correct:3,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). Il numero totale di elettroni è $2+2+5=9$, che corrisponde al fluoro ($Z=9$)." },
+
+{ id:"atom-04", topic:"atomo", type:"mc",
+  q:"Il numero massimo di elettroni presenti in un orbitale con $l = 1$ è:",
+  options:["6","1","2","4","3"], correct:2,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello). Ogni singolo orbitale, indipendentemente dalla sua forma, può contenere al massimo 2 elettroni con spin antiparallelo (principio di Pauli)." },
+
+{ id:"atom-05", topic:"atomo", type:"mc",
+  q:"Le particelle subatomiche con carica positiva sono chiamate:",
+  options:["Elettroni","Neutroni","Protoni","Fotoni","Nuclidi"], correct:2 },
+
+{ id:"atom-06", topic:"atomo", type:"mc",
+  q:"Quale particella subatomica è priva di carica elettrica?",
+  options:["Protone","Elettrone","Neutrone","Positrone","Nucleone"], correct:2 },
+
+{ id:"atom-07", topic:"atomo", type:"mc",
+  q:"Dove si trovano protoni e neutroni in un atomo?",
+  options:["Distribuiti uniformemente in tutto il volume atomico","Nel nucleo","Negli orbitali più esterni","Nello spazio tra nucleo ed elettroni","Non hanno una posizione definita"], correct:1 },
+
+{ id:"atom-08", topic:"atomo", type:"mc",
+  q:"La massa di un elettrone rispetto a quella di un protone è circa:",
+  options:["Uguale","Il doppio","2000 volte più piccola","2000 volte più grande","La metà"], correct:2 },
+
+{ id:"atom-09", topic:"atomo", type:"mc",
+  q:"La somma del numero di protoni e neutroni in un atomo costituisce:",
+  options:["Il numero atomico ($Z$)","Il numero di massa ($A$)","Il numero quantico principale","Il peso molecolare","Il numero di Avogadro"], correct:1 },
+
+{ id:"atom-10", topic:"atomo", type:"mc",
+  q:"Due atomi con lo stesso numero atomico ma diverso numero di massa sono detti:",
+  options:["Isomeri","Isotopi","Isobari","Ioni","Radicali"], correct:1 },
+
+{ id:"atom-11", topic:"atomo", type:"mc",
+  q:"Gli isotopi di uno stesso elemento hanno:",
+  options:["Le stesse proprietà chimiche ma diverse proprietà fisiche","Diverse proprietà chimiche ma le stesse proprietà fisiche","Proprietà chimiche e fisiche identiche","Un diverso numero atomico","Un diverso numero di protoni"], correct:0 },
+
+{ id:"atom-12", topic:"atomo", type:"mc",
+  q:"Il numero quantico principale $n$ definisce principalmente:",
+  options:["La forma dell'orbitale","L'energia e la dimensione dell'orbitale","L'orientamento dell'orbitale nello spazio","Il verso di rotazione dell'elettrone","La carica del nucleo"], correct:1 },
+
+{ id:"atom-13", topic:"atomo", type:"mc",
+  q:"Il numero quantico secondario $l$ definisce:",
+  options:["L'energia totale dell'atomo","La forma dell'orbitale","Il numero atomico","L'orientamento dell'orbitale nello spazio","Lo spin dell'elettrone"], correct:1 },
+
+{ id:"atom-14", topic:"atomo", type:"mc",
+  q:"A quale tipo di orbitale corrisponde il numero quantico secondario $l = 2$?",
+  options:["Orbitale s","Orbitale p","Orbitale d","Orbitale f","Nessun orbitale esiste per $l=2$"], correct:2 },
+
+{ id:"atom-15", topic:"atomo", type:"mc",
+  q:"Quanti orbitali p esistono in un dato livello energetico ($l = 1$)?",
+  options:["1","2","3","5","7"], correct:2,
+  explain:"Il numero quantico magnetico $m$ va da $-l$ a $+l$: per $l=1$, $m=-1,0,+1$, quindi 3 orbitali." },
+
+{ id:"atom-16", topic:"atomo", type:"mc",
+  q:"Quanti orbitali d esistono in un dato livello energetico ($l = 2$)?",
+  options:["3","5","7","1","9"], correct:1 },
+
+{ id:"atom-17", topic:"atomo", type:"mc",
+  q:"Il numero quantico magnetico di spin $s$ può assumere:",
+  options:["Solo valori interi da 0 a $n-1$","Solo i valori $+1/2$ e $-1/2$","Valori da $-l$ a $+l$","Solo valori positivi","Valori multipli di $n$"], correct:1 },
+
+{ id:"atom-18", topic:"atomo", type:"mc",
+  q:"Il principio di esclusione di Pauli afferma che in un atomo:",
+  options:["Tutti gli elettroni devono avere spin parallelo","Non possono esistere due elettroni con la stessa sequenza dei quattro numeri quantici","Gli orbitali si riempiono partendo da quelli a maggiore energia","Ogni orbitale può contenere al massimo un elettrone","Gli elettroni occupano sempre l'orbitale con $n$ più alto"], correct:1 },
+
+{ id:"atom-19", topic:"atomo", type:"mc",
+  q:"Secondo la regola di Hund, quando sono disponibili orbitali isoenergetici, gli elettroni si dispongono:",
+  options:["Tutti nello stesso orbitale con spin opposto","Occupando il maggior numero di orbitali possibile con spin parallelo","Solo negli orbitali s","In ordine casuale","Sempre a coppie con spin antiparallelo"], correct:1 },
+
+{ id:"atom-20", topic:"atomo", type:"mc",
+  q:"Qual è la configurazione elettronica del carbonio ($Z = 6$)?",
+  options:["$1s^2\\,2s^2\\,2p^2$","$1s^2\\,2s^2\\,2p^4$","$1s^2\\,2s^4$","$1s^2\\,2s^2\\,2p^6$","$1s^6$"], correct:0 },
+
+{ id:"atom-21", topic:"atomo", type:"mc",
+  q:"In un orbitale atomico possono trovarsi al massimo:",
+  options:["1 elettrone","2 elettroni con spin antiparallelo","3 elettroni","8 elettroni","Un numero illimitato di elettroni"], correct:1 },
+
+{ id:"atom-22", topic:"atomo", type:"mc",
+  q:"L'orbitale di tipo s ha forma:",
+  options:["Sferica","A quadrifoglio","Elicoidale (a manubrio)","A ciambella","Cubica"], correct:0 },
+
+{ id:"atom-23", topic:"atomo", type:"mc",
+  q:"Qual è il massimo valore del numero quantico principale $n$ riscontrato sperimentalmente negli atomi in natura?",
+  options:["4","5","6","7","9"], correct:3 },
+
+{ id:"atom-24", topic:"atomo", type:"mc",
+  q:"La teoria quantistica moderna descrive l'elettrone come dotato di:",
+  options:["Solo proprietà di particella","Solo proprietà di onda","Proprietà contemporanee di particella e di onda","Nessuna proprietà definita","Una traiettoria perfettamente calcolabile"], correct:2,
+  explain:"È il principio di indeterminazione: non è possibile conoscere con la stessa precisione posizione e velocità dell'elettrone." },
+
+{ id:"atom-25", topic:"atomo", type:"mc",
+  q:"L'orbitale atomico è definito come:",
+  options:["La traiettoria esatta di un elettrone attorno al nucleo","La regione di spazio attorno al nucleo in cui è massima la probabilità di trovare un elettrone","Il nucleo dell'atomo","La somma di protoni e neutroni","Un particolare tipo di legame chimico"], correct:1 },
+
+{ id:"atom-26", topic:"atomo", type:"fill",
+  q:"I protoni hanno carica elettrica ________.",
+  answer:"POSITIVA" },
+
+{ id:"atom-27", topic:"atomo", type:"fill",
+  q:"Gli elettroni hanno carica elettrica ________.",
+  answer:"NEGATIVA" },
+
+{ id:"atom-28", topic:"atomo", type:"fill",
+  q:"Il numero atomico si indica con la lettera ________.",
+  answer:"Z" },
+
+{ id:"atom-29", topic:"atomo", type:"fill",
+  q:"Il numero di massa si indica con la lettera ________.",
+  answer:"A" },
+
+{ id:"atom-30", topic:"atomo", type:"fill",
+  q:"Atomi con lo stesso numero atomico ma diverso numero di massa si chiamano ________.",
+  answer:"ISOTOPI" },
+
+{ id:"atom-31", topic:"atomo", type:"fill",
+  q:"Il principio di ________ afferma che in un atomo non possono esistere due elettroni con la stessa sequenza dei quattro numeri quantici.",
+  answer:"PAULI", answerAlt:["ESCLUSIONE DI PAULI"] },
+
+/* ============================= TAVOLA PERIODICA DEGLI ELEMENTI ============================= */
+
+{ id:"tav-01", topic:"tavola", type:"mc",
+  q:"Nella tavola periodica gli elementi sono ordinati secondo:",
+  options:["Il numero di massa crescente","Il numero atomico crescente","Il peso atomico decrescente","L'ordine alfabetico","Il numero di elettroni di valenza decrescente"], correct:1 },
+
+{ id:"tav-02", topic:"tavola", type:"mc",
+  q:"Quante sono le righe orizzontali (periodi) della tavola periodica?",
+  options:["6","7","8","9","18"], correct:1 },
+
+{ id:"tav-03", topic:"tavola", type:"mc",
+  q:"Il numero del periodo a cui appartiene un elemento corrisponde:",
+  options:["Al numero atomico dell'elemento","Al numero di elettroni di valenza","Al massimo valore del numero quantico principale $n$ occupato","Al numero di protoni nel nucleo","Al numero del gruppo"], correct:2 },
+
+{ id:"tav-04", topic:"tavola", type:"mc",
+  q:"Gli elementi di uno stesso gruppo della tavola periodica hanno in comune:",
+  options:["Lo stesso numero di massa","Una configurazione elettronica esterna simile","Lo stesso numero di neutroni","Le stesse dimensioni atomiche","Lo stesso periodo"], correct:1 },
+
+{ id:"tav-05", topic:"tavola", type:"mc",
+  q:"Il gruppo 8A della tavola periodica corrisponde a:",
+  options:["I metalli alcalini","I metalli alcalino-terrosi","Gli alogeni","I gas nobili","I metalli di transizione"], correct:3 },
+
+{ id:"tav-06", topic:"tavola", type:"mc",
+  q:"Perché i gas nobili non formano legami chimici in condizioni normali?",
+  options:["Perché hanno un solo elettrone di valenza","Perché possiedono già la configurazione elettronica esterna più stabile (ottetto completo)","Perché sono privi di elettroni","Perché hanno un numero atomico molto basso","Perché sono tutti radioattivi"], correct:1 },
+
+{ id:"tav-07", topic:"tavola", type:"mc",
+  q:"Gli elementi di transizione compaiono a partire dal:",
+  options:["1° periodo","2° periodo","3° periodo","4° periodo","7° periodo"], correct:3,
+  explain:"Con gli elementi di transizione iniziano a riempirsi gli orbitali di tipo d." },
+
+{ id:"tav-08", topic:"tavola", type:"mc",
+  q:"Lantanidi e attinidi occupano orbitali di tipo:",
+  options:["s","p","d","f","Nessun orbitale specifico"], correct:3 },
+
+{ id:"tav-09", topic:"tavola", type:"mc",
+  q:"Quale delle seguenti è una proprietà tipica dei metalli?",
+  options:["Scarsa conducibilità elettrica","Tendenza ad acquistare elettroni","Formazione di anioni","Tendenza a cedere elettroni","Formazione di anidridi"], correct:3 },
+
+{ id:"tav-10", topic:"tavola", type:"mc",
+  q:"Quale delle seguenti è una proprietà tipica dei non metalli?",
+  options:["Sono tutti allo stato solido a temperatura ambiente","Sono buoni conduttori di calore ed elettricità","Tendono ad acquistare elettroni formando anioni","Formano ossidi basici","Sono malleabili e duttili"], correct:2 },
+
+{ id:"tav-11", topic:"tavola", type:"mc",
+  q:"Il raggio atomico degli elementi, scendendo lungo un gruppo:",
+  options:["Diminuisce","Aumenta","Resta costante","Diventa nullo","Varia in modo casuale"], correct:1 },
+
+{ id:"tav-12", topic:"tavola", type:"mc",
+  q:"Il raggio atomico degli elementi, procedendo lungo un periodo (da sinistra a destra):",
+  options:["Aumenta","Diminuisce","Resta costante","Raddoppia","Non è definibile"], correct:1 },
+
+{ id:"tav-13", topic:"tavola", type:"mc",
+  q:"L'energia di ionizzazione è definita come l'energia necessaria per:",
+  options:["Formare un legame chimico","Allontanare un elettrone da un atomo in fase gassosa","Rompere il nucleo di un atomo","Far fondere un solido","Ionizzare un composto in soluzione"], correct:1 },
+
+{ id:"tav-14", topic:"tavola", type:"mc",
+  q:"Lungo un periodo, l'energia di ionizzazione degli elementi:",
+  options:["Aumenta","Diminuisce","Resta costante","Diventa negativa","Non è definita"], correct:0 },
+
+{ id:"tav-15", topic:"tavola", type:"mc",
+  q:"Scendendo lungo un gruppo, l'energia di ionizzazione degli elementi:",
+  options:["Aumenta","Diminuisce","Resta costante","Raddoppia","Non varia in modo prevedibile"], correct:1 },
+
+{ id:"tav-16", topic:"tavola", type:"mc",
+  q:"L'affinità elettronica è definita come:",
+  options:["L'energia necessaria per allontanare un elettrone da un atomo","L'energia che si libera quando un atomo in fase gassosa acquista un elettrone","La capacità di un atomo di formare legami covalenti","Il numero di elettroni di valenza di un atomo","La massa atomica di un elemento"], correct:1 },
+
+{ id:"tav-17", topic:"tavola", type:"mc",
+  q:"L'elettronegatività misura:",
+  options:["La massa di un atomo","La tendenza di un atomo ad attirare su di sé gli elettroni di legame","Il numero di protoni nel nucleo","La dimensione del nucleo atomico","La carica totale di un atomo neutro"], correct:1 },
+
+{ id:"tav-18", topic:"tavola", type:"mc",
+  q:"Lungo un periodo l'elettronegatività degli elementi:",
+  options:["Aumenta","Diminuisce","Resta costante","Diventa negativa","Dipende solo dal numero di massa"], correct:0 },
+
+{ id:"tav-19", topic:"tavola", type:"mc",
+  q:"Scendendo lungo un gruppo, l'elettronegatività degli elementi:",
+  options:["Aumenta","Diminuisce","Resta costante","Diventa nulla","Raddoppia"], correct:1 },
+
+{ id:"tav-20", topic:"tavola", type:"mc",
+  q:"Per quali elementi non è possibile definire un valore di elettronegatività?",
+  options:["I metalli alcalini","Gli alogeni","I gas nobili","I metalli di transizione","Il carbonio e l'azoto"], correct:2 },
+
+{ id:"tav-21", topic:"tavola", type:"mc",
+  q:"L'unità di massa atomica (u.m.a.) è definita come:",
+  options:["La massa di un atomo di idrogeno","1/12 della massa dell'isotopo 12 del carbonio","La massa di una mole di elettroni","Il peso di un protone","La massa di un atomo di ossigeno-16"], correct:1 },
+
+{ id:"tav-22", topic:"tavola", type:"mc",
+  q:"Una mole di una sostanza contiene sempre:",
+  options:["6,022 g di sostanza","Un numero di particelle pari al numero di Avogadro","Esattamente 1 g di sostanza","22,4 particelle","Un numero di particelle variabile in base alla sostanza"], correct:1 },
+
+{ id:"tav-23", topic:"tavola", type:"mc",
+  q:"Il numero di Avogadro è definito come il numero di atomi di carbonio contenuti in:",
+  options:["1 g dell'isotopo 12 del carbonio","12 g dell'isotopo 12 del carbonio","1 mole di idrogeno","22,4 L di gas","6,022 g di carbonio"], correct:1 },
+
+{ id:"tav-24", topic:"tavola", type:"mc",
+  q:"Qual è la relazione corretta tra peso molecolare (P.M.) e mole?",
+  options:["Il P.M. espresso in grammi corrisponde alla massa di una mole della sostanza","Il P.M. non ha alcuna relazione con la mole","Una mole corrisponde sempre a 1 g, indipendentemente dal P.M.","Il P.M. si misura in litri","Il P.M. è sempre uguale al numero di Avogadro"], correct:0 },
+
+{ id:"tav-25", topic:"tavola", type:"mc",
+  q:"Calcolare il numero di moli presenti in 0,093 g di Zn (massa atomica 65,41 u):",
+  options:["$1{,}42\\times 10^{-3}$ mol","$1{,}42\\times 10^{-2}$ mol","$7{,}04\\times 10^{2}$ mol","$6{,}08\\times 10^{-4}$ mol","65,41 mol"], correct:0,
+  explain:"$n = \\dfrac{m}{M} = \\dfrac{0{,}093}{65{,}41} \\approx 1{,}42\\times 10^{-3}\\text{ mol}$." },
+
+{ id:"tav-26", topic:"tavola", type:"mc",
+  q:"Quante moli sono contenute in 3,4 g di $H_2SO_4$ ($H=1$, $S=32$, $O=16$)?",
+  options:["$3{,}47\\times 10^{-2}$ mol","0,34 mol","3,4 mol","$9{,}8\\times 10^{-2}$ mol","98 mol"], correct:0,
+  explain:"$M(H_2SO_4) = 2(1)+32+4(16) = 98\\text{ g/mol}$. $n = \\dfrac{3{,}4}{98} \\approx 3{,}47\\times 10^{-2}\\text{ mol}$." },
+
+{ id:"tav-27", topic:"tavola", type:"fill",
+  q:"La tavola periodica ordina gli elementi secondo il numero ________ crescente.",
+  answer:"ATOMICO" },
+
+{ id:"tav-28", topic:"tavola", type:"fill",
+  q:"Le righe orizzontali della tavola periodica si chiamano ________.",
+  answer:"PERIODI" },
+
+{ id:"tav-29", topic:"tavola", type:"fill",
+  q:"Le colonne verticali della tavola periodica si chiamano ________.",
+  answer:"GRUPPI" },
+
+{ id:"tav-30", topic:"tavola", type:"fill",
+  q:"Il numero di Avogadro vale $6{,}022 \\times 10$ elevato a ________.",
+  answer:"23" },
+
+{ id:"tav-31", topic:"tavola", type:"fill",
+  q:"Calcolare la massa in grammi di 0,018 mol di magnesio (massa atomica 24,30 u): ________ g.",
+  answer:"0,437", answerAlt:["0,44","0,4374","0.437"] },
+
+{ id:"tav-32", topic:"tavola", type:"fill",
+  q:"Il peso molecolare dell'acqua ($H_2O$), sapendo che $H=1{,}008$ u e $O=15{,}999$ u, è pari a ________ u.m.a.",
+  answer:"18,015", answerAlt:["18,02","18","18.015"] },
+
+/* ============================= LEGAMI CHIMICI ============================= */
+
+{ id:"leg-01", topic:"legami", type:"mc",
+  q:"La regola dell'ottetto afferma che, nella formazione di un legame chimico, un elemento tende a circondarsi di:",
+  options:["2 elettroni","4 elettroni","6 elettroni","8 elettroni","10 elettroni"], correct:3 },
+
+{ id:"leg-02", topic:"legami", type:"mc",
+  q:"Quale dei seguenti elementi, per la regola dell'ottetto, tende a raggiungere la configurazione dell'elio (2 elettroni)?",
+  options:["Il sodio","Il cloro","L'idrogeno","Il calcio","Lo zolfo"], correct:2 },
+
+{ id:"leg-03", topic:"legami", type:"mc",
+  q:"L'energia di legame è definita come:",
+  options:["L'energia cinetica media degli elettroni di legame","L'energia necessaria per rompere un legame chimico","La distanza tra i nuclei di due atomi legati","Il numero di legami tra due atomi","L'energia totale della molecola"], correct:1 },
+
+{ id:"leg-04", topic:"legami", type:"mc",
+  q:"L'ordine di legame indica:",
+  options:["La distanza tra i nuclei degli atomi legati","Il numero di legami (singoli, doppi, tripli) tra due atomi","L'energia totale della molecola","Il tipo di ibridazione degli orbitali","La polarità del legame"], correct:1 },
+
+{ id:"leg-05", topic:"legami", type:"mc",
+  q:"A un maggiore ordine di legame corrisponde generalmente:",
+  options:["Maggiore energia di legame e maggiore lunghezza di legame","Minore energia di legame e minore lunghezza di legame","Maggiore energia di legame e minore lunghezza di legame","Nessuna relazione con energia e lunghezza di legame","Minore energia di legame e maggiore lunghezza di legame"], correct:2 },
+
+{ id:"leg-06", topic:"legami", type:"mc",
+  q:"Secondo la teoria del legame di valenza (VB), il legame covalente si forma per:",
+  options:["Cessione definitiva di elettroni tra due atomi","Condivisione di elettroni tra orbitali sovrapposti di atomi diversi","Attrazione elettrostatica tra ioni di carica opposta","Formazione di un mare di elettroni delocalizzati","Emissione di radiazione elettromagnetica"], correct:1 },
+
+{ id:"leg-07", topic:"legami", type:"mc",
+  q:"Un legame covalente tra due atomi con la stessa elettronegatività (es. H–H) si definisce:",
+  options:["Eteropolare","Ionico","Omeopolare","Dativo","Metallico"], correct:2 },
+
+{ id:"leg-08", topic:"legami", type:"mc",
+  q:"Un legame covalente tra due atomi con diversa elettronegatività si definisce:",
+  options:["Omeopolare","Eteropolare (o polarizzato)","Ionico puro","Metallico","Dativo"], correct:1 },
+
+{ id:"leg-09", topic:"legami", type:"mc",
+  q:"In un legame covalente polarizzato, l'atomo più elettronegativo:",
+  options:["Cede completamente il suo elettrone","Attira maggiormente la coppia di elettroni di legame","Non partecipa al legame","Diventa un catione","Perde la sua identità chimica"], correct:1 },
+
+{ id:"leg-10", topic:"legami", type:"mc",
+  q:"Nel legame dativo (di coordinazione), la coppia di elettroni condivisa proviene:",
+  options:["In parti uguali da entrambi gli atomi","Da un solo atomo (il donatore)","Sempre dall'atomo più elettronegativo","Da nessuno dei due atomi","Da un terzo atomo esterno"], correct:1 },
+
+{ id:"leg-11", topic:"legami", type:"mc",
+  q:"Nel legame dativo, l'atomo che riceve la coppia di elettroni è chiamato:",
+  options:["Donatore","Accettore","Catione","Radicale","Nucleofilo"], correct:1 },
+
+{ id:"leg-12", topic:"legami", type:"mc",
+  q:"Secondo la teoria degli orbitali molecolari (MO), un orbitale molecolare legante, rispetto agli orbitali atomici di partenza, ha:",
+  options:["Energia maggiore","Energia minore","La stessa energia","Energia nulla","Energia negativa"], correct:1 },
+
+{ id:"leg-13", topic:"legami", type:"mc",
+  q:"Secondo la teoria degli orbitali molecolari, il numero totale di orbitali molecolari che si formano è:",
+  options:["Sempre il doppio degli orbitali atomici di partenza","Uguale al numero degli orbitali atomici che si combinano","Sempre pari a 2","Indipendente dal numero di orbitali atomici","Sempre dispari"], correct:1 },
+
+{ id:"leg-14", topic:"legami", type:"mc",
+  q:"La molecola di ossigeno ($O_2$) presenta un comportamento paramagnetico perché, secondo la teoria degli orbitali molecolari, possiede:",
+  options:["Tutti gli elettroni appaiati","Elettroni spaiati negli orbitali di antilegame","Un legame covalente singolo","Solo legami ionici","Nessun elettrone di valenza"], correct:1 },
+
+{ id:"leg-15", topic:"legami", type:"mc",
+  q:"Il legame ionico si instaura tipicamente tra:",
+  options:["Due non metalli","Due metalli","Un metallo e un non metallo","Due gas nobili","Due atomi identici"], correct:2 },
+
+{ id:"leg-16", topic:"legami", type:"mc",
+  q:"Nella formazione di un legame ionico, il metallo tende a:",
+  options:["Acquistare elettroni","Cedere elettroni","Condividere elettroni in parti uguali","Formare un legame dativo","Non reagire"], correct:1 },
+
+{ id:"leg-17", topic:"legami", type:"mc",
+  q:"I composti ionici, allo stato solido:",
+  options:["Conducono bene la corrente elettrica","Non conducono corrente elettrica, perché gli ioni occupano posizioni fisse nel reticolo","Sono sempre gassosi","Hanno basse temperature di fusione","Non formano strutture cristalline"], correct:1 },
+
+{ id:"leg-18", topic:"legami", type:"mc",
+  q:"I composti ionici fusi o disciolti in acqua:",
+  options:["Non conducono comunque corrente elettrica","Diventano conduttori di corrente elettrica","Perdono la loro carica","Si trasformano in composti covalenti","Diventano gassosi"], correct:1 },
+
+{ id:"leg-19", topic:"legami", type:"mc",
+  q:"Il legame metallico è dovuto all'attrazione tra:",
+  options:["Due nuclei atomici","Cationi metallici disposti in un reticolo e gli elettroni di valenza delocalizzati","Due anioni","Molecole polari e apolari","Ioni positivi e negativi in un composto binario"], correct:1 },
+
+{ id:"leg-20", topic:"legami", type:"mc",
+  q:"Quale proprietà dei metalli è spiegata direttamente dalla mobilità degli elettroni nel legame metallico?",
+  options:["L'elevata temperatura di fusione","La bassa densità","La buona conducibilità elettrica e termica","La fragilità","L'elevata elettronegatività"], correct:2 },
+
+{ id:"leg-21", topic:"legami", type:"mc",
+  q:"Il legame a idrogeno si forma tipicamente quando l'idrogeno è legato covalentemente a:",
+  options:["Carbonio","Zolfo","Fosforo","Un atomo piccolo e molto elettronegativo come F, O o N","Qualsiasi elemento della tavola periodica"], correct:3 },
+
+{ id:"leg-22", topic:"legami", type:"mc",
+  q:"Rispetto al legame covalente, il legame a idrogeno è generalmente:",
+  options:["Più forte e più corto","Più debole e più lungo","Di intensità identica","Privo di energia","Impossibile da rompere"], correct:1 },
+
+{ id:"leg-23", topic:"legami", type:"mc",
+  q:"La particolare struttura del ghiaccio, meno densa dell'acqua liquida, è dovuta a:",
+  options:["Legami ionici tra le molecole d'acqua","Legami a idrogeno che dispongono le molecole in una struttura aperta","L'assenza di legami tra le molecole","Legami metallici","Un'elevata pressione interna"], correct:1 },
+
+{ id:"leg-24", topic:"legami", type:"mc",
+  q:"Le forze di London (o forze di dispersione) sono forze attrattive che si instaurano tra:",
+  options:["Ioni di carica opposta","Molecole polari con dipolo permanente","Molecole non polari, tramite dipoli istantanei","Atomi legati covalentemente nella stessa molecola","Cationi metallici"], correct:2 },
+
+{ id:"leg-25", topic:"legami", type:"mc",
+  q:"L'intensità delle forze di London è inversamente proporzionale:",
+  options:["Alla prima potenza della distanza","Al quadrato della distanza","Alla sesta potenza della distanza","Alla temperatura assoluta","Alla massa molecolare"], correct:2 },
+
+{ id:"leg-26", topic:"legami", type:"mc",
+  q:"Il legame idrofobico è la forza che tiene unite tra loro:",
+  options:["Molecole polari in acqua","Ioni di carica opposta","Molecole non polari, per minimizzare il contatto con l'acqua","Atomi dello stesso elemento tramite legame covalente","Cationi metallici in un reticolo"], correct:2 },
+
+{ id:"leg-27", topic:"legami", type:"fill",
+  q:"I gas nobili non formano legami chimici perché possiedono già una configurazione elettronica esterna particolarmente ________.",
+  answer:"STABILE" },
+
+{ id:"leg-28", topic:"legami", type:"fill",
+  q:"Un legame covalente con ordine di legame pari a 2 si chiama legame ________.",
+  answer:"DOPPIO" },
+
+{ id:"leg-29", topic:"legami", type:"fill",
+  q:"Un legame covalente con ordine di legame pari a 3 si chiama legame ________.",
+  answer:"TRIPLO" },
+
+{ id:"leg-30", topic:"legami", type:"fill",
+  q:"Nel legame dativo, l'atomo che dona la coppia di elettroni è detto ________.",
+  answer:"DONATORE" },
+
+{ id:"leg-31", topic:"legami", type:"fill",
+  q:"Il legame chimico dovuto all'attrazione tra cationi metallici e una nuvola di elettroni delocalizzati è detto legame ________.",
+  answer:"METALLICO" },
+
+{ id:"leg-32", topic:"legami", type:"fill",
+  q:"Il legame debole che si forma tra l'idrogeno legato a F, O o N e un altro atomo elettronegativo è detto legame a ________.",
+  answer:"IDROGENO" },
+
+{ id:"leg-33", topic:"legami", type:"fill",
+  q:"Le forze attrattive tra molecole non polari, dovute a dipoli istantanei, sono dette forze di ________.",
+  answer:"LONDON" },
+
+{ id:"leg-34", topic:"legami", type:"fill",
+  q:"I composti ionici sono generalmente solubili in solventi ________, come l'acqua.",
+  answer:"POLARI" },
+
+/* ============================= NOMENCLATURA CHIMICA ============================= */
+
+{ id:"nom-01", topic:"nomenclatura", type:"mc",
+  q:"Il composto $K_2S$ è:",
+  options:["Solfuro di potassio","Solfato di potassio","Solfito di potassio","Idrogeno solfato di potassio","Idrogeno solfuro di potassio"], correct:0 },
+
+{ id:"nom-02", topic:"nomenclatura", type:"mc",
+  q:"Il nitrito di cadmio corrisponde a:",
+  options:["$CdNO_2$","$Cd(NO_2)_2$","$Ca(NO_2)_2$","$Cd(NO_3)_2$","$Ca(NO_3)_2$"], correct:1,
+  explain:"Il cadmio forma tipicamente lo ione $Cd^{2+}$; il nitrito è $NO_2^-$, quindi la formula è $Cd(NO_2)_2$." },
+
+{ id:"nom-03", topic:"nomenclatura", type:"mc",
+  q:"Il nome del composto $KMnO_4$ è:",
+  options:["Permanganato di potassio","Manganato di potassio","Ipomanganito di potassio","Manganito di potassio","Ipomanganato di potassio"], correct:0 },
+
+{ id:"nom-04", topic:"nomenclatura", type:"mc",
+  q:"I sali sono composti che si formano dalla reazione di:",
+  options:["Un ossidante e un riducente","Un ossido e un metallo","Un non metallo con ossigeno","Un acido e una base","Un idruro e un metallo"], correct:3 },
+
+{ id:"nom-05", topic:"nomenclatura", type:"mc",
+  q:"L'anione derivante dall'atomo di idrogeno è detto:",
+  options:["Idrogenione","Ione idrogeno","Ione idruro","Ione ossidrilico","Radicale ossidrile"], correct:2 },
+
+{ id:"nom-06", topic:"nomenclatura", type:"mc",
+  q:"La formula del nitrato di ammonio è:",
+  options:["$NH_3NO_3$","$NH_4NO_3$","$NH_2NO_3$","$(NH_4)_2NO_3$","$NH_4NO_2$"], correct:1 },
+
+{ id:"nom-07", topic:"nomenclatura", type:"mc",
+  q:"La formula molecolare di un composto ci permette di conoscere:",
+  options:["La geometria della molecola","Solo il tipo degli atomi che lo compongono","Il tipo e il numero di atomi","La struttura della molecola","La dimensione della molecola"], correct:2 },
+
+{ id:"nom-08", topic:"nomenclatura", type:"mc",
+  q:"L'ossido di magnesio corrisponde alla formula:",
+  options:["$Mg(OH)_2$","$MgO_2$","$MgO$","$Mn_2O_2$","$MnO$"], correct:2 },
+
+{ id:"nom-09", topic:"nomenclatura", type:"mc",
+  q:"La formula del bicarbonato di calcio è:",
+  options:["$CaCO_3$","$Ca(HCO_3)_2$","$CaHCO_3$","$Ca_3(CO_3)_2$","$Ca(HCO_2)_2$"], correct:1 },
+
+{ id:"nom-10", topic:"nomenclatura", type:"mc",
+  q:"L'anidride dell'acido carbonico è:",
+  options:["$HCOOH$","$CO_3$","$CO_2$","$CO$","$CH_3COOH$"], correct:2 },
+
+{ id:"nom-11", topic:"nomenclatura", type:"mc",
+  q:"Il fluoruro di magnesio corrisponde alla formula:",
+  options:["$MgF$","$Mg(FO)_2$","$Mn_2F$","$MgF_2$","$MnF$"], correct:3 },
+
+{ id:"nom-12", topic:"nomenclatura", type:"mc",
+  q:"Indicare il catione alcalino.",
+  options:["$Li^+$","$Ca^{2+}$","$Cl^-$","$Mg^{2+}$","$F^-$"], correct:0 },
+
+{ id:"nom-13", topic:"nomenclatura", type:"mc",
+  q:"L'anidride fosforosa corrisponde alla formula:",
+  options:["$P_2O_5$","$P_2O_3$","$P_2O_2$","$FO$","$FO_2$"], correct:1 },
+
+{ id:"nom-14", topic:"nomenclatura", type:"mc",
+  q:"Il composto $MgH_2$ è:",
+  options:["Acido magnesidrico","Idrossido di magnesio","Un idracido","Idruro di magnesio","Idruro di manganese"], correct:3 },
+
+{ id:"nom-15", topic:"nomenclatura", type:"mc",
+  q:"Quanti atomi di idrogeno sono presenti in una molecola di solfato d'ammonio, $(NH_4)_2SO_4$?",
+  options:["8","10","9","12","6"], correct:0,
+  explain:"Ci sono due gruppi $NH_4$, ciascuno con 4 atomi di H: $2\\times 4 = 8$." },
+
+{ id:"nom-16", topic:"nomenclatura", type:"mc",
+  q:"Una sola delle seguenti associazioni è ERRATA. Indicare quale:",
+  options:["$HNO_2$ = acido nitroso","$NH_4B$ = ammonio bromuro","$H_3PO_4$ = acido ortofosforico","$H_2SO_3$ = acido solforoso","$H_2SO_4$ = acido solforico"], correct:1,
+  explain:"Il bromuro di ammonio ha formula $NH_4Br$ (Br = bromo), non $NH_4B$ (B = boro); inoltre in italiano si dice \"bromuro di ammonio\", non \"ammonio bromuro\"." },
+
+{ id:"nom-17", topic:"nomenclatura", type:"mc",
+  q:"Gli ossidi basici sono formati da:",
+  options:["Un elemento di transizione, ossigeno e idrogeno","Un non metallo, lo zolfo e l'ossigeno","Un metallo, lo zolfo e l'ossigeno","Un non metallo e l'ossigeno","Un metallo e l'ossigeno"], correct:4 },
+
+{ id:"nom-18", topic:"nomenclatura", type:"mc",
+  q:"Il composto $Cl_2O_7$ è:",
+  options:["Anidride ipoclorosa","Anidride clorosa","Anidride perclorica","Ossido ipocloroso","Ossido clorico"], correct:2 },
+
+{ id:"nom-19", topic:"nomenclatura", type:"mc",
+  q:"L'acido solforico corrisponde alla formula:",
+  options:["$H_2SO_4$","$H_2SO_3$","$H_2S$","$HSO_4$","$HSO_3$"], correct:0 },
+
+{ id:"nom-20", topic:"nomenclatura", type:"mc",
+  q:"L'acido (orto)fosforico corrisponde alla formula:",
+  options:["$HPO_3$","$H_2P_2O_7$","$H_3PO_4$","$HPO_2$","$H_3PO_3$"], correct:2 },
+
+{ id:"nom-21", topic:"nomenclatura", type:"mc",
+  q:"Secondo la teoria VSEPR, qual è il principio fondamentale che determina la geometria di una molecola covalente?",
+  options:["Gli atomi tendono a disporsi in modo da massimizzare il numero di legami doppi","Le coppie di elettroni di valenza si dispongono intorno al nucleo in modo da minimizzare la repulsione reciproca","La geometria è determinata esclusivamente dal numero di protoni nel nucleo centrale","Gli atomi tendono a disporsi in modo da massimizzare il numero di legami tripli","Gli elettroni non condivisi non influenzano la forma della molecola"], correct:1 },
+
+{ id:"nom-22", topic:"nomenclatura", type:"mc",
+  q:"Quale tra le seguenti molecole presenta una geometria angolare, secondo la teoria VSEPR?",
+  options:["$CH_4$","$CO_2$","$H_2O$","$BF_3$","$PCl_5$"], correct:2 },
+
+{ id:"nom-23", topic:"nomenclatura", type:"mc",
+  q:"Qual è l'angolo di legame ideale in una geometria tetraedrica?",
+  options:["90°","109,5°","120°","180°","104,5°"], correct:1 },
+
+{ id:"nom-24", topic:"nomenclatura", type:"mc",
+  q:"Secondo la teoria VSEPR, come si confronta l'angolo di legame di $H_2O$ con quello di $NH_3$?",
+  options:["L'angolo di $H_2O$ è maggiore di quello di $NH_3$","L'angolo di $H_2O$ è maggiore di quello di $CH_4$","L'angolo di $CH_4$ è minore di quello di $NH_3$","L'angolo di $H_2O$ è minore di quello di $NH_3$","L'angolo di $NH_3$ è maggiore di quello di $CH_4$"], correct:3,
+  explain:"$H_2O$ ha due coppie di elettroni non condivise (angolo 104,5°), $NH_3$ ne ha una sola (angolo 107,5°): più coppie solitarie comprimono maggiormente l'angolo di legame." },
+
+{ id:"nom-25", topic:"nomenclatura", type:"mc",
+  q:"Il numero di ossidazione dell'ossigeno nella maggior parte dei composti è:",
+  options:["+1","-1","-2","+2","0"], correct:2 },
+
+{ id:"nom-26", topic:"nomenclatura", type:"mc",
+  q:"Il numero di ossidazione dell'ossigeno nei perossidi (es. $H_2O_2$) è:",
+  options:["-2","-1","+1","+2","0"], correct:1 },
+
+{ id:"nom-27", topic:"nomenclatura", type:"mc",
+  q:"Il numero di ossidazione dell'idrogeno negli idruri metallici (es. NaH) è:",
+  options:["+1","-1","+2","0","-2"], correct:1 },
+
+{ id:"nom-28", topic:"nomenclatura", type:"mc",
+  q:"La somma dei numeri di ossidazione degli elementi in un composto neutro è:",
+  options:["Sempre positiva","Sempre negativa","Uguale a 0","Uguale al numero di atomi","Uguale alla carica del catione"], correct:2 },
+
+{ id:"nom-29", topic:"nomenclatura", type:"mc",
+  q:"La somma dei numeri di ossidazione degli elementi in uno ione poliatomico è uguale a:",
+  options:["Zero sempre","La carica dello ione","Il numero di atomi presenti","Il numero atomico dell'elemento centrale","La massa molecolare dello ione"], correct:1 },
+
+{ id:"nom-30", topic:"nomenclatura", type:"mc",
+  q:"Il numero di ossidazione del fluoro in tutti i suoi composti è:",
+  options:["+1","0","-1","+2","Variabile"], correct:2 },
+
+{ id:"nom-31", topic:"nomenclatura", type:"fill",
+  q:"Gli idruri sono composti binari tra idrogeno e un ________.",
+  answer:"METALLO" },
+
+{ id:"nom-32", topic:"nomenclatura", type:"fill",
+  q:"Le anidridi sono composti binari tra ossigeno e un ________.",
+  answer:"NON METALLO" },
+
+{ id:"nom-33", topic:"nomenclatura", type:"fill",
+  q:"Gli idrossidi contengono l'anione ________ ($OH^-$).",
+  answer:"OSSIDRILE", answerAlt:["IDROSSIDO","OSSIDRILIONE"] },
+
+{ id:"nom-34", topic:"nomenclatura", type:"fill",
+  q:"Gli acidi binari formati da idrogeno e un non metallo si chiamano ________.",
+  answer:"IDRACIDI" },
+
+{ id:"nom-35", topic:"nomenclatura", type:"fill",
+  q:"Gli acidi ternari contenenti un non metallo, ossigeno e idrogeno si chiamano ________.",
+  answer:"OSSIACIDI" },
+
+{ id:"nom-36", topic:"nomenclatura", type:"fill",
+  q:"Il suffisso utilizzato per l'anione di un sale che deriva da un idracido è ________.",
+  answer:"URO" },
+
+{ id:"nom-37", topic:"nomenclatura", type:"fill",
+  q:"Il suffisso utilizzato per l'anione di un sale che deriva da un ossiacido terminante in -ico è ________.",
+  answer:"ATO" },
+
+{ id:"nom-38", topic:"nomenclatura", type:"fill",
+  q:"Il suffisso utilizzato per l'anione di un sale che deriva da un ossiacido terminante in -oso è ________.",
+  answer:"ITO" },
+
+/* ============================= STRUTTURA E GEOMETRIA MOLECOLARE ============================= */
+
+{ id:"geom-01", topic:"geometria", type:"mc",
+  q:"La struttura di Lewis di una molecola rappresenta:",
+  options:["Solo gli atomi centrali","La disposizione degli elettroni di valenza e dei legami tra gli atomi","Esclusivamente la carica nucleare","La velocità degli elettroni","La temperatura di fusione del composto"], correct:1 },
+
+{ id:"geom-02", topic:"geometria", type:"mc",
+  q:"Nella costruzione della struttura di Lewis, l'atomo centrale di una molecola è generalmente:",
+  options:["Quello con la maggiore affinità elettronica","Quello con la minore affinità elettronica","Sempre l'idrogeno","Sempre l'ossigeno","Scelto casualmente"], correct:1 },
+
+{ id:"geom-03", topic:"geometria", type:"mc",
+  q:"Nella struttura di Lewis, l'atomo di idrogeno:",
+  options:["È sempre l'atomo centrale","Può essere sia centrale che terminale","È sempre terminale, perché si lega a un solo atomo","Non compare mai nelle strutture di Lewis","Forma sempre legami dativi"], correct:2 },
+
+{ id:"geom-04", topic:"geometria", type:"mc",
+  q:"La geometria molecolare del metano ($CH_4$), secondo la teoria VSEPR, è:",
+  options:["Lineare","Angolare","Piramidale a base triangolare","Tetraedrica","Planare"], correct:3 },
+
+{ id:"geom-05", topic:"geometria", type:"mc",
+  q:"La geometria molecolare dell'ammoniaca ($NH_3$), secondo la teoria VSEPR, è:",
+  options:["Tetraedrica","Piramidale a base triangolare","Lineare","Angolare","Planare quadrata"], correct:1 },
+
+{ id:"geom-06", topic:"geometria", type:"mc",
+  q:"Perché l'angolo di legame in $NH_3$ (107,5°) è inferiore a quello ideale tetraedrico (109,5°)?",
+  options:["Perché l'azoto è molto elettronegativo","Perché la coppia di elettroni non condivisa sull'azoto occupa più spazio e respinge maggiormente le coppie di legame","Perché l'idrogeno è troppo piccolo","Perché la molecola è ionica","Per un errore sperimentale"], correct:1 },
+
+{ id:"geom-07", topic:"geometria", type:"mc",
+  q:"Perché l'angolo di legame in $H_2O$ (104,5°) è ancora più ridotto rispetto a quello di $NH_3$?",
+  options:["Perché l'ossigeno ha due coppie di elettroni non condivise, che respingono maggiormente le coppie di legame","Perché l'acqua è una molecola ionica","Perché l'idrogeno nell'acqua ha carica negativa","Perché la molecola d'acqua non rispetta la regola dell'ottetto","Non c'è alcuna differenza reale"], correct:0 },
+
+{ id:"geom-08", topic:"geometria", type:"mc",
+  q:"Nella molecola d'acqua, il numero di regioni di densità elettronica intorno all'atomo di ossigeno è:",
+  options:["2","3","4","5","6"], correct:2,
+  explain:"2 legami covalenti O–H più 2 coppie solitarie = 4 regioni di densità elettronica." },
+
+{ id:"geom-09", topic:"geometria", type:"mc",
+  q:"Una molecola con quattro regioni di densità elettronica, tutte impegnate in legami (nessuna coppia solitaria), ha geometria:",
+  options:["Angolare","Piramidale","Tetraedrica","Lineare","Planare triangolare"], correct:2 },
+
+{ id:"geom-10", topic:"geometria", type:"mc",
+  q:"Le coppie di elettroni non condivise (di non legame), rispetto alle coppie di legame, generalmente:",
+  options:["Occupano meno spazio e respingono meno","Occupano più spazio e respingono maggiormente le coppie adiacenti","Non hanno alcun effetto sulla geometria molecolare","Si comportano in modo identico alle coppie di legame","Eliminano la geometria tetraedrica"], correct:1 },
+
+{ id:"geom-11", topic:"geometria", type:"mc",
+  q:"La molecola di $CO_2$ è apolare, nonostante i legami $C=O$ siano polarizzati, perché:",
+  options:["Il carbonio non è elettronegativo","La sua geometria lineare e simmetrica fa annullare vettorialmente i dipoli di legame","Non ci sono legami doppi","L'ossigeno non ha elettronegatività","È una molecola ionica"], correct:1 },
+
+{ id:"geom-12", topic:"geometria", type:"mc",
+  q:"Quale delle seguenti molecole è polare?",
+  options:["$CO_2$","$CH_4$","$H_2O$","$BF_3$","$Cl_2$"], correct:2 },
+
+{ id:"geom-13", topic:"geometria", type:"mc",
+  q:"Una molecola con legami covalenti polarizzati può risultare complessivamente apolare se:",
+  options:["Ha una geometria molecolare simmetrica che fa annullare vettorialmente i dipoli di legame","Ha un solo tipo di atomo","Non possiede elettroni di valenza","È sempre ionica","Non ha mai legami polarizzati"], correct:0 },
+
+{ id:"geom-14", topic:"geometria", type:"fill",
+  q:"La teoria che permette di prevedere la geometria molecolare a partire dalla repulsione tra le coppie di elettroni di valenza si chiama teoria ________.",
+  answer:"VSEPR" },
+
+{ id:"geom-15", topic:"geometria", type:"fill",
+  q:"La geometria molecolare del metano ($CH_4$) è ________.",
+  answer:"TETRAEDRICA" },
+
+{ id:"geom-16", topic:"geometria", type:"fill",
+  q:"L'angolo di legame ideale nella geometria tetraedrica è ________ gradi.",
+  answer:"109,5", answerAlt:["109.5"] },
+
+{ id:"geom-17", topic:"geometria", type:"fill",
+  q:"L'angolo di legame sperimentale nella molecola di ammoniaca è di circa ________ gradi.",
+  answer:"107,5", answerAlt:["107.5"] },
+
+{ id:"geom-18", topic:"geometria", type:"fill",
+  q:"L'angolo di legame sperimentale nella molecola d'acqua è di circa ________ gradi.",
+  answer:"104,5", answerAlt:["104.5"] },
+
+{ id:"geom-19", topic:"geometria", type:"fill",
+  q:"Una molecola i cui legami polarizzati si annullano vettorialmente per simmetria si dice ________.",
+  answer:"APOLARE" }
 
 ];
 
