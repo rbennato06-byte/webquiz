@@ -1087,7 +1087,7 @@ const QUESTIONS = [
 { id:"atom-02", topic:"atomo", type:"mc",
   q:"Gli isotopi di un elemento sono atomi che hanno lo stesso numero:",
   options:["Atomico","Di massa","Di elettroni e neutroni","Di elettroni nel nucleo","Di neutroni"], correct:0,
-  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). Gli isotopi hanno lo stesso $Z$ ma diverso numero di massa $A$, perché differiscono per il numero di neutroni." },
+  explain:"Domanda ispirata alla prova ufficiale del semestre filtro 2025 (secondo appello), che chiedeva di completare: \"Negli isotopi diverso numero di ________\" (neutroni). Gli isotopi hanno infatti lo stesso $Z$ ma diverso numero di massa $A$, perché differiscono per il numero di neutroni." },
 
 { id:"atom-03", topic:"atomo", type:"mc",
   q:"L'atomo con struttura elettronica $1s^2\\,2s^2\\,2p^5$ è:",
