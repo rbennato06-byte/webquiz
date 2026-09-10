@@ -61,6 +61,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { color-scheme: light dark; }
 body {
   margin: 0;
@@ -182,6 +183,10 @@ main.wrap { padding-block: 28px 60px; }
   background: var(--surface-2); color: var(--text-muted);
 }
 .q-text { font-size: 1.12rem; line-height: 1.45; margin: 0 0 20px; }
+
+/* KaTeX: match surrounding text size and let color inherit (theme + correct/wrong states) */
+.katex { font-size: 1.05em; }
+.katex-display { margin: .4em 0; }
 
 .mc-options { display: flex; flex-direction: column; gap: 10px; }
 .mc-option {

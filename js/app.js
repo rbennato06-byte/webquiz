@@ -62,6 +62,18 @@
 
   function letterFor(i) { return "ABCDE"[i]; }
 
+  function renderMath(container) {
+    if (window.renderMathInElement) {
+      renderMathInElement(container, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false }
+        ],
+        throwOnError: false
+      });
+    }
+  }
+
   /* ---------------------------------------------------------------- */
   /* Stats (localStorage)                                              */
   /* ---------------------------------------------------------------- */
@@ -267,7 +279,8 @@
     badge.textContent = `${areaInfo.icon} ${TOPICS[q.topic].name}` + (q.type === "fill" ? " · Completamento" : " · Risposta multipla");
     badge.style.color = TOPICS[q.topic].color;
 
-    el("qText").textContent = q.q;
+    el("qText").innerHTML = escapeHtml(q.q);
+    renderMath(el("qText"));
     el("feedback").hidden = true;
     el("feedback").innerHTML = "";
     // In exam mode, questions may be left blank (omitted), so "Avanti" stays enabled;
@@ -285,10 +298,11 @@
       q.options.forEach((opt, i) => {
         const div = document.createElement("div");
         div.className = "mc-option";
-        div.innerHTML = `<span class="letter">${letterFor(i)}</span><span>${opt}</span>`;
+        div.innerHTML = `<span class="letter">${letterFor(i)}</span><span>${escapeHtml(opt)}</span>`;
         div.addEventListener("click", () => selectMc(i));
         mcBox.appendChild(div);
       });
+      renderMath(mcBox);
     } else {
       mcBox.hidden = true;
       fillBox.hidden = false;
@@ -351,9 +365,10 @@
     fb.hidden = false;
     fb.className = "feedback " + (isCorrect ? "correct" : "wrong");
     const correctText = q.type === "mc" ? `${letterFor(q.correct)}) ${q.options[q.correct]}` : q.answer;
-    let html = isCorrect ? "✅ Corretto!" : `❌ Sbagliato. Risposta corretta: <span class="correct-answer">${correctText}</span>`;
-    if (q.explain) html += `<span class="explain">${q.explain}</span>`;
+    let html = isCorrect ? "✅ Corretto!" : `❌ Sbagliato. Risposta corretta: <span class="correct-answer">${escapeHtml(correctText)}</span>`;
+    if (q.explain) html += `<span class="explain">${escapeHtml(q.explain)}</span>`;
     fb.innerHTML = html;
+    renderMath(fb);
   }
 
   function finalizeLock() {
@@ -420,6 +435,7 @@
 
     el("resultsBreakdown").innerHTML = breakdownHtml();
     el("resultsReview").innerHTML = reviewHtml(true);
+    renderMath(el("resultsReview"));
   }
 
   function renderExamResults(timeUp) {
@@ -443,6 +459,7 @@
 
     el("resultsBreakdown").innerHTML = breakdownHtml();
     el("resultsReview").innerHTML = reviewHtml(false);
+    renderMath(el("resultsReview"));
 
     recordExamResult(score, max, passed);
   }

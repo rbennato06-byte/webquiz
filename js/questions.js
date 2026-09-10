@@ -38,8 +38,8 @@ const QUESTIONS = [
 
 { id:"agg-02", topic:"aggregazione", type:"mc",
   q:"In quale dei seguenti composti si osserva tipicamente il passaggio di fase della sublimazione?",
-  options:["CO2 solida (ghiaccio secco)","CO solido","Ghiaccio (H2O solida)","Br2","NO solido"], correct:0,
-  explain:"La CO2 solida (ghiaccio secco) è l'esempio classico citato nelle slide, insieme a iodio e naftalina." },
+  options:["$CO_2$ solida (ghiaccio secco)","CO solido","Ghiaccio ($H_2O$ solida)","$Br_2$","NO solido"], correct:0,
+  explain:"La $CO_2$ solida (ghiaccio secco) è l'esempio classico citato nelle slide, insieme a iodio e naftalina." },
 
 { id:"agg-03", topic:"aggregazione", type:"mc",
   q:"Indicare la differenza tra evaporazione ed ebollizione:",
@@ -181,7 +181,7 @@ const QUESTIONS = [
 { id:"gas-04", topic:"gas", type:"mc",
   q:"Un campione di gas è tenuto in un recipiente flessibile a pressione costante. Se la temperatura assoluta raddoppia:",
   options:["Il volume resta costante","Il volume dimezza","Il volume raddoppia","Il volume triplica","Il volume si riduce a un terzo"], correct:2,
-  explain:"Legge di Charles: a P costante, V è direttamente proporzionale a T." },
+  explain:"Legge di Charles: a $P$ costante, $V$ è direttamente proporzionale a $T$." },
 
 { id:"gas-05", topic:"gas", type:"mc",
   q:"Quale delle seguenti affermazioni descrive correttamente la legge di Charles?",
@@ -195,41 +195,41 @@ const QUESTIONS = [
 { id:"gas-06", topic:"gas", type:"mc",
   q:"Un campione di gas occupa un volume di 6,00 L alla pressione di 1,50 atm. Calcolare il suo volume se la pressione è portata a 3,00 atm a temperatura costante:",
   options:["5,00 L","2,50 L","10,0 L","2,00 L","3,00 L"], correct:4,
-  explain:"Legge di Boyle: P1V1 = P2V2 → 1,50×6,00 = 3,00×V2 → V2 = 3,00 L." },
+  explain:"Legge di Boyle: $P_1V_1 = P_2V_2$ → $1{,}50\\times 6{,}00 = 3{,}00\\times V_2$ → $V_2 = 3{,}00\\text{ L}$." },
 
 { id:"gas-07", topic:"gas", type:"mc",
   q:"Un campione di gas è tenuto a 200 K a una pressione di 2,00 atm. Viene poi riscaldato a volume costante fino a raggiungere una pressione di 6,00 atm. Quale sarà la sua temperatura finale?",
   options:["600 K","100 K","200 K","150 K","250 K"], correct:0,
-  explain:"Legge di Gay-Lussac: P1/T1 = P2/T2 → 2,00/200 = 6,00/T2 → T2 = 600 K." },
+  explain:"Legge di Gay-Lussac: $\\dfrac{P_1}{T_1} = \\dfrac{P_2}{T_2}$ → $\\dfrac{2{,}00}{200} = \\dfrac{6{,}00}{T_2}$ → $T_2 = 600\\text{ K}$." },
 
 { id:"gas-08", topic:"gas", type:"mc",
-  q:"Un gas ideale subisce una trasformazione isocora dallo stato A (PA=1 atm; TA=200 K) allo stato B (VB=5 L; TB=400 K), e poi una trasformazione isoterma che lo porta allo stato C (VC=8 L). Calcolare PC.",
+  q:"Un gas ideale subisce una trasformazione isocora dallo stato A ($P_A=1$ atm; $T_A=200$ K) allo stato B ($V_B=5$ L; $T_B=400$ K), e poi una trasformazione isoterma che lo porta allo stato C ($V_C=8$ L). Calcolare $P_C$.",
   options:["1,25 atm","2,00 atm","1,00 atm","4,00 atm","3,00 atm"], correct:0,
-  explain:"A→B (isocora, VA=VB=5L): PA/TA=PB/TB → PB=1×400/200=2 atm. B→C (isoterma): PBVB=PCVC → 2×5=PC×8 → PC=1,25 atm." },
+  explain:"$A\\to B$ (isocora, $V_A=V_B=5\\text{ L}$): $\\dfrac{P_A}{T_A}=\\dfrac{P_B}{T_B}$ → $P_B=\\dfrac{1\\times 400}{200}=2\\text{ atm}$. $B\\to C$ (isoterma): $P_BV_B=P_CV_C$ → $2\\times 5=P_C\\times 8$ → $P_C=1{,}25\\text{ atm}$." },
 
 { id:"gas-09", topic:"gas", type:"mc",
   q:"In un gas il prodotto della pressione per il volume (a quantità di gas costante):",
   options:["È proporzionale alla temperatura assoluta","È indipendente dalla densità","Raddoppia se la T passa da 10 a 20 °C","Resta costante all'aumentare della temperatura","È indipendente dalla quantità di gas"], correct:0,
-  explain:"Dalla legge dei gas ideali PV=nRT, a n costante PV è direttamente proporzionale a T (attenzione: raddoppiare la T in °C da 10 a 20 non raddoppia T in kelvin)." },
+  explain:"Dalla legge dei gas ideali $PV=nRT$, a $n$ costante $PV$ è direttamente proporzionale a $T$ (attenzione: raddoppiare la $T$ in °C da 10 a 20 non raddoppia $T$ in kelvin)." },
 
 { id:"gas-10", topic:"gas", type:"mc",
-  q:"Due recipienti dello stesso volume contengono rispettivamente N2 e O2, nelle stesse condizioni di temperatura e pressione. La quantità di N2 è pari a 2,8 g; calcolare la quantità di O2 (gas perfetti, MM N2=28, MM O2=32).",
+  q:"Due recipienti dello stesso volume contengono rispettivamente $N_2$ e $O_2$, nelle stesse condizioni di temperatura e pressione. La quantità di $N_2$ è pari a 2,8 g; calcolare la quantità di $O_2$ (gas perfetti, $M(N_2)=28$ g/mol, $M(O_2)=32$ g/mol).",
   options:["2,8 g","3,0 g","3,2 g","1,4 g","2,0 g"], correct:2,
-  explain:"Per la legge di Avogadro, stesso V, T, P → stesse moli: n(N2)=2,8/28=0,1 mol → massa O2 = 0,1×32 = 3,2 g." },
+  explain:"Per la legge di Avogadro, stesso $V$, $T$, $P$ → stesse moli: $n(N_2)=\\dfrac{2{,}8}{28}=0{,}1\\text{ mol}$ → massa $O_2 = 0{,}1\\times 32 = 3{,}2\\text{ g}$." },
 
 { id:"gas-11", topic:"gas", type:"mc",
   q:"Il volume di 22,414 litri è quello occupato da:",
   options:["1 mole di azoto liquido","1 kg di acqua allo stato di vapore","1 mole di qualunque gas alle condizioni standard (0°C, 1 atm)","1 mmol di qualunque gas alle condizioni standard","1 kg di azoto liquido"], correct:2 },
 
 { id:"gas-12", topic:"gas", type:"mc",
-  q:"A 0°C e alla pressione di 1 atmosfera, due moli di gas N2:",
+  q:"A 0°C e alla pressione di 1 atmosfera, due moli di gas $N_2$:",
   options:[
-    "Contengono 6,022×10²³ molecole di N2",
-    "Occupano un volume minore di due moli di gas H2",
-    "Occupano un volume maggiore rispetto a quello di due moli di gas H2",
-    "Contengono 12,044×10²³ molecole di N2",
+    "Contengono $6{,}022\\times 10^{23}$ molecole di $N_2$",
+    "Occupano un volume minore di due moli di gas $H_2$",
+    "Occupano un volume maggiore rispetto a quello di due moli di gas $H_2$",
+    "Contengono $12{,}044\\times 10^{23}$ molecole di $N_2$",
     "Hanno una massa complessiva di 28 g"], correct:3,
-  explain:"2 moli contengono 2×NA = 12,044×10²³ molecole. Per la legge di Avogadro il volume, a parità di T, P e moli, è uguale a quello di H2 (non maggiore né minore). La massa di 2 moli di N2 è 56 g, non 28 g." },
+  explain:"2 moli contengono $2\\times N_A = 12{,}044\\times 10^{23}$ molecole. Per la legge di Avogadro il volume, a parità di $T$, $P$ e moli, è uguale a quello di $H_2$ (non maggiore né minore). La massa di 2 moli di $N_2$ è 56 g, non 28 g." },
 
 { id:"gas-13", topic:"gas", type:"mc",
   q:"La legge di Avogadro afferma che volumi uguali di gas diversi, nelle stesse condizioni di temperatura e pressione, contengono:",
@@ -247,11 +247,11 @@ const QUESTIONS = [
 
 { id:"gas-15", topic:"gas", type:"mc",
   q:"Qual è la formula della legge dei gas ideali?",
-  options:["PV = nRT","PV = nR/T","P = nRT/V²","PV² = nRT","P/V = nRT"], correct:0 },
+  options:["$PV = nRT$","$PV = \\dfrac{nR}{T}$","$P = \\dfrac{nRT}{V^2}$","$PV^2 = nRT$","$\\dfrac{P}{V} = nRT$"], correct:0 },
 
 { id:"gas-16", topic:"gas", type:"mc",
-  q:"Qual è il valore della costante universale dei gas R, espressa in L·atm/(mol·K)?",
-  options:["8,314","0,0821","22,4","273,15","6,022×10²³"], correct:1 },
+  q:"Qual è il valore della costante universale dei gas $R$, espressa in $\\text{L}\\cdot\\text{atm}/(\\text{mol}\\cdot\\text{K})$?",
+  options:["8,314","0,0821","22,4","273,15","$6{,}022\\times 10^{23}$"], correct:1 },
 
 { id:"gas-17", topic:"gas", type:"mc",
   q:"Secondo la teoria cinetica dei gas, il volume occupato dalle singole molecole di un gas:",
@@ -358,7 +358,7 @@ const QUESTIONS = [
     "È un errore: la curva ha sempre pendenza positiva"], correct:0 },
 
 { id:"liq-13", topic:"liquido", type:"mc",
-  q:"Nel diagramma di fase della CO2, un aumento di pressione (in prossimità della curva di fusione) favorisce:",
+  q:"Nel diagramma di fase della $CO_2$, un aumento di pressione (in prossimità della curva di fusione) favorisce:",
   options:[
     "Il passaggio da liquido a solido, poiché la curva di fusione ha pendenza positiva",
     "Il passaggio da solido a liquido, come nell'acqua",
@@ -426,48 +426,48 @@ const QUESTIONS = [
   options:["Non può scambiare calore e materia con l'ambiente","Può scambiare calore e materia con l'ambiente","Può scambiare solo calore (energia) con l'ambiente","Può scambiare solo materia con l'ambiente","Nessuna delle precedenti"], correct:2 },
 
 { id:"term-02", topic:"termodinamica", type:"mc",
-  q:"A 37°C, una reazione con ΔH = –10 kJ/mol e ΔS = –0,05 kJ/mol·K è definita:",
+  q:"A 37°C, una reazione con $\\Delta H = -10\\text{ kJ/mol}$ e $\\Delta S = -0{,}05\\text{ kJ/mol}\\cdot\\text{K}$ è definita:",
   options:["Endotermica","Esoergonica","Endoergonica","Spontanea","All'equilibrio"], correct:2,
-  explain:"ΔG = ΔH – TΔS = –10 – (310,15)(–0,05) ≈ –10 + 15,5 = +5,5 kJ/mol > 0 → reazione endoergonica (non spontanea)." },
+  explain:"$\\Delta G = \\Delta H - T\\Delta S = -10 - (310{,}15)(-0{,}05) \\approx -10 + 15{,}5 = +5{,}5\\text{ kJ/mol} > 0$ → reazione endoergonica (non spontanea)." },
 
 { id:"term-03", topic:"termodinamica", type:"mc",
   q:"In quale dei seguenti casi una reazione spontanea è esotermica?",
-  options:["ΔH > 0","ΔG > 0","ΔS < 0","ΔH < 0","ΔS > 0"], correct:3 },
+  options:["$\\Delta H > 0$","$\\Delta G > 0$","$\\Delta S < 0$","$\\Delta H < 0$","$\\Delta S > 0$"], correct:3 },
 
 { id:"term-04", topic:"termodinamica", type:"mc",
   q:"In quale dei seguenti casi una reazione spontanea è endotermica?",
-  options:["ΔH > 0","ΔG > 0","ΔS < 0","ΔH < 0","ΔS > 0"], correct:0 },
+  options:["$\\Delta H > 0$","$\\Delta G > 0$","$\\Delta S < 0$","$\\Delta H < 0$","$\\Delta S > 0$"], correct:0 },
 
 { id:"term-05", topic:"termodinamica", type:"mc",
   q:"In quale dei seguenti casi una reazione spontanea è entropicamente favorita?",
-  options:["ΔH > 0","ΔG > 0","ΔS < 0","ΔH < 0","ΔS > 0"], correct:4 },
+  options:["$\\Delta H > 0$","$\\Delta G > 0$","$\\Delta S < 0$","$\\Delta H < 0$","$\\Delta S > 0$"], correct:4 },
 
 { id:"term-06", topic:"termodinamica", type:"mc",
   q:"In quale dei seguenti casi una reazione è esoergonica?",
-  options:["ΔH > 0","ΔG < 0","ΔG > 0","ΔH < 0","ΔG = 0"], correct:1 },
+  options:["$\\Delta H > 0$","$\\Delta G < 0$","$\\Delta G > 0$","$\\Delta H < 0$","$\\Delta G = 0$"], correct:1 },
 
 { id:"term-07", topic:"termodinamica", type:"mc",
   q:"In quale dei seguenti casi una reazione è endoergonica?",
-  options:["ΔH > 0","ΔG < 0","ΔG > 0","ΔH < 0","ΔG = 0"], correct:2 },
+  options:["$\\Delta H > 0$","$\\Delta G < 0$","$\\Delta G > 0$","$\\Delta H < 0$","$\\Delta G = 0$"], correct:2 },
 
 { id:"term-08", topic:"termodinamica", type:"mc",
   q:"In quale dei seguenti casi una reazione è all'equilibrio?",
-  options:["ΔH > 0","ΔG < 0","ΔG > 0","ΔH < 0","ΔG = 0"], correct:4 },
+  options:["$\\Delta H > 0$","$\\Delta G < 0$","$\\Delta G > 0$","$\\Delta H < 0$","$\\Delta G = 0$"], correct:4 },
 
 { id:"term-09", topic:"termodinamica", type:"mc",
-  q:"Quale delle seguenti coppie di relazioni caratterizza con certezza una reazione spontanea a qualunque temperatura T > 0?",
-  options:["ΔH<0; ΔS<0","ΔH=0; ΔS<0","ΔH>0; ΔS>0","ΔH>0; ΔS=0","ΔH<0; ΔS>0"], correct:4,
-  explain:"Con ΔH<0 e ΔS>0, ΔG=ΔH–TΔS è sempre negativo per qualunque T>0: la reazione è spontanea a tutte le temperature." },
+  q:"Quale delle seguenti coppie di relazioni caratterizza con certezza una reazione spontanea a qualunque temperatura $T > 0$?",
+  options:["$\\Delta H<0;\\ \\Delta S<0$","$\\Delta H=0;\\ \\Delta S<0$","$\\Delta H>0;\\ \\Delta S>0$","$\\Delta H>0;\\ \\Delta S=0$","$\\Delta H<0;\\ \\Delta S>0$"], correct:4,
+  explain:"Con $\\Delta H<0$ e $\\Delta S>0$, $\\Delta G=\\Delta H-T\\Delta S$ è sempre negativo per qualunque $T>0$: la reazione è spontanea a tutte le temperature." },
 
 { id:"term-10", topic:"termodinamica", type:"mc",
-  q:"Quale delle seguenti coppie di valori indica una reazione spontanea a T=300 K?",
+  q:"Quale delle seguenti coppie di valori indica una reazione spontanea a $T=300\\text{ K}$?",
   options:[
-    "ΔH=-30 kJ/mol; ΔS=-0,1 kJ/mol·K",
-    "ΔH=0; ΔS=-0,1 kJ/mol·K",
-    "ΔH=+30 kJ/mol; ΔS=+0,1 kJ/mol·K",
-    "ΔH=+30 kJ/mol; ΔS=0",
-    "ΔH=-30 kJ/mol; ΔS=+0,1 kJ/mol·K"], correct:4,
-  explain:"ΔG = ΔH – TΔS = –30 – 300×0,1 = –60 kJ/mol < 0 → spontanea. Le altre opzioni danno ΔG ≥ 0." },
+    "$\\Delta H=-30\\text{ kJ/mol};\\ \\Delta S=-0{,}1\\text{ kJ/mol}\\cdot\\text{K}$",
+    "$\\Delta H=0;\\ \\Delta S=-0{,}1\\text{ kJ/mol}\\cdot\\text{K}$",
+    "$\\Delta H=+30\\text{ kJ/mol};\\ \\Delta S=+0{,}1\\text{ kJ/mol}\\cdot\\text{K}$",
+    "$\\Delta H=+30\\text{ kJ/mol};\\ \\Delta S=0$",
+    "$\\Delta H=-30\\text{ kJ/mol};\\ \\Delta S=+0{,}1\\text{ kJ/mol}\\cdot\\text{K}$"], correct:4,
+  explain:"$\\Delta G = \\Delta H - T\\Delta S = -30 - 300\\times 0{,}1 = -60\\text{ kJ/mol} < 0$ → spontanea. Le altre opzioni danno $\\Delta G \\ge 0$." },
 
 { id:"term-11", topic:"termodinamica", type:"mc",
   q:"Quale delle seguenti affermazioni NON descrive correttamente il I principio della termodinamica?",
@@ -502,20 +502,20 @@ const QUESTIONS = [
     "L'entropia dell'universo è zero allo zero assoluto",
     "La somma delle energie dell'universo è costante",
     "La somma delle energie dell'universo è zero",
-    "Le reazioni entropicamente favorite hanno una ΔS > 0"], correct:4,
-  explain:"Il II principio riguarda l'aumento di entropia nei processi spontanei: una reazione entropicamente favorita ha, per definizione, ΔS>0. Le opzioni A e C descrivono invece il I principio." },
+    "Le reazioni entropicamente favorite hanno una $\\Delta S > 0$"], correct:4,
+  explain:"Il II principio riguarda l'aumento di entropia nei processi spontanei: una reazione entropicamente favorita ha, per definizione, $\\Delta S>0$. Le opzioni A e C descrivono invece il I principio." },
 
 { id:"term-16", topic:"termodinamica", type:"mc",
   q:"Indicare la risposta NON corretta:",
   options:[
-    "L'entropia è il rapporto tra il calore scambiato Q e la temperatura T",
+    "L'entropia è il rapporto tra il calore scambiato $Q$ e la temperatura $T$ ($\\Delta S = Q/T$)",
     "L'entropia è legata al concetto di disordine del sistema",
     "Un aumento del disordine di un sistema corrisponde a una variazione positiva dell'entropia",
     "Un aumento del disordine di un sistema corrisponde a una variazione negativa dell'entropia",
     "Una diminuzione del disordine di un sistema corrisponde a una variazione negativa dell'entropia"], correct:3 },
 
 { id:"term-17", topic:"termodinamica", type:"mc",
-  q:"L'entalpia (H) di un sistema è definita come:",
+  q:"L'entalpia ($H$) di un sistema è definita come:",
   options:["La somma dell'energia cinetica e potenziale","La quantità di calore scambiata in una trasformazione","La differenza tra energia interna e lavoro compiuto dal sistema","Una funzione che dipende esclusivamente dal calore specifico","La misura dell'energia cinetica media delle molecole"], correct:1 },
 
 { id:"term-18", topic:"termodinamica", type:"mc",
@@ -578,28 +578,28 @@ const QUESTIONS = [
 
 { id:"mis-01", topic:"misure", type:"mc",
   q:"La grandezza fisica energia cinetica di un corpo si misura in:",
-  options:["kg/s²","watt","joule","N/m","m/s²"], correct:2,
+  options:["$\\text{kg/s}^2$","watt","joule","N/m","$\\text{m/s}^2$"], correct:2,
   explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). L'energia cinetica, come ogni forma di energia, si misura in joule nel Sistema Internazionale." },
 
 { id:"mis-02", topic:"misure", type:"mc",
-  q:"Un volume di 10 dm³ corrisponde a:",
+  q:"Un volume di $10\\text{ dm}^3$ corrisponde a:",
   options:["100 millilitri","100 litri","10 litri","1 litro","10 millilitri"], correct:2,
-  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). 1 dm³ = 1 litro, quindi 10 dm³ = 10 litri." },
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). $1\\text{ dm}^3 = 1$ litro, quindi $10\\text{ dm}^3 = 10$ litri." },
 
 { id:"mis-03", topic:"misure", type:"mc",
   q:"Quale delle seguenti affermazioni è corretta?",
-  options:["10⁻⁹ km = 1 dm","10⁻⁹ km = 1 nm","10⁻⁹ km = 1 µm","10⁻⁹ km = 1 mm","10⁻⁹ km = 1 cm"], correct:2,
-  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello). 10⁻⁹ km = 10⁻⁹ × 1000 m = 10⁻⁶ m = 1 µm." },
+  options:["$10^{-9}\\text{ km} = 1\\text{ dm}$","$10^{-9}\\text{ km} = 1\\text{ nm}$","$10^{-9}\\text{ km} = 1\\ \\mu\\text{m}$","$10^{-9}\\text{ km} = 1\\text{ mm}$","$10^{-9}\\text{ km} = 1\\text{ cm}$"], correct:2,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello). $10^{-9}\\text{ km} = 10^{-9}\\times 1000\\text{ m} = 10^{-6}\\text{ m} = 1\\ \\mu\\text{m}$." },
 
 { id:"mis-04", topic:"misure", type:"mc",
   q:"Quali sono le dimensioni fisiche di una forza nel Sistema Internazionale?",
-  options:["[M][L][T]⁻¹","[M][L]²[T]⁻²","[L][T]⁻²","[M][L][T]","[M][L][T]⁻²"], correct:4,
-  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello). Da F = ma: [M]×[L][T]⁻² = [M][L][T]⁻²." },
+  options:["$[M][L][T]^{-1}$","$[M][L]^2[T]^{-2}$","$[L][T]^{-2}$","$[M][L][T]$","$[M][L][T]^{-2}$"], correct:4,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello). Da $F = ma$: $[M]\\times[L][T]^{-2} = [M][L][T]^{-2}$." },
 
 { id:"mis-05", topic:"misure", type:"mc",
   q:"Quale delle seguenti NON è una grandezza fondamentale del Sistema Internazionale?",
   options:["Lunghezza","Massa","Tempo","Forza","Temperatura"], correct:3,
-  explain:"La forza è una grandezza derivata (F = ma), non una delle sette grandezze fondamentali del SI." },
+  explain:"La forza è una grandezza derivata ($F = ma$), non una delle sette grandezze fondamentali del SI." },
 
 { id:"mis-06", topic:"misure", type:"mc",
   q:"L'unità di misura della pressione nel Sistema Internazionale è:",
@@ -612,11 +612,11 @@ const QUESTIONS = [
 
 { id:"mis-08", topic:"misure", type:"mc",
   q:"Il prefisso \"nano\" (n) indica un fattore moltiplicativo pari a:",
-  options:["10³","10⁻³","10⁶","10⁻⁹","10⁹"], correct:3 },
+  options:["$10^3$","$10^{-3}$","$10^6$","$10^{-9}$","$10^9$"], correct:3 },
 
 { id:"mis-09", topic:"misure", type:"mc",
   q:"Il prefisso \"mega\" (M) indica un fattore moltiplicativo pari a:",
-  options:["10³","10⁶","10⁻⁶","10⁹","10⁻³"], correct:1 },
+  options:["$10^3$","$10^6$","$10^{-6}$","$10^9$","$10^{-3}$"], correct:1 },
 
 { id:"mis-10", topic:"misure", type:"mc",
   q:"Una misura si dice diretta quando:",
@@ -660,7 +660,7 @@ const QUESTIONS = [
   answer:"108" },
 
 { id:"mis-16", topic:"misure", type:"fill",
-  q:"Sapendo che 1 metro equivale a 100 centimetri, un'accelerazione di 320 cm/s² corrisponde a ________ m/s² nel Sistema Internazionale.",
+  q:"Sapendo che 1 metro equivale a 100 centimetri, un'accelerazione di $320\\text{ cm/s}^2$ corrisponde a ________ $\\text{m/s}^2$ nel Sistema Internazionale.",
   answer:"3,2", answerAlt:["3.2"] },
 
 { id:"mis-17", topic:"misure", type:"fill",
@@ -668,13 +668,13 @@ const QUESTIONS = [
   answer:"9" },
 
 { id:"mis-18", topic:"misure", type:"fill",
-  q:"Un elettrone si sposta tra due punti di un campo elettrico tra i quali esiste una differenza di potenziale di 3×10⁴ volt. La variazione di energia dell'elettrone è pari a ________ keV.",
+  q:"Un elettrone si sposta tra due punti di un campo elettrico tra i quali esiste una differenza di potenziale di $3\\times 10^4$ volt. La variazione di energia dell'elettrone è pari a ________ keV.",
   answer:"30" },
 
 { id:"mis-19", topic:"misure", type:"fill",
-  q:"In 1 mm³ di sangue sono disciolti 4 µg di una proteina. In 1 litro ne saranno disciolti ________ g.",
+  q:"In $1\\text{ mm}^3$ di sangue sono disciolti 4 µg di una proteina. In 1 litro ne saranno disciolti ________ g.",
   answer:"4",
-  explain:"1 litro = 10⁶ mm³, quindi 4 µg/mm³ × 10⁶ mm³ = 4×10⁶ µg = 4 g." },
+  explain:"$1\\text{ litro} = 10^6\\text{ mm}^3$, quindi $4\\ \\mu\\text{g/mm}^3 \\times 10^6\\text{ mm}^3 = 4\\times 10^6\\ \\mu\\text{g} = 4\\text{ g}$." },
 
 { id:"mis-20", topic:"misure", type:"fill",
   q:"Il Sistema Internazionale di unità di misura si basa su ________ grandezze fondamentali.",
@@ -704,7 +704,7 @@ const QUESTIONS = [
 
 { id:"cin-06", topic:"cinematica", type:"mc",
   q:"La velocità media è definita come:",
-  options:["Il prodotto tra spazio percorso e tempo impiegato","Il rapporto tra lo spazio percorso Δs e l'intervallo di tempo Δt in cui è stato percorso","Il rapporto tra accelerazione e tempo","Il prodotto tra la massa e la posizione","Il rapporto tra tempo e spazio percorso"], correct:1 },
+  options:["Il prodotto tra spazio percorso e tempo impiegato","Il rapporto tra lo spazio percorso $\\Delta s$ e l'intervallo di tempo $\\Delta t$ in cui è stato percorso","Il rapporto tra accelerazione e tempo","Il prodotto tra la massa e la posizione","Il rapporto tra tempo e spazio percorso"], correct:1 },
 
 { id:"cin-07", topic:"cinematica", type:"mc",
   q:"Per convertire una velocità da m/s a km/h occorre:",
@@ -715,7 +715,7 @@ const QUESTIONS = [
   options:["Accelerazione costante e diversa da zero","Velocità media costante lungo un'unica dimensione","Traiettoria circolare","Velocità che varia linearmente nel tempo","Assenza di spostamento"], correct:1 },
 
 { id:"cin-10", topic:"cinematica", type:"mc",
-  q:"Nella legge oraria del moto rettilineo uniforme s = s₀ + vt, il termine s₀ rappresenta:",
+  q:"Nella legge oraria del moto rettilineo uniforme $s = s_0 + vt$, il termine $s_0$ rappresenta:",
   options:["La velocità iniziale","L'accelerazione","Lo spazio iniziale percorso dal corpo","Il tempo iniziale","Lo spazio totale percorso"], correct:2 },
 
 { id:"cin-11", topic:"cinematica", type:"mc",
@@ -724,18 +724,18 @@ const QUESTIONS = [
 
 { id:"cin-12", topic:"cinematica", type:"mc",
   q:"L'accelerazione media è definita come:",
-  options:["Il rapporto tra spazio percorso e tempo","Il rapporto tra la variazione di velocità Δv e l'intervallo di tempo Δt in cui avviene", "Il prodotto tra velocità e tempo","La variazione di posizione nel tempo","Il rapporto tra forza e tempo"], correct:1 },
+  options:["Il rapporto tra spazio percorso e tempo","Il rapporto tra la variazione di velocità $\\Delta v$ e l'intervallo di tempo $\\Delta t$ in cui avviene", "Il prodotto tra velocità e tempo","La variazione di posizione nel tempo","Il rapporto tra forza e tempo"], correct:1 },
 
 { id:"cin-13", topic:"cinematica", type:"mc",
   q:"L'unità di misura dell'accelerazione nel Sistema Internazionale è:",
-  options:["m/s","m/s²","km/h","N/kg","m²/s"], correct:1 },
+  options:["m/s","$\\text{m/s}^2$","km/h","N/kg","$\\text{m}^2\\text{/s}$"], correct:1 },
 
 { id:"cin-14", topic:"cinematica", type:"mc",
   q:"Un moto rettilineo si definisce uniformemente accelerato se:",
   options:["La velocità è sempre nulla","L'accelerazione media risulta costante in tutto l'intervallo di tempo considerato","La traiettoria è una parabola","L'accelerazione varia nel tempo","Il corpo è fermo"], correct:1 },
 
 { id:"cin-15", topic:"cinematica", type:"mc",
-  q:"Nel moto uniformemente accelerato, la velocità dipende dal tempo secondo la relazione v = v₀ + at. In un grafico velocità-tempo, il coefficiente angolare della retta rappresenta:",
+  q:"Nel moto uniformemente accelerato, la velocità dipende dal tempo secondo la relazione $v = v_0 + at$. In un grafico velocità-tempo, il coefficiente angolare della retta rappresenta:",
   options:["La velocità iniziale","Lo spazio percorso","L'accelerazione","Il tempo totale","La posizione iniziale"], correct:2 },
 
 { id:"cin-17", topic:"cinematica", type:"mc",
@@ -746,7 +746,7 @@ const QUESTIONS = [
 { id:"cin-18", topic:"cinematica", type:"mc",
   q:"Una nave percorre in successione 10 km verso Nord, 6 km verso Est e infine 18 km verso Sud. Quanto vale il modulo dello spostamento risultante?",
   options:["15 km","10 km","5 km","25 km","20 km"], correct:1,
-  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). Componente Nord-Sud: 10-18 = -8 km; componente Est: 6 km. Modulo = √(8²+6²) = √100 = 10 km." },
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). Componente Nord-Sud: $10-18 = -8\\text{ km}$; componente Est: $6\\text{ km}$. Modulo $= \\sqrt{8^2+6^2} = \\sqrt{100} = 10\\text{ km}$." },
 
 { id:"cin-20", topic:"cinematica", type:"mc",
   q:"Se il grafico spazio-tempo di un corpo è una retta con pendenza nulla (parallela all'asse dei tempi), il corpo:",
@@ -764,7 +764,7 @@ const QUESTIONS = [
 { id:"cin-23", topic:"cinematica", type:"fill",
   q:"Un corpo cade liberamente, senza attriti, partendo da fermo da un'altezza di 12 m. L'altezza dal suolo alla quale la sua velocità è pari alla metà di quella finale (a terra) è ________ m.",
   answer:"9",
-  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). Da v²=2g(h₀-h): se v = v_finale/2, allora h₀-h = h₀/4, quindi h = (3/4)h₀ = 9 m." },
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). Da $v^2=2g(h_0-h)$: se $v = v_{finale}/2$, allora $h_0-h = h_0/4$, quindi $h = \\tfrac{3}{4}h_0 = 9\\text{ m}$." },
 
 { id:"cin-24", topic:"cinematica", type:"fill",
   q:"Nel moto rettilineo uniforme lo spazio percorso è direttamente proporzionale al ________ impiegato per percorrerlo.",
@@ -799,7 +799,7 @@ const QUESTIONS = [
 
 { id:"din-02", topic:"dinamica", type:"mc",
   q:"Il secondo principio della dinamica si esprime matematicamente come:",
-  options:["F = mv","F = ma","F = m/a","F = ma²","F = a/m"], correct:1 },
+  options:["$F = mv$","$F = ma$","$F = m/a$","$F = ma^2$","$F = a/m$"], correct:1 },
 
 { id:"din-03", topic:"dinamica", type:"mc",
   q:"Il terzo principio della dinamica (principio di azione e reazione) afferma che:",
@@ -817,7 +817,7 @@ const QUESTIONS = [
 { id:"din-05", topic:"dinamica", type:"mc",
   q:"Applicando una forza di uguale intensità a due corpi di massa diversa, i due corpi acquistano:",
   options:["La stessa accelerazione","Un quesito senza soluzione univoca","Accelerazioni direttamente proporzionali alle masse","La stessa velocità","Accelerazioni inversamente proporzionali alle masse"], correct:4,
-  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello). Dal secondo principio, a=F/m: a parità di F, l'accelerazione è inversamente proporzionale alla massa." },
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello). Dal secondo principio, $a=F/m$: a parità di $F$, l'accelerazione è inversamente proporzionale alla massa." },
 
 { id:"din-06", topic:"dinamica", type:"mc",
   q:"L'unità di misura della forza nel Sistema Internazionale è:",
@@ -825,11 +825,11 @@ const QUESTIONS = [
 
 { id:"din-07", topic:"dinamica", type:"mc",
   q:"Un newton (N) equivale a:",
-  options:["1 kg·m/s","1 kg·m/s²","1 kg/m²","1 kg·m²/s","1 kg/s²"], correct:1 },
+  options:["$1\\ \\text{kg}\\cdot\\text{m/s}$","$1\\ \\text{kg}\\cdot\\text{m/s}^2$","$1\\ \\text{kg/m}^2$","$1\\ \\text{kg}\\cdot\\text{m}^2\\text{/s}$","$1\\ \\text{kg/s}^2$"], correct:1 },
 
 { id:"din-08", topic:"dinamica", type:"mc",
-  q:"La forza peso di un corpo di massa m è data da:",
-  options:["P = m/g","P = mg","P = m + g","P = g/m","P = m²g"], correct:1 },
+  q:"La forza peso di un corpo di massa $m$ è data da:",
+  options:["$P = m/g$","$P = mg$","$P = m + g$","$P = g/m$","$P = m^2g$"], correct:1 },
 
 { id:"din-09", topic:"dinamica", type:"mc",
   q:"La massa di un corpo, a differenza del peso:",
@@ -845,8 +845,8 @@ const QUESTIONS = [
 
 { id:"din-12", topic:"dinamica", type:"mc",
   q:"La forza elastica esercitata da una molla è descritta dalla legge di Hooke:",
-  options:["F = kx","F = mx","F = k/x","F = kx²","F = mgx"], correct:0,
-  explain:"k è la costante elastica della molla, x l'allungamento (o la compressione) rispetto alla posizione di riposo." },
+  options:["$F = kx$","$F = mx$","$F = k/x$","$F = kx^2$","$F = mgx$"], correct:0,
+  explain:"$k$ è la costante elastica della molla, $x$ l'allungamento (o la compressione) rispetto alla posizione di riposo." },
 
 { id:"din-13", topic:"dinamica", type:"mc",
   q:"La forza normale esercitata da un piano di appoggio su un corpo è diretta:",
@@ -883,7 +883,7 @@ const QUESTIONS = [
   answer:"REAZIONE" },
 
 { id:"din-21", topic:"dinamica", type:"fill",
-  q:"La costante k che compare nella legge di Hooke F = kx è detta costante ________.",
+  q:"La costante $k$ che compare nella legge di Hooke $F = kx$ è detta costante ________.",
   answer:"ELASTICA" },
 
 { id:"din-22", topic:"dinamica", type:"fill",
@@ -905,20 +905,20 @@ const QUESTIONS = [
 /* ============================= LAVORO, ENERGIA E POTENZA ============================= */
 
 { id:"en-01", topic:"energia", type:"mc",
-  q:"Il lavoro L compiuto da una forza F costante durante uno spostamento s è definito come:",
-  options:["Il prodotto vettoriale tra F e s","Il prodotto scalare tra F e s","La somma tra F e s","Il rapporto tra F e s","La differenza tra F e s"], correct:1 },
+  q:"Il lavoro $L$ compiuto da una forza $F$ costante durante uno spostamento $s$ è definito come:",
+  options:["Il prodotto vettoriale tra $F$ e $s$","Il prodotto scalare tra $F$ e $s$","La somma tra $F$ e $s$","Il rapporto tra $F$ e $s$","La differenza tra $F$ e $s$"], correct:1 },
 
 { id:"en-02", topic:"energia", type:"mc",
   q:"L'unità di misura del lavoro nel Sistema Internazionale è:",
   options:["Il newton","Il watt","Il joule","Il pascal","La caloria"], correct:2 },
 
 { id:"en-03", topic:"energia", type:"mc",
-  q:"Il lavoro L = |F||s|cosα si definisce motore quando:",
-  options:["L'angolo α è ottuso","Il lavoro L è negativo","L'angolo α è acuto (o nullo) e quindi L è positivo","F e s sono perpendicolari","Il lavoro L è sempre nullo"], correct:2 },
+  q:"Il lavoro $L = |F||s|\\cos\\alpha$ si definisce motore quando:",
+  options:["L'angolo $\\alpha$ è ottuso","Il lavoro $L$ è negativo","L'angolo $\\alpha$ è acuto (o nullo) e quindi $L$ è positivo","$F$ e $s$ sono perpendicolari","Il lavoro $L$ è sempre nullo"], correct:2 },
 
 { id:"en-04", topic:"energia", type:"mc",
   q:"Il lavoro si definisce resistente quando:",
-  options:["F e s sono paralleli e concordi","L'angolo tra F e s è acuto","L'angolo tra F e s è ottuso (o piatto) e quindi L è negativo","La forza F è nulla","Lo spostamento s è nullo"], correct:2 },
+  options:["$F$ e $s$ sono paralleli e concordi","L'angolo tra $F$ e $s$ è acuto","L'angolo tra $F$ e $s$ è ottuso (o piatto) e quindi $L$ è negativo","La forza $F$ è nulla","Lo spostamento $s$ è nullo"], correct:2 },
 
 { id:"en-05", topic:"energia", type:"mc",
   q:"La potenza è definita come:",
@@ -935,7 +935,7 @@ const QUESTIONS = [
 { id:"en-08", topic:"energia", type:"mc",
   q:"A quanti joule corrisponde 1 kWh?",
   options:["1000 J","3600 J","36.000 J","3.600.000 J","860 J"], correct:3,
-  explain:"1 kWh = 1000 W × 3600 s = 3.600.000 J." },
+  explain:"$1\\text{ kWh} = 1000\\text{ W} \\times 3600\\text{ s} = 3.600.000\\text{ J}$." },
 
 { id:"en-09", topic:"energia", type:"mc",
   q:"Una forza si definisce conservativa quando:",
@@ -963,15 +963,15 @@ const QUESTIONS = [
   explain:"Se la forza non fosse conservativa, il lavoro dipenderebbe dal percorso e la definizione di energia potenziale non sarebbe univoca." },
 
 { id:"en-15", topic:"energia", type:"mc",
-  q:"L'energia potenziale gravitazionale di una massa m posta a un'altezza h rispetto a un riferimento è data da:",
-  options:["U = mgh","U = ½mv²","U = mg/h","U = ½kh²","U = mh/g"], correct:0 },
+  q:"L'energia potenziale gravitazionale di una massa $m$ posta a un'altezza $h$ rispetto a un riferimento è data da:",
+  options:["$U = mgh$","$U = \\tfrac{1}{2}mv^2$","$U = mg/h$","$U = \\tfrac{1}{2}kh^2$","$U = mh/g$"], correct:0 },
 
 { id:"en-16", topic:"energia", type:"mc",
-  q:"L'energia potenziale elastica immagazzinata da una molla allungata di una quantità x, con costante elastica k, è data da:",
-  options:["U = kx","U = ½kx²","U = kx²","U = ½k²x","U = mgx"], correct:1 },
+  q:"L'energia potenziale elastica immagazzinata da una molla allungata di una quantità $x$, con costante elastica $k$, è data da:",
+  options:["$U = kx$","$U = \\tfrac{1}{2}kx^2$","$U = kx^2$","$U = \\tfrac{1}{2}k^2x$","$U = mgx$"], correct:1 },
 
 { id:"en-17", topic:"energia", type:"mc",
-  q:"L'energia meccanica E di un corpo è definita come:",
+  q:"L'energia meccanica $E$ di un corpo è definita come:",
   options:["Il prodotto tra energia cinetica ed energia potenziale","La somma dell'energia cinetica e dell'energia potenziale","La differenza tra energia cinetica ed energia potenziale","Il rapporto tra lavoro e tempo","La sola energia cinetica"], correct:1 },
 
 { id:"en-18", topic:"energia", type:"mc",
@@ -979,14 +979,14 @@ const QUESTIONS = [
   options:["Agiscono solo forze dissipative","Agiscono sia forze conservative che dissipative","Agiscono esclusivamente forze conservative","Il sistema è fermo","La massa del sistema è costante"], correct:2 },
 
 { id:"en-19", topic:"energia", type:"mc",
-  q:"Se su un sistema agiscono anche forze dissipative (come l'attrito), la variazione di energia meccanica ΔE è pari a:",
+  q:"Se su un sistema agiscono anche forze dissipative (come l'attrito), la variazione di energia meccanica $\\Delta E$ è pari a:",
   options:["Zero","Il lavoro compiuto dalle forze dissipative agenti sul sistema","L'energia cinetica iniziale","L'energia potenziale finale","Sempre un valore positivo"], correct:1,
-  explain:"ΔE = L_att, dove L_att è il lavoro (negativo) delle forze dissipative agenti sul sistema." },
+  explain:"$\\Delta E = L_{att}$, dove $L_{att}$ è il lavoro (negativo) delle forze dissipative agenti sul sistema." },
 
 { id:"en-20", topic:"energia", type:"mc",
-  q:"Una molla orizzontale, di costante elastica k, ha attaccato un blocco di massa m = 7 kg che oscilla con periodo T = π/3 s. Usando la relazione T = 2π√(m/k), quanto vale k?",
-  options:["28 N/m","126 N/m","252 N/m","4 N/m","252π N/m"], correct:2,
-  explain:"Ispirata a una domanda della prova ufficiale del semestre filtro 2025 (primo appello). k = 4π²m/T² = 4π²×7/(π/3)² = 4π²×7×9/π² = 252 N/m." },
+  q:"Una molla orizzontale, di costante elastica $k$, ha attaccato un blocco di massa $m = 7$ kg che oscilla con periodo $T = \\pi/3$ s. Usando la relazione $T = 2\\pi\\sqrt{m/k}$, quanto vale $k$?",
+  options:["$28\\text{ N/m}$","$126\\text{ N/m}$","$252\\text{ N/m}$","$4\\text{ N/m}$","$252\\pi\\text{ N/m}$"], correct:2,
+  explain:"Ispirata a una domanda della prova ufficiale del semestre filtro 2025 (primo appello). $k = \\dfrac{4\\pi^2m}{T^2} = \\dfrac{4\\pi^2\\times 7}{(\\pi/3)^2} = \\dfrac{4\\pi^2\\times 7\\times 9}{\\pi^2} = 252\\text{ N/m}$." },
 
 { id:"en-21", topic:"energia", type:"fill",
   q:"Il lavoro meccanico di una forza è definito come il prodotto ________ tra il vettore forza e il vettore spostamento.",
@@ -1010,7 +1010,7 @@ const QUESTIONS = [
   answer:"DISSIPATIVA" },
 
 { id:"en-26", topic:"energia", type:"fill",
-  q:"Nella formula dell'energia potenziale gravitazionale U = mgh, la lettera g rappresenta l'accelerazione di ________.",
+  q:"Nella formula dell'energia potenziale gravitazionale $U = mgh$, la lettera $g$ rappresenta l'accelerazione di ________.",
   answer:"GRAVITÀ" },
 
 { id:"en-27", topic:"energia", type:"fill",
