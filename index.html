@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Chimica – Semestre Filtro | Stati della Materia</title>
+<meta name="description" content="100 domande di autovalutazione su Stati di aggregazione della materia, Stato aeriforme, Stato liquido e Termodinamica, in preparazione al semestre filtro di Chimica.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <h1>Quiz Chimica <span class="accent">Semestre Filtro</span></h1>
+    <p class="subtitle">Stati di aggregazione della materia · Stato aeriforme · Stato liquido · Termodinamica</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===================== HOME / SETUP SCREEN ===================== -->
+  <section id="screen-home" class="screen">
+
+    <div class="card rules-card">
+      <button class="rules-toggle" id="rulesToggle" aria-expanded="false">
+        <span>📋 Regole della prova ufficiale (semestre filtro 2025/26 – Chimica)</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="rules-body" id="rulesBody" hidden>
+        <ul>
+          <li><strong>31 domande</strong> per prova: <strong>21 a risposta multipla</strong> (5 opzioni A–E, una sola corretta) e <strong>10 a completamento</strong> (parola mancante da inserire).</li>
+          <li><strong>50 minuti</strong> di tempo a disposizione.</li>
+          <li>Punteggio: <strong>+1</strong> risposta corretta, <strong>−0,1</strong> risposta errata, <strong>0</strong> risposta omessa.</li>
+          <li>Soglia di superamento: almeno <strong>18/30</strong>.</li>
+          <li>Programma definito dal syllabus ministeriale (MUR) — chimica generale e propedeutica biochimica.</li>
+        </ul>
+        <p class="rules-note">Questo sito è materiale di autoproduzione per lo studio, basato sulle slide del corso e sul formato delle prove ufficiali. Non è un prodotto ufficiale dell'ateneo o del MUR.</p>
+      </div>
+    </div>
+
+    <div class="mode-grid">
+      <div class="card mode-card">
+        <h2>📚 Modalità Studio</h2>
+        <p>Scorri le domande per argomento, con correzione immediata e spiegazione. Ideale per imparare.</p>
+
+        <div class="topic-filters" id="topicFilters"></div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="shuffleStudy" checked>
+          Ordine casuale
+        </label>
+
+        <button class="btn btn-primary" id="startStudy">Inizia lo studio</button>
+      </div>
+
+      <div class="card mode-card">
+        <h2>⏱️ Modalità Esame</h2>
+        <p>Simulazione fedele alla prova reale: 31 domande estratte a caso (21 a risposta multipla + 10 a completamento), 50 minuti, punteggio ufficiale.</p>
+        <ul class="mini-rules">
+          <li>Nessuna correzione durante la prova</li>
+          <li>Timer di 50:00 con invio automatico allo scadere</li>
+          <li>Risultato finale con voto, soglia 18/30 e revisione completa</li>
+        </ul>
+        <button class="btn btn-exam" id="startExam">Inizia l'esame simulato</button>
+      </div>
+    </div>
+
+    <div class="card stats-card" id="statsCard" hidden>
+      <h2>📈 I tuoi progressi</h2>
+      <div id="statsBody"></div>
+      <button class="btn btn-ghost" id="resetStats">Azzera statistiche</button>
+    </div>
+
+  </section>
+
+  <!-- ===================== QUIZ SCREEN (study & exam) ===================== -->
+  <section id="screen-quiz" class="screen" hidden>
+    <div class="quiz-topbar">
+      <div class="progress-info">
+        <span id="quizModeLabel"></span>
+        <span id="quizCounter"></span>
+      </div>
+      <div id="timerBox" class="timer-box" hidden>⏳ <span id="timerText">50:00</span></div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+    <div class="card question-card">
+      <div class="q-topic-badge" id="qTopicBadge"></div>
+      <h2 class="q-text" id="qText"></h2>
+
+      <div id="mcOptions" class="mc-options" hidden></div>
+
+      <div id="fillOptions" class="fill-options" hidden>
+        <input type="text" id="fillInput" class="fill-input" placeholder="Scrivi la risposta in STAMPATELLO..." autocomplete="off">
+        <button class="btn btn-primary" id="btnConfirmFill" style="margin-top:10px;">Conferma risposta</button>
+      </div>
+
+      <div id="feedback" class="feedback" hidden></div>
+    </div>
+
+    <div class="quiz-nav">
+      <button class="btn btn-ghost" id="btnQuit">✕ Interrompi</button>
+      <button class="btn btn-primary" id="btnNext" disabled>Avanti →</button>
+    </div>
+  </section>
+
+  <!-- ===================== RESULTS SCREEN ===================== -->
+  <section id="screen-results" class="screen" hidden>
+    <div class="card results-summary" id="resultsSummary"></div>
+    <div class="card" id="resultsBreakdown"></div>
+    <div class="card" id="resultsReview"></div>
+    <div class="results-actions">
+      <button class="btn btn-primary" id="btnRestart">↺ Torna alla home</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Materiale di autovalutazione creato a partire dalle slide del corso (Stati di aggregazione della materia, Stato aeriforme, Stato liquido, Termodinamica) e dai quiz in esse proposti. Formato allineato alle prove ufficiali del semestre filtro 2025/26.</p>
+  </div>
+</footer>
+
+<script src="js/questions.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
