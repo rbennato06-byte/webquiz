@@ -11,7 +11,8 @@
     answers: [],         // per question: { qid, given, correct, skipped }
     timerId: null,
     secondsLeft: 50 * 60,
-    locked: false        // true once current question has been answered (study mode)
+    locked: false,       // true once the current question's answer has been confirmed
+    pendingMc: null       // index of the tentatively selected (not yet confirmed) MC option
   };
 
   const STORAGE_KEY = "webquiz_semestrefiltro_stats_v1";
@@ -337,6 +338,7 @@
   /* ---------------------------------------------------------------- */
   function renderQuestion() {
     state.locked = false;
+    state.pendingMc = null;
     const q = state.queue[state.index];
     const total = state.queue.length;
 
@@ -375,8 +377,14 @@
         mcBox.appendChild(div);
       });
       renderMath(mcBox);
+      el("mcHint").hidden = false;
+      const confirmBtn = el("btnConfirmMc");
+      confirmBtn.hidden = false;
+      confirmBtn.disabled = true;
     } else {
       mcBox.hidden = true;
+      el("mcHint").hidden = true;
+      el("btnConfirmMc").hidden = true;
       fillBox.hidden = false;
       const input = el("fillInput");
       input.value = "";
@@ -389,14 +397,27 @@
     }
   }
 
+  /* Click on an option only selects it tentatively — it can be changed freely
+     until confirmMc() is called (via the confirm button or the Enter key). */
   function selectMc(i) {
     if (state.locked) return;
+    state.pendingMc = i;
+    document.querySelectorAll("#mcOptions .mc-option").forEach((o, idx) => {
+      o.classList.toggle("selected", idx === i);
+    });
+    el("btnConfirmMc").disabled = false;
+  }
+
+  function confirmMc() {
+    if (state.locked || state.pendingMc == null) return;
+    const i = state.pendingMc;
     const q = state.queue[state.index];
     const isCorrect = i === q.correct;
     commitAnswer(q, letterFor(i), isCorrect);
 
     const opts = document.querySelectorAll("#mcOptions .mc-option");
     opts.forEach((o, idx) => {
+      o.classList.remove("selected");
       o.classList.add("disabled");
       if (state.mode === "study") {
         if (idx === q.correct) o.classList.add("correct");
@@ -405,6 +426,8 @@
         o.classList.add("selected");
       }
     });
+    el("btnConfirmMc").hidden = true;
+    el("mcHint").hidden = true;
 
     if (state.mode === "study") showFeedback(isCorrect, q);
     finalizeLock();
@@ -608,6 +631,18 @@
     el("btnQuit").addEventListener("click", quitSession);
     el("btnNext").addEventListener("click", goNext);
     el("btnConfirmFill").addEventListener("click", submitFill);
+    el("btnConfirmMc").addEventListener("click", confirmMc);
+
+    // Enter confirms the tentatively selected MC option (fill-in questions already
+    // confirm on Enter via their own input listener, set up in renderQuestion).
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter") return;
+      if (screens.quiz.hidden) return;
+      const q = state.queue[state.index];
+      if (!q || q.type !== "mc" || state.locked || state.pendingMc == null) return;
+      e.preventDefault();
+      confirmMc();
+    });
     el("btnRestart").addEventListener("click", () => { showScreen("home"); renderStats(); });
     el("resetStats").addEventListener("click", () => {
       if (confirm("Azzerare tutte le statistiche salvate su questo dispositivo?")) {
