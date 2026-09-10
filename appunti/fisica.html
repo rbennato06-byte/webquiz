@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appunti di Fisica | Semestre Filtro</title>
+<meta name="description" content="Appunti schematici di Fisica per il semestre filtro: unità di misura, cinematica, dinamica, lavoro ed energia, con formule, tabelle ed esercizi commentati.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/appunti.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+</head>
+<body>
+
+<header class="site-header" style="background:linear-gradient(135deg,#dc2626,#b91c1c);">
+  <div class="wrap">
+    <a class="notes-backlink" href="index.html">← Tutti gli appunti</a>
+    <h1>⚛️ Appunti di <span class="accent">Fisica</span></h1>
+    <p class="subtitle">Unità di misura, cinematica, dinamica, lavoro ed energia — schemi ed esercizi.</p>
+  </div>
+</header>
+
+<nav class="quick-nav">
+  <a href="#misure"><span class="qn-dot" style="background:#e11d48"></span>Unità di misura</a>
+  <a href="#cinematica"><span class="qn-dot" style="background:#ea580c"></span>Cinematica</a>
+  <a href="#dinamica"><span class="qn-dot" style="background:#7c3aed"></span>Dinamica</a>
+  <a href="#energia"><span class="qn-dot" style="background:#059669"></span>Lavoro ed energia</a>
+</nav>
+
+<main class="wrap">
+
+<!-- ============================= UNITA' DI MISURA ============================= -->
+<section id="misure" class="notes-topic" style="--topic-color:#e11d48;">
+  <div class="notes-topic-header"><h2>Unità di misura e grandezze fisiche</h2></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Grandezze scalari</b>: definite da un solo numero (massa, tempo, energia). <b>Grandezze vettoriali</b>: hanno modulo, direzione e verso (forza, velocità, accelerazione).</li>
+      <li><b>Analisi dimensionale</b>: verificare che i due membri di un'equazione fisica abbiano le stesse unità di misura.</li>
+      <li>Errore assoluto = |valore misurato − valore vero|; errore relativo = errore assoluto / valore vero.</li>
+      <li>Le <b>cifre significative</b> del risultato di un calcolo non possono superare quelle del dato meno preciso.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Grandezze fondamentali (SI)</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Grandezza</th><th>Simbolo</th><th>Unità SI</th></tr></thead>
+        <tbody>
+          <tr><td>Lunghezza</td><td>$l$</td><td>metro (m)</td></tr>
+          <tr><td>Massa</td><td>$m$</td><td>chilogrammo (kg)</td></tr>
+          <tr><td>Tempo</td><td>$t$</td><td>secondo (s)</td></tr>
+          <tr><td>Temperatura</td><td>$T$</td><td>kelvin (K)</td></tr>
+          <tr><td>Quantità di sostanza</td><td>$n$</td><td>mole (mol)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 style="margin-top:14px;">Grandezze derivate</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Grandezza</th><th>Unità SI</th></tr></thead>
+        <tbody>
+          <tr><td>Velocità</td><td>m/s</td></tr>
+          <tr><td>Accelerazione</td><td>m/s²</td></tr>
+          <tr><td>Forza</td><td>N = kg·m/s²</td></tr>
+          <tr><td>Energia / lavoro</td><td>J = kg·m²/s²</td></tr>
+          <tr><td>Pressione</td><td>Pa = N/m²</td></tr>
+          <tr><td>Potenza</td><td>W = J/s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 style="margin-top:14px;">Prefissi più comuni</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Prefisso</th><th>Simbolo</th><th>Fattore</th></tr></thead>
+        <tbody>
+          <tr><td>giga</td><td>G</td><td>$10^9$</td></tr>
+          <tr><td>mega</td><td>M</td><td>$10^6$</td></tr>
+          <tr><td>kilo</td><td>k</td><td>$10^3$</td></tr>
+          <tr><td>centi</td><td>c</td><td>$10^{-2}$</td></tr>
+          <tr><td>milli</td><td>m</td><td>$10^{-3}$</td></tr>
+          <tr><td>micro</td><td>µ</td><td>$10^{-6}$</td></tr>
+          <tr><td>nano</td><td>n</td><td>$10^{-9}$</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — conversione di unità</div>
+      <div class="ex-statement">Converti 72 km/h in m/s.</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>1 km = 1000 m, 1 h = 3600 s.</li>
+          <li><span class="step-n">2</span>$72\ \dfrac{\text{km}}{\text{h}} = \dfrac{72\times1000}{3600}\ \dfrac{\text{m}}{\text{s}}$</li>
+        </ol>
+        <div class="ex-answer">20 m/s</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — conversione di volume</div>
+      <div class="ex-statement">Un cubo ha lato 2 cm. Qual è il suo volume in m³?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>2 cm = 0,02 m.<span class="comment">Attenzione: bisogna convertire il lato prima di elevare al cubo, non il risultato finale.</span></li>
+          <li><span class="step-n">2</span>$V = (0{,}02)^3\ \text{m}^3$</li>
+        </ol>
+        <div class="ex-answer">V = 8 × 10⁻⁶ m³</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CINEMATICA ============================= -->
+<section id="cinematica" class="notes-topic" style="--topic-color:#ea580c;">
+  <div class="notes-topic-header"><h2>Cinematica</h2></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Moto rettilineo uniforme (MRU)</b>: velocità costante, nessuna accelerazione.</li>
+      <li><b>Moto rettilineo uniformemente accelerato (MRUA)</b>: accelerazione costante (es. caduta libera, $a=g\approx9{,}8\ \text{m/s}^2$).</li>
+      <li><b>Moto circolare uniforme</b>: modulo della velocità costante, ma la direzione cambia continuamente → è comunque presente un'accelerazione (centripeta), diretta verso il centro.</li>
+      <li>Nel grafico <b>posizione-tempo</b>, la pendenza è la velocità. Nel grafico <b>velocità-tempo</b>, la pendenza è l'accelerazione e <b>l'area sottesa è lo spostamento</b>.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Equazioni del moto</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Moto</th><th>Posizione</th><th>Velocità</th></tr></thead>
+        <tbody>
+          <tr><td>MRU</td><td>$x = x_0 + vt$</td><td>$v = \text{costante}$</td></tr>
+          <tr><td>MRUA</td><td>$x = x_0 + v_0t + \tfrac{1}{2}at^2$</td><td>$v = v_0 + at$</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">relazione senza t</span><span>$v^2 = v_0^2 + 2a\Delta x$</span></div>
+      <div class="f-item"><span class="f-label">moto circolare</span><span>$v=\omega r,\ \ a_c=\dfrac{v^2}{r}=\omega^2 r,\ \ T=\dfrac{2\pi}{\omega}$</span></div>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Grafico velocità-tempo</h3>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 260 140" width="260" height="140">
+        <line x1="30" y1="120" x2="250" y2="120" stroke="var(--text-muted)" stroke-width="1.5"/>
+        <line x1="30" y1="120" x2="30" y2="15" stroke="var(--text-muted)" stroke-width="1.5"/>
+        <text x="250" y="134" font-size="9" fill="var(--text-muted)" text-anchor="end">t</text>
+        <text x="14" y="20" font-size="9" fill="var(--text-muted)">v</text>
+        <polygon points="30,120 200,40 200,120" fill="#ea580c" opacity="0.18"/>
+        <line x1="30" y1="120" x2="200" y2="40" stroke="#ea580c" stroke-width="2.5"/>
+        <text x="105" y="105" font-size="8" fill="var(--text-muted)">area = spostamento</text>
+      </svg>
+      <figcaption>La pendenza della retta è l'accelerazione; l'area del triangolo sotto la retta è lo spazio percorso.</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — accelerazione da fermo</div>
+      <div class="ex-statement">Un'auto parte da ferma e accelera a 2 m/s² per 5 s. Che velocità raggiunge e quanto spazio percorre?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$v = v_0+at = 0+2\times5$</li>
+          <li><span class="step-n">2</span>$x = \tfrac12 a t^2 = \tfrac12 \times 2 \times 5^2$</li>
+        </ol>
+        <div class="ex-answer">v = 10 m/s, x = 25 m</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — caduta libera</div>
+      <div class="ex-statement">Un oggetto cade da 20 m di altezza, partendo da fermo. Quanto tempo impiega a toccare terra? ($g=9{,}8\ \text{m/s}^2$)</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$h = \tfrac12 g t^2 \Rightarrow t = \sqrt{\dfrac{2h}{g}}$</li>
+          <li><span class="step-n">2</span>$t = \sqrt{\dfrac{2\times20}{9{,}8}} = \sqrt{4{,}08}$</li>
+        </ol>
+        <div class="ex-answer">t ≈ 2,0 s</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= DINAMICA ============================= -->
+<section id="dinamica" class="notes-topic" style="--topic-color:#7c3aed;">
+  <div class="notes-topic-header"><h2>Dinamica</h2></div>
+
+  <div class="notes-block">
+    <h3>I tre principi della dinamica</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Principio</th><th>Enunciato sintetico</th></tr></thead>
+        <tbody>
+          <tr><td>1° — Inerzia</td><td>Un corpo mantiene il suo stato di quiete o moto rettilineo uniforme se $F_{ris}=0$</td></tr>
+          <tr><td>2° — Fondamentale</td><td>$F_{ris} = ma$</td></tr>
+          <tr><td>3° — Azione-reazione</td><td>Ad ogni forza corrisponde una forza uguale e contraria: $F_{A\to B} = -F_{B\to A}$</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Forze principali</h3>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">peso</span><span>$P = mg$</span></div>
+      <div class="f-item"><span class="f-label">attrito</span><span>$F_{attr} = \mu N$</span></div>
+      <div class="f-item"><span class="f-label">elastica (Hooke)</span><span>$F = -kx$</span></div>
+      <div class="f-item"><span class="f-label">centripeta</span><span>$F_c = \dfrac{mv^2}{r}$</span></div>
+    </div>
+    <ul class="notes-points">
+      <li>Attrito <b>statico</b> ($F_s \le \mu_s N$): si oppone all'avvio del moto. Attrito <b>dinamico</b> ($F_d = \mu_d N$): agisce durante il moto, di solito $\mu_d < \mu_s$.</li>
+      <li><b>Quantità di moto</b> $p = mv$; <b>impulso</b> $J = F\Delta t = \Delta p$.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Diagramma delle forze (corpo su piano orizzontale)</h3>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 220 140" width="220" height="140">
+        <rect x="80" y="65" width="60" height="30" fill="none" stroke="var(--text)" stroke-width="2"/>
+        <line x1="0" y1="95" x2="220" y2="95" stroke="var(--text-muted)" stroke-width="1.5"/>
+        <line x1="110" y1="65" x2="110" y2="20" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrD)"/>
+        <text x="115" y="30" font-size="9" fill="#7c3aed">N</text>
+        <line x1="110" y1="95" x2="110" y2="135" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrD)"/>
+        <text x="115" y="130" font-size="9" fill="#7c3aed">P = mg</text>
+        <line x1="80" y1="80" x2="45" y2="80" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrD)"/>
+        <text x="10" y="76" font-size="9" fill="#7c3aed">F attrito</text>
+        <line x1="140" y1="80" x2="185" y2="80" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrD)"/>
+        <text x="188" y="76" font-size="9" fill="#7c3aed">F</text>
+        <defs><marker id="arrD" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#7c3aed"/></marker></defs>
+      </svg>
+      <figcaption>Forze su un corpo trainato su un piano orizzontale: peso, normale, attrito e forza applicata.</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — secondo principio</div>
+      <div class="ex-statement">Una forza di 20 N accelera un corpo di massa 4 kg. Qual è l'accelerazione?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$a = \dfrac{F}{m} = \dfrac{20}{4}$</li>
+        </ol>
+        <div class="ex-answer">a = 5 m/s²</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — attrito</div>
+      <div class="ex-statement">Un corpo di massa 10 kg è su un piano orizzontale, $\mu_s=0{,}3$. Qual è la forza di attrito statico massima?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Sul piano orizzontale $N = P = mg$.</li>
+          <li><span class="step-n">2</span>$F_{attr,max} = \mu_s N = 0{,}3 \times 10 \times 9{,}8$</li>
+        </ol>
+        <div class="ex-answer">F ≈ 29,4 N</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= LAVORO ED ENERGIA ============================= -->
+<section id="energia" class="notes-topic" style="--topic-color:#059669;">
+  <div class="notes-topic-header"><h2>Lavoro, energia e potenza</h2></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Lavoro</b>: $W = F d \cos\theta$ — solo la componente della forza parallela allo spostamento compie lavoro.</li>
+      <li><b>Teorema dell'energia cinetica</b>: il lavoro totale sul corpo è uguale alla variazione della sua energia cinetica, $W_{tot}=\Delta E_c$.</li>
+      <li><b>Conservazione dell'energia meccanica</b>: in assenza di attrito, $E_c + E_p = \text{costante}$.</li>
+      <li><b>Potenza</b>: energia (o lavoro) per unità di tempo, $P = W/t = F\cdot v$.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Forme di energia meccanica</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Forma di energia</th><th>Formula</th></tr></thead>
+        <tbody>
+          <tr><td>Cinetica</td><td>$E_c = \tfrac12 mv^2$</td></tr>
+          <tr><td>Potenziale gravitazionale</td><td>$E_p = mgh$</td></tr>
+          <tr><td>Potenziale elastica</td><td>$E_e = \tfrac12 kx^2$</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">lavoro</span><span>$W = Fd\cos\theta$</span></div>
+      <div class="f-item"><span class="f-label">potenza</span><span>$P = \dfrac{W}{t} = Fv$</span></div>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Conservazione dell'energia in caduta libera</h3>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 280 130" width="280" height="130">
+        <text x="20" y="15" font-size="8" fill="var(--text-muted)">in alto</text>
+        <rect x="20" y="25" width="20" height="55" fill="#059669" opacity=".85"/>
+        <text x="15" y="92" font-size="7" fill="var(--text-muted)">Ep max</text>
+        <text x="15" y="100" font-size="7" fill="var(--text-muted)">Ec = 0</text>
+
+        <text x="115" y="15" font-size="8" fill="var(--text-muted)">a metà</text>
+        <rect x="110" y="52" width="20" height="28" fill="#059669" opacity=".85"/>
+        <rect x="135" y="52" width="20" height="28" fill="#0ea5e9" opacity=".85"/>
+        <text x="108" y="92" font-size="7" fill="var(--text-muted)">Ep = Ec</text>
+
+        <text x="215" y="15" font-size="8" fill="var(--text-muted)">al suolo</text>
+        <rect x="225" y="25" width="20" height="55" fill="#0ea5e9" opacity=".85"/>
+        <text x="205" y="92" font-size="7" fill="var(--text-muted)">Ep = 0</text>
+        <text x="205" y="100" font-size="7" fill="var(--text-muted)">Ec max</text>
+
+        <line x1="0" y1="80" x2="280" y2="80" stroke="var(--text-muted)" stroke-width="1"/>
+      </svg>
+      <figcaption>In assenza di attrito, l'energia potenziale (verde) si converte interamente in cinetica (blu): la somma resta costante.</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — conservazione dell'energia</div>
+      <div class="ex-statement">Un corpo di 2 kg cade da 5 m di altezza. Con che velocità arriva al suolo (attrito trascurabile)?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$E_{p,iniziale} = E_{c,finale} \Rightarrow mgh = \tfrac12 mv^2$<span class="comment">La massa si semplifica: la velocità di caduta non dipende dalla massa.</span></li>
+          <li><span class="step-n">2</span>$v = \sqrt{2gh} = \sqrt{2\times9{,}8\times5}$</li>
+        </ol>
+        <div class="ex-answer">v ≈ 9,9 m/s</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — potenza</div>
+      <div class="ex-statement">Un motore solleva un peso di 500 N per 10 m in 20 s. Qual è la potenza sviluppata?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$W = F d = 500 \times 10$</li>
+          <li><span class="step-n">2</span>$P = \dfrac{W}{t} = \dfrac{5000}{20}$</li>
+        </ol>
+        <div class="ex-answer">P = 250 W</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Appunti schematici basati sulle slide del corso di Fisica e sul formato delle prove del semestre filtro. Non sostituiscono i testi consigliati né il syllabus ministeriale ufficiale.</p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.renderMathInElement) {
+      renderMathInElement(document.body, {
+        delimiters: [{ left: "$", right: "$", display: false }],
+        throwOnError: false
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

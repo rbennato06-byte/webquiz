@@ -1,0 +1,155 @@
+/* ===================== Appunti & esercizi — stili condivisi ===================== */
+/* Riusa le variabili definite in style.css (colori, superfici, radius, ombre). */
+
+.notes-backlink {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #fff; opacity: .9; text-decoration: none; font-size: .85rem; font-weight: 600;
+  margin-bottom: 10px;
+}
+.notes-backlink:hover { opacity: 1; text-decoration: underline; }
+
+/* ---- quick nav (topic pills) ---- */
+.quick-nav {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  padding: 10px 20px; margin: 0 -20px 20px; background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: thin;
+}
+.quick-nav a {
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 13px; border-radius: 20px; border: 1.5px solid var(--border);
+  background: var(--surface); color: var(--text); text-decoration: none;
+  font-size: .82rem; font-weight: 700; white-space: nowrap;
+}
+.quick-nav a .qn-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ---- topic section ---- */
+.notes-topic {
+  scroll-margin-top: 64px;
+  margin-bottom: 26px; padding: 20px 22px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--topic-color, var(--primary));
+}
+.notes-topic-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.notes-topic-header h2 { margin: 0; font-size: 1.15rem; }
+.notes-topic-unit {
+  font-size: .68rem; font-weight: 800; color: var(--topic-color, var(--primary));
+  background: color-mix(in srgb, var(--topic-color, var(--primary)) 14%, var(--surface));
+  padding: 2px 8px; border-radius: 8px; white-space: nowrap;
+}
+.notes-topic-intro { color: var(--text-muted); font-size: .88rem; margin: 4px 0 14px; }
+
+.notes-block { margin-bottom: 16px; }
+.notes-block:last-child { margin-bottom: 0; }
+.notes-block h3 {
+  font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .03em;
+  color: var(--text-muted); margin: 0 0 8px;
+}
+
+/* ---- schematic key points ---- */
+.notes-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.notes-points li {
+  position: relative; padding-left: 18px; font-size: .89rem; line-height: 1.45;
+}
+.notes-points li::before {
+  content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--topic-color, var(--primary));
+}
+.notes-points b { color: var(--text); }
+.notes-points .sub { display: block; margin: 3px 0 0 0; color: var(--text-muted); font-size: .85rem; }
+
+/* ---- formula highlight box ---- */
+.formula-box {
+  display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center;
+  background: color-mix(in srgb, var(--topic-color, var(--primary)) 8%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--topic-color, var(--primary)) 25%, var(--border));
+  border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; font-size: .95rem;
+}
+.formula-box .f-item { display: flex; align-items: baseline; gap: 6px; }
+.formula-box .f-label { font-size: .74rem; color: var(--text-muted); font-weight: 700; }
+
+/* ---- schematic tables ---- */
+.notes-table-wrap { overflow-x: auto; margin-bottom: 4px; }
+table.notes-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+table.notes-table caption { display: none; }
+table.notes-table th, table.notes-table td {
+  padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+table.notes-table th {
+  background: var(--surface-2); font-weight: 800; font-size: .74rem;
+  text-transform: uppercase; letter-spacing: .02em; color: var(--text-muted);
+}
+table.notes-table tr:last-child td { border-bottom: none; }
+table.notes-table tbody tr:nth-child(even) { background: var(--surface-2); }
+
+/* ---- diagrams ---- */
+.notes-diagram {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  margin: 6px 0 16px;
+}
+.notes-diagram svg { max-width: 100%; height: auto; }
+.notes-diagram figcaption { font-size: .78rem; color: var(--text-muted); text-align: center; }
+
+/* ---- exercises ---- */
+.exercise-card {
+  border: 1.5px solid var(--border); border-radius: 10px; padding: 13px 15px;
+  margin-bottom: 10px; background: var(--surface-2);
+}
+.exercise-card:last-child { margin-bottom: 0; }
+.exercise-card .ex-title {
+  display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: .85rem;
+  color: var(--topic-color, var(--primary)); margin-bottom: 6px;
+}
+.exercise-card .ex-statement { font-size: .89rem; margin-bottom: 8px; }
+.exercise-card details summary {
+  cursor: pointer; font-size: .82rem; font-weight: 700; color: var(--primary);
+  list-style: none; display: inline-flex; align-items: center; gap: 5px;
+}
+.exercise-card details summary::-webkit-details-marker { display: none; }
+.exercise-card details summary::before { content: "▸"; transition: transform .15s ease; }
+.exercise-card details[open] summary::before { transform: rotate(90deg); }
+.exercise-card details[open] summary { margin-bottom: 8px; }
+.ex-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.ex-steps li {
+  padding-left: 22px; position: relative; font-size: .86rem; line-height: 1.5;
+}
+.ex-steps li .step-n {
+  position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--topic-color, var(--primary)); color: #fff; font-size: .65rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.ex-steps .comment { display: block; color: var(--text-muted); font-style: italic; font-size: .82rem; margin-top: 1px; }
+.ex-answer {
+  margin-top: 8px; padding: 8px 11px; border-radius: 8px; font-size: .87rem; font-weight: 700;
+  background: var(--success-bg); color: var(--success);
+}
+
+/* ---- hub page (appunti/index.html) ---- */
+.subject-hub-grid { display: flex; flex-direction: column; gap: 16px; }
+.subject-card {
+  display: block; text-decoration: none; color: inherit;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 20px 22px; border-left: 5px solid var(--area-color, var(--primary));
+  transition: transform .12s ease;
+}
+.subject-card:hover { transform: translateY(-2px); }
+.subject-card h2 { margin: 0 0 4px; font-size: 1.1rem; }
+.subject-card p { margin: 0 0 10px; color: var(--text-muted); font-size: .88rem; }
+.subject-card .topics-preview { display: flex; flex-wrap: wrap; gap: 6px; }
+.subject-card .topics-preview span {
+  font-size: .72rem; font-weight: 700; padding: 3px 9px; border-radius: 12px;
+  background: color-mix(in srgb, var(--area-color, var(--primary)) 12%, var(--surface));
+  color: var(--area-color, var(--primary));
+}
+
+.appunti-cta {
+  display: block; text-decoration: none; color: inherit;
+}
+
+@media (max-width: 480px) {
+  .notes-topic { padding: 16px; }
+  .quick-nav { padding: 8px 16px; margin: 0 -16px 18px; }
+}

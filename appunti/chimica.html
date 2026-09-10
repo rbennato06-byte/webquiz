@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appunti di Chimica | Semestre Filtro</title>
+<meta name="description" content="Appunti schematici di Chimica per il semestre filtro: stati della materia, gas, liquidi, termodinamica, atomo, tavola periodica, legami, nomenclatura, geometria molecolare, con tabelle ed esercizi commentati.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/appunti.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+</head>
+<body>
+
+<header class="site-header" style="background:linear-gradient(135deg,#6366f1,#4338ca);">
+  <div class="wrap">
+    <a class="notes-backlink" href="index.html">← Tutti gli appunti</a>
+    <h1>🧪 Appunti di <span class="accent">Chimica</span></h1>
+    <p class="subtitle">Stati della materia, termodinamica, atomo, tavola periodica, legami, nomenclatura, geometria molecolare — schemi ed esercizi.</p>
+  </div>
+</header>
+
+<nav class="quick-nav">
+  <a href="#aggregazione"><span class="qn-dot" style="background:#6366f1"></span>Stati della materia</a>
+  <a href="#gas"><span class="qn-dot" style="background:#0ea5e9"></span>Gas</a>
+  <a href="#liquido"><span class="qn-dot" style="background:#14b8a6"></span>Liquidi</a>
+  <a href="#termodinamica"><span class="qn-dot" style="background:#f59e0b"></span>Termodinamica</a>
+  <a href="#atomo"><span class="qn-dot" style="background:#d946ef"></span>Atomo</a>
+  <a href="#tavola"><span class="qn-dot" style="background:#65a30d"></span>Tavola periodica</a>
+  <a href="#legami"><span class="qn-dot" style="background:#0891b2"></span>Legami</a>
+  <a href="#nomenclatura"><span class="qn-dot" style="background:#db2777"></span>Nomenclatura</a>
+  <a href="#geometria"><span class="qn-dot" style="background:#9333ea"></span>Geometria molecolare</a>
+</nav>
+
+<main class="wrap">
+
+<!-- ============================= STATI DI AGGREGAZIONE ============================= -->
+<section id="aggregazione" class="notes-topic" style="--topic-color:#6366f1;">
+  <div class="notes-topic-header"><h2>Stati di aggregazione della materia</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Solido</b>: forma e volume propri, particelle in posizioni fisse che vibrano, forze di coesione forti.</li>
+      <li><b>Liquido</b>: volume proprio, forma del contenitore, particelle mobili ma ravvicinate.</li>
+      <li><b>Aeriforme</b>: né forma né volume propri, particelle molto distanti, alta energia cinetica.</li>
+      <li>Passaggi di stato: fusione (S→L), solidificazione (L→S), vaporizzazione (L→G), condensazione (G→L), sublimazione (S→G), brinamento (G→S).</li>
+      <li>Durante un passaggio di stato la temperatura resta <b>costante</b> (plateau): il calore fornito è <b>calore latente</b>, non aumenta l'energia cinetica ma rompe i legami intermolecolari.</li>
+      <li>Diagramma di stato P-T: <b>punto triplo</b> (coesistenza dei 3 stati) e <b>punto critico</b> (oltre il quale liquido e gas sono indistinguibili).</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Formule utili</h3>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">calore sensibile</span> <span>$Q = m \cdot c \cdot \Delta T$</span></div>
+      <div class="f-item"><span class="f-label">calore latente</span> <span>$Q = m \cdot \lambda$</span></div>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Curva di riscaldamento</h3>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 340 150" width="340" height="150">
+        <line x1="30" y1="130" x2="330" y2="130" stroke="var(--text-muted)" stroke-width="1.5"/>
+        <line x1="30" y1="130" x2="30" y2="10" stroke="var(--text-muted)" stroke-width="1.5"/>
+        <text x="330" y="145" font-size="9" fill="var(--text-muted)" text-anchor="end">calore fornito (Q)</text>
+        <text x="8" y="20" font-size="9" fill="var(--text-muted)">T</text>
+        <path d="M30,120 L80,90 L160,90 L200,50 L280,50 L320,25" fill="none" stroke="#6366f1" stroke-width="2.5"/>
+        <text x="120" y="83" font-size="8" fill="var(--text-muted)" text-anchor="middle">fusione (S→L)</text>
+        <text x="240" y="43" font-size="8" fill="var(--text-muted)" text-anchor="middle">vaporizzazione (L→G)</text>
+        <text x="55" y="115" font-size="8" fill="var(--text-muted)" text-anchor="middle">solido</text>
+        <text x="180" y="80" font-size="8" fill="var(--text-muted)" text-anchor="middle">liquido</text>
+        <text x="300" y="40" font-size="8" fill="var(--text-muted)" text-anchor="middle">gas</text>
+      </svg>
+      <figcaption>I tratti orizzontali (plateau) corrispondono ai passaggi di stato: la temperatura non cambia finché il passaggio non è completo.</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — calore latente</div>
+      <div class="ex-statement">Quanta energia serve per fondere 50 g di ghiaccio a 0 °C (λ<sub>fus</sub> = 334 J/g)?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Il ghiaccio fonde a T costante: si usa il calore latente, non $Q=mc\Delta T$.<span class="comment">Niente ΔT: la temperatura non cambia durante la fusione.</span></li>
+          <li><span class="step-n">2</span>$Q = m \cdot \lambda = 50 \times 334$</li>
+        </ol>
+        <div class="ex-answer">Q = 16 700 J = 16,7 kJ</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — calore sensibile</div>
+      <div class="ex-statement">Quanta energia serve per portare 100 g di acqua da 25 °C a 80 °C ($c=4{,}18\ \text{J/(g°C)}$)?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Nessun passaggio di stato: si scalda solo acqua liquida → calore sensibile.</li>
+          <li><span class="step-n">2</span>$\Delta T = 80-25 = 55\ °C$</li>
+          <li><span class="step-n">3</span>$Q = m c \Delta T = 100 \times 4{,}18 \times 55$</li>
+        </ol>
+        <div class="ex-answer">Q ≈ 22 990 J ≈ 23,0 kJ</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= STATO AERIFORME (GAS) ============================= -->
+<section id="gas" class="notes-topic" style="--topic-color:#0ea5e9;">
+  <div class="notes-topic-header"><h2>Stato aeriforme (i gas)</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li>Teoria cinetica: particelle in moto caotico, urti elastici, energia cinetica media proporzionale alla temperatura assoluta.</li>
+      <li><b>Gas ideale</b>: volume proprio e interazioni tra molecole trascurabili — buona approssimazione a bassa P e alta T.</li>
+      <li>Condizioni standard (STP): 0 °C, 1 atm → 1 mole di gas ideale occupa <b>22,4 L</b>.</li>
+      <li><b>Legge di Dalton</b>: la pressione totale di una miscela di gas è la somma delle pressioni parziali, $P_{tot}=\sum P_i$, con $P_i = x_i \cdot P_{tot}$ (frazione molare).</li>
+      <li>Gas reali: deviano dal comportamento ideale ad alta pressione e bassa temperatura (interazioni e volume molecolare non più trascurabili).</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Le leggi dei gas</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Legge</th><th>Relazione</th><th>Grandezza costante</th></tr></thead>
+        <tbody>
+          <tr><td>Boyle</td><td>$P_1V_1 = P_2V_2$</td><td>Temperatura</td></tr>
+          <tr><td>Charles</td><td>$\dfrac{V_1}{T_1} = \dfrac{V_2}{T_2}$</td><td>Pressione</td></tr>
+          <tr><td>Gay-Lussac</td><td>$\dfrac{P_1}{T_1} = \dfrac{P_2}{T_2}$</td><td>Volume</td></tr>
+          <tr><td>Equazione di stato</td><td>$PV = nRT$</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">R</span> <span>$0{,}0821\ \text{L}\cdot\text{atm}\cdot\text{mol}^{-1}\text{K}^{-1} = 8{,}314\ \text{J}\cdot\text{mol}^{-1}\text{K}^{-1}$</span></div>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Legge di Boyle: P e V a T costante</h3>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 300 140" width="300" height="140">
+        <line x1="30" y1="120" x2="290" y2="120" stroke="var(--text-muted)" stroke-width="1.5"/>
+        <line x1="30" y1="120" x2="30" y2="10" stroke="var(--text-muted)" stroke-width="1.5"/>
+        <text x="290" y="134" font-size="9" fill="var(--text-muted)" text-anchor="end">V</text>
+        <text x="15" y="14" font-size="9" fill="var(--text-muted)">P</text>
+        <path d="M45,20 Q60,60 100,80 T200,105 T280,115" fill="none" stroke="#0ea5e9" stroke-width="2.5"/>
+        <text x="200" y="50" font-size="8" fill="var(--text-muted)">isoterma: $P \cdot V = \text{costante}$</text>
+      </svg>
+      <figcaption>A temperatura costante, pressione e volume sono inversamente proporzionali.</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — legge di Boyle</div>
+      <div class="ex-statement">Un gas occupa 5,0 L a 2,0 atm. Che volume occupa a 1,0 atm, a T costante?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>T costante → uso $P_1V_1=P_2V_2$.</li>
+          <li><span class="step-n">2</span>$V_2 = \dfrac{P_1V_1}{P_2} = \dfrac{2{,}0 \times 5{,}0}{1{,}0}$</li>
+        </ol>
+        <div class="ex-answer">V₂ = 10 L</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — equazione di stato</div>
+      <div class="ex-statement">Quante moli di gas occupano 10 L a 25 °C (298 K) e 1,5 atm?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$n = \dfrac{PV}{RT}$<span class="comment">R in L·atm/(mol·K) perché P è in atm e V in L.</span></li>
+          <li><span class="step-n">2</span>$n = \dfrac{1{,}5 \times 10}{0{,}0821 \times 298}$</li>
+        </ol>
+        <div class="ex-answer">n ≈ 0,61 mol</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= STATO LIQUIDO ============================= -->
+<section id="liquido" class="notes-topic" style="--topic-color:#14b8a6;">
+  <div class="notes-topic-header"><h2>Stato liquido</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Tensione superficiale</b>: le molecole in superficie, meno attratte rispetto a quelle interne, tendono a minimizzare l'area superficiale (forma sferica delle gocce).</li>
+      <li><b>Capillarità</b>: risalita/discesa di un liquido in un tubo sottile, dovuta al bilancio tra forze di coesione (liquido-liquido) e adesione (liquido-parete).</li>
+      <li><b>Viscosità</b>: resistenza interna allo scorrimento; diminuisce all'aumentare della temperatura.</li>
+      <li><b>Pressione di vapore</b>: pressione di equilibrio (dinamico) tra liquido e il suo vapore in un contenitore chiuso; aumenta con la temperatura.</li>
+      <li><b>Ebollizione</b>: avviene quando la pressione di vapore eguaglia la pressione esterna — per questo l'acqua bolle a T &lt; 100 °C in alta quota (P atmosferica più bassa).</li>
+      <li>Il <b>legame a idrogeno</b> nell'acqua spiega l'elevato punto di ebollizione, l'alta tensione superficiale e la minore densità del ghiaccio rispetto all'acqua liquida.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Proprietà a confronto</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Proprietà</th><th>Definizione</th><th>Effetto della temperatura</th></tr></thead>
+        <tbody>
+          <tr><td>Tensione superficiale</td><td>Forza coesiva sulla superficie</td><td>Diminuisce con T</td></tr>
+          <tr><td>Viscosità</td><td>Resistenza allo scorrimento</td><td>Diminuisce con T</td></tr>
+          <tr><td>Pressione di vapore</td><td>Equilibrio liquido↔vapore</td><td>Aumenta con T</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — calore di vaporizzazione</div>
+      <div class="ex-statement">Quanta energia serve per vaporizzare 20 g di acqua già a 100 °C ($\lambda_{vap}=2260\ \text{J/g}$)?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Passaggio di stato a T costante → calore latente.</li>
+          <li><span class="step-n">2</span>$Q = m \lambda = 20 \times 2260$</li>
+        </ol>
+        <div class="ex-answer">Q = 45 200 J = 45,2 kJ</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — ragionamento concettuale</div>
+      <div class="ex-statement">Perché in alta montagna l'acqua bolle a una temperatura inferiore a 100 °C?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>L'ebollizione avviene quando $P_{vapore} = P_{esterna}$.</li>
+          <li><span class="step-n">2</span>In quota la pressione atmosferica è più bassa.</li>
+          <li><span class="step-n">3</span>Basta quindi una pressione di vapore minore — raggiunta a T inferiore — per far bollire il liquido.</li>
+        </ol>
+        <div class="ex-answer">L'acqua bolle a T &lt; 100 °C perché serve una P di vapore minore per eguagliare la P atmosferica ridotta.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= TERMODINAMICA ============================= -->
+<section id="termodinamica" class="notes-topic" style="--topic-color:#f59e0b;">
+  <div class="notes-topic-header"><h2>Termodinamica</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li>Sistema <b>aperto</b> (scambia materia ed energia), <b>chiuso</b> (solo energia), <b>isolato</b> (nessuno scambio) rispetto all'ambiente.</li>
+      <li><b>1° principio</b>: l'energia interna $U$ di un sistema isolato si conserva: $\Delta U = Q - W$.</li>
+      <li><b>Entalpia</b> $H = U + PV$: a P costante, $\Delta H$ = calore scambiato. $\Delta H<0$ reazione esotermica, $\Delta H>0$ endotermica.</li>
+      <li><b>Entropia</b> $S$: misura del disordine di un sistema. 2° principio: $\Delta S_{universo}\ge 0$.</li>
+      <li><b>Energia libera di Gibbs</b> $G = H - TS$: determina la <b>spontaneità</b> di un processo a T e P costanti.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Formule chiave</h3>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">1° principio</span><span>$\Delta U = Q - W$</span></div>
+      <div class="f-item"><span class="f-label">entalpia</span><span>$H = U + PV$</span></div>
+      <div class="f-item"><span class="f-label">Gibbs</span><span>$\Delta G = \Delta H - T\Delta S$</span></div>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Spontaneità in base ai segni di ΔH e ΔS</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>ΔH</th><th>ΔS</th><th>ΔG e spontaneità</th></tr></thead>
+        <tbody>
+          <tr><td>&lt; 0 (esotermica)</td><td>&gt; 0</td><td>Sempre $\Delta G<0$: spontanea a ogni T</td></tr>
+          <tr><td>&gt; 0 (endotermica)</td><td>&lt; 0</td><td>Sempre $\Delta G>0$: mai spontanea</td></tr>
+          <tr><td>&lt; 0</td><td>&lt; 0</td><td>Spontanea solo a T basse</td></tr>
+          <tr><td>&gt; 0</td><td>&gt; 0</td><td>Spontanea solo a T alte</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — spontaneità</div>
+      <div class="ex-statement">Una reazione ha $\Delta H = -40\ \text{kJ/mol}$ e $\Delta S = -100\ \text{J}\cdot\text{mol}^{-1}\text{K}^{-1}$. È spontanea a 298 K?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Converto le unità: $\Delta H = -40000\ \text{J/mol}$.</li>
+          <li><span class="step-n">2</span>$\Delta G = \Delta H - T\Delta S = -40000 - 298\times(-100)$</li>
+          <li><span class="step-n">3</span>$\Delta G = -40000 + 29800 = -10200\ \text{J/mol}$</li>
+        </ol>
+        <div class="ex-answer">ΔG < 0 → spontanea a 298 K</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — temperatura di equilibrio</div>
+      <div class="ex-statement">Per la stessa reazione, a quale temperatura $\Delta G = 0$?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Pongo $\Delta G=0$: $0=\Delta H - T\Delta S \Rightarrow T = \dfrac{\Delta H}{\Delta S}$</li>
+          <li><span class="step-n">2</span>$T = \dfrac{-40000}{-100}$</li>
+        </ol>
+        <div class="ex-answer">T = 400 K (sopra questa T, la reazione non è più spontanea)</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ATOMO ============================= -->
+<section id="atomo" class="notes-topic" style="--topic-color:#d946ef;">
+  <div class="notes-topic-header"><h2>Struttura dell'atomo</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li>Particelle subatomiche: <b>protone</b> (+1, nucleo), <b>neutrone</b> (neutro, nucleo), <b>elettrone</b> (−1, orbitali).</li>
+      <li><b>Numero atomico Z</b> = n° protoni (identità dell'elemento). <b>Numero di massa A</b> = protoni + neutroni.</li>
+      <li><b>Isotopi</b>: stesso Z, diverso A (diverso numero di neutroni).</li>
+      <li>4 numeri quantici descrivono ogni elettrone: $n$ (livello energetico), $l$ (sottolivello/forma), $m_l$ (orientazione), $m_s$ (spin).</li>
+      <li><b>Principio di esclusione di Pauli</b>: al massimo 2 elettroni per orbitale, con spin opposti.</li>
+      <li><b>Regola di Hund</b>: negli orbitali degeneri gli elettroni si dispongono singolarmente prima di accoppiarsi.</li>
+      <li><b>Configurazione elettronica</b>: riempimento secondo l'ordine di energia crescente (principio di Aufbau).</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Sottolivelli e capacità elettronica</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Sottolivello</th><th>N° orbitali</th><th>e⁻ massimi</th></tr></thead>
+        <tbody>
+          <tr><td>s</td><td>1</td><td>2</td></tr>
+          <tr><td>p</td><td>3</td><td>6</td></tr>
+          <tr><td>d</td><td>5</td><td>10</td></tr>
+          <tr><td>f</td><td>7</td><td>14</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">e⁻ massimi al livello n</span><span>$2n^2$</span></div>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Ordine di riempimento (Aufbau)</h3>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 320 90" width="320" height="90">
+        <text x="10" y="18" font-size="11" fill="var(--text)" font-family="monospace">1s → 2s → 2p → 3s → 3p → 4s → 3d → 4p → 5s → 4d…</text>
+        <path d="M10,35 L305,35" stroke="#d946ef" stroke-width="2" marker-end="url(#arrhead)"/>
+        <defs><marker id="arrhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#d946ef"/></marker></defs>
+        <text x="10" y="55" font-size="8" fill="var(--text-muted)">Nota: il sottolivello 4s si riempie prima del 3d, pur avendo n maggiore, perché ha energia inferiore.</text>
+      </svg>
+      <figcaption>Ordine di riempimento degli orbitali secondo il principio di Aufbau.</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — configurazione elettronica</div>
+      <div class="ex-statement">Scrivi la configurazione elettronica del cloro (Z = 17).</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>17 elettroni totali da distribuire seguendo l'ordine di Aufbau.</li>
+          <li><span class="step-n">2</span>1s²(2) 2s²(4) 2p⁶(10) 3s²(12) 3p⁵(17) — la somma dà 17.</li>
+        </ol>
+        <div class="ex-answer">1s² 2s² 2p⁶ 3s² 3p⁵</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — numero di massa</div>
+      <div class="ex-statement">Un atomo ha 20 protoni e 22 neutroni. Qual è il suo numero di massa A?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$A = Z + N$ (protoni + neutroni).</li>
+          <li><span class="step-n">2</span>$A = 20 + 22$</li>
+        </ol>
+        <div class="ex-answer">A = 42</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= TAVOLA PERIODICA ============================= -->
+<section id="tavola" class="notes-topic" style="--topic-color:#65a30d;">
+  <div class="notes-topic-header"><h2>Tavola periodica degli elementi</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li>Righe = <b>periodi</b> (7); colonne = <b>gruppi</b> (18). Elementi nello stesso gruppo hanno proprietà chimiche simili (stessa configurazione di valenza).</li>
+      <li><b>Metalli</b> a sinistra, <b>non metalli</b> a destra, <b>semimetalli</b> lungo la linea a scaletta di separazione.</li>
+      <li><b>Mole</b>: quantità di sostanza contenente $N_A = 6{,}022\times10^{23}$ particelle (numero di Avogadro).</li>
+      <li><b>Massa molare</b> (g/mol): numericamente uguale alla massa atomica/molecolare espressa in uma.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Andamento delle proprietà periodiche</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Proprietà</th><th>Lungo un periodo →</th><th>Lungo un gruppo ↓</th></tr></thead>
+        <tbody>
+          <tr><td>Raggio atomico</td><td>Diminuisce</td><td>Aumenta</td></tr>
+          <tr><td>Energia di ionizzazione</td><td>Aumenta</td><td>Diminuisce</td></tr>
+          <tr><td>Affinità elettronica</td><td>Aumenta (più negativa)</td><td>Diminuisce</td></tr>
+          <tr><td>Elettronegatività</td><td>Aumenta</td><td>Diminuisce</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 260 150" width="260" height="150">
+        <rect x="30" y="20" width="200" height="110" fill="none" stroke="var(--border)" stroke-width="1.5"/>
+        <text x="130" y="14" font-size="9" fill="var(--text-muted)" text-anchor="middle">tavola periodica (schema)</text>
+        <line x1="35" y1="60" x2="225" y2="60" stroke="#65a30d" stroke-width="2" marker-end="url(#arr1)"/>
+        <text x="130" y="52" font-size="8" fill="#65a30d" text-anchor="middle">↑ elettronegatività, energia ionizz.</text>
+        <line x1="45" y1="110" x2="45" y2="30" stroke="#65a30d" stroke-width="2" marker-end="url(#arr1)"/>
+        <text x="20" y="70" font-size="8" fill="#65a30d" transform="rotate(-90 20 70)">↑ raggio atomico</text>
+        <defs><marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#65a30d"/></marker></defs>
+      </svg>
+      <figcaption>Elettronegatività ed energia di ionizzazione crescono verso l'alto a destra; il raggio atomico cresce verso il basso a sinistra.</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — mole e massa</div>
+      <div class="ex-statement">Quante moli sono contenute in 36 g di acqua ($M=18\ \text{g/mol}$)?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$n = \dfrac{\text{massa}}{M}$</li>
+          <li><span class="step-n">2</span>$n = \dfrac{36}{18}$</li>
+        </ol>
+        <div class="ex-answer">n = 2 mol</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — numero di Avogadro</div>
+      <div class="ex-statement">Quante molecole sono contenute in 0,5 mol di $CO_2$?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$N = n \times N_A$</li>
+          <li><span class="step-n">2</span>$N = 0{,}5 \times 6{,}022\times10^{23}$</li>
+        </ol>
+        <div class="ex-answer">N ≈ 3,01 × 10²³ molecole</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= LEGAMI ============================= -->
+<section id="legami" class="notes-topic" style="--topic-color:#0891b2;">
+  <div class="notes-topic-header"><h2>Legami chimici</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Regola dell'ottetto</b>: gli atomi tendono a raggiungere 8 elettroni di valenza (configurazione stabile dei gas nobili).</li>
+      <li><b>Legame covalente</b>: condivisione di una coppia di elettroni. <i>Omeopolare</i> (puro, tra atomi uguali) o <i>eteropolare</i> (polare, tra atomi diversi).</li>
+      <li><b>Legame covalente dativo</b>: la coppia di elettroni condivisa proviene da un solo atomo (donatore).</li>
+      <li><b>Legame ionico</b>: trasferimento completo di elettroni, attrazione elettrostatica tra ioni di segno opposto (grande differenza di elettronegatività).</li>
+      <li><b>Legame metallico</b>: "mare" di elettroni delocalizzati condiviso tra i cationi metallici del reticolo.</li>
+      <li><b>Legami deboli (intermolecolari)</b>: legame a idrogeno, forze di van der Waals/London, interazioni idrofobiche — più deboli dei legami intramolecolari, ma decisivi per le proprietà fisiche (punto di ebollizione, solubilità...).</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Tipo di legame in base alla differenza di elettronegatività (ΔEN)</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>ΔEN</th><th>Tipo di legame</th><th>Esempio</th></tr></thead>
+        <tbody>
+          <tr><td>≈ 0</td><td>Covalente puro (omeopolare)</td><td>$H_2$, $Cl_2$</td></tr>
+          <tr><td>0,4 – 1,7</td><td>Covalente polare (eteropolare)</td><td>$H_2O$, $HCl$</td></tr>
+          <tr><td>&gt; 1,7 – 2</td><td>Ionico</td><td>$NaCl$</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — classificazione del legame</div>
+      <div class="ex-statement">Classifica il legame in HF ($EN_H=2{,}1$, $EN_F=4{,}0$).</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$\Delta EN = 4{,}0-2{,}1 = 1{,}9$</li>
+          <li><span class="step-n">2</span>Valore alto, vicino alla soglia ionica: legame covalente fortemente polare.</li>
+        </ol>
+        <div class="ex-answer">Covalente polare (fortemente polarizzato verso F)</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — ragionamento concettuale</div>
+      <div class="ex-statement">Perché NaCl ha un punto di fusione molto più alto di Cl₂?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>NaCl: legame <b>ionico</b>, forte attrazione elettrostatica in tutto il reticolo cristallino.</li>
+          <li><span class="step-n">2</span>Cl₂: legame covalente puro tra i due atomi, ma tra le molecole agiscono solo deboli forze di London.</li>
+        </ol>
+        <div class="ex-answer">Il reticolo ionico di NaCl richiede molta più energia per essere rotto rispetto alle deboli forze intermolecolari di Cl₂.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= NOMENCLATURA ============================= -->
+<section id="nomenclatura" class="notes-topic" style="--topic-color:#db2777;">
+  <div class="notes-topic-header"><h2>Nomenclatura chimica</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Numero di ossidazione</b>: carica ipotetica di un atomo se il legame fosse ionico. Regole base: H = +1 (−1 negli idruri metallici), O = −2 (−1 nei perossidi), elemento libero = 0.</li>
+      <li><b>Ossidi</b> (metallo + O, basici) e <b>anidridi</b> (non metallo + O, acide).</li>
+      <li><b>Idrossidi</b>: ossido basico + H₂O → $Me(OH)_n$.</li>
+      <li><b>Acidi</b>: idracidi (idrogeno + non metallo, es. HCl) e ossiacidi (anidride + H₂O).</li>
+      <li><b>Idruri</b>: metallo + idrogeno (H⁻).</li>
+      <li><b>Sali</b>: prodotti da una reazione di neutralizzazione acido + base → sale + acqua.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Classi di composti</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Composto</th><th>Formula generale</th><th>Esempio</th></tr></thead>
+        <tbody>
+          <tr><td>Ossido basico</td><td>$Me_xO_y$</td><td>$Na_2O$</td></tr>
+          <tr><td>Anidride</td><td>$NM_xO_y$</td><td>$CO_2$</td></tr>
+          <tr><td>Idrossido</td><td>$Me(OH)_n$</td><td>$NaOH$</td></tr>
+          <tr><td>Ossiacido</td><td>$H_aXO_b$</td><td>$H_2SO_4$</td></tr>
+          <tr><td>Sale</td><td>catione + anione</td><td>$NaCl$, $Na_2SO_4$</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — numero di ossidazione</div>
+      <div class="ex-statement">Trova il numero di ossidazione dello zolfo in $H_2SO_4$.</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>H: +1 ciascuno → $2\times(+1)=+2$. O: −2 ciascuno → $4\times(-2)=-8$.</li>
+          <li><span class="step-n">2</span>La molecola è neutra: $2 + x - 8 = 0$</li>
+        </ol>
+        <div class="ex-answer">x = +6</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — formula di un idrossido</div>
+      <div class="ex-statement">Scrivi la formula dell'idrossido di calcio.</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Il calcio (gruppo 2) ha numero di ossidazione +2.</li>
+          <li><span class="step-n">2</span>Servono 2 ioni $OH^-$ per bilanciare la carica +2.</li>
+        </ol>
+        <div class="ex-answer">$Ca(OH)_2$</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= GEOMETRIA MOLECOLARE ============================= -->
+<section id="geometria" class="notes-topic" style="--topic-color:#9333ea;">
+  <div class="notes-topic-header"><h2>Struttura e geometria molecolare</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Formule di Lewis</b>: rappresentano gli elettroni di valenza (legami e coppie solitarie) attorno agli atomi.</li>
+      <li><b>Teoria VSEPR</b>: le coppie elettroniche (di legame e solitarie) si dispongono nello spazio per minimizzare la repulsione reciproca.</li>
+      <li>Le <b>coppie solitarie</b> occupano più spazio dei legami e riducono l'angolo di legame rispetto al valore ideale.</li>
+      <li>La <b>polarità</b> di una molecola dipende sia dalla polarità dei singoli legami sia dalla <b>simmetria</b> della geometria: legami polari possono dare una molecola apolare se i dipoli si annullano vettorialmente.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Geometrie VSEPR</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Gruppi elettronici</th><th>Coppie solitarie</th><th>Geometria</th><th>Angolo ideale</th><th>Esempio</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>0</td><td>Lineare</td><td>180°</td><td>$CO_2$</td></tr>
+          <tr><td>3</td><td>0</td><td>Trigonale planare</td><td>120°</td><td>$BF_3$</td></tr>
+          <tr><td>4</td><td>0</td><td>Tetraedrica</td><td>109,5°</td><td>$CH_4$</td></tr>
+          <tr><td>4</td><td>1</td><td>Piramidale trigonale</td><td>≈107°</td><td>$NH_3$</td></tr>
+          <tr><td>4</td><td>2</td><td>Angolare</td><td>≈104,5°</td><td>$H_2O$</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 320 100" width="320" height="100">
+        <g>
+          <line x1="20" y1="50" x2="75" y2="50" stroke="#9333ea" stroke-width="2.5"/>
+          <circle cx="47" cy="50" r="4" fill="#9333ea"/><circle cx="20" cy="50" r="3" fill="var(--text-muted)"/><circle cx="75" cy="50" r="3" fill="var(--text-muted)"/>
+          <text x="47" y="75" font-size="8" fill="var(--text-muted)" text-anchor="middle">lineare</text>
+        </g>
+        <g transform="translate(90,0)">
+          <line x1="45" y1="25" x2="45" y2="50" stroke="#9333ea" stroke-width="2.5"/>
+          <line x1="45" y1="50" x2="20" y2="70" stroke="#9333ea" stroke-width="2.5"/>
+          <line x1="45" y1="50" x2="70" y2="70" stroke="#9333ea" stroke-width="2.5"/>
+          <circle cx="45" cy="50" r="4" fill="#9333ea"/>
+          <text x="45" y="88" font-size="8" fill="var(--text-muted)" text-anchor="middle">trigonale planare</text>
+        </g>
+        <g transform="translate(180,0)">
+          <line x1="45" y1="20" x2="45" y2="50" stroke="#9333ea" stroke-width="2.5"/>
+          <line x1="45" y1="50" x2="20" y2="45" stroke="#9333ea" stroke-width="2.5"/>
+          <line x1="45" y1="50" x2="68" y2="45" stroke="#9333ea" stroke-width="2.5"/>
+          <line x1="45" y1="50" x2="45" y2="78" stroke="#9333ea" stroke-width="2.5" stroke-dasharray="3,2"/>
+          <circle cx="45" cy="50" r="4" fill="#9333ea"/>
+          <text x="45" y="92" font-size="8" fill="var(--text-muted)" text-anchor="middle">tetraedrica</text>
+        </g>
+        <g transform="translate(255,0)">
+          <path d="M20,40 L45,55 L70,40" fill="none" stroke="#9333ea" stroke-width="2.5"/>
+          <circle cx="45" cy="55" r="4" fill="#9333ea"/>
+          <path d="M45,55 L45,30" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="2,2"/>
+          <text x="45" y="80" font-size="8" fill="var(--text-muted)" text-anchor="middle">angolare (H₂O)</text>
+        </g>
+      </svg>
+      <figcaption>Schema semplificato delle geometrie molecolari più comuni (i puntini/tratteggi indicano coppie solitarie).</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — geometria di NH₃</div>
+      <div class="ex-statement">Prevedi la geometria molecolare dell'ammoniaca $NH_3$.</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>N ha 3 legami N–H + 1 coppia solitaria → 4 gruppi elettronici totali.</li>
+          <li><span class="step-n">2</span>Geometria elettronica: tetraedrica. Geometria molecolare (solo atomi): piramidale trigonale.</li>
+        </ol>
+        <div class="ex-answer">Piramidale trigonale, angolo ≈107° (compresso dalla coppia solitaria)</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — polarità molecolare</div>
+      <div class="ex-statement">La molecola di $CO_2$ è polare o apolare?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Ogni legame C=O è polare (O più elettronegativo).</li>
+          <li><span class="step-n">2</span>La geometria è lineare e simmetrica: i due dipoli di legame sono opposti e si annullano vettorialmente.</li>
+        </ol>
+        <div class="ex-answer">Apolare, nonostante i legami polari (a differenza di H₂O, che è angolare e quindi polare).</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Appunti schematici basati sulle slide del corso di Chimica e sul formato delle prove del semestre filtro. Non sostituiscono i testi consigliati né il syllabus ministeriale ufficiale.</p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.renderMathInElement) {
+      renderMathInElement(document.body, {
+        delimiters: [{ left: "$", right: "$", display: false }],
+        throwOnError: false
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
