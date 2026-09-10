@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Appunti di Chimica | Semestre Filtro</title>
-<meta name="description" content="Appunti schematici di Chimica per il semestre filtro: stati della materia, gas, liquidi, termodinamica, atomo, tavola periodica, legami, nomenclatura, geometria molecolare, con tabelle ed esercizi commentati.">
+<meta name="description" content="Appunti di Chimica per il semestre filtro: le 9 unità del syllabus, dagli stati della materia alla biochimica, con tabelle, formule ed esercizi commentati per gli argomenti trattati nelle slide del corso.">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/appunti.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
@@ -17,7 +17,7 @@
   <div class="wrap">
     <a class="notes-backlink" href="index.html">← Tutti gli appunti</a>
     <h1>🧪 Appunti di <span class="accent">Chimica</span></h1>
-    <p class="subtitle">Stati della materia, termodinamica, atomo, tavola periodica, legami, nomenclatura, geometria molecolare — schemi ed esercizi.</p>
+    <p class="subtitle">Le 7 unità didattiche del syllabus, dalla struttura della materia alla biochimica — schemi, tabelle ed esercizi commentati.</p>
   </div>
 </header>
 
@@ -31,6 +31,12 @@
   <a href="#legami"><span class="qn-dot" style="background:#0891b2"></span>Legami</a>
   <a href="#nomenclatura"><span class="qn-dot" style="background:#db2777"></span>Nomenclatura</a>
   <a href="#geometria"><span class="qn-dot" style="background:#9333ea"></span>Geometria molecolare</a>
+  <a href="#ud2"><span class="qn-dot" style="background:#2563eb"></span>Soluzioni</a>
+  <a href="#ud3"><span class="qn-dot" style="background:#16a34a"></span>Cinetica/equilibrio</a>
+  <a href="#ud4"><span class="qn-dot" style="background:#ea580c"></span>Acidi-basi/redox</a>
+  <a href="#ud5"><span class="qn-dot" style="background:#a21caf"></span>Idrocarburi</a>
+  <a href="#ud6"><span class="qn-dot" style="background:#ca8a04"></span>Gruppi funzionali</a>
+  <a href="#ud7"><span class="qn-dot" style="background:#be123c"></span>Biomolecole (chimica)</a>
 </nav>
 
 <main class="wrap">
@@ -45,9 +51,9 @@
       <li><b>Solido</b>: forma e volume propri, particelle in posizioni fisse che vibrano, forze di coesione forti.</li>
       <li><b>Liquido</b>: volume proprio, forma del contenitore, particelle mobili ma ravvicinate.</li>
       <li><b>Aeriforme</b>: né forma né volume propri, particelle molto distanti, alta energia cinetica.</li>
-      <li>Passaggi di stato: fusione (S→L), solidificazione (L→S), vaporizzazione (L→G), condensazione (G→L), sublimazione (S→G), brinamento (G→S).</li>
-      <li>Durante un passaggio di stato la temperatura resta <b>costante</b> (plateau): il calore fornito è <b>calore latente</b>, non aumenta l'energia cinetica ma rompe i legami intermolecolari.</li>
-      <li>Diagramma di stato P-T: <b>punto triplo</b> (coesistenza dei 3 stati) e <b>punto critico</b> (oltre il quale liquido e gas sono indistinguibili).</li>
+      <li>Passaggi di stato: fusione (S→L), solidificazione/cristallizzazione (L→S), evaporazione ed ebollizione (L→G), sublimazione (S→G) e brinamento (G→S). Il passaggio G→L si dice <b>condensazione</b> per sostanze liquide a temperatura ambiente, <b>liquefazione</b> per sostanze gassose a temperatura ambiente.</li>
+      <li>Durante un passaggio di stato la temperatura resta <b>costante</b> (plateau): il calore fornito (o sottratto) è <b>calore latente</b>, non aumenta l'energia cinetica ma vince (o ripristina) le forze di coesione tra le particelle.</li>
+      <li>Diagramma di stato P-T: <b>punto triplo</b> (coesistenza dei 3 stati) e <b>punto critico</b> (oltre il quale liquido e gas sono indistinguibili, si parla di fluido supercritico) — vedi confronto acqua/CO₂ nella sezione Stato liquido.</li>
     </ul>
   </div>
 
@@ -56,6 +62,24 @@
     <div class="formula-box">
       <div class="f-item"><span class="f-label">calore sensibile</span> <span>$Q = m \cdot c \cdot \Delta T$</span></div>
       <div class="f-item"><span class="f-label">calore latente</span> <span>$Q = m \cdot \lambda$</span></div>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Solidi cristallini e amorfi</h3>
+    <ul class="notes-points">
+      <li><b>Solidi cristallini</b>: struttura ordinata e periodica (reticolo), temperatura di fusione netta, anisotropi. <b>Solidi amorfi</b>: nessun ordine a lungo raggio, fondono in un intervallo di temperatura, isotropi.</li>
+    </ul>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Tipo di solido cristallino</th><th>Particelle nel reticolo</th><th>Punto di fusione</th><th>Esempio</th></tr></thead>
+        <tbody>
+          <tr><td>Ionico</td><td>Ioni + e − legati da forze elettrostatiche</td><td>Alto</td><td>NaCl</td></tr>
+          <tr><td>Molecolare</td><td>Molecole legate da forze intermolecolari deboli</td><td>Basso</td><td>Ghiaccio, iodio</td></tr>
+          <tr><td>Covalente (a rete)</td><td>Atomi legati covalentemente in un'unica macromolecola</td><td>Altissimo</td><td>Diamante</td></tr>
+          <tr><td>Metallico</td><td>Cationi immersi in un mare di elettroni delocalizzati</td><td>Variabile, spesso alto</td><td>Fe, Cu</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -113,12 +137,25 @@
   <div class="notes-block">
     <h3>Punti chiave</h3>
     <ul class="notes-points">
-      <li>Teoria cinetica: particelle in moto caotico, urti elastici, energia cinetica media proporzionale alla temperatura assoluta.</li>
-      <li><b>Gas ideale</b>: volume proprio e interazioni tra molecole trascurabili — buona approssimazione a bassa P e alta T.</li>
-      <li>Condizioni standard (STP): 0 °C, 1 atm → 1 mole di gas ideale occupa <b>22,4 L</b>.</li>
-      <li><b>Legge di Dalton</b>: la pressione totale di una miscela di gas è la somma delle pressioni parziali, $P_{tot}=\sum P_i$, con $P_i = x_i \cdot P_{tot}$ (frazione molare).</li>
+      <li><b>Gas ideale (perfetto)</b>: modello in cui le particelle hanno volume proprio trascurabile e non interagiscono tra loro (traiettorie rettilinee tra un urto e l'altro, urti elastici) — buona approssimazione a bassa P e alta T.</li>
+      <li>Condizioni standard (STP): 0 °C, 1 atm → 1 mole di gas ideale occupa <b>22,4 L</b> (ricavabile dall'equazione di stato).</li>
+      <li><b>Legge di Dalton</b>: la pressione totale di una miscela di gas è la somma delle pressioni parziali, $P_{tot}=\sum P_i$, con $P_i = x_i \cdot P_{tot}$ (frazione molare). Applicazione biologica: composizione dell'aria inspirata/espirata.</li>
       <li>Gas reali: deviano dal comportamento ideale ad alta pressione e bassa temperatura (interazioni e volume molecolare non più trascurabili).</li>
     </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Teoria cinetica dei gas</h3>
+    <ul class="notes-points">
+      <li>Le particelle sono in moto rettilineo casuale e continuo; urtano tra loro e contro le pareti del recipiente (le collisioni con le pareti generano la pressione).</li>
+      <li>Negli urti l'energia cinetica totale del sistema si conserva (urti elastici); l'energia posseduta dalle molecole è esclusivamente cinetica.</li>
+      <li>La <b>distribuzione di Maxwell-Boltzmann</b> descrive statisticamente come le velocità molecolari sono distribuite (curva a campana): all'aumentare della temperatura la velocità media aumenta e la distribuzione si allarga.</li>
+      <li>A parità di temperatura, gas diversi hanno la <b>stessa energia cinetica media</b> ma velocità diverse, in funzione della massa molecolare.</li>
+      <li>Applicazione biomedica: durante l'inspirazione il volume della cassa toracica aumenta e, per la legge di Boyle, la pressione interna scende sotto quella atmosferica, richiamando aria nei polmoni; nell'espirazione avviene l'inverso.</li>
+    </ul>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">energia cinetica media</span><span>$\bar{E_c} = \dfrac{3}{2}RT/N_A = \dfrac{3}{2}k_BT$</span></div>
+    </div>
   </div>
 
   <div class="notes-block">
@@ -194,6 +231,7 @@
       <li><b>Pressione di vapore</b>: pressione di equilibrio (dinamico) tra liquido e il suo vapore in un contenitore chiuso; aumenta con la temperatura.</li>
       <li><b>Ebollizione</b>: avviene quando la pressione di vapore eguaglia la pressione esterna — per questo l'acqua bolle a T &lt; 100 °C in alta quota (P atmosferica più bassa).</li>
       <li>Il <b>legame a idrogeno</b> nell'acqua spiega l'elevato punto di ebollizione, l'alta tensione superficiale e la minore densità del ghiaccio rispetto all'acqua liquida.</li>
+      <li><b>Calore di evaporazione</b>: energia necessaria, a T costante, per far evaporare 1 g di liquido (per l'acqua, circa 2402 J/g a 40 °C). Durante l'evaporazione fuggono le molecole più energetiche, raffreddando il liquido residuo: è il principio della <b>termoregolazione</b> tramite sudorazione — il calore sottratto al corpo per far evaporare il sudore produce un effetto rinfrescante.</li>
     </ul>
   </div>
 
@@ -205,10 +243,29 @@
         <tbody>
           <tr><td>Tensione superficiale</td><td>Forza coesiva sulla superficie</td><td>Diminuisce con T</td></tr>
           <tr><td>Viscosità</td><td>Resistenza allo scorrimento</td><td>Diminuisce con T</td></tr>
-          <tr><td>Pressione di vapore</td><td>Equilibrio liquido↔vapore</td><td>Aumenta con T</td></tr>
+          <tr><td>Pressione di vapore</td><td>Equilibrio liquido↔vapore</td><td>Aumenta con T (esponenzialmente)</td></tr>
         </tbody>
       </table>
     </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Diagramma di fase: acqua vs anidride carbonica</h3>
+    <ul class="notes-points">
+      <li>Un diagramma di fase (P-T) mostra quale stato è stabile al variare di pressione e temperatura, ed evidenzia punto triplo e punto critico.</li>
+      <li>Nell'<b>acqua</b> la curva di fusione solido-liquido ha pendenza <b>negativa</b>: il ghiaccio, solidificando, aumenta di volume, quindi un aumento di pressione favorisce il ritorno allo stato liquido (per questo il ghiaccio "scivola" sotto pressione).</li>
+      <li>Nella <b>CO₂</b> la curva di fusione ha pendenza <b>positiva</b> (comportamento tipico della maggior parte delle sostanze): un aumento di pressione favorisce invece il passaggio da liquido a solido.</li>
+    </ul>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th></th><th>Punto triplo</th><th>Punto critico</th></tr></thead>
+        <tbody>
+          <tr><td>Acqua (H₂O)</td><td>0,01 °C, ≈0,006 atm</td><td>374,1 °C, 217 atm</td></tr>
+          <tr><td>Anidride carbonica (CO₂)</td><td>−56,6 °C, ≈5,1 atm</td><td>31,1 °C, ≈73 atm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="notes-topic-intro" style="margin:8px 0 0;">Oltre il punto critico non esiste più distinzione tra fase liquida e gassosa: si parla di <b>fluido supercritico</b>. Poiché il punto triplo della CO₂ è sopra 1 atm, a pressione atmosferica la CO₂ solida (ghiaccio secco) sublima direttamente, senza passare per lo stato liquido.</p>
   </div>
 
   <div class="notes-block">
@@ -355,6 +412,15 @@
   </div>
 
   <div class="notes-block">
+    <h3>Spin nucleare e Risonanza Magnetica Nucleare (RMN)</h3>
+    <ul class="notes-points">
+      <li>Anche i nuclei possiedono uno <b>spin</b>, dato dall'accoppiamento degli spin di protoni e neutroni (ciascuno con spin ½); un nucleo in rotazione genera un campo elettromagnetico.</li>
+      <li>Regola pratica: nuclei con <b>numero di massa dispari</b> hanno spin multiplo di ½; nuclei con <b>massa e numero atomico entrambi pari</b> hanno spin nucleare 0 (es. <sup>12</sup>C, <sup>16</sup>O, non rilevabili in RMN); nuclei con massa pari e Z dispari hanno spin intero.</li>
+      <li>Sottoposti a un campo magnetico esterno, gli spin nucleari si allineano; invertendo la polarità del campo, il loro riorientamento assorbe energia in modo misurabile: è il principio fisico su cui si basa la <b>Risonanza Magnetica Nucleare</b>, usata in medicina per visualizzare i tessuti (es. i nuclei di <sup>1</sup>H di acqua e grassi).</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
     <h3>Esercizi commentati</h3>
     <div class="exercise-card">
       <div class="ex-title">Esercizio 1 — configurazione elettronica</div>
@@ -462,6 +528,20 @@
       <li><b>Legame ionico</b>: trasferimento completo di elettroni, attrazione elettrostatica tra ioni di segno opposto (grande differenza di elettronegatività).</li>
       <li><b>Legame metallico</b>: "mare" di elettroni delocalizzati condiviso tra i cationi metallici del reticolo.</li>
       <li><b>Legami deboli (intermolecolari)</b>: legame a idrogeno, forze di van der Waals/London, interazioni idrofobiche — più deboli dei legami intramolecolari, ma decisivi per le proprietà fisiche (punto di ebollizione, solubilità...).</li>
+      <li><b>Energia di legame</b>: energia da fornire per rompere un legame (kJ/mol). <b>Lunghezza di legame</b>: distanza tra i nuclei. <b>Ordine di legame</b>: 1 per un legame semplice, 2 per un doppio, 3 per un triplo — a ordine di legame maggiore corrispondono energia di legame maggiore e lunghezza di legame minore.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Teoria del legame di valenza (VB) e teoria degli orbitali molecolari (MO)</h3>
+    <ul class="notes-points">
+      <li><b>Teoria VB</b>: il legame covalente nasce dalla sovrapposizione di orbitali atomici semipieni di atomi diversi, con accumulo di densità elettronica nella regione internucleare.</li>
+      <li><b>Ibridazione degli orbitali</b>: gli orbitali atomici di valenza si combinano in nuovi orbitali ibridi equivalenti, la cui geometria determina quella della molecola.
+        <span class="sub">sp (2 orbitali, geometria lineare) · sp² (3 orbitali, trigonale planare) · sp³ (4 orbitali, tetraedrica) — vedi la sezione Geometria molecolare per gli angoli di legame.</span>
+      </li>
+      <li><b>Teoria MO</b>: descrive meglio energia di legame e proprietà magnetiche; gli orbitali atomici si combinano in altrettanti <b>orbitali molecolari</b>, leganti (energia minore, favoriscono il legame) e antileganti (energia maggiore, indicati con *), riempiti secondo Pauli e Hund.</li>
+      <li><b>Legame σ (sigma)</b>: sovrapposizione frontale di orbitali lungo l'asse internucleare — presente in ogni legame singolo, doppio o triplo. <b>Legame π (pi greco)</b>: sovrapposizione laterale di orbitali p, si aggiunge al σ nei legami doppi (1 π) e tripli (2 π); è meno stabile del σ ed è il primo a rompersi nelle reazioni.</li>
+      <li>Esempio notevole: nell'ossigeno molecolare $O_2$ due elettroni restano spaiati in orbitali molecolari π antileganti, il che rende $O_2$ <b>paramagnetico</b> (attratto da un campo magnetico) — un fatto che la sola teoria di Lewis non spiega.</li>
     </ul>
   </div>
 
@@ -513,11 +593,13 @@
   <div class="notes-block">
     <h3>Punti chiave</h3>
     <ul class="notes-points">
-      <li><b>Numero di ossidazione</b>: carica ipotetica di un atomo se il legame fosse ionico. Regole base: H = +1 (−1 negli idruri metallici), O = −2 (−1 nei perossidi), elemento libero = 0.</li>
+      <li><b>Numero di ossidazione</b>: carica apparente di un atomo se il legame fosse ionico. Regole base: H = +1 (−1 negli idruri metallici), O = −2 (−1 nei perossidi; +2 nel raro OF₂), elemento libero = 0, molecola neutra → somma dei n.ox. = 0.</li>
       <li><b>Ossidi</b> (metallo + O, basici) e <b>anidridi</b> (non metallo + O, acide).</li>
       <li><b>Idrossidi</b>: ossido basico + H₂O → $Me(OH)_n$.</li>
       <li><b>Acidi</b>: idracidi (idrogeno + non metallo, es. HCl) e ossiacidi (anidride + H₂O).</li>
-      <li><b>Idruri</b>: metallo + idrogeno (H⁻).</li>
+      <li><b>Idruri</b>: metallo + idrogeno, con H come anione H⁻; composti reattivi, di carattere basico.</li>
+      <li><b>Perossidi</b>: contengono il gruppo $-O-O-$ con legame covalente O–O e n.ox. dell'ossigeno pari a −1 (es. $H_2O_2$, acqua ossigenata).</li>
+      <li>Suffissi tradizionali <b>-oso/-ico</b>: indicano rispettivamente il minore o maggiore numero di ossidazione quando un elemento ne ha più di uno disponibile.</li>
       <li><b>Sali</b>: prodotti da una reazione di neutralizzazione acido + base → sale + acqua.</li>
     </ul>
   </div>
@@ -528,9 +610,12 @@
       <table class="notes-table">
         <thead><tr><th>Composto</th><th>Formula generale</th><th>Esempio</th></tr></thead>
         <tbody>
+          <tr><td>Idruro</td><td>$MeH_n$</td><td>$NaH$</td></tr>
           <tr><td>Ossido basico</td><td>$Me_xO_y$</td><td>$Na_2O$</td></tr>
           <tr><td>Anidride</td><td>$NM_xO_y$</td><td>$CO_2$</td></tr>
+          <tr><td>Perossido</td><td>$Me_2O_2$ / $H_2O_2$</td><td>$H_2O_2$</td></tr>
           <tr><td>Idrossido</td><td>$Me(OH)_n$</td><td>$NaOH$</td></tr>
+          <tr><td>Idracido</td><td>$H_nNM$</td><td>$HCl$</td></tr>
           <tr><td>Ossiacido</td><td>$H_aXO_b$</td><td>$H_2SO_4$</td></tr>
           <tr><td>Sale</td><td>catione + anione</td><td>$NaCl$, $Na_2SO_4$</td></tr>
         </tbody>
@@ -576,6 +661,7 @@
       <li><b>Teoria VSEPR</b>: le coppie elettroniche (di legame e solitarie) si dispongono nello spazio per minimizzare la repulsione reciproca.</li>
       <li>Le <b>coppie solitarie</b> occupano più spazio dei legami e riducono l'angolo di legame rispetto al valore ideale.</li>
       <li>La <b>polarità</b> di una molecola dipende sia dalla polarità dei singoli legami sia dalla <b>simmetria</b> della geometria: legami polari possono dare una molecola apolare se i dipoli si annullano vettorialmente.</li>
+      <li>La geometria VSEPR è coerente con l'<b>ibridazione</b> del carbonio (o dell'atomo centrale) vista nella sezione Legami: sp → lineare, sp² → trigonale planare, sp³ → tetraedrica/piramidale/angolare.</li>
     </ul>
   </div>
 
@@ -649,6 +735,200 @@
         </ol>
         <div class="ex-answer">Apolare, nonostante i legami polari (a differenza di H₂O, che è angolare e quindi polare).</div>
       </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= U.D. 2 — MISCELE, SOLUZIONI, PROPRIETÀ COLLIGATIVE ============================= -->
+<section id="ud2" class="notes-topic" style="--topic-color:#2563eb;">
+  <div class="notes-topic-header"><h2>Miscele, soluzioni e proprietà colligative</h2><span class="notes-topic-unit">U.D. 2</span></div>
+  <p class="notes-topic-intro">Argomento del syllabus non coperto dalle slide del corso caricate su questo sito: sintesi dei concetti principali, utile come riferimento rapido e non come sostituto dello studio del testo consigliato.</p>
+  <div class="notes-block">
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Concetto</th><th>Definizione essenziale</th></tr></thead>
+        <tbody>
+          <tr><td>Miscela omogenea</td><td>Composizione uniforme in tutto il volume (es. soluzione)</td></tr>
+          <tr><td>Miscela eterogenea</td><td>Componenti/fasi distinguibili (es. sospensione)</td></tr>
+          <tr><td>Sospensione</td><td>Particelle solide disperse in un liquido, visibili e sedimentabili</td></tr>
+          <tr><td>Colloide</td><td>Particelle di dimensioni intermedie disperse, non sedimentano (effetto Tyndall)</td></tr>
+          <tr><td>Aerosol</td><td>Particelle solide o liquide disperse in un gas</td></tr>
+          <tr><td>Elettrolita</td><td>Sostanza che in soluzione si dissocia in ioni e conduce corrente</td></tr>
+          <tr><td>Legge di Henry</td><td>La solubilità di un gas in un liquido è proporzionale alla sua pressione parziale</td></tr>
+          <tr><td>% peso/peso, peso/volume, volume/volume</td><td>g soluto/100 g soluzione; g soluto/100 mL soluzione; mL soluto/100 mL soluzione</td></tr>
+          <tr><td>Molarità (M)</td><td>Moli di soluto per litro di soluzione</td></tr>
+          <tr><td>Molalità (m)</td><td>Moli di soluto per kg di solvente</td></tr>
+          <tr><td>Frazione molare (x)</td><td>Moli di un componente / moli totali della soluzione</td></tr>
+          <tr><td>Equivalente</td><td>Quantità di sostanza che scambia una mole di cariche o protoni</td></tr>
+          <tr><td>Legge di Dalton (miscele gassose)</td><td>$P_{tot}=\sum P_i$ — vedi anche la sezione Gas; applicazione: aria inspirata/espirata</td></tr>
+          <tr><td>Proprietà colligative</td><td>Dipendono dal numero di particelle di soluto disciolte, non dalla loro natura chimica</td></tr>
+          <tr><td>Legge di Raoult</td><td>La tensione di vapore del solvente diminuisce in proporzione alla frazione molare del soluto</td></tr>
+          <tr><td>Innalzamento ebullioscopico / abbassamento crioscopico</td><td>Una soluzione bolle a temperatura più alta e congela a temperatura più bassa del solvente puro</td></tr>
+          <tr><td>Pressione osmotica (π)</td><td>Pressione necessaria per impedire il flusso netto di solvente attraverso una membrana semipermeabile; $\pi = MRT$</td></tr>
+          <tr><td>Fattore di van't Hoff (i)</td><td>Numero di particelle in cui si dissocia un elettrolita (es. $i=2$ per NaCl)</td></tr>
+          <tr><td>Osmosi</td><td>Diffusione del solvente attraverso una membrana semipermeabile verso il comparto più concentrato di soluto</td></tr>
+          <tr><td>Osmolarità / osmolalità</td><td>Concentrazione totale di particelle osmoticamente attive per litro di soluzione / per kg di solvente</td></tr>
+          <tr><td>Soluzione isotonica</td><td>Stessa osmolarità del citoplasma: nessun flusso netto d'acqua attraverso la membrana</td></tr>
+          <tr><td>Soluzione ipertonica</td><td>Osmolarità maggiore del citoplasma: la cellula perde acqua e si raggrinzisce</td></tr>
+          <tr><td>Soluzione ipotonica</td><td>Osmolarità minore del citoplasma: la cellula acquista acqua, rischio di emolisi/edema</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= U.D. 3 — CINETICA ED EQUILIBRIO CHIMICO ============================= -->
+<section id="ud3" class="notes-topic" style="--topic-color:#16a34a;">
+  <div class="notes-topic-header"><h2>Cinetica ed equilibrio chimico</h2><span class="notes-topic-unit">U.D. 3</span></div>
+  <p class="notes-topic-intro">Argomento del syllabus non coperto dalle slide del corso caricate su questo sito: sintesi dei concetti principali.</p>
+  <div class="notes-block">
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Concetto</th><th>Definizione essenziale</th></tr></thead>
+        <tbody>
+          <tr><td>Velocità di reazione</td><td>Variazione della concentrazione di reagenti/prodotti nell'unità di tempo</td></tr>
+          <tr><td>Ordine di reazione</td><td>Esponente a cui è elevata la concentrazione di un reagente nella legge cinetica sperimentale</td></tr>
+          <tr><td>Molecolarità</td><td>Numero di molecole coinvolte in uno stadio elementare della reazione</td></tr>
+          <tr><td>Energia di attivazione ($E_a$)</td><td>Energia minima necessaria affinché una collisione porti a reazione</td></tr>
+          <tr><td>Teoria degli urti efficaci</td><td>Solo le collisioni con energia ed orientazione adeguate portano a reazione</td></tr>
+          <tr><td>Legge di Arrhenius</td><td>Descrive la dipendenza della costante cinetica $k$ dalla temperatura: $k=Ae^{-E_a/RT}$</td></tr>
+          <tr><td>Teoria dello stato di transizione</td><td>Durante la reazione si forma un complesso attivato a energia massima, intermedio tra reagenti e prodotti</td></tr>
+          <tr><td>Catalizzatore</td><td>Abbassa l'energia di attivazione senza essere consumato; gli enzimi sono catalizzatori biologici (vedi Biologia &gt; Enzimi)</td></tr>
+          <tr><td>Equilibrio chimico</td><td>Stato in cui le velocità delle reazioni diretta e inversa sono uguali; le concentrazioni restano costanti</td></tr>
+          <tr><td>Costante di equilibrio ($K_{eq}$) e legge d'azione di massa</td><td>Rapporto tra concentrazioni dei prodotti e dei reagenti all'equilibrio, ciascuna elevata al proprio coefficiente stechiometrico</td></tr>
+          <tr><td>Principio dell'equilibrio mobile (Le Chatelier)</td><td>Un sistema all'equilibrio, perturbato, si sposta in modo da contrastare la perturbazione</td></tr>
+          <tr><td>Quoziente di reazione (Q)</td><td>Come $K_{eq}$ ma calcolato in condizioni non di equilibrio: il confronto $Q$ vs $K_{eq}$ indica la direzione spontanea della reazione</td></tr>
+          <tr><td>Stato stazionario</td><td>Concentrazioni costanti nel tempo in un sistema aperto, ma senza uguaglianza delle velocità dirette/inverse — diverso dall'equilibrio chimico vero</td></tr>
+          <tr><td>Prodotto di solubilità ($K_{ps}$)</td><td>Costante di equilibrio per la dissoluzione di un sale poco solubile (es. calcoli renali)</td></tr>
+          <tr><td>Effetto dello ione comune</td><td>La presenza di un ione comune in soluzione riduce la solubilità di un sale, spostando l'equilibrio verso il solido</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= U.D. 4 — ACIDI, BASI, SALI, PH, TAMPONI, REDOX ============================= -->
+<section id="ud4" class="notes-topic" style="--topic-color:#ea580c;">
+  <div class="notes-topic-header"><h2>Acidi, basi, pH, tamponi e reazioni redox</h2><span class="notes-topic-unit">U.D. 4</span></div>
+  <p class="notes-topic-intro">Argomento del syllabus non coperto dalle slide del corso caricate su questo sito: sintesi dei concetti principali.</p>
+  <div class="notes-block">
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Concetto</th><th>Definizione essenziale</th></tr></thead>
+        <tbody>
+          <tr><td>Teoria di Arrhenius</td><td>Acido: libera $H^+$ in acqua. Base: libera $OH^-$ in acqua</td></tr>
+          <tr><td>Teoria di Brønsted-Lowry</td><td>Acido: donatore di protoni. Base: accettore di protoni (coppie coniugate acido/base)</td></tr>
+          <tr><td>Teoria di Lewis</td><td>Acido: accettore di doppietti elettronici. Base: donatore di doppietti elettronici</td></tr>
+          <tr><td>Autoprotolisi dell'acqua ($K_w$)</td><td>$2H_2O \rightleftharpoons H_3O^+ + OH^-$, con $K_w=[H_3O^+][OH^-]=10^{-14}$ a 25 °C</td></tr>
+          <tr><td>pH / pOH</td><td>$pH=-\log[H_3O^+]$, $pOH=-\log[OH^-]$; $pH+pOH=14$ a 25 °C</td></tr>
+          <tr><td>$K_a$ / $K_b$, pKa / pKb</td><td>Costanti di dissociazione di acidi/basi deboli e loro cologaritmo; più basso il pKa, più forte l'acido</td></tr>
+          <tr><td>Acido/base forte vs debole</td><td>Dissociazione completa (forte) o parziale, regolata da $K_a$/$K_b$ (debole), in acqua</td></tr>
+          <tr><td>Acido poliprotico</td><td>Cede più di un protone (es. $H_2SO_4$, $H_3PO_4$)</td></tr>
+          <tr><td>Idrolisi salina</td><td>Reazione di un sale con acqua che ne determina il pH (es. sale di acido forte/base debole → soluzione acida)</td></tr>
+          <tr><td>Soluzione tampone</td><td>Resiste alle variazioni di pH; composta da un acido debole e la sua base coniugata (o viceversa)</td></tr>
+          <tr><td>Equazione di Henderson-Hasselbalch</td><td>$pH = pK_a + \log\dfrac{[A^-]}{[HA]}$</td></tr>
+          <tr><td>Tampone bicarbonato ($CO_2$/$HCO_3^-$)</td><td>Principale sistema tampone del sangue</td></tr>
+          <tr><td>Tampone fosfato</td><td>$H_2PO_4^-/HPO_4^{2-}$, rilevante nei fluidi intracellulari e nell'urina</td></tr>
+          <tr><td>Acidosi / alcalosi</td><td>pH ematico rispettivamente inferiore a 7,35 o superiore a 7,45</td></tr>
+          <tr><td>Ossidazione / riduzione</td><td>Perdita / acquisto di elettroni, con aumento / diminuzione del numero di ossidazione</td></tr>
+          <tr><td>Cella galvanica; anodo / catodo</td><td>Converte l'energia di una reazione redox spontanea in energia elettrica; l'ossidazione avviene all'anodo, la riduzione al catodo</td></tr>
+          <tr><td>Potenziale redox standard ($E°$)</td><td>Misura la tendenza di una specie a ridursi, rispetto all'elettrodo standard a idrogeno</td></tr>
+          <tr><td>Equazione di Nernst</td><td>Lega il potenziale di una cella alle concentrazioni reali delle specie coinvolte (non standard)</td></tr>
+          <tr><td>Reazioni di Fenton e Haber-Weiss</td><td>Reazioni redox non enzimatiche dell'ossigeno mediate dallo ione ferro, che generano il radicale idrossile ($\cdot OH$)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= U.D. 5 — CHIMICA ORGANICA: IDROCARBURI E REATTIVITÀ ============================= -->
+<section id="ud5" class="notes-topic" style="--topic-color:#a21caf;">
+  <div class="notes-topic-header"><h2>Proprietà del carbonio, idrocarburi e reattività</h2><span class="notes-topic-unit">U.D. 5</span></div>
+  <p class="notes-topic-intro">Argomento del syllabus non coperto dalle slide del corso caricate su questo sito: sintesi dei concetti principali.</p>
+  <div class="notes-block">
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Concetto</th><th>Definizione essenziale</th></tr></thead>
+        <tbody>
+          <tr><td>Idrocarburi saturi / insaturi</td><td>Solo legami singoli C–C (alcani) / presenza di doppi (alcheni) o tripli (alchini) legami C–C</td></tr>
+          <tr><td>Nomenclatura IUPAC</td><td>Denominazione sistematica basata sulla catena continua più lunga e i sostituenti</td></tr>
+          <tr><td>Enantiomeri</td><td>Stereoisomeri immagine speculare non sovrapponibile; stesse proprietà fisiche, ruotano la luce polarizzata in verso opposto</td></tr>
+          <tr><td>Diastereoisomeri / epimeri</td><td>Stereoisomeri non immagine speculare (proprietà fisiche diverse); gli epimeri differiscono per un solo centro stereogenico</td></tr>
+          <tr><td>Miscela racemica</td><td>Miscela 1:1 di due enantiomeri, otticamente inattiva</td></tr>
+          <tr><td>Convenzione R/S (regole CIP)</td><td>Assegna la configurazione assoluta a un centro chirale in base alla priorità dei sostituenti</td></tr>
+          <tr><td>Potere ottico rotatorio; destrogiro/levogiro</td><td>Angolo di rotazione del piano della luce polarizzata da parte di una sostanza chirale, in senso orario (+) o antiorario (−)</td></tr>
+          <tr><td>Convenzione di Fischer</td><td>Rappresentazione bidimensionale convenzionale di molecole chirali</td></tr>
+          <tr><td>Rottura omolitica / eterolitica</td><td>Ciascun atomo trattiene un elettrone del legame (→ radicali) / un atomo trattiene entrambi gli elettroni (→ carbocatione + carbanione)</td></tr>
+          <tr><td>Effetto induttivo</td><td>Spostamento di densità elettronica lungo i legami σ per differenza di elettronegatività (elettron-donatore/attrattore)</td></tr>
+          <tr><td>Nucleofilo / elettrofilo</td><td>Specie ricca / povera di elettroni, che attacca rispettivamente un centro elettrofilo / nucleofilo</td></tr>
+          <tr><td>$S_N1$ / $S_N2$</td><td>Sostituzione nucleofila mono/bimolecolare: $S_N1$ passa per un carbocatione intermedio (2 stadi), $S_N2$ avviene in un unico stadio concertato</td></tr>
+          <tr><td>Reazione di eliminazione</td><td>Formazione di un doppio legame per perdita di due sostituenti da atomi adiacenti</td></tr>
+          <tr><td>Alcani/cicloalcani</td><td>Idrocarburi saturi a catena aperta/ciclica; reazione tipica: ossidazione (combustione); tensione di legame nei cicloalcani piccoli</td></tr>
+          <tr><td>Alcheni; dieni coniugati</td><td>Idrocarburi con doppio legame, reagiscono per addizione elettrofila; due doppi legami separati da un singolo danno delocalizzazione elettronica</td></tr>
+          <tr><td>Aromaticità — regola di Hückel</td><td>Sistema ciclico planare con $(4n+2)$ elettroni π delocalizzati (benzene: $n=1$, 6 e⁻)</td></tr>
+          <tr><td>Sostituzione elettrofila aromatica</td><td>Reazione tipica dei composti aromatici, che preserva l'anello; sostituenti attivanti/disattivanti ne modulano la reattività</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= U.D. 6 — GRUPPI FUNZIONALI E ISOMERIE ============================= -->
+<section id="ud6" class="notes-topic" style="--topic-color:#ca8a04;">
+  <div class="notes-topic-header"><h2>Gruppi funzionali e isomerie</h2><span class="notes-topic-unit">U.D. 6</span></div>
+  <p class="notes-topic-intro">Argomento del syllabus non coperto dalle slide del corso caricate su questo sito: sintesi dei concetti principali.</p>
+  <div class="notes-block">
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Gruppo/reazione</th><th>Definizione essenziale</th></tr></thead>
+        <tbody>
+          <tr><td>Alcol ($-OH$ su C sp³) / Fenolo ($-OH$ su anello aromatico)</td><td>Reazioni: disidratazione, ossidazione, sostituzione nucleofila. Il fenolo è più acido di un alcol</td></tr>
+          <tr><td>Etere ($R-O-R'$) / Epossido</td><td>Etere poco reattivo / etere ciclico a 3 atomi, molto reattivo per la tensione dell'anello</td></tr>
+          <tr><td>Tiolo ($-SH$) / Tioetere ($R-S-R'$)</td><td>Analoghi solforati di alcol ed etere</td></tr>
+          <tr><td>Ammina ($R-NH_2$, $R_2NH$, $R_3N$)</td><td>Derivato dell'ammoniaca, basica e nucleofila; reazioni: alchilazione, formazione di sali</td></tr>
+          <tr><td>Aldeide ($-CHO$) / Chetone (C=O interno)</td><td>Gruppo carbonilico; reazioni: ossidazione, riduzione, addizione nucleofila, condensazione aldolica</td></tr>
+          <tr><td>Emiacetale/emichetale, acetale/chetale</td><td>Prodotti di addizione (1° alcol) e sostituzione (2° alcol) su aldeidi/chetoni</td></tr>
+          <tr><td>Base di Schiff (immina)</td><td>Prodotto di condensazione tra un'ammina primaria e un'aldeide/chetone</td></tr>
+          <tr><td>Tautomeria cheto-enolica</td><td>Equilibrio tra forma chetonica ed enolica, rilevante per urato, citosina e fosfoenolpiruvato</td></tr>
+          <tr><td>Acido carbossilico ($-COOH$)</td><td>Acido debole, per delocalizzazione della carica sull'anione carbossilato</td></tr>
+          <tr><td>Estere / Ammide</td><td>Da esterificazione di Fischer (acido+alcol) / condensazione di un acido con un'ammina</td></tr>
+          <tr><td>Transesterificazione; condensazione di Claisen</td><td>Scambio del gruppo alchilico di un estere / reazione tra due esteri con formazione di un β-chetoestere</td></tr>
+          <tr><td>Decarbossilazione</td><td>Perdita di $CO_2$ da un acido carbossilico, tipica dei β-chetoacidi</td></tr>
+          <tr><td>Idrolisi di esteri/ammidi</td><td>Rottura del legame con acqua, rigenera acido + alcol/ammina</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= U.D. 7 — AMMINOACIDI/PROTEINE, CARBOIDRATI, LIPIDI, ACIDI NUCLEICI ============================= -->
+<section id="ud7" class="notes-topic" style="--topic-color:#be123c;">
+  <div class="notes-topic-header"><h2>Amminoacidi, carboidrati, lipidi e acidi nucleici</h2><span class="notes-topic-unit">U.D. 7</span></div>
+  <p class="notes-topic-intro">Argomento del syllabus non coperto dalle slide del corso caricate su questo sito. Amminoacidi/proteine e lipidi sono trattati anche, più diffusamente, negli <a href="biologia.html#proteine">appunti di Biologia</a>: qui la sintesi copre in particolare gli aspetti chimici non ripetuti altrove (carboidrati, nucleotidi).</p>
+  <div class="notes-block">
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Concetto</th><th>Definizione essenziale</th></tr></thead>
+        <tbody>
+          <tr><td>Punto isoelettrico (pI)</td><td>pH a cui un amminoacido ha carica netta nulla (vedi anche Biologia &gt; Proteine per struttura e legame peptidico)</td></tr>
+          <tr><td>Monosaccaride</td><td>Unità carboidratica più semplice: aldosio (gruppo aldeidico) o chetosio (gruppo chetonico), es. glucosio, fruttosio</td></tr>
+          <tr><td>Epimeri, anomeri (zuccheri)</td><td>Monosaccaridi che differiscono per un solo centro stereogenico / per la configurazione del carbonio anomerico (C1) nella forma ciclica</td></tr>
+          <tr><td>Mutarotazione</td><td>Interconversione spontanea in soluzione tra anomeri α e β di un monosaccaride</td></tr>
+          <tr><td>Legame glicosidico</td><td>Legame tra due monosaccaridi (o tra un monosaccaride e un'altra molecola), con perdita di H₂O</td></tr>
+          <tr><td>Disaccaride</td><td>Due monosaccaridi uniti da un legame glicosidico (es. saccarosio, lattosio)</td></tr>
+          <tr><td>Reazione di Maillard, prodotti di Amadori</td><td>Reazione non enzimatica tra zuccheri riducenti e gruppi amminici</td></tr>
+          <tr><td>Omopolisaccaride / eteropolisaccaride</td><td>Polisaccaride di un solo tipo di monomero (amido, cellulosa, glicogeno) / di più tipi (es. glicosamminoglicani)</td></tr>
+          <tr><td>Colesterolo e derivati</td><td>Precursore di ormoni steroidei, acidi biliari e vitamina D (vedi anche Biologia &gt; Lipidi)</td></tr>
+          <tr><td>Base azotata</td><td>Purina (adenina, guanina) o pirimidina (citosina, timina, uracile), costituente dei nucleotidi</td></tr>
+          <tr><td>Nucleoside / nucleotide</td><td>Base azotata + zucchero pentoso (senza fosfato) / + uno o più gruppi fosfato — monomero degli acidi nucleici</td></tr>
+          <tr><td>ATP</td><td>Nucleotide trifosfato, principale "moneta energetica" della cellula</td></tr>
+          <tr><td>NAD⁺/NADH, FAD/FADH₂</td><td>Dinucleotidi trasportatori di elettroni nelle reazioni redox del metabolismo</td></tr>
+          <tr><td>Legame fosfodiestereo</td><td>Lega il fosfato di un nucleotide al C3' dello zucchero del successivo, formando lo scheletro di DNA/RNA</td></tr>
+          <tr><td>Deaminazione della citosina</td><td>Modificazione non enzimatica che trasforma la citosina in uracile: fonte di mutazioni se non riparata</td></tr>
+          <tr><td>Radicale idrossile ($\cdot OH$)</td><td>Specie reattiva dell'ossigeno che danneggia lipidi, proteine e DNA</td></tr>
+          <tr><td>Antiossidanti non enzimatici</td><td>Glutatione (tiolo), tocoferolo (vitamina E) e carotenoidi (doppi legami coniugati) neutralizzano i radicali liberi</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>

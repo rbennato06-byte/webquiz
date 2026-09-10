@@ -37,15 +37,17 @@
   <div class="notes-block">
     <h3>Punti chiave</h3>
     <ul class="notes-points">
-      <li><b>Grandezze scalari</b>: definite da un solo numero (massa, tempo, energia). <b>Grandezze vettoriali</b>: hanno modulo, direzione e verso (forza, velocità, accelerazione).</li>
-      <li><b>Analisi dimensionale</b>: verificare che i due membri di un'equazione fisica abbiano le stesse unità di misura.</li>
-      <li>Errore assoluto = |valore misurato − valore vero|; errore relativo = errore assoluto / valore vero.</li>
-      <li>Le <b>cifre significative</b> del risultato di un calcolo non possono superare quelle del dato meno preciso.</li>
+      <li>Il <b>Sistema Internazionale (SI)</b> si fonda su <b>7 grandezze fondamentali</b>, indipendenti tra loro; tutte le altre grandezze (dette <b>derivate</b>) si ottengono da queste tramite prodotti/rapporti.</li>
+      <li><b>Grandezze scalari</b>: definite da un solo numero, eventualmente con segno (massa, tempo, energia, temperatura). <b>Grandezze vettoriali</b>: hanno modulo, direzione e verso, e si sommano con la regola del parallelogramma, non algebricamente (forza, velocità, accelerazione, spostamento).</li>
+      <li><b>Analisi dimensionale</b>: verificare che i due membri di un'equazione fisica abbiano le stesse dimensioni/unità di misura — un modo rapido per scovare errori in una formula.</li>
+      <li><b>Notazione scientifica</b>: un numero si scrive come $a \times 10^n$ con $1 \le a < 10$; utile per grandezze molto grandi o molto piccole (es. $6{,}022\times10^{23}$).</li>
+      <li>Errore assoluto = |valore misurato − valore vero|; errore relativo = errore assoluto / valore vero (spesso espresso in %).</li>
+      <li>Le <b>cifre significative</b> del risultato di un calcolo non possono superare quelle del dato meno preciso tra quelli utilizzati.</li>
     </ul>
   </div>
 
   <div class="notes-block">
-    <h3>Grandezze fondamentali (SI)</h3>
+    <h3>Le 7 grandezze fondamentali (SI)</h3>
     <div class="notes-table-wrap">
       <table class="notes-table">
         <thead><tr><th>Grandezza</th><th>Simbolo</th><th>Unità SI</th></tr></thead>
@@ -53,8 +55,10 @@
           <tr><td>Lunghezza</td><td>$l$</td><td>metro (m)</td></tr>
           <tr><td>Massa</td><td>$m$</td><td>chilogrammo (kg)</td></tr>
           <tr><td>Tempo</td><td>$t$</td><td>secondo (s)</td></tr>
+          <tr><td>Corrente elettrica</td><td>$I$</td><td>ampere (A)</td></tr>
           <tr><td>Temperatura</td><td>$T$</td><td>kelvin (K)</td></tr>
           <tr><td>Quantità di sostanza</td><td>$n$</td><td>mole (mol)</td></tr>
+          <tr><td>Intensità luminosa</td><td>$I_v$</td><td>candela (cd)</td></tr>
         </tbody>
       </table>
     </div>
@@ -90,6 +94,30 @@
   </div>
 
   <div class="notes-block">
+    <h3>Somma e scomposizione di vettori</h3>
+    <ul class="notes-points">
+      <li>Due vettori si sommano graficamente con la <b>regola del parallelogramma</b> (o punta-coda); il risultante non è la somma dei moduli, tranne quando sono paralleli e concordi.</li>
+      <li>Un vettore $\vec{F}$ di modulo $F$ inclinato di un angolo $\theta$ rispetto all'asse x si scompone nelle componenti $F_x = F\cos\theta$ e $F_y = F\sin\theta$.</li>
+    </ul>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 220 130" width="220" height="130">
+        <line x1="20" y1="110" x2="200" y2="110" stroke="var(--text-muted)" stroke-width="1"/>
+        <line x1="20" y1="110" x2="20" y2="15" stroke="var(--text-muted)" stroke-width="1"/>
+        <line x1="20" y1="110" x2="150" y2="35" stroke="#e11d48" stroke-width="2.5" marker-end="url(#arrM)"/>
+        <text x="150" y="28" font-size="9" fill="#e11d48">F</text>
+        <line x1="20" y1="110" x2="150" y2="110" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="150" y="122" font-size="8" fill="var(--text-muted)">Fx</text>
+        <line x1="150" y1="110" x2="150" y2="35" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="158" y="75" font-size="8" fill="var(--text-muted)">Fy</text>
+        <path d="M40,110 A20,20 0 0 0 33,93" fill="none" stroke="var(--text-muted)" stroke-width="1"/>
+        <text x="42" y="100" font-size="8" fill="var(--text-muted)">θ</text>
+        <defs><marker id="arrM" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e11d48"/></marker></defs>
+      </svg>
+      <figcaption>Scomposizione di un vettore forza nelle componenti orizzontale e verticale.</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
     <h3>Esercizi commentati</h3>
     <div class="exercise-card">
       <div class="ex-title">Esercizio 1 — conversione di unità</div>
@@ -113,6 +141,17 @@
         <div class="ex-answer">V = 8 × 10⁻⁶ m³</div>
       </details>
     </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 3 — scomposizione di un vettore</div>
+      <div class="ex-statement">Una forza di 10 N è inclinata di 30° rispetto all'orizzontale. Quali sono le sue componenti $F_x$ e $F_y$?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$F_x = F\cos\theta = 10 \times \cos 30°$</li>
+          <li><span class="step-n">2</span>$F_y = F\sin\theta = 10 \times \sin 30°$</li>
+        </ol>
+        <div class="ex-answer">Fx ≈ 8,7 N, Fy = 5 N</div>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -127,6 +166,7 @@
       <li><b>Moto rettilineo uniformemente accelerato (MRUA)</b>: accelerazione costante (es. caduta libera, $a=g\approx9{,}8\ \text{m/s}^2$).</li>
       <li><b>Moto circolare uniforme</b>: modulo della velocità costante, ma la direzione cambia continuamente → è comunque presente un'accelerazione (centripeta), diretta verso il centro.</li>
       <li>Nel grafico <b>posizione-tempo</b>, la pendenza è la velocità. Nel grafico <b>velocità-tempo</b>, la pendenza è l'accelerazione e <b>l'area sottesa è lo spostamento</b>.</li>
+      <li><b>Moto di un proiettile</b>: composizione di un moto orizzontale a velocità costante (MRU) e un moto verticale uniformemente accelerato (caduta libera, $a=-g$) — i due moti sono indipendenti e si sommano vettorialmente, dando una traiettoria parabolica.</li>
     </ul>
   </div>
 
