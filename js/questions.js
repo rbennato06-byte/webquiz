@@ -1,16 +1,28 @@
 /*
- * Banca dati domande - Quiz Semestre Filtro: Chimica (Stati della materia e Termodinamica)
- * Fonti: slide del corso (Stati di aggregazione della materia, Stato aeriforme, Stato liquido,
+ * Banca dati domande - Quiz Semestre Filtro: Chimica e Fisica
+ * Chimica: slide del corso (Stati di aggregazione della materia, Stato aeriforme, Stato liquido,
  * Termodinamica delle reazioni chimiche) + quiz proposti nelle slide stesse.
+ * Fisica: slide del corso (Cinematica, Lavoro ed energia) + domande ufficiali delle prove del
+ * semestre filtro 2025 (primo e secondo appello) su unità di misura, cinematica, dinamica,
+ * lavoro-energia-potenza, integrate con domande originali sugli stessi argomenti.
  * Formato coerente con le prove ufficiali del semestre filtro 2025/26: domande a risposta
  * multipla (5 opzioni A-E, una sola corretta) e domande a completamento.
  */
 
+const AREAS = {
+  chimica: { name: "Chimica", icon: "🧪", color: "#6366f1" },
+  fisica:  { name: "Fisica",  icon: "⚛️", color: "#dc2626" }
+};
+
 const TOPICS = {
-  aggregazione: { name: "Stati di aggregazione della materia", color: "#6366f1" },
-  gas:          { name: "Stato aeriforme (i gas)",             color: "#0ea5e9" },
-  liquido:      { name: "Stato liquido",                       color: "#14b8a6" },
-  termodinamica:{ name: "Termodinamica",                       color: "#f59e0b" }
+  aggregazione: { name: "Stati di aggregazione della materia", color: "#6366f1", area: "chimica" },
+  gas:          { name: "Stato aeriforme (i gas)",             color: "#0ea5e9", area: "chimica" },
+  liquido:      { name: "Stato liquido",                       color: "#14b8a6", area: "chimica" },
+  termodinamica:{ name: "Termodinamica",                       color: "#f59e0b", area: "chimica" },
+  misure:       { name: "Unità di misura e grandezze fisiche", color: "#e11d48", area: "fisica" },
+  cinematica:   { name: "Cinematica",                          color: "#ea580c", area: "fisica" },
+  dinamica:     { name: "Dinamica",                            color: "#7c3aed", area: "fisica" },
+  energia:      { name: "Lavoro, energia e potenza",           color: "#059669", area: "fisica" }
 };
 
 // type: 'mc' (scelta multipla, options[5], correct = indice 0-4)
@@ -556,10 +568,469 @@ const QUESTIONS = [
 
 { id:"term-30", topic:"termodinamica", type:"fill",
   q:"Il ________ è energia trasferita tra sistemi a causa di una differenza di temperatura.",
-  answer:"CALORE" }
+  answer:"CALORE" },
+
+/* =========================================================================
+   FISICA
+   ========================================================================= */
+
+/* ============================= UNITÀ DI MISURA E GRANDEZZE FISICHE ============================= */
+
+{ id:"mis-01", topic:"misure", type:"mc",
+  q:"La grandezza fisica energia cinetica di un corpo si misura in:",
+  options:["kg/s²","watt","joule","N/m","m/s²"], correct:2,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). L'energia cinetica, come ogni forma di energia, si misura in joule nel Sistema Internazionale." },
+
+{ id:"mis-02", topic:"misure", type:"mc",
+  q:"Un volume di 10 dm³ corrisponde a:",
+  options:["100 millilitri","100 litri","10 litri","1 litro","10 millilitri"], correct:2,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). 1 dm³ = 1 litro, quindi 10 dm³ = 10 litri." },
+
+{ id:"mis-03", topic:"misure", type:"mc",
+  q:"Quale delle seguenti affermazioni è corretta?",
+  options:["10⁻⁹ km = 1 dm","10⁻⁹ km = 1 nm","10⁻⁹ km = 1 µm","10⁻⁹ km = 1 mm","10⁻⁹ km = 1 cm"], correct:2,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello). 10⁻⁹ km = 10⁻⁹ × 1000 m = 10⁻⁶ m = 1 µm." },
+
+{ id:"mis-04", topic:"misure", type:"mc",
+  q:"Quali sono le dimensioni fisiche di una forza nel Sistema Internazionale?",
+  options:["[M][L][T]⁻¹","[M][L]²[T]⁻²","[L][T]⁻²","[M][L][T]","[M][L][T]⁻²"], correct:4,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello). Da F = ma: [M]×[L][T]⁻² = [M][L][T]⁻²." },
+
+{ id:"mis-05", topic:"misure", type:"mc",
+  q:"Quale delle seguenti NON è una grandezza fondamentale del Sistema Internazionale?",
+  options:["Lunghezza","Massa","Tempo","Forza","Temperatura"], correct:3,
+  explain:"La forza è una grandezza derivata (F = ma), non una delle sette grandezze fondamentali del SI." },
+
+{ id:"mis-06", topic:"misure", type:"mc",
+  q:"L'unità di misura della pressione nel Sistema Internazionale è:",
+  options:["Il newton","Il pascal","Il joule","Il watt","L'atmosfera"], correct:1 },
+
+{ id:"mis-07", topic:"misure", type:"mc",
+  q:"Quale delle seguenti è una grandezza derivata (non fondamentale) nel Sistema Internazionale?",
+  options:["Il tempo","La massa","La velocità","La lunghezza","La temperatura"], correct:2,
+  explain:"La velocità si ottiene dal rapporto tra una lunghezza e un tempo, quindi è una grandezza derivata." },
+
+{ id:"mis-08", topic:"misure", type:"mc",
+  q:"Il prefisso \"nano\" (n) indica un fattore moltiplicativo pari a:",
+  options:["10³","10⁻³","10⁶","10⁻⁹","10⁹"], correct:3 },
+
+{ id:"mis-09", topic:"misure", type:"mc",
+  q:"Il prefisso \"mega\" (M) indica un fattore moltiplicativo pari a:",
+  options:["10³","10⁶","10⁻⁶","10⁹","10⁻³"], correct:1 },
+
+{ id:"mis-10", topic:"misure", type:"mc",
+  q:"Una misura si dice diretta quando:",
+  options:[
+    "Si ottiene confrontando direttamente la grandezza con un campione dello stesso tipo (es. una lunghezza con un righello)",
+    "Si ottiene esclusivamente tramite calcolo matematico a partire da altre grandezze",
+    "Si ottiene sempre con uno strumento elettronico",
+    "Non richiede alcuno strumento",
+    "È sempre meno precisa di una misura indiretta"], correct:0 },
+
+{ id:"mis-11", topic:"misure", type:"mc",
+  q:"Una misura si dice indiretta quando:",
+  options:[
+    "Si ottiene tramite calcolo a partire da altre grandezze misurate direttamente",
+    "Si ottiene con un solo strumento tarato",
+    "Coincide sempre con una misura diretta",
+    "È indipendente dalle unità di misura utilizzate",
+    "Non può mai essere espressa con cifre significative"], correct:0,
+  explain:"Ad esempio, la velocità media è una misura indiretta: si calcola a partire dalle misure dirette di spazio e tempo." },
+
+{ id:"mis-12", topic:"misure", type:"mc",
+  q:"L'analisi dimensionale di una formula fisica serve a:",
+  options:[
+    "Verificare che i due membri di un'equazione abbiano le stesse dimensioni fisiche",
+    "Calcolare esclusivamente il valore numerico di una grandezza",
+    "Sostituire la misura sperimentale",
+    "Determinare il colore di un fenomeno fisico",
+    "Eliminare la necessità delle unità di misura"], correct:0 },
+
+{ id:"mis-13", topic:"misure", type:"mc",
+  q:"Quante sono le grandezze fondamentali del Sistema Internazionale?",
+  options:["4","5","6","7","9"], correct:3,
+  explain:"Le sette grandezze fondamentali sono: lunghezza, massa, tempo, corrente elettrica, temperatura, quantità di sostanza, intensità luminosa." },
+
+{ id:"mis-14", topic:"misure", type:"mc",
+  q:"L'unità di misura dell'energia nel Sistema Internazionale è:",
+  options:["Il newton","Il watt","Il joule","La caloria","Il pascal"], correct:2 },
+
+{ id:"mis-15", topic:"misure", type:"fill",
+  q:"Una velocità di 30 m/s espressa in km/h vale ________.",
+  answer:"108" },
+
+{ id:"mis-16", topic:"misure", type:"fill",
+  q:"Sapendo che 1 metro equivale a 100 centimetri, un'accelerazione di 320 cm/s² corrisponde a ________ m/s² nel Sistema Internazionale.",
+  answer:"3,2", answerAlt:["3.2"] },
+
+{ id:"mis-17", topic:"misure", type:"fill",
+  q:"Per convertire un valore da pascal a nanopascal, si moltiplica il valore in pascal per 10 elevato alla potenza di ________.",
+  answer:"9" },
+
+{ id:"mis-18", topic:"misure", type:"fill",
+  q:"Un elettrone si sposta tra due punti di un campo elettrico tra i quali esiste una differenza di potenziale di 3×10⁴ volt. La variazione di energia dell'elettrone è pari a ________ keV.",
+  answer:"30" },
+
+{ id:"mis-19", topic:"misure", type:"fill",
+  q:"In 1 mm³ di sangue sono disciolti 4 µg di una proteina. In 1 litro ne saranno disciolti ________ g.",
+  answer:"4",
+  explain:"1 litro = 10⁶ mm³, quindi 4 µg/mm³ × 10⁶ mm³ = 4×10⁶ µg = 4 g." },
+
+{ id:"mis-20", topic:"misure", type:"fill",
+  q:"Il Sistema Internazionale di unità di misura si basa su ________ grandezze fondamentali.",
+  answer:"SETTE", answerAlt:["7"] },
+
+/* ============================= CINEMATICA ============================= */
+
+{ id:"cin-01", topic:"cinematica", type:"mc",
+  q:"La cinematica è la branca della meccanica che studia:",
+  options:["Le cause del moto dei corpi","Il movimento dei corpi analizzandone le caratteristiche, senza occuparsi delle cause","L'equilibrio dei corpi fermi","Esclusivamente le forze agenti su un corpo","La trasformazione dell'energia"], correct:1 },
+
+{ id:"cin-02", topic:"cinematica", type:"mc",
+  q:"La traiettoria di un punto materiale è definita come:",
+  options:["La distanza percorsa nel tempo","L'insieme dei punti dello spazio occupati dal punto materiale durante il suo moto","La velocità media del punto","Il tempo impiegato a percorrere un tragitto","L'accelerazione subita dal corpo"], correct:1 },
+
+{ id:"cin-03", topic:"cinematica", type:"mc",
+  q:"Quando la traiettoria di un punto materiale è una retta, il moto si definisce:",
+  options:["Circolare","Parabolico","Rettilineo","Armonico","Curvilineo"], correct:2 },
+
+{ id:"cin-04", topic:"cinematica", type:"mc",
+  q:"Il sistema di riferimento, in cinematica, è definito come:",
+  options:["La traiettoria del corpo in esame","Un luogo fisico rispetto al quale sono effettuate le misure delle grandezze cinematiche","La velocità istantanea del corpo","Un tipo particolare di moto","L'accelerazione di un corpo"], correct:1 },
+
+{ id:"cin-05", topic:"cinematica", type:"mc",
+  q:"La relazione che lega la posizione di un corpo al tempo è detta:",
+  options:["Legge oraria del moto","Traiettoria","Sistema di riferimento","Accelerazione media","Tensione superficiale"], correct:0 },
+
+{ id:"cin-06", topic:"cinematica", type:"mc",
+  q:"La velocità media è definita come:",
+  options:["Il prodotto tra spazio percorso e tempo impiegato","Il rapporto tra lo spazio percorso Δs e l'intervallo di tempo Δt in cui è stato percorso","Il rapporto tra accelerazione e tempo","Il prodotto tra la massa e la posizione","Il rapporto tra tempo e spazio percorso"], correct:1 },
+
+{ id:"cin-07", topic:"cinematica", type:"mc",
+  q:"Per convertire una velocità da m/s a km/h occorre:",
+  options:["Dividere per 3,6","Moltiplicare per 3,6","Moltiplicare per 10","Dividere per 10","Moltiplicare per 1000"], correct:1 },
+
+{ id:"cin-09", topic:"cinematica", type:"mc",
+  q:"Il moto rettilineo uniforme è caratterizzato da:",
+  options:["Accelerazione costante e diversa da zero","Velocità media costante lungo un'unica dimensione","Traiettoria circolare","Velocità che varia linearmente nel tempo","Assenza di spostamento"], correct:1 },
+
+{ id:"cin-10", topic:"cinematica", type:"mc",
+  q:"Nella legge oraria del moto rettilineo uniforme s = s₀ + vt, il termine s₀ rappresenta:",
+  options:["La velocità iniziale","L'accelerazione","Lo spazio iniziale percorso dal corpo","Il tempo iniziale","Lo spazio totale percorso"], correct:2 },
+
+{ id:"cin-11", topic:"cinematica", type:"mc",
+  q:"Il grafico spazio-tempo del moto rettilineo uniforme è rappresentato da:",
+  options:["Una parabola","Una retta il cui coefficiente angolare coincide con la velocità","Una retta orizzontale","Una circonferenza","Una curva esponenziale"], correct:1 },
+
+{ id:"cin-12", topic:"cinematica", type:"mc",
+  q:"L'accelerazione media è definita come:",
+  options:["Il rapporto tra spazio percorso e tempo","Il rapporto tra la variazione di velocità Δv e l'intervallo di tempo Δt in cui avviene", "Il prodotto tra velocità e tempo","La variazione di posizione nel tempo","Il rapporto tra forza e tempo"], correct:1 },
+
+{ id:"cin-13", topic:"cinematica", type:"mc",
+  q:"L'unità di misura dell'accelerazione nel Sistema Internazionale è:",
+  options:["m/s","m/s²","km/h","N/kg","m²/s"], correct:1 },
+
+{ id:"cin-14", topic:"cinematica", type:"mc",
+  q:"Un moto rettilineo si definisce uniformemente accelerato se:",
+  options:["La velocità è sempre nulla","L'accelerazione media risulta costante in tutto l'intervallo di tempo considerato","La traiettoria è una parabola","L'accelerazione varia nel tempo","Il corpo è fermo"], correct:1 },
+
+{ id:"cin-15", topic:"cinematica", type:"mc",
+  q:"Nel moto uniformemente accelerato, la velocità dipende dal tempo secondo la relazione v = v₀ + at. In un grafico velocità-tempo, il coefficiente angolare della retta rappresenta:",
+  options:["La velocità iniziale","Lo spazio percorso","L'accelerazione","Il tempo totale","La posizione iniziale"], correct:2 },
+
+{ id:"cin-17", topic:"cinematica", type:"mc",
+  q:"Il moto di un punto materiale con curvatura costante della traiettoria e velocità scalare costante è:",
+  options:["Uniformemente accelerato","Elicoidale","Armonico","Un quesito senza soluzione univoca","Circolare uniforme"], correct:4,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello)." },
+
+{ id:"cin-18", topic:"cinematica", type:"mc",
+  q:"Una nave percorre in successione 10 km verso Nord, 6 km verso Est e infine 18 km verso Sud. Quanto vale il modulo dello spostamento risultante?",
+  options:["15 km","10 km","5 km","25 km","20 km"], correct:1,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). Componente Nord-Sud: 10-18 = -8 km; componente Est: 6 km. Modulo = √(8²+6²) = √100 = 10 km." },
+
+{ id:"cin-20", topic:"cinematica", type:"mc",
+  q:"Se il grafico spazio-tempo di un corpo è una retta con pendenza nulla (parallela all'asse dei tempi), il corpo:",
+  options:["Si muove di moto uniformemente accelerato","È fermo (velocità nulla)","Si muove a velocità costante e diversa da zero","Sta accelerando","Sta decelerando"], correct:1 },
+
+{ id:"cin-21", topic:"cinematica", type:"fill",
+  q:"Il grafico spazio-tempo di un moto uniformemente accelerato ha forma ________.",
+  answer:"PARABOLICA", answerAlt:["PARABOLA"],
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello)." },
+
+{ id:"cin-22", topic:"cinematica", type:"fill",
+  q:"Il grafico velocità-tempo di un moto uniformemente accelerato è rappresentato da una ________.",
+  answer:"RETTA" },
+
+{ id:"cin-23", topic:"cinematica", type:"fill",
+  q:"Un corpo cade liberamente, senza attriti, partendo da fermo da un'altezza di 12 m. L'altezza dal suolo alla quale la sua velocità è pari alla metà di quella finale (a terra) è ________ m.",
+  answer:"9",
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). Da v²=2g(h₀-h): se v = v_finale/2, allora h₀-h = h₀/4, quindi h = (3/4)h₀ = 9 m." },
+
+{ id:"cin-24", topic:"cinematica", type:"fill",
+  q:"Nel moto rettilineo uniforme lo spazio percorso è direttamente proporzionale al ________ impiegato per percorrerlo.",
+  answer:"TEMPO" },
+
+{ id:"cin-25", topic:"cinematica", type:"fill",
+  q:"La grandezza fisica che descrive la variazione di velocità nel tempo si chiama ________.",
+  answer:"ACCELERAZIONE" },
+
+{ id:"cin-26", topic:"cinematica", type:"fill",
+  q:"L'insieme dei punti dello spazio occupati da un corpo in movimento si chiama ________ del moto.",
+  answer:"TRAIETTORIA" },
+
+{ id:"cin-27", topic:"cinematica", type:"fill",
+  q:"Il moto di un punto materiale che si muove lungo una traiettoria circolare con velocità scalare costante si chiama moto circolare ________.",
+  answer:"UNIFORME" },
+
+{ id:"cin-28", topic:"cinematica", type:"fill",
+  q:"La velocità media si misura, nel Sistema Internazionale, in ________.",
+  answer:"M/S", answerAlt:["METRI AL SECONDO","METRI/SECONDO","M/SEC"] },
+
+/* ============================= DINAMICA ============================= */
+
+{ id:"din-01", topic:"dinamica", type:"mc",
+  q:"Il primo principio della dinamica (principio d'inerzia) afferma che:",
+  options:[
+    "Un corpo soggetto a una forza netta nulla persevera nel suo stato di quiete o di moto rettilineo uniforme",
+    "Ogni corpo accelera in modo indipendente dalla forza applicata",
+    "Ad ogni azione corrisponde una reazione uguale e contraria",
+    "La quantità di moto di un sistema isolato aumenta nel tempo",
+    "L'energia meccanica si conserva sempre, anche in presenza di attrito"], correct:0 },
+
+{ id:"din-02", topic:"dinamica", type:"mc",
+  q:"Il secondo principio della dinamica si esprime matematicamente come:",
+  options:["F = mv","F = ma","F = m/a","F = ma²","F = a/m"], correct:1 },
+
+{ id:"din-03", topic:"dinamica", type:"mc",
+  q:"Il terzo principio della dinamica (principio di azione e reazione) afferma che:",
+  options:[
+    "Un corpo fermo rimane fermo se non sollecitato",
+    "La forza è proporzionale all'accelerazione",
+    "Se un corpo A esercita una forza su un corpo B, allora B esercita su A una forza uguale in modulo e direzione ma di verso opposto",
+    "L'energia si conserva sempre in un sistema isolato",
+    "La quantità di moto totale di un sistema aumenta nel tempo"], correct:2 },
+
+{ id:"din-04", topic:"dinamica", type:"mc",
+  q:"Le forze di azione e reazione del terzo principio della dinamica:",
+  options:["Si annullano a vicenda perché agiscono sullo stesso corpo","Agiscono su corpi diversi e quindi non si annullano","Hanno sempre natura diversa tra loro","Agiscono solo se i due corpi sono a contatto diretto","Sono sempre nulle in un sistema in equilibrio"], correct:1 },
+
+{ id:"din-05", topic:"dinamica", type:"mc",
+  q:"Applicando una forza di uguale intensità a due corpi di massa diversa, i due corpi acquistano:",
+  options:["La stessa accelerazione","Un quesito senza soluzione univoca","Accelerazioni direttamente proporzionali alle masse","La stessa velocità","Accelerazioni inversamente proporzionali alle masse"], correct:4,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello). Dal secondo principio, a=F/m: a parità di F, l'accelerazione è inversamente proporzionale alla massa." },
+
+{ id:"din-06", topic:"dinamica", type:"mc",
+  q:"L'unità di misura della forza nel Sistema Internazionale è:",
+  options:["Il joule","Il newton","Il watt","Il pascal","Il kilogrammo"], correct:1 },
+
+{ id:"din-07", topic:"dinamica", type:"mc",
+  q:"Un newton (N) equivale a:",
+  options:["1 kg·m/s","1 kg·m/s²","1 kg/m²","1 kg·m²/s","1 kg/s²"], correct:1 },
+
+{ id:"din-08", topic:"dinamica", type:"mc",
+  q:"La forza peso di un corpo di massa m è data da:",
+  options:["P = m/g","P = mg","P = m + g","P = g/m","P = m²g"], correct:1 },
+
+{ id:"din-09", topic:"dinamica", type:"mc",
+  q:"La massa di un corpo, a differenza del peso:",
+  options:["Dipende dall'accelerazione di gravità del luogo","È una quantità vettoriale espressa in newton","È una proprietà intrinseca del corpo e non varia con la posizione","Aumenta quando il corpo accelera","Si misura in newton"], correct:2 },
+
+{ id:"din-10", topic:"dinamica", type:"mc",
+  q:"La forza d'attrito che si oppone al moto di un corpo che striscia su una superficie è chiamata attrito:",
+  options:["Statico","Dinamico (o radente)","Viscoso","Elastico","Gravitazionale"], correct:1 },
+
+{ id:"din-11", topic:"dinamica", type:"mc",
+  q:"La forza di attrito statico massima, tra le stesse superfici, rispetto a quella dinamica è generalmente:",
+  options:["Minore","Uguale","Maggiore o uguale","Nulla","Non confrontabile"], correct:2 },
+
+{ id:"din-12", topic:"dinamica", type:"mc",
+  q:"La forza elastica esercitata da una molla è descritta dalla legge di Hooke:",
+  options:["F = kx","F = mx","F = k/x","F = kx²","F = mgx"], correct:0,
+  explain:"k è la costante elastica della molla, x l'allungamento (o la compressione) rispetto alla posizione di riposo." },
+
+{ id:"din-13", topic:"dinamica", type:"mc",
+  q:"La forza normale esercitata da un piano di appoggio su un corpo è diretta:",
+  options:["Parallelamente al piano","Perpendicolarmente al piano di appoggio","Sempre verso il basso","Nella direzione del moto","In verso opposto alla forza peso solo se il corpo è in moto"], correct:1 },
+
+{ id:"din-14", topic:"dinamica", type:"mc",
+  q:"Un corpo si trova in equilibrio (statico) quando:",
+  options:["La sua accelerazione è massima","La risultante delle forze agenti su di esso è nulla","È soggetto a una sola forza","La sua velocità è massima","La sua massa è nulla"], correct:1 },
+
+{ id:"din-15", topic:"dinamica", type:"mc",
+  q:"Il momento di una forza rispetto a un punto è dato dal prodotto tra:",
+  options:["La forza e la massa","La forza e il suo braccio (distanza dalla retta d'azione al punto)","La forza e il tempo","La massa e l'accelerazione","La forza e la velocità"], correct:1 },
+
+{ id:"din-16", topic:"dinamica", type:"mc",
+  q:"Un pendolo che oscilla si smorza progressivamente nel tempo a causa di:",
+  options:["Forze conservative","Forze dissipative","Un aumento della sua massa","Una diminuzione della forza peso","Assenza totale di attrito"], correct:1,
+  explain:"Le forze dissipative (attrito dell'aria, attriti interni) sottraggono energia meccanica al sistema, smorzando l'oscillazione." },
+
+{ id:"din-17", topic:"dinamica", type:"mc",
+  q:"Due o più forze applicate a uno stesso corpo si compongono secondo:",
+  options:["La somma algebrica dei loro moduli, indipendentemente dalla direzione","La regola del parallelogramma (somma vettoriale)","La loro differenza","Il prodotto dei moduli","Nessuna regola particolare"], correct:1 },
+
+{ id:"din-18", topic:"dinamica", type:"fill",
+  q:"Un pendolo oscilla e le oscillazioni si smorzano nel tempo. Ciò avviene perché sul pendolo agiscono forze di tipo ________.",
+  answer:"DISSIPATIVE",
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello)." },
+
+{ id:"din-19", topic:"dinamica", type:"fill",
+  q:"Il principio secondo cui un corpo non soggetto a forze (o soggetto a una risultante nulla) mantiene il proprio stato di quiete o di moto rettilineo uniforme è detto principio di ________.",
+  answer:"INERZIA" },
+
+{ id:"din-20", topic:"dinamica", type:"fill",
+  q:"Secondo il terzo principio della dinamica, ad ogni azione corrisponde una ________ uguale e contraria.",
+  answer:"REAZIONE" },
+
+{ id:"din-21", topic:"dinamica", type:"fill",
+  q:"La costante k che compare nella legge di Hooke F = kx è detta costante ________.",
+  answer:"ELASTICA" },
+
+{ id:"din-22", topic:"dinamica", type:"fill",
+  q:"La forza che si oppone allo scivolamento relativo tra due superfici a contatto è la forza di ________.",
+  answer:"ATTRITO" },
+
+{ id:"din-23", topic:"dinamica", type:"fill",
+  q:"Nel Sistema Internazionale, la forza si misura in ________.",
+  answer:"NEWTON" },
+
+{ id:"din-24", topic:"dinamica", type:"fill",
+  q:"Un corpo in equilibrio ha una risultante delle forze agenti su di esso pari a ________.",
+  answer:"ZERO", answerAlt:["0","NULLA"] },
+
+{ id:"din-25", topic:"dinamica", type:"fill",
+  q:"Secondo il secondo principio della dinamica, l'accelerazione di un corpo è ________ proporzionale alla forza netta applicata.",
+  answer:"DIRETTAMENTE" },
+
+/* ============================= LAVORO, ENERGIA E POTENZA ============================= */
+
+{ id:"en-01", topic:"energia", type:"mc",
+  q:"Il lavoro L compiuto da una forza F costante durante uno spostamento s è definito come:",
+  options:["Il prodotto vettoriale tra F e s","Il prodotto scalare tra F e s","La somma tra F e s","Il rapporto tra F e s","La differenza tra F e s"], correct:1 },
+
+{ id:"en-02", topic:"energia", type:"mc",
+  q:"L'unità di misura del lavoro nel Sistema Internazionale è:",
+  options:["Il newton","Il watt","Il joule","Il pascal","La caloria"], correct:2 },
+
+{ id:"en-03", topic:"energia", type:"mc",
+  q:"Il lavoro L = |F||s|cosα si definisce motore quando:",
+  options:["L'angolo α è ottuso","Il lavoro L è negativo","L'angolo α è acuto (o nullo) e quindi L è positivo","F e s sono perpendicolari","Il lavoro L è sempre nullo"], correct:2 },
+
+{ id:"en-04", topic:"energia", type:"mc",
+  q:"Il lavoro si definisce resistente quando:",
+  options:["F e s sono paralleli e concordi","L'angolo tra F e s è acuto","L'angolo tra F e s è ottuso (o piatto) e quindi L è negativo","La forza F è nulla","Lo spostamento s è nullo"], correct:2 },
+
+{ id:"en-05", topic:"energia", type:"mc",
+  q:"La potenza è definita come:",
+  options:["Il prodotto tra lavoro e tempo","Il rapporto tra il lavoro compiuto e l'intervallo di tempo impiegato","La variazione di energia cinetica","Il rapporto tra forza e spostamento","Il prodotto tra forza e velocità al quadrato"], correct:1 },
+
+{ id:"en-06", topic:"energia", type:"mc",
+  q:"L'unità di misura della potenza nel Sistema Internazionale è:",
+  options:["Il joule","Il newton","Il watt","Il kWh","Il pascal"], correct:2 },
+
+{ id:"en-07", topic:"energia", type:"mc",
+  q:"Il watt (W), unità di misura della potenza, corrisponde a:",
+  options:["1 joule al minuto","1 joule al secondo","1 newton al secondo","1 joule per metro","1 newton per metro"], correct:1 },
+
+{ id:"en-08", topic:"energia", type:"mc",
+  q:"A quanti joule corrisponde 1 kWh?",
+  options:["1000 J","3600 J","36.000 J","3.600.000 J","860 J"], correct:3,
+  explain:"1 kWh = 1000 W × 3600 s = 3.600.000 J." },
+
+{ id:"en-09", topic:"energia", type:"mc",
+  q:"Una forza si definisce conservativa quando:",
+  options:["Dipende dalla velocità del corpo","Il lavoro compiuto per spostare un corpo da A a B dipende dal percorso seguito","Il lavoro compiuto lungo un qualsiasi tragitto chiuso è sempre nullo","È sempre diretta verso il basso","Produce sempre un lavoro negativo"], correct:2 },
+
+{ id:"en-10", topic:"energia", type:"mc",
+  q:"Quali delle seguenti sono forze conservative?",
+  options:["La forza di attrito e la forza peso","La forza peso e la forza elastica","La forza elastica e la forza di attrito","Solo la forza di attrito","Nessuna forza in meccanica è conservativa"], correct:1 },
+
+{ id:"en-11", topic:"energia", type:"mc",
+  q:"La forza di attrito è un tipico esempio di forza:",
+  options:["Conservativa","Dissipativa (non conservativa)","Elastica","Gravitazionale","Centripeta"], correct:1 },
+
+{ id:"en-12", topic:"energia", type:"mc",
+  q:"L'energia cinetica di un corpo è l'energia associata:",
+  options:["Alla sua posizione nello spazio","Al suo movimento","Alla sua temperatura","Alla sua carica elettrica","Esclusivamente alla sua massa a riposo"], correct:1 },
+
+{ id:"en-13", topic:"energia", type:"mc",
+  q:"Il teorema dell'energia cinetica afferma che il lavoro compiuto su un corpo è pari:",
+  options:["Alla sua energia potenziale","Alla variazione di energia cinetica subita dal corpo","Alla sua massa moltiplicata per la velocità","Alla potenza media sviluppata","Al quadrato della sua velocità"], correct:1 },
+
+{ id:"en-14", topic:"energia", type:"mc",
+  q:"L'energia potenziale è definita in relazione a:",
+  options:["Qualsiasi tipo di forza","Esclusivamente le forze conservative","Esclusivamente le forze dissipative","La sola massa del corpo","Il tempo di applicazione della forza"], correct:1,
+  explain:"Se la forza non fosse conservativa, il lavoro dipenderebbe dal percorso e la definizione di energia potenziale non sarebbe univoca." },
+
+{ id:"en-15", topic:"energia", type:"mc",
+  q:"L'energia potenziale gravitazionale di una massa m posta a un'altezza h rispetto a un riferimento è data da:",
+  options:["U = mgh","U = ½mv²","U = mg/h","U = ½kh²","U = mh/g"], correct:0 },
+
+{ id:"en-16", topic:"energia", type:"mc",
+  q:"L'energia potenziale elastica immagazzinata da una molla allungata di una quantità x, con costante elastica k, è data da:",
+  options:["U = kx","U = ½kx²","U = kx²","U = ½k²x","U = mgx"], correct:1 },
+
+{ id:"en-17", topic:"energia", type:"mc",
+  q:"L'energia meccanica E di un corpo è definita come:",
+  options:["Il prodotto tra energia cinetica ed energia potenziale","La somma dell'energia cinetica e dell'energia potenziale","La differenza tra energia cinetica ed energia potenziale","Il rapporto tra lavoro e tempo","La sola energia cinetica"], correct:1 },
+
+{ id:"en-18", topic:"energia", type:"mc",
+  q:"Il principio di conservazione dell'energia meccanica afferma che l'energia meccanica di un sistema si mantiene costante quando:",
+  options:["Agiscono solo forze dissipative","Agiscono sia forze conservative che dissipative","Agiscono esclusivamente forze conservative","Il sistema è fermo","La massa del sistema è costante"], correct:2 },
+
+{ id:"en-19", topic:"energia", type:"mc",
+  q:"Se su un sistema agiscono anche forze dissipative (come l'attrito), la variazione di energia meccanica ΔE è pari a:",
+  options:["Zero","Il lavoro compiuto dalle forze dissipative agenti sul sistema","L'energia cinetica iniziale","L'energia potenziale finale","Sempre un valore positivo"], correct:1,
+  explain:"ΔE = L_att, dove L_att è il lavoro (negativo) delle forze dissipative agenti sul sistema." },
+
+{ id:"en-20", topic:"energia", type:"mc",
+  q:"Una molla orizzontale, di costante elastica k, ha attaccato un blocco di massa m = 7 kg che oscilla con periodo T = π/3 s. Usando la relazione T = 2π√(m/k), quanto vale k?",
+  options:["28 N/m","126 N/m","252 N/m","4 N/m","252π N/m"], correct:2,
+  explain:"Ispirata a una domanda della prova ufficiale del semestre filtro 2025 (primo appello). k = 4π²m/T² = 4π²×7/(π/3)² = 4π²×7×9/π² = 252 N/m." },
+
+{ id:"en-21", topic:"energia", type:"fill",
+  q:"Il lavoro meccanico di una forza è definito come il prodotto ________ tra il vettore forza e il vettore spostamento.",
+  answer:"SCALARE",
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello)." },
+
+{ id:"en-22", topic:"energia", type:"fill",
+  q:"L'energia associata al movimento di un corpo si chiama energia ________.",
+  answer:"CINETICA" },
+
+{ id:"en-23", topic:"energia", type:"fill",
+  q:"L'unità di misura della potenza nel Sistema Internazionale è il ________.",
+  answer:"WATT" },
+
+{ id:"en-24", topic:"energia", type:"fill",
+  q:"La forza peso e la forza elastica sono esempi di forze ________.",
+  answer:"CONSERVATIVE" },
+
+{ id:"en-25", topic:"energia", type:"fill",
+  q:"La forza di attrito è un esempio di forza ________ (non conservativa).",
+  answer:"DISSIPATIVA" },
+
+{ id:"en-26", topic:"energia", type:"fill",
+  q:"Nella formula dell'energia potenziale gravitazionale U = mgh, la lettera g rappresenta l'accelerazione di ________.",
+  answer:"GRAVITÀ" },
+
+{ id:"en-27", topic:"energia", type:"fill",
+  q:"La somma dell'energia cinetica e dell'energia potenziale di un corpo è detta energia ________.",
+  answer:"MECCANICA" },
+
+{ id:"en-28", topic:"energia", type:"fill",
+  q:"1 kWh corrisponde, in notazione estesa, a ________ joule.",
+  answer:"3600000", answerAlt:["3.600.000","3600000 J"] },
+
+{ id:"en-29", topic:"energia", type:"fill",
+  q:"Il lavoro compiuto da una forza il cui angolo con lo spostamento è ottuso si definisce lavoro ________.",
+  answer:"RESISTENTE" },
+
+{ id:"en-30", topic:"energia", type:"fill",
+  q:"Il lavoro compiuto da una forza il cui angolo con lo spostamento è acuto (o nullo) si definisce lavoro ________.",
+  answer:"MOTORE" }
 
 ];
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { QUESTIONS, TOPICS };
+  module.exports = { QUESTIONS, TOPICS, AREAS };
 }

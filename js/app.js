@@ -115,7 +115,7 @@
       const d = stats.byTopic[t];
       if (d && d.total > 0) {
         const pct = Math.round((d.correct / d.total) * 100);
-        html += `<div class="stat-row"><span>${TOPICS[t].name}</span><b>${d.correct}/${d.total} (${pct}%)</b></div>`;
+        html += `<div class="stat-row"><span>${AREAS[TOPICS[t].area].icon} ${TOPICS[t].name}</span><b>${d.correct}/${d.total} (${pct}%)</b></div>`;
       }
     });
     if (stats.examHistory.length > 0) {
@@ -130,25 +130,66 @@
   /* ---------------------------------------------------------------- */
   /* Home screen setup                                                  */
   /* ---------------------------------------------------------------- */
+  function topicsByArea(areaKey) {
+    return Object.keys(TOPICS).filter((key) => TOPICS[key].area === areaKey);
+  }
+
   function buildTopicFilters() {
     const container = el("topicFilters");
     container.innerHTML = "";
-    Object.keys(TOPICS).forEach((key) => {
-      const count = QUESTIONS.filter((q) => q.topic === key).length;
-      const row = document.createElement("label");
-      row.className = "topic-filter-row";
-      row.innerHTML = `
-        <input type="checkbox" value="${key}" checked>
-        <span class="topic-dot" style="background:${TOPICS[key].color}"></span>
-        <span>${TOPICS[key].name}</span>
-        <span class="topic-count">${count} domande</span>
-      `;
-      container.appendChild(row);
+    Object.keys(AREAS).forEach((areaKey) => {
+      const group = document.createElement("div");
+      group.className = "topic-area-group";
+      const header = document.createElement("div");
+      header.className = "topic-area-header";
+      header.innerHTML = `<span>${AREAS[areaKey].icon} ${AREAS[areaKey].name}</span>`;
+      group.appendChild(header);
+
+      topicsByArea(areaKey).forEach((key) => {
+        const count = QUESTIONS.filter((q) => q.topic === key).length;
+        const row = document.createElement("label");
+        row.className = "topic-filter-row";
+        row.innerHTML = `
+          <input type="checkbox" value="${key}" checked>
+          <span class="topic-dot" style="background:${TOPICS[key].color}"></span>
+          <span>${TOPICS[key].name}</span>
+          <span class="topic-count">${count} domande</span>
+        `;
+        group.appendChild(row);
+      });
+      container.appendChild(group);
     });
   }
 
   function selectedTopics() {
     return Array.from(document.querySelectorAll('#topicFilters input[type="checkbox"]:checked')).map((i) => i.value);
+  }
+
+  function buildExamAreaSelect() {
+    const container = el("examAreaSelect");
+    container.innerHTML = "";
+    Object.keys(AREAS).forEach((areaKey, i) => {
+      const id = `examArea_${areaKey}`;
+      const label = document.createElement("label");
+      label.className = "area-pill" + (i === 0 ? " is-checked" : "");
+      label.setAttribute("for", id);
+      label.innerHTML = `
+        <input type="radio" name="examArea" id="${id}" value="${areaKey}" ${i === 0 ? "checked" : ""}>
+        <span>${AREAS[areaKey].icon} ${AREAS[areaKey].name}</span>
+      `;
+      container.appendChild(label);
+    });
+    container.querySelectorAll('input[name="examArea"]').forEach((input) => {
+      input.addEventListener("change", () => {
+        container.querySelectorAll(".area-pill").forEach((p) => p.classList.remove("is-checked"));
+        input.closest(".area-pill").classList.add("is-checked");
+      });
+    });
+  }
+
+  function selectedExamArea() {
+    const checked = document.querySelector('#examAreaSelect input[name="examArea"]:checked');
+    return checked ? checked.value : Object.keys(AREAS)[0];
   }
 
   /* ---------------------------------------------------------------- */
@@ -170,11 +211,15 @@
   }
 
   function startExam() {
-    const mcPool = shuffle(QUESTIONS.filter((q) => q.type === "mc"));
-    const fillPool = shuffle(QUESTIONS.filter((q) => q.type === "fill"));
+    const area = selectedExamArea();
+    const areaTopics = topicsByArea(area);
+    const areaQuestions = QUESTIONS.filter((q) => areaTopics.includes(q.topic));
+    const mcPool = shuffle(areaQuestions.filter((q) => q.type === "mc"));
+    const fillPool = shuffle(areaQuestions.filter((q) => q.type === "fill"));
     const mcPicked = mcPool.slice(0, 21);
     const fillPicked = fillPool.slice(0, 10);
     state.mode = "exam";
+    state.examArea = area;
     state.queue = shuffle(mcPicked.concat(fillPicked));
     state.index = 0;
     state.answers = [];
@@ -211,12 +256,15 @@
     const q = state.queue[state.index];
     const total = state.queue.length;
 
-    el("quizModeLabel").textContent = state.mode === "exam" ? "Esame simulato" : "Modalità studio";
+    el("quizModeLabel").textContent = state.mode === "exam"
+      ? `Esame simulato · ${AREAS[state.examArea].icon} ${AREAS[state.examArea].name}`
+      : "Modalità studio";
     el("quizCounter").textContent = `Domanda ${state.index + 1} di ${total}`;
     el("progressFill").style.width = `${(state.index / total) * 100}%`;
 
     const badge = el("qTopicBadge");
-    badge.textContent = TOPICS[q.topic].name + (q.type === "fill" ? " · Completamento" : " · Risposta multipla");
+    const areaInfo = AREAS[TOPICS[q.topic].area];
+    badge.textContent = `${areaInfo.icon} ${TOPICS[q.topic].name}` + (q.type === "fill" ? " · Completamento" : " · Risposta multipla");
     badge.style.color = TOPICS[q.topic].color;
 
     el("qText").textContent = q.q;
@@ -408,7 +456,7 @@
       const pct = Math.round((correct / subset.length) * 100);
       html += `
         <div class="breakdown-row">
-          <span class="name">${TOPICS[t].name}</span>
+          <span class="name">${AREAS[TOPICS[t].area].icon} ${TOPICS[t].name}</span>
           <span class="breakdown-bar"><span class="breakdown-fill" style="width:${pct}%;background:${TOPICS[t].color}"></span></span>
           <span class="frac">${correct}/${subset.length}</span>
         </div>`;
@@ -447,6 +495,7 @@
   /* ---------------------------------------------------------------- */
   function init() {
     buildTopicFilters();
+    buildExamAreaSelect();
     renderStats();
 
     el("rulesToggle").addEventListener("click", () => {
