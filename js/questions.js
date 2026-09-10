@@ -1,35 +1,73 @@
 /*
- * Banca dati domande - Quiz Semestre Filtro: Chimica e Fisica
+ * Banca dati domande - Quiz Semestre Filtro: Chimica, Fisica e Biologia
  * Chimica: slide del corso (Stati di aggregazione della materia, Stato aeriforme, Stato liquido,
  * Termodinamica delle reazioni chimiche, Atomo, Il sistema periodico degli elementi, Legami,
  * Composti inorganici) + quiz proposti nelle slide stesse + domande ufficiali delle prove del
- * semestre filtro 2025 (primo e secondo appello).
+ * semestre filtro 2025 (primo e secondo appello) + Syllabus ufficiale Chimica e Propedeutica
+ * Biochimica 2026/27 (MUR).
  * Fisica: slide del corso (Cinematica, Lavoro ed energia) + domande ufficiali delle prove del
  * semestre filtro 2025 (primo e secondo appello) su unità di misura, cinematica, dinamica,
  * lavoro-energia-potenza, integrate con domande originali sugli stessi argomenti.
+ * Biologia: slide del corso (macromolecole biologiche, amminoacidi e proteine, enzimi e
+ * metabolismo, lipidi, membrane cellulari) + domande ufficiali delle prove del semestre filtro
+ * 2025 (primo e secondo appello) + Syllabus ufficiale Biologia 2026/27 (MUR).
  * Formato coerente con le prove ufficiali del semestre filtro 2025/26: domande a risposta
  * multipla (5 opzioni A-E, una sola corretta) e domande a completamento.
+ *
+ * Ogni argomento di Chimica e Biologia riporta anche il numero (unit) dell'unità didattica del
+ * rispettivo syllabus ministeriale a cui appartiene: vedi SYLLABUS per l'elenco completo delle
+ * unità didattiche nell'ordine ufficiale (comprese quelle non ancora coperte da domande).
  */
 
 const AREAS = {
-  chimica: { name: "Chimica", icon: "🧪", color: "#6366f1" },
-  fisica:  { name: "Fisica",  icon: "⚛️", color: "#dc2626" }
+  chimica:  { name: "Chimica",  icon: "🧪", color: "#6366f1" },
+  fisica:   { name: "Fisica",   icon: "⚛️", color: "#dc2626" },
+  biologia: { name: "Biologia", icon: "🧬", color: "#16a34a" }
+};
+
+// Unità didattiche ufficiali, nell'ordine del syllabus ministeriale 2026/27 (solo per le aree in
+// cui è stato fornito un syllabus, cioè Chimica e Biologia). Fisica non ha un syllabus dedicato
+// disponibile e i suoi argomenti restano quindi elencati senza suddivisione in unità.
+const SYLLABUS = {
+  chimica: [
+    { unit: 1, name: "La struttura dell'atomo, i legami chimici, stati di aggregazione della materia e termodinamica dei sistemi aperti" },
+    { unit: 2, name: "Miscele, soluzioni e le proprietà colligative delle soluzioni" },
+    { unit: 3, name: "Le reazioni chimiche negli organismi viventi: caratteristiche generali, cinetica ed equilibrio chimico" },
+    { unit: 4, name: "Acidi, basi, sali, pH, soluzioni tampone; reazioni di ossido-riduzione ed elettrochimica" },
+    { unit: 5, name: "Proprietà del carbonio e reattività dei composti organici, idrocarburi, alogenuri alchilici, idrocarburi aromatici e derivati" },
+    { unit: 6, name: "I gruppi funzionali e isomerie: alcoli, fenoli, eteri, tioli e tioeteri; aldeidi e chetoni; acidi carbossilici e derivati, ammine e ammidi" },
+    { unit: 7, name: "Amminoacidi e proteine, carboidrati, lipidi, nucleotidi, polinucleotidi e acidi nucleici" }
+  ],
+  biologia: [
+    { unit: 1, name: "Le basi dell'organizzazione biologica e molecolare della vita" },
+    { unit: 2, name: "I meccanismi cellulari di trasmissione e controllo dell'informazione genetica ed epigenetica" },
+    { unit: 3, name: "Il flusso dell'informazione" },
+    { unit: 4, name: "I meccanismi cellulari di trasmissione e controllo dei caratteri selvatici e mutati" },
+    { unit: 5, name: "Le strutture cellulari: biogenesi, morfologia e funzioni" },
+    { unit: 6, name: "La cellula e l'ambiente, la segnalazione cellulare e la trasduzione del segnale" },
+    { unit: 7, name: "Il controllo della proliferazione e della sopravvivenza cellulare" }
+  ]
 };
 
 const TOPICS = {
-  aggregazione: { name: "Stati di aggregazione della materia", color: "#6366f1", area: "chimica" },
-  gas:          { name: "Stato aeriforme (i gas)",             color: "#0ea5e9", area: "chimica" },
-  liquido:      { name: "Stato liquido",                       color: "#14b8a6", area: "chimica" },
-  termodinamica:{ name: "Termodinamica",                       color: "#f59e0b", area: "chimica" },
-  atomo:        { name: "Struttura dell'atomo",                color: "#d946ef", area: "chimica" },
-  tavola:       { name: "Tavola periodica degli elementi",     color: "#65a30d", area: "chimica" },
-  legami:       { name: "Legami chimici",                      color: "#0891b2", area: "chimica" },
-  nomenclatura: { name: "Nomenclatura chimica",                color: "#db2777", area: "chimica" },
-  geometria:    { name: "Struttura e geometria molecolare",    color: "#9333ea", area: "chimica" },
+  aggregazione: { name: "Stati di aggregazione della materia", color: "#6366f1", area: "chimica", unit: 1 },
+  gas:          { name: "Stato aeriforme (i gas)",             color: "#0ea5e9", area: "chimica", unit: 1 },
+  liquido:      { name: "Stato liquido",                       color: "#14b8a6", area: "chimica", unit: 1 },
+  termodinamica:{ name: "Termodinamica",                       color: "#f59e0b", area: "chimica", unit: 1 },
+  atomo:        { name: "Struttura dell'atomo",                color: "#d946ef", area: "chimica", unit: 1 },
+  tavola:       { name: "Tavola periodica degli elementi",     color: "#65a30d", area: "chimica", unit: 1 },
+  legami:       { name: "Legami chimici",                      color: "#0891b2", area: "chimica", unit: 1 },
+  nomenclatura: { name: "Nomenclatura chimica",                color: "#db2777", area: "chimica", unit: 1 },
+  geometria:    { name: "Struttura e geometria molecolare",    color: "#9333ea", area: "chimica", unit: 1 },
   misure:       { name: "Unità di misura e grandezze fisiche", color: "#e11d48", area: "fisica" },
   cinematica:   { name: "Cinematica",                          color: "#ea580c", area: "fisica" },
   dinamica:     { name: "Dinamica",                            color: "#7c3aed", area: "fisica" },
-  energia:      { name: "Lavoro, energia e potenza",           color: "#059669", area: "fisica" }
+  energia:      { name: "Lavoro, energia e potenza",           color: "#059669", area: "fisica" },
+  biomolecole:  { name: "Basi molecolari della vita",          color: "#16a34a", area: "biologia", unit: 1 },
+  proteine:     { name: "Amminoacidi e proteine",               color: "#0d9488", area: "biologia", unit: 1 },
+  enzimi:       { name: "Enzimi e metabolismo",                 color: "#ca8a04", area: "biologia", unit: 1 },
+  lipidi:       { name: "Lipidi",                               color: "#be123c", area: "biologia", unit: 1 },
+  membrane:     { name: "Membrane cellulari",                   color: "#7c3aed", area: "biologia", unit: 5 }
 };
 
 // type: 'mc' (scelta multipla, options[5], correct = indice 0-4)
@@ -1674,10 +1712,504 @@ const QUESTIONS = [
 
 { id:"geom-19", topic:"geometria", type:"fill",
   q:"Una molecola i cui legami polarizzati si annullano vettorialmente per simmetria si dice ________.",
-  answer:"APOLARE" }
+  answer:"APOLARE" },
+
+/* =========================================================================
+   BIOLOGIA
+   ========================================================================= */
+
+/* ============================= BASI MOLECOLARI DELLA VITA ============================= */
+
+{ id:"bio-01", topic:"biomolecole", type:"mc",
+  q:"Quali sono i quattro elementi chimici più abbondanti nella materia vivente?",
+  options:["Na, K, Ca, Mg","C, H, O, N","Fe, Cu, Zn, Mn","P, S, Cl, I","C, N, P, S"], correct:1 },
+
+{ id:"bio-02", topic:"biomolecole", type:"mc",
+  q:"Qual è il componente chimico più abbondante delle cellule?",
+  options:["Le proteine","I lipidi","L'acqua","Il DNA","Il glucosio"], correct:2 },
+
+{ id:"bio-03", topic:"biomolecole", type:"mc",
+  q:"Le macromolecole biologiche sono:",
+  options:["Atomi isolati privi di legami","Polimeri costituiti da monomeri uniti da legami covalenti","Esclusivamente ioni inorganici","Molecole prive di carbonio","Sempre di natura lipidica"], correct:1 },
+
+{ id:"bio-04", topic:"biomolecole", type:"mc",
+  q:"Le macromolecole biologiche si formano mediante reazioni di:",
+  options:["Ossidoriduzione","Condensazione","Sublimazione","Neutralizzazione","Precipitazione"], correct:1,
+  explain:"La condensazione avviene con perdita di una molecola d'acqua; la degradazione avviene invece per idrolisi." },
+
+{ id:"bio-05", topic:"biomolecole", type:"mc",
+  q:"La degradazione delle macromolecole biologiche avviene generalmente mediante reazioni di:",
+  options:["Condensazione","Idrolisi","Fosforilazione","Ossidazione","Polimerizzazione"], correct:1 },
+
+{ id:"bio-06", topic:"biomolecole", type:"mc",
+  q:"Quali sono le quattro principali classi di macromolecole biologiche?",
+  options:["Vitamine, sali minerali, acqua, ormoni","Carboidrati, proteine, lipidi, acidi nucleici","Enzimi, recettori, canali, pompe","Actina, tubulina, miosina, cheratina","Glucosio, fruttosio, saccarosio, amido"], correct:1 },
+
+{ id:"bio-07", topic:"biomolecole", type:"mc",
+  q:"Quali ioni svolgono un ruolo importante come co-fattori di reazioni enzimatiche?",
+  options:["$Na^+$ e $Cl^-$","$Ca^{2+}$ e $Mg^{2+}$","$K^+$ esclusivamente","Nessuno ione svolge questo ruolo","Solo ioni negativi"], correct:1 },
+
+{ id:"bio-08", topic:"biomolecole", type:"mc",
+  q:"Gli ioni $Na^+$, $K^+$ e $Cl^-$ svolgono un ruolo cruciale nella regolazione di:",
+  options:["La pressione osmotica","Il numero di ossidazione del carbonio","La struttura del DNA","La sintesi proteica esclusivamente","Il codice genetico"], correct:0 },
+
+{ id:"bio-09", topic:"biomolecole", type:"mc",
+  q:"La polimerizzazione degli acidi nucleici, a differenza di quella di proteine e polisaccaridi, utilizza come precursori:",
+  options:["Amminoacidi liberi","Zuccheri semplici","Nucleosidi trifosfato, con rilascio di pirofosfato","Acidi grassi liberi","Ioni metallici"], correct:2 },
+
+{ id:"bio-10", topic:"biomolecole", type:"mc",
+  q:"Il DNA, in base alla sua funzione biologica, è l'acido nucleico deputato principalmente a:",
+  options:["La sintesi diretta di proteine","La conservazione dell'informazione genetica","Il controllo del traffico di membrana","La catalisi di reazioni biochimiche","Il trasporto di ossigeno"], correct:1 },
+
+{ id:"bio-11", topic:"biomolecole", type:"mc",
+  q:"L'RNA messaggero (mRNA) ha la funzione principale di:",
+  options:["Conservare l'informazione genetica a lungo termine","Dirigere la sintesi delle proteine","Catalizzare reazioni metaboliche","Trasportare ioni attraverso le membrane","Costituire il citoscheletro"], correct:1 },
+
+{ id:"bio-12", topic:"biomolecole", type:"mc",
+  q:"Quale categoria di RNA è coinvolta nel controllo dell'espressione genica (es. miRNA, siRNA)?",
+  options:["RNA messaggero","RNA ribosomale","RNA regolatori","RNA di trasporto (tRNA)","DNA"], correct:2 },
+
+{ id:"bio-13", topic:"biomolecole", type:"mc",
+  q:"Il nucleotide dAMP è composto da 2'-deossi-D-ribosio, una base azotata (adenina) e:",
+  options:["Un gruppo amminico","Un gruppo fosfato","Un gruppo carbossilico","Un gruppo ossidrilico aggiuntivo","Un gruppo solfato"], correct:1,
+  explain:"Domanda ispirata alla prova ufficiale del semestre filtro 2025 (primo appello)." },
+
+{ id:"bio-14", topic:"biomolecole", type:"mc",
+  q:"Le proteine, in base alla loro funzione biologica, possono agire come:",
+  options:["Esclusivamente strutture di deposito","Solo come enzimi","Enzimi, proteine strutturali, di trasporto, recettori e molte altre funzioni","Solo come recettori di membrana","Esclusivamente come anticorpi"], correct:2 },
+
+{ id:"bio-15", topic:"biomolecole", type:"fill",
+  q:"Le macromolecole biologiche sono costituite da unità ripetute chiamate ________.",
+  answer:"MONOMERI" },
+
+{ id:"bio-16", topic:"biomolecole", type:"fill",
+  q:"Il componente chimico più abbondante delle cellule è ________.",
+  answer:"ACQUA", answerAlt:["L'ACQUA"] },
+
+{ id:"bio-17", topic:"biomolecole", type:"fill",
+  q:"Le reazioni che uniscono i monomeri in una macromolecola, con perdita di una molecola d'acqua, sono dette reazioni di ________.",
+  answer:"CONDENSAZIONE" },
+
+{ id:"bio-18", topic:"biomolecole", type:"fill",
+  q:"Le reazioni che degradano le macromolecole per aggiunta di acqua sono dette reazioni di ________.",
+  answer:"IDROLISI" },
+
+{ id:"bio-19", topic:"biomolecole", type:"fill",
+  q:"Gli ioni $Ca^{2+}$ e $Mg^{2+}$ agiscono spesso come ________ di reazioni enzimatiche.",
+  answer:"COFATTORI", answerAlt:["CO-FATTORI"] },
+
+{ id:"bio-20", topic:"biomolecole", type:"fill",
+  q:"L'unità monomerica degli acidi nucleici è il ________.",
+  answer:"NUCLEOTIDE" },
+
+/* ============================= AMMINOACIDI E PROTEINE ============================= */
+
+{ id:"prot-01", topic:"proteine", type:"mc",
+  q:"Le proteine sono polimeri costituiti da monomeri chiamati:",
+  options:["Nucleotidi","Amminoacidi","Monosaccaridi","Acidi grassi","Basi azotate"], correct:1 },
+
+{ id:"prot-02", topic:"proteine", type:"mc",
+  q:"Quanti amminoacidi standard compongono le proteine?",
+  options:["10","15","20","25","30"], correct:2 },
+
+{ id:"prot-03", topic:"proteine", type:"mc",
+  q:"Ogni amminoacido presenta un gruppo amminico, un gruppo carbossilico, un atomo di idrogeno e:",
+  options:["Un secondo gruppo carbossilico","Un gruppo funzionale R (catena laterale) variabile","Sempre un anello aromatico","Un gruppo fosfato","Un gruppo ossidrilico obbligatorio"], correct:1 },
+
+{ id:"prot-04", topic:"proteine", type:"mc",
+  q:"A pH fisiologico, il gruppo amminico di un amminoacido è tipicamente:",
+  options:["Carico negativamente","Neutro e non dissociato","Carico positivamente ($NH_3^+$)","Assente","Legato covalentemente a un fosfato"], correct:2 },
+
+{ id:"prot-05", topic:"proteine", type:"mc",
+  q:"A pH fisiologico, il gruppo carbossilico di un amminoacido è tipicamente:",
+  options:["Carico positivamente","Neutro","Carico negativamente ($COO^-$)","Sempre legato al gruppo amminico di un altro amminoacido","Assente"], correct:2 },
+
+{ id:"prot-06", topic:"proteine", type:"mc",
+  q:"Gli amminoacidi si possono classificare, in base alla catena laterale, in:",
+  options:["Solo acidi e basici","Polari con carica, polari senza carica e non polari","Solo essenziali e non essenziali","Solo di tipo L e D","Solo aromatici e alifatici"], correct:1 },
+
+{ id:"prot-07", topic:"proteine", type:"mc",
+  q:"Quale amminoacido, privo di un centro chirale, non presenta isomeria ottica?",
+  options:["Alanina","Valina","Glicina","Leucina","Serina"], correct:2 },
+
+{ id:"prot-08", topic:"proteine", type:"mc",
+  q:"Gli amminoacidi tipicamente presenti nelle proteine appartengono alla serie:",
+  options:["D","L","Sia D che L in ugual misura","Meso","Racemica"], correct:1 },
+
+{ id:"prot-09", topic:"proteine", type:"mc",
+  q:"Il legame peptidico si forma tra:",
+  options:["Due gruppi carbossilici","Due gruppi amminici","Il gruppo carbossilico di un amminoacido e il gruppo amminico di un altro, con perdita di acqua","Due catene laterali R","Un gruppo fosfato e un gruppo ossidrilico"], correct:2 },
+
+{ id:"prot-10", topic:"proteine", type:"mc",
+  q:"Il legame peptidico si forma tramite una reazione di:",
+  options:["Idrolisi","Condensazione","Ossidoriduzione","Fosforilazione","Decarbossilazione"], correct:1 },
+
+{ id:"prot-11", topic:"proteine", type:"mc",
+  q:"Una catena polipeptidica cresce in direzione:",
+  options:["Dal C-terminale verso l'N-terminale","Dall'N-terminale verso il C-terminale","Casuale","Dal centro verso le estremità","Non ha una direzionalità definita"], correct:1 },
+
+{ id:"prot-12", topic:"proteine", type:"mc",
+  q:"La struttura primaria di una proteina è definita da:",
+  options:["Il ripiegamento tridimensionale della catena","La sequenza di amminoacidi nella catena polipeptidica","L'associazione di più subunità","Le interazioni idrofobiche","I legami a idrogeno tra foglietti β"], correct:1 },
+
+{ id:"prot-13", topic:"proteine", type:"mc",
+  q:"Quale forza chimica mantiene la struttura primaria di una proteina?",
+  options:["Legami a idrogeno","Interazioni idrofobiche","Il legame peptidico covalente","Forze di van der Waals","Ponti disolfuro"], correct:2 },
+
+{ id:"prot-14", topic:"proteine", type:"mc",
+  q:"La struttura secondaria di una proteina è stabilizzata principalmente da:",
+  options:["Ponti disolfuro","Legami a idrogeno tra i gruppi C=O e N–H dello scheletro peptidico","Interazioni elettrostatiche tra catene laterali","Legami covalenti tra amminoacidi non adiacenti","Forze di van der Waals esclusivamente"], correct:1 },
+
+{ id:"prot-15", topic:"proteine", type:"mc",
+  q:"L'α-elica è una struttura secondaria che si avvolge generalmente in senso:",
+  options:["Sinistrorso","Destrorso","Non ha una chiralità definita","Orizzontale","Variabile in modo casuale"], correct:1 },
+
+{ id:"prot-16", topic:"proteine", type:"mc",
+  q:"Quanti amminoacidi per giro caratterizzano tipicamente l'α-elica?",
+  options:["Circa 2","Circa 3,6","Circa 5","Circa 8","Circa 10"], correct:1 },
+
+{ id:"prot-17", topic:"proteine", type:"mc",
+  q:"Nel foglietto β antiparallelo, i filamenti adiacenti procedono:",
+  options:["Nella stessa direzione N→C","In direzioni opposte","In modo perpendicolare tra loro","Solo in direzione C→N","Non hanno una direzione definita"], correct:1 },
+
+{ id:"prot-18", topic:"proteine", type:"mc",
+  q:"I 'turn' o ripiegamenti β, che permettono alla catena polipeptidica di cambiare bruscamente direzione, sono frequentemente costituiti da:",
+  options:["Leucina e valina","Glicina e prolina","Lisina e arginina","Triptofano e fenilalanina","Cisteina e metionina"], correct:1 },
+
+{ id:"prot-19", topic:"proteine", type:"mc",
+  q:"La struttura terziaria di una proteina rappresenta:",
+  options:["La sola sequenza amminoacidica","L'associazione di più catene polipeptidiche","La forma tridimensionale complessiva di una singola catena polipeptidica","Un tipo di modificazione post-traduzionale","La composizione percentuale in amminoacidi"], correct:2 },
+
+{ id:"prot-20", topic:"proteine", type:"mc",
+  q:"Quale forza NON contribuisce alla stabilizzazione della struttura terziaria delle proteine?",
+  options:["Interazioni idrofobiche","Legami a idrogeno","Interazioni elettrostatiche (ponti salini)","Ponti disolfuro","Il legame fosfodiestere"], correct:4,
+  explain:"Il legame fosfodiestere è tipico degli acidi nucleici (DNA/RNA), non delle proteine." },
+
+{ id:"prot-21", topic:"proteine", type:"mc",
+  q:"I ponti disolfuro si formano tra i gruppi sulfidrilici (–SH) delle catene laterali di:",
+  options:["Metionina","Cisteina","Serina","Treonina","Istidina"], correct:1 },
+
+{ id:"prot-22", topic:"proteine", type:"mc",
+  q:"La struttura quaternaria di una proteina si riferisce a:",
+  options:["La sequenza di amminoacidi","Il ripiegamento di una singola catena polipeptidica","L'associazione di più catene polipeptidiche (subunità)","Le sole modificazioni post-traduzionali","La localizzazione cellulare della proteina"], correct:2 },
+
+{ id:"prot-23", topic:"proteine", type:"mc",
+  q:"Le amminoacil-tRNA sintetasi catalizzano il legame tra un amminoacido e il tRNA coinvolgendo:",
+  options:["Il gruppo $NH_2$ dell'amminoacido con l'estremità 5' del tRNA","Il gruppo $COOH$ dell'amminoacido con l'estremità 3'-OH del tRNA","Il gruppo $NH_2$ dell'amminoacido con l'estremità 3'-OH del tRNA","Due molecole di tRNA diverse","Il codone dell'mRNA direttamente"], correct:1,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello)." },
+
+{ id:"prot-24", topic:"proteine", type:"fill",
+  q:"Il legame peptidico si forma tra il gruppo carbossilico dell'amminoacido donatore e il gruppo amminico dell'amminoacido accettore, con liberazione di una molecola di ________.",
+  answer:"ACQUA", answerAlt:["H2O","H₂O"],
+  explain:"Domanda ispirata alla prova ufficiale del semestre filtro 2025 (secondo appello)." },
+
+{ id:"prot-25", topic:"proteine", type:"fill",
+  q:"Il motivo strutturale 'coiled-coil' è costituito tipicamente da due o più ________ che si avvolgono l'una attorno all'altra.",
+  answer:"ALFA-ELICHE", answerAlt:["Α-ELICHE","ELICHE"],
+  explain:"Domanda ispirata alla prova ufficiale del semestre filtro 2025 (secondo appello)." },
+
+{ id:"prot-26", topic:"proteine", type:"fill",
+  q:"L'emoglobina, formata da due subunità α e due subunità β, è un esempio di proteina con struttura ________.",
+  answer:"QUATERNARIA" },
+
+{ id:"prot-27", topic:"proteine", type:"fill",
+  q:"Le subunità identiche in una proteina a struttura quaternaria formano un ________.",
+  answer:"OMOOLIGOMERO" },
+
+{ id:"prot-28", topic:"proteine", type:"fill",
+  q:"La modificazione post-traduzionale che consiste nell'aggiunta di un gruppo fosfato è detta ________.",
+  answer:"FOSFORILAZIONE" },
+
+{ id:"prot-29", topic:"proteine", type:"fill",
+  q:"L'enzima che rimuove un gruppo fosfato da una proteina è detto ________.",
+  answer:"FOSFATASI" },
+
+{ id:"prot-30", topic:"proteine", type:"fill",
+  q:"La modificazione post-traduzionale che aggiunge un gruppo acetile a una proteina è detta ________.",
+  answer:"ACETILAZIONE" },
+
+{ id:"prot-31", topic:"proteine", type:"fill",
+  q:"L'ubiquitinazione consiste nel legame covalente di una piccola proteina di 76 amminoacidi chiamata ________ a una proteina bersaglio.",
+  answer:"UBIQUITINA" },
+
+{ id:"prot-32", topic:"proteine", type:"fill",
+  q:"Le regioni globulari, compatte e strutturalmente indipendenti che costituiscono le unità funzionali di una proteina sono dette ________.",
+  answer:"DOMINI" },
+
+{ id:"prot-33", topic:"proteine", type:"fill",
+  q:"Gli amminoacidi non polari come leucina e valina tendono a raggrupparsi all'interno di una proteina ripiegata, formando un core ________.",
+  answer:"IDROFOBICO" },
+
+/* ============================= ENZIMI E METABOLISMO ============================= */
+
+{ id:"enz-01", topic:"enzimi", type:"mc",
+  q:"Gli enzimi sono definiti biologicamente come:",
+  options:["Ormoni steroidei","Catalizzatori biologici","Acidi nucleici catalitici esclusivamente","Componenti strutturali della membrana","Zuccheri complessi"], correct:1 },
+
+{ id:"enz-02", topic:"enzimi", type:"mc",
+  q:"Una delle principali caratteristiche degli enzimi è che:",
+  options:["Vengono consumati durante la reazione catalizzata","Non vengono modificati permanentemente durante la reazione e sono riutilizzabili","Modificano l'equilibrio della reazione chimica","Funzionano solo ad altissime concentrazioni","Sono privi di specificità"], correct:1 },
+
+{ id:"enz-03", topic:"enzimi", type:"mc",
+  q:"Gli enzimi accelerano una reazione chimica agendo su:",
+  options:["La costante di equilibrio della reazione","L'energia di attivazione della reazione","La quantità di prodotto finale ottenibile","La temperatura ambiente","La pressione del sistema"], correct:1,
+  explain:"Gli enzimi abbassano l'energia di attivazione, rendendo la reazione più veloce, senza alterarne l'equilibrio." },
+
+{ id:"enz-04", topic:"enzimi", type:"mc",
+  q:"Il sito attivo di un enzima ha un'affinità particolarmente elevata per:",
+  options:["Il prodotto finale della reazione","Lo stato di transizione del substrato","Qualsiasi molecola presente nella cellula","Gli ioni metallici esclusivamente","L'acqua"], correct:1 },
+
+{ id:"enz-05", topic:"enzimi", type:"mc",
+  q:"Nella cinetica enzimatica, $V_{max}$ rappresenta:",
+  options:["La concentrazione di substrato a metà della velocità massima","La velocità massima di reazione, raggiunta quando l'enzima è saturo di substrato","La velocità minima possibile della reazione","La costante di equilibrio della reazione","Il numero di siti attivi dell'enzima"], correct:1 },
+
+{ id:"enz-06", topic:"enzimi", type:"mc",
+  q:"$K_m$ rappresenta:",
+  options:["La velocità massima della reazione enzimatica","La concentrazione di substrato che corrisponde a $V_{max}/2$","Il numero di turnover dell'enzima","La costante di equilibrio della reazione catalizzata","La temperatura ottimale dell'enzima"], correct:1 },
+
+{ id:"enz-07", topic:"enzimi", type:"mc",
+  q:"Un basso valore di $K_m$ indica che l'enzima lega il substrato:",
+  options:["Molto inefficientemente","Molto efficientemente (alta affinità)","In modo indipendente dalla concentrazione","Solo a temperature elevate","Mai"], correct:1 },
+
+{ id:"enz-08", topic:"enzimi", type:"mc",
+  q:"Il catabolismo è un processo:",
+  options:["Endoenergetico che costruisce molecole complesse","Esoenergetico, che degrada molecole complesse per ottenere energia","Che avviene solo nel nucleo","Indipendente dagli enzimi","Che richiede sempre ATP come substrato iniziale"], correct:1 },
+
+{ id:"enz-09", topic:"enzimi", type:"mc",
+  q:"L'anabolismo è un processo:",
+  options:["Esoenergetico di degradazione","Endoenergetico, che costruisce molecole complesse a partire da molecole semplici","Che libera sempre $CO_2$ e $H_2O$","Indipendente dall'energia","Tipico solo delle reazioni cataboliche"], correct:1 },
+
+{ id:"enz-10", topic:"enzimi", type:"mc",
+  q:"Durante la degradazione del glucosio a $CO_2$ e $H_2O$, l'energia liberata viene recuperata dalla cellula principalmente sotto forma di:",
+  options:["Solo calore disperso","ATP e coenzimi ridotti come NADH e $FADH_2$","Esclusivamente altro glucosio","Acqua pura","Ioni inorganici"], correct:1 },
+
+{ id:"enz-11", topic:"enzimi", type:"mc",
+  q:"Le reazioni anaboliche, come la sintesi proteica a partire dagli amminoacidi, richiedono energia generalmente fornita da:",
+  options:["NADH esclusivamente","ATP","Il glucosio direttamente","La luce solare","Nessuna fonte di energia è richiesta"], correct:1 },
+
+{ id:"enz-12", topic:"enzimi", type:"mc",
+  q:"Il potere riducente necessario per molte reazioni anaboliche è fornito soprattutto sotto forma di:",
+  options:["NADH","NADPH","ATP esclusivamente","$CO_2$","Acqua"], correct:1 },
+
+{ id:"enz-13", topic:"enzimi", type:"mc",
+  q:"L'alcol deidrogenasi, durante la fermentazione, catalizza la riduzione di:",
+  options:["Il glucosio a piruvato","L'acetaldeide a etanolo","L'etanolo ad acido acetico","Il piruvato a lattato","L'ATP ad ADP"], correct:1 },
+
+{ id:"enz-14", topic:"enzimi", type:"mc",
+  q:"Le vie metaboliche cellulari sono generalmente:",
+  options:["Completamente isolate e indipendenti tra loro","Interconnesse tra loro","Attive solo negli organismi unicellulari","Indipendenti dagli enzimi","Sempre esclusivamente cataboliche"], correct:1 },
+
+{ id:"enz-15", topic:"enzimi", type:"fill",
+  q:"Gli enzimi sono catalizzatori di natura ________.",
+  answer:"PROTEICA", answerAlt:["PROTEINE","PROTEICI"] },
+
+{ id:"enz-16", topic:"enzimi", type:"fill",
+  q:"La reazione E + S ⇌ ES ⇌ E + P descrive il meccanismo generale dell'azione ________.",
+  answer:"ENZIMATICA" },
+
+{ id:"enz-17", topic:"enzimi", type:"fill",
+  q:"Il valore di concentrazione di substrato corrispondente a $V_{max}/2$ si chiama costante di ________.",
+  answer:"MICHAELIS-MENTEN", answerAlt:["MICHAELIS","KM"] },
+
+{ id:"enz-18", topic:"enzimi", type:"fill",
+  q:"Il catabolismo è un processo che degrada molecole complesse per ________ energia.",
+  answer:"OTTENERE", answerAlt:["LIBERARE","RICAVARE"] },
+
+{ id:"enz-19", topic:"enzimi", type:"fill",
+  q:"L'anabolismo è un processo che ________ energia per costruire molecole complesse.",
+  answer:"CONSUMA", answerAlt:["RICHIEDE","UTILIZZA"] },
+
+{ id:"enz-20", topic:"enzimi", type:"fill",
+  q:"Gli enzimi che catalizzano il trasferimento di un gruppo fosfato da ATP a un substrato sono detti ________.",
+  answer:"CHINASI" },
+
+/* ============================= LIPIDI ============================= */
+
+{ id:"lip-01", topic:"lipidi", type:"mc",
+  q:"Gli acidi grassi sono costituiti da:",
+  options:["Anelli aromatici complessi","Catene lineari di carbonio con un gruppo carbossilico terminale","Solo atomi di azoto e fosforo","Basi azotate legate a zuccheri","Amminoacidi legati covalentemente"], correct:1 },
+
+{ id:"lip-02", topic:"lipidi", type:"mc",
+  q:"In un acido grasso, il gruppo carbossilico è:",
+  options:["Idrofobico","Idrofilico","Privo di carica in ogni condizione","Assente","Sempre esterificato"], correct:1 },
+
+{ id:"lip-03", topic:"lipidi", type:"mc",
+  q:"La catena idrocarburica di un acido grasso è:",
+  options:["Idrofilica","Idrofobica","Carica positivamente","Carica negativamente","Sempre ramificata"], correct:1 },
+
+{ id:"lip-04", topic:"lipidi", type:"mc",
+  q:"Un acido grasso si definisce insaturo quando:",
+  options:["Non contiene atomi di idrogeno","Contiene uno o più doppi legami carbonio-carbonio","È privo del gruppo carbossilico","È legato al glicerolo","Contiene un gruppo fosfato"], correct:1 },
+
+{ id:"lip-05", topic:"lipidi", type:"mc",
+  q:"I trigliceridi si formano dall'esterificazione del glicerolo con:",
+  options:["Tre molecole di glucosio","Tre catene di acidi grassi","Tre basi azotate","Tre gruppi fosfato","Tre amminoacidi"], correct:1 },
+
+{ id:"lip-06", topic:"lipidi", type:"mc",
+  q:"I trigliceridi si accumulano principalmente:",
+  options:["Nel nucleo cellulare","Nel tessuto adiposo, come goccioline di grasso","Nei ribosomi","Nel citoscheletro","Nella matrice extracellulare"], correct:1 },
+
+{ id:"lip-07", topic:"lipidi", type:"mc",
+  q:"I fosfolipidi sono molecole:",
+  options:["Completamente idrofobiche","Completamente idrofiliche","Anfipatiche (con una parte idrofila e una idrofoba)","Prive di gruppi fosfato","Sempre a struttura ciclica"], correct:2 },
+
+{ id:"lip-08", topic:"lipidi", type:"mc",
+  q:"Lo scheletro dei glicerofosfolipidi è costituito da:",
+  options:["Sfingosina","Glicerolo","Colesterolo","Un anello aromatico","Un amminoacido"], correct:1 },
+
+{ id:"lip-09", topic:"lipidi", type:"mc",
+  q:"Lo scheletro degli sfingolipidi è costituito da:",
+  options:["Glicerolo","Sfingosina","Colesterolo","Un acido grasso libero","Glucosio"], correct:1 },
+
+{ id:"lip-10", topic:"lipidi", type:"mc",
+  q:"Il colesterolo è il precursore biologico di:",
+  options:["Tutti gli amminoacidi","Gli ormoni steroidei","I carboidrati","Gli acidi nucleici","Le vitamine idrosolubili"], correct:1 },
+
+{ id:"lip-11", topic:"lipidi", type:"mc",
+  q:"Il colesterolo, oltre a essere un componente delle membrane cellulari, funge da substrato per la sintesi di:",
+  options:["Proteine strutturali","Ormoni steroidei","Acidi nucleici","Polisaccaridi","Enzimi digestivi"], correct:1 },
+
+{ id:"lip-12", topic:"lipidi", type:"mc",
+  q:"Quale organello rappresenta il principale sito di sintesi dei lipidi nella cellula?",
+  options:["Il nucleo","Il reticolo endoplasmatico","Il lisosoma","Il perossisoma esclusivamente","Il citoscheletro"], correct:1 },
+
+{ id:"lip-13", topic:"lipidi", type:"mc",
+  q:"I glicolipidi, come i glicosfingolipidi, derivano strutturalmente da:",
+  options:["Il glicerolo","La sfingosina","Il colesterolo","Un amminoacido","Un nucleotide"], correct:1 },
+
+{ id:"lip-14", topic:"lipidi", type:"mc",
+  q:"La fosforilazione del fosfatidilinositolo produce una serie di molecole chiamate:",
+  options:["Fosfolipasi","Fosfoinositidi","Fosfatasi","Fosfocreatine","Fosfoproteine"], correct:1,
+  explain:"I fosfoinositidi modulano il signalling cellulare e il traffico di membrana." },
+
+{ id:"lip-15", topic:"lipidi", type:"fill",
+  q:"Un acido grasso in cui tutti i legami carbonio-carbonio sono singoli si dice ________.",
+  answer:"SATURO" },
+
+{ id:"lip-16", topic:"lipidi", type:"fill",
+  q:"Gli acidi grassi con uno o più doppi legami si dicono ________.",
+  answer:"INSATURI", answerAlt:["INSATURO"] },
+
+{ id:"lip-17", topic:"lipidi", type:"fill",
+  q:"L'esterificazione di tre acidi grassi con il glicerolo forma un ________.",
+  answer:"TRIGLICERIDE" },
+
+{ id:"lip-18", topic:"lipidi", type:"fill",
+  q:"Le molecole con una parte idrofila e una idrofoba nella stessa molecola si dicono ________.",
+  answer:"ANFIPATICHE", answerAlt:["ANFIPATICI","ANFIPATICA"] },
+
+{ id:"lip-19", topic:"lipidi", type:"fill",
+  q:"Il precursore biologico degli ormoni steroidei è il ________.",
+  answer:"COLESTEROLO" },
+
+{ id:"lip-20", topic:"lipidi", type:"fill",
+  q:"L'idrolisi del $PI(4,5)P_2$ produce due principali messaggeri chimici, tra cui il diacilglicerolo e l'________.",
+  answer:"IP3", answerAlt:["INOSITOLO TRIFOSFATO","IP₃"] },
+
+/* ============================= MEMBRANE CELLULARI ============================= */
+
+{ id:"membr-01", topic:"membrane", type:"mc",
+  q:"Il modello che descrive la struttura delle membrane biologiche è detto:",
+  options:["Modello a doppio strato rigido","Modello del mosaico fluido","Modello a canale unico","Modello a micella","Modello a reticolo cristallino"], correct:1 },
+
+{ id:"membr-02", topic:"membrane", type:"mc",
+  q:"Secondo il modello del mosaico fluido, le membrane cellulari sono costituite da:",
+  options:["Un singolo strato proteico rigido","Un doppio strato lipidico fluido in cui le proteine sono incastrate come tessere di un mosaico","Esclusivamente proteine, senza lipidi","Un reticolo cristallino di ioni","Fibre di collagene intrecciate"], correct:1 },
+
+{ id:"membr-03", topic:"membrane", type:"mc",
+  q:"Il modello del mosaico fluido delle membrane cellulari fu proposto da:",
+  options:["Watson e Crick","Singer e Nicolson","Mendel","Pauling","Darwin"], correct:1 },
+
+{ id:"membr-04", topic:"membrane", type:"mc",
+  q:"I fosfolipidi formano spontaneamente doppi strati in ambiente acquoso grazie alla loro natura:",
+  options:["Completamente idrofobica","Completamente idrofilica","Anfipatica","Ionica","Radioattiva"], correct:2 },
+
+{ id:"membr-05", topic:"membrane", type:"mc",
+  q:"La chiusura di un doppio strato fosfolipidico a formare un compartimento sigillato è, dal punto di vista energetico:",
+  options:["Sempre sfavorevole","Energeticamente favorevole","Indipendente dall'energia","Possibile solo con l'apporto di ATP","Impossibile in ambiente acquoso"], correct:1 },
+
+{ id:"membr-06", topic:"membrane", type:"mc",
+  q:"Le tre principali classi di molecole lipidiche delle membrane cellulari sono:",
+  options:["Trigliceridi, cere, terpeni","Fosfolipidi, steroli e glicolipidi","Amminoacidi, zuccheri e nucleotidi","Solo fosfolipidi","Vitamine liposolubili esclusivamente"], correct:1 },
+
+{ id:"membr-07", topic:"membrane", type:"mc",
+  q:"Le proteine di membrana si distinguono principalmente in:",
+  options:["Solo proteine integrali","Proteine integrali e proteine periferiche","Solo proteine periferiche","Proteine cataboliche e anaboliche","Proteine acide e basiche esclusivamente"], correct:1 },
+
+{ id:"membr-08", topic:"membrane", type:"mc",
+  q:"Le proteine integrali di membrana vengono rilasciate dalla membrana solo:",
+  options:["Spontaneamente a temperatura ambiente","In seguito all'azione di detergenti","Mai, in nessuna condizione","Per semplice lavaggio con acqua","Per azione della luce"], correct:1 },
+
+{ id:"membr-09", topic:"membrane", type:"mc",
+  q:"Le proteine transmembrana attraversano il doppio strato lipidico tipicamente mediante:",
+  options:["Un foglietto β esteso","Un segmento ad α-elica","Un legame ionico con i fosfolipidi","Un ponte disolfuro","Un anello aromatico planare"], correct:1 },
+
+{ id:"membr-10", topic:"membrane", type:"mc",
+  q:"Un esempio di proteina di membrana ancorata tramite un lipide è quella con ancora:",
+  options:["Disolfuro","GPI","Peptidica","Ionica","Covalente con ubiquitina"], correct:1 },
+
+{ id:"membr-11", topic:"membrane", type:"mc",
+  q:"In quali proporzioni relative si trovano generalmente proteine e lipidi nelle membrane cellulari?",
+  options:["Sempre il 100% proteine","Quasi equivalenti, nella maggior parte delle membrane","Sempre il 100% lipidi","Le membrane non contengono mai proteine","Il rapporto è fisso e identico in tutte le membrane"], correct:1 },
+
+{ id:"membr-12", topic:"membrane", type:"mc",
+  q:"Una membrana con un alto rapporto proteine/lipidi è tipicamente associata a:",
+  options:["Funzione di isolamento elettrico","Funzioni specializzate (es. membrana mitocondriale interna)","Assenza di funzione","Solo membrane vegetali","Nessuna correlazione con la funzione"], correct:1,
+  explain:"La mielina, ad esempio, ha un basso rapporto proteine/lipidi ed è specializzata nell'isolamento elettrico; la membrana mitocondriale interna ha invece un alto rapporto proteine/lipidi." },
+
+{ id:"membr-13", topic:"membrane", type:"mc",
+  q:"Le membrane biologiche sono pochissimo permeabili a:",
+  options:["$N_2$","$O_2$","$H_2O$","$CO_2$","Ioni $Ca^{2+}$"], correct:4,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello). Gas apolari come $N_2$, $O_2$, $CO_2$ e piccole molecole come l'acqua attraversano facilmente il doppio strato lipidico; gli ioni carichi, come $Ca^{2+}$, richiedono invece canali o trasportatori specifici." },
+
+{ id:"membr-14", topic:"membrane", type:"mc",
+  q:"La fibronectina è:",
+  options:["Un polisaccaride presente nella matrice extracellulare","Una glicoproteina della matrice extracellulare che collega le integrine a componenti della matrice come il collagene","Un enzima che degrada le proteine della matrice extracellulare","Una proteina integrale di membrana priva di funzione adesiva","Una proteina del citoscheletro"], correct:1,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (secondo appello)." },
+
+{ id:"membr-15", topic:"membrane", type:"mc",
+  q:"La matrice extracellulare è composta principalmente da:",
+  options:["Proteine istoniche","Proteoglicani, glicosamminoglicani e proteine strutturali e di adesione","Fosfolipidi e colesterolo","Molecole di tubulina","Filamenti di actina"], correct:1,
+  explain:"Domanda dalla prova ufficiale del semestre filtro 2025 (primo appello)." },
+
+{ id:"membr-16", topic:"membrane", type:"mc",
+  q:"L'ancoraggio delle cellule alla matrice extracellulare avviene principalmente tramite:",
+  options:["I ribosomi","Le integrine","Gli istoni","Le DNA polimerasi","I tRNA"], correct:1 },
+
+{ id:"membr-17", topic:"membrane", type:"fill",
+  q:"Il modello che descrive la struttura delle membrane biologiche è detto modello del mosaico ________.",
+  answer:"FLUIDO" },
+
+{ id:"membr-18", topic:"membrane", type:"fill",
+  q:"Le molecole che hanno sia una parte idrofila che una idrofoba, come i fosfolipidi di membrana, sono dette ________.",
+  answer:"ANFIPATICHE" },
+
+{ id:"membr-19", topic:"membrane", type:"fill",
+  q:"Le proteine di membrana rilasciate solo dall'azione di detergenti sono dette proteine ________ di membrana.",
+  answer:"INTEGRALI" },
+
+{ id:"membr-20", topic:"membrane", type:"fill",
+  q:"Le proteine legate alla membrana solo superficialmente, senza attraversarla, sono dette proteine ________.",
+  answer:"PERIFERICHE" },
+
+{ id:"membr-21", topic:"membrane", type:"fill",
+  q:"Le proteine che attraversano il doppio strato lipidico più volte sono dette proteine ________.",
+  answer:"MULTIPASSO" },
+
+{ id:"membr-22", topic:"membrane", type:"fill",
+  q:"La glicoproteina della matrice extracellulare che collega le integrine al collagene è la ________.",
+  answer:"FIBRONECTINA" },
+
+{ id:"membr-23", topic:"membrane", type:"fill",
+  q:"Le cellule si ancorano alla matrice extracellulare tramite proteine transmembrana chiamate ________.",
+  answer:"INTEGRINE" },
+
+{ id:"membr-24", topic:"membrane", type:"fill",
+  q:"Le membrane cellulari sono pochissimo permeabili agli ________, che richiedono canali o trasportatori specifici per attraversarle.",
+  answer:"IONI" }
 
 ];
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { QUESTIONS, TOPICS, AREAS };
+  module.exports = { QUESTIONS, TOPICS, AREAS, SYLLABUS };
 }

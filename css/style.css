@@ -122,6 +122,11 @@ main.wrap { padding-block: 28px 60px; }
   font-size: .8rem; font-weight: 800; letter-spacing: .02em; text-transform: uppercase;
   color: var(--text-muted); padding-left: 2px;
 }
+.topic-unit-header {
+  font-size: .74rem; font-weight: 700; color: var(--text-muted);
+  padding: 2px 2px 2px 10px; border-left: 2px solid var(--border);
+  line-height: 1.35;
+}
 .topic-filter-row {
   display: flex; align-items: center; gap: 10px;
   padding: 8px 10px; border-radius: 10px; background: var(--surface-2);
@@ -129,6 +134,34 @@ main.wrap { padding-block: 28px 60px; }
 }
 .topic-filter-row input { width: 16px; height: 16px; accent-color: var(--primary); }
 .topic-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* ---- syllabus & progress panel ---- */
+.syll-area { margin-bottom: 20px; }
+.syll-area:last-child { margin-bottom: 0; }
+.syll-area-header { font-size: 1rem; font-weight: 800; margin-bottom: 10px; }
+.syll-no-syllabus { font-size: .85rem; font-style: italic; color: var(--text-muted); margin: 0 0 10px; }
+.syll-unit { margin-bottom: 14px; padding-left: 4px; border-left: 2px solid var(--border); }
+.syll-unit-header {
+  font-size: .84rem; font-weight: 700; color: var(--text); margin-bottom: 6px; padding-left: 8px;
+  line-height: 1.4;
+}
+.syll-unit-badge {
+  display: inline-block; font-size: .68rem; font-weight: 800; color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface)); padding: 1px 7px;
+  border-radius: 8px; margin-right: 6px; vertical-align: middle;
+}
+.syll-unit-empty { font-size: .82rem; color: var(--text-muted); font-style: italic; padding-left: 8px; }
+.syll-topic-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 6px 8px; border-radius: 8px; font-size: .85rem;
+}
+.syll-topic-row:nth-child(even) { background: var(--surface-2); }
+.syll-topic-name { flex: 1 1 160px; min-width: 0; }
+.syll-topic-count { color: var(--text-muted); font-size: .78rem; white-space: nowrap; }
+.syll-topic-bar { flex: 0 0 70px; height: 6px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
+.syll-topic-row:nth-child(even) .syll-topic-bar { background: var(--surface); }
+.syll-topic-fill { display: block; height: 100%; }
+.syll-topic-pct { font-size: .78rem; color: var(--text-muted); white-space: nowrap; min-width: 62px; text-align: right; }
 .topic-count { margin-left: auto; color: var(--text-muted); font-size: .82rem; }
 
 .checkbox-row { display: flex; align-items: center; gap: 8px; font-size: .9rem; color: var(--text-muted); margin-bottom: 16px; cursor: pointer; }

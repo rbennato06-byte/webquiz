@@ -111,6 +111,8 @@
 
   function renderStats() {
     const stats = loadStats();
+    buildSyllabusProgress(stats);
+
     const card = el("statsCard");
     const body = el("statsBody");
     if (stats.studyTotal === 0 && stats.examHistory.length === 0) {
@@ -140,10 +142,76 @@
   }
 
   /* ---------------------------------------------------------------- */
+  /* Syllabus & per-unit / per-topic progress panel                    */
+  /* ---------------------------------------------------------------- */
+  function buildSyllabusProgress(stats) {
+    const container = el("syllabusBody");
+    if (!container) return;
+    stats = stats || loadStats();
+    let html = "";
+
+    function topicRowHtml(key) {
+      const topic = TOPICS[key];
+      const count = QUESTIONS.filter((q) => q.topic === key).length;
+      const d = stats.byTopic[key];
+      const has = d && d.total > 0;
+      const pct = has ? Math.round((d.correct / d.total) * 100) : 0;
+      return `
+        <div class="syll-topic-row">
+          <span class="topic-dot" style="background:${topic.color}"></span>
+          <span class="syll-topic-name">${escapeHtml(topic.name)}</span>
+          <span class="syll-topic-count">${count} domande</span>
+          <span class="syll-topic-bar"><span class="syll-topic-fill" style="width:${pct}%;background:${topic.color}"></span></span>
+          <span class="syll-topic-pct">${has ? `${d.correct}/${d.total} · ${pct}%` : "—"}</span>
+        </div>`;
+    }
+
+    Object.keys(AREAS).forEach((areaKey) => {
+      const area = AREAS[areaKey];
+      const areaTopics = topicsByArea(areaKey);
+      html += `<div class="syll-area"><div class="syll-area-header">${area.icon} ${escapeHtml(area.name)}</div>`;
+
+      const units = SYLLABUS[areaKey];
+      if (units) {
+        units.forEach((u) => {
+          const unitTopics = areaTopics.filter((t) => TOPICS[t].unit === u.unit);
+          html += `<div class="syll-unit">
+            <div class="syll-unit-header"><span class="syll-unit-badge">U.D. ${u.unit}</span> ${escapeHtml(u.name)}</div>`;
+          if (unitTopics.length === 0) {
+            html += `<div class="syll-unit-empty">Nessuna domanda disponibile su questo sito per questa unità, per ora.</div>`;
+          } else {
+            unitTopics.forEach((t) => (html += topicRowHtml(t)));
+          }
+          html += `</div>`;
+        });
+      } else {
+        html += `<p class="syll-no-syllabus">Nessun syllabus ufficiale caricato per questa materia: argomenti elencati senza suddivisione in unità didattiche.</p>`;
+        areaTopics.forEach((t) => (html += topicRowHtml(t)));
+      }
+      html += `</div>`;
+    });
+
+    container.innerHTML = html;
+  }
+
+  /* ---------------------------------------------------------------- */
   /* Home screen setup                                                  */
   /* ---------------------------------------------------------------- */
   function topicsByArea(areaKey) {
     return Object.keys(TOPICS).filter((key) => TOPICS[key].area === areaKey);
+  }
+
+  function buildTopicRow(key) {
+    const count = QUESTIONS.filter((q) => q.topic === key).length;
+    const row = document.createElement("label");
+    row.className = "topic-filter-row";
+    row.innerHTML = `
+      <input type="checkbox" value="${key}" checked>
+      <span class="topic-dot" style="background:${TOPICS[key].color}"></span>
+      <span>${TOPICS[key].name}</span>
+      <span class="topic-count">${count} domande</span>
+    `;
+    return row;
   }
 
   function buildTopicFilters() {
@@ -157,18 +225,22 @@
       header.innerHTML = `<span>${AREAS[areaKey].icon} ${AREAS[areaKey].name}</span>`;
       group.appendChild(header);
 
-      topicsByArea(areaKey).forEach((key) => {
-        const count = QUESTIONS.filter((q) => q.topic === key).length;
-        const row = document.createElement("label");
-        row.className = "topic-filter-row";
-        row.innerHTML = `
-          <input type="checkbox" value="${key}" checked>
-          <span class="topic-dot" style="background:${TOPICS[key].color}"></span>
-          <span>${TOPICS[key].name}</span>
-          <span class="topic-count">${count} domande</span>
-        `;
-        group.appendChild(row);
-      });
+      const areaTopics = topicsByArea(areaKey);
+      const units = SYLLABUS[areaKey];
+      if (units) {
+        // Group by official syllabus unit, in syllabus order; skip units with no questions yet.
+        units.forEach((u) => {
+          const unitTopics = areaTopics.filter((t) => TOPICS[t].unit === u.unit);
+          if (unitTopics.length === 0) return;
+          const unitHeader = document.createElement("div");
+          unitHeader.className = "topic-unit-header";
+          unitHeader.textContent = `Unità ${u.unit} · ${u.name}`;
+          group.appendChild(unitHeader);
+          unitTopics.forEach((key) => group.appendChild(buildTopicRow(key)));
+        });
+      } else {
+        areaTopics.forEach((key) => group.appendChild(buildTopicRow(key)));
+      }
       container.appendChild(group);
     });
   }
@@ -518,6 +590,14 @@
     el("rulesToggle").addEventListener("click", () => {
       const body = el("rulesBody");
       const btn = el("rulesToggle");
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      body.hidden = expanded;
+    });
+
+    el("syllabusToggle").addEventListener("click", () => {
+      const body = el("syllabusBody");
+      const btn = el("syllabusToggle");
       const expanded = btn.getAttribute("aria-expanded") === "true";
       btn.setAttribute("aria-expanded", String(!expanded));
       body.hidden = expanded;
