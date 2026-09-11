@@ -21,9 +21,9 @@
   const STORAGE_KEY = "webquiz_semestrefiltro_stats_v1";
 
   /* ---------------------------------------------------------------- */
-  /* Calendario A.K. (All Kevin): stesso calendario di sempre, solo     */
+  /* Calendario A.K. (All KRK): stesso calendario di sempre, solo       */
   /* l'anno è ricontato a partire dal giorno di lancio del sito,        */
-  /* in onore di Kevin, che ha aiutato a svilupparlo. Anno 1 A.K. = */
+  /* in onore di KRK, che ha aiutato a svilupparlo. Anno 1 A.K. =       */
   /* anno solare di lancio; il confine tra un anno e l'altro resta il  */
   /* 1° gennaio, come nel calendario normale.                          */
   /* ---------------------------------------------------------------- */
