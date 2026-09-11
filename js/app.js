@@ -110,6 +110,79 @@
     saveStats(stats);
   }
 
+  /* ---------------------------------------------------------------- */
+  /* Sincronizzazione tra dispositivi: nessun server, nessun database.  */
+  /* L'intero stato dei progressi viene codificato in un codice di      */
+  /* testo autosufficiente (algoritmo deterministico, reversibile) da   */
+  /* copiare su un altro dispositivo per riprendere da lì.              */
+  /* ---------------------------------------------------------------- */
+  const SYNC_MAGIC = "KRK1";
+
+  function fnv1aHash(str) {
+    let h = 0x811c9dc5;
+    for (let i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 0x01000193);
+    }
+    return (h >>> 0).toString(36);
+  }
+
+  function encodeSyncCode(stats) {
+    const studyPart = `${stats.studyCorrect.toString(36)},${stats.studyTotal.toString(36)}`;
+
+    const topicsPart = Object.keys(stats.byTopic)
+      .filter((k) => stats.byTopic[k] && stats.byTopic[k].total > 0)
+      .map((k) => `${k}:${stats.byTopic[k].correct.toString(36)}:${stats.byTopic[k].total.toString(36)}`)
+      .join(",");
+
+    const examsPart = stats.examHistory
+      .map((h) => {
+        const scoreX10 = Math.max(0, Math.round(h.score * 10));
+        const dateSec = Math.floor(new Date(h.date).getTime() / 1000) || 0;
+        return `${scoreX10.toString(36)}:${h.max.toString(36)}:${h.passed ? 1 : 0}:${dateSec.toString(36)}`;
+      })
+      .join(",");
+
+    const payload = [SYNC_MAGIC, studyPart, topicsPart, examsPart].join("~");
+    return `${payload}~${fnv1aHash(payload)}`;
+  }
+
+  function decodeSyncCode(code) {
+    const parts = String(code || "").trim().split("~");
+    if (parts.length !== 5) throw new Error("Formato del codice non riconosciuto.");
+    const [magic, studyPart, topicsPart, examsPart, checksum] = parts;
+    if (magic !== SYNC_MAGIC) throw new Error("Codice non valido o generato da una versione diversa del sito.");
+    const payload = [magic, studyPart, topicsPart, examsPart].join("~");
+    if (fnv1aHash(payload) !== checksum) throw new Error("Il codice risulta incompleto o alterato: ricopialo per intero.");
+
+    const [scStr, stStr] = studyPart.split(",");
+    const stats = defaultStats();
+    stats.studyCorrect = parseInt(scStr, 36) || 0;
+    stats.studyTotal = parseInt(stStr, 36) || 0;
+
+    if (topicsPart) {
+      topicsPart.split(",").forEach((entry) => {
+        const [key, c, t] = entry.split(":");
+        if (!key) return;
+        stats.byTopic[key] = { correct: parseInt(c, 36) || 0, total: parseInt(t, 36) || 0 };
+      });
+    }
+
+    if (examsPart) {
+      examsPart.split(",").forEach((entry) => {
+        const [scoreX10, max, passed, dateSec] = entry.split(":");
+        stats.examHistory.push({
+          score: (parseInt(scoreX10, 36) || 0) / 10,
+          max: parseInt(max, 36) || 0,
+          passed: passed === "1",
+          date: new Date((parseInt(dateSec, 36) || 0) * 1000).toISOString()
+        });
+      });
+    }
+
+    return stats;
+  }
+
   function renderStats() {
     const stats = loadStats();
     buildSyllabusProgress(stats);
@@ -672,6 +745,56 @@
         localStorage.removeItem(STORAGE_KEY);
         renderStats();
       }
+    });
+
+    el("syncToggle").addEventListener("click", () => {
+      const body = el("syncBody");
+      const btn = el("syncToggle");
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      body.hidden = expanded;
+    });
+
+    el("syncGenerate").addEventListener("click", () => {
+      const code = encodeSyncCode(loadStats());
+      el("syncCode").value = code;
+      el("syncGenerateResult").hidden = false;
+      el("syncCopyStatus").textContent = "";
+    });
+
+    el("syncCopy").addEventListener("click", async () => {
+      const field = el("syncCode");
+      field.select();
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(field.value);
+        copied = true;
+      } catch (e) {
+        try { copied = document.execCommand("copy"); } catch (e2) { copied = false; }
+      }
+      el("syncCopyStatus").textContent = copied ? "Copiato negli appunti ✅" : "Copia non riuscita: seleziona e copia manualmente.";
+    });
+
+    el("syncImport").addEventListener("click", () => {
+      const statusEl = el("syncImportStatus");
+      const raw = el("syncImportInput").value;
+      let incoming;
+      try {
+        incoming = decodeSyncCode(raw);
+      } catch (e) {
+        statusEl.textContent = "❌ " + e.message;
+        statusEl.className = "sync-status sync-status-error";
+        return;
+      }
+      const current = loadStats();
+      const summary = `Il codice contiene ${incoming.studyTotal} risposte in modalità studio e ${incoming.examHistory.length} esami registrati. ` +
+        `I progressi attuali su questo dispositivo (${current.studyTotal} risposte, ${current.examHistory.length} esami) verranno sostituiti. Continuare?`;
+      if (!confirm(summary)) return;
+      saveStats(incoming);
+      renderStats();
+      statusEl.textContent = "✅ Progressi importati con successo.";
+      statusEl.className = "sync-status sync-status-ok";
+      el("syncImportInput").value = "";
     });
   }
 

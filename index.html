@@ -94,6 +94,34 @@
       <button class="btn btn-ghost" id="resetStats">Azzera statistiche</button>
     </div>
 
+    <div class="card sync-card">
+      <button class="rules-toggle" id="syncToggle" aria-expanded="false">
+        <span>🔄 Sincronizza i progressi tra dispositivi</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="rules-body" id="syncBody" hidden>
+        <p>
+          Genera un codice che racchiude tutti i tuoi progressi su questo dispositivo — nessun account, nessun server:
+          il codice <em>è</em> il dato, ricostruito con un calcolo puramente locale. Copialo e incollalo su un altro
+          dispositivo per riprendere da lì.
+        </p>
+
+        <button class="btn btn-ghost" id="syncGenerate">Genera codice da questo dispositivo</button>
+        <div id="syncGenerateResult" hidden style="margin-top:10px;">
+          <textarea id="syncCode" class="sync-textarea" rows="4" readonly onclick="this.select()"></textarea>
+          <button class="btn btn-ghost" id="syncCopy" style="margin-top:8px;">📋 Copia codice</button>
+          <span id="syncCopyStatus" class="sync-status"></span>
+        </div>
+
+        <hr class="sync-sep">
+
+        <label for="syncImportInput"><strong>Importa un codice da un altro dispositivo</strong></label>
+        <textarea id="syncImportInput" class="sync-textarea" rows="4" placeholder="Incolla qui il codice generato sull'altro dispositivo…" style="margin-top:8px;"></textarea>
+        <button class="btn btn-primary" id="syncImport" style="margin-top:8px;">Importa progressi</button>
+        <div id="syncImportStatus" class="sync-status"></div>
+      </div>
+    </div>
+
   </section>
 
   <!-- ===================== QUIZ SCREEN (study & exam) ===================== -->

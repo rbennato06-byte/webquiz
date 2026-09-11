@@ -212,6 +212,20 @@ main.wrap { padding-block: 28px 60px; }
 .stat-row:last-child { border-bottom: none; }
 .stat-row b { color: var(--primary); }
 
+/* ---- sync card ---- */
+.sync-card .rules-body p { margin: 0 0 14px; }
+.sync-textarea {
+  width: 100%; box-sizing: border-box; resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .82rem; line-height: 1.4; word-break: break-all;
+  padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text);
+}
+.sync-sep { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+.sync-status { display: block; margin-top: 8px; font-size: .85rem; color: var(--text-muted); }
+.sync-status-ok { color: var(--primary); font-weight: 700; }
+.sync-status-error { color: var(--exam); font-weight: 700; }
+
 /* ---- quiz screen ---- */
 .quiz-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
 .progress-info { font-size: .88rem; color: var(--text-muted); display: flex; gap: 14px; }
