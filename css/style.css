@@ -215,7 +215,19 @@ main.wrap { padding-block: 28px 60px; }
 .btn-exam:hover { background: var(--exam-hover); }
 .btn-ghost { background: var(--surface-2); color: var(--text); width: auto; }
 .btn-ghost:hover { background: var(--border); }
-.exam-micro-btn { margin-top: 10px; }
+
+/* ---- micro esame personalizzabile ---- */
+.micro-toggle { margin-top: 14px; }
+.micro-intro { margin: 0 0 14px; color: var(--text-muted); font-size: .88rem; }
+.micro-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.micro-row label { flex: 1 1 auto; font-size: .88rem; font-weight: 600; color: var(--text); }
+.micro-row input[type="number"] {
+  width: 68px; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); font-size: .9rem; text-align: center;
+}
+.micro-max { font-size: .76rem; color: var(--text-muted); white-space: nowrap; }
+.micro-row-minutes { margin-top: 4px; padding-top: 12px; border-top: 1px solid var(--border); }
+.micro-total { font-weight: 700; font-size: .88rem; margin: 4px 0 14px; color: var(--text-muted); }
 
 .stats-card h2 { margin-top: 0; font-size: 1.1rem; }
 .stat-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: .9rem; }

@@ -592,6 +592,7 @@
       input.addEventListener("change", () => {
         container.querySelectorAll(".area-pill").forEach((p) => p.classList.remove("is-checked"));
         input.closest(".area-pill").classList.add("is-checked");
+        buildMicroExamCustomizer();
       });
     });
   }
@@ -619,32 +620,101 @@
     renderQuestion();
   }
 
-  // Question counts, timer and passing threshold for each exam length. The
-  // "micro" exam mirrors the official format at half the size: 11 a risposta
-  // multipla + 5 a completamento = 16 domande (round of 31/2), 25 minuti
-  // invece di 50, soglia 9/16 (proporzionale a 18/31).
-  const EXAM_FORMAT = {
-    full:  { mc: 21, fill: 10, minutes: 50, threshold: 18 },
-    micro: { mc: 11, fill: 5, minutes: 25, threshold: 9 }
-  };
+  // Question counts, timer and passing threshold of the official exam format.
+  // The micro exam threshold scales proportionally to this ratio (18/31) to
+  // whatever custom length the person chooses.
+  const EXAM_FORMAT = { mc: 21, fill: 10, minutes: 50, threshold: 18 };
+  const microThreshold = (max) => Math.round((max * EXAM_FORMAT.threshold) / (EXAM_FORMAT.mc + EXAM_FORMAT.fill));
 
-  function startExam(micro) {
-    const format = micro ? EXAM_FORMAT.micro : EXAM_FORMAT.full;
+  function startExam() {
     const area = selectedExamArea();
     const areaTopics = topicsByArea(area);
     const areaQuestions = QUESTIONS.filter((q) => areaTopics.includes(q.topic));
     const mcPool = shuffle(areaQuestions.filter((q) => q.type === "mc"));
     const fillPool = shuffle(areaQuestions.filter((q) => q.type === "fill"));
-    const mcPicked = mcPool.slice(0, format.mc);
-    const fillPicked = fillPool.slice(0, format.fill);
+    const mcPicked = mcPool.slice(0, EXAM_FORMAT.mc);
+    const fillPicked = fillPool.slice(0, EXAM_FORMAT.fill);
     state.mode = "exam";
     state.examArea = area;
-    state.examMicro = !!micro;
+    state.examMicro = false;
     state.queue = shuffle(mcPicked.concat(fillPicked));
     state.index = 0;
     state.answers = [];
     state.locked = false;
-    state.secondsLeft = format.minutes * 60;
+    state.secondsLeft = EXAM_FORMAT.minutes * 60;
+    el("timerBox").hidden = false;
+    updateTimerDisplay();
+    clearInterval(state.timerId);
+    state.timerId = setInterval(tickTimer, 1000);
+    showScreen("quiz");
+    renderQuestion();
+  }
+
+  // Micro esame personalizzabile: la persona sceglie quante domande casuali
+  // includere per ciascuna materia e i minuti a disposizione. Di default i
+  // campi sono impostati su metà dell'esame simulato ufficiale (16 domande
+  // dalla materia correntemente selezionata, 25 minuti).
+  function buildMicroExamCustomizer() {
+    const container = el("microCustomizer");
+    container.innerHTML = "";
+    const defaultArea = selectedExamArea();
+    Object.keys(AREAS).forEach((areaKey) => {
+      const available = QUESTIONS.filter((q) => topicsByArea(areaKey).includes(q.topic)).length;
+      const defaultValue = areaKey === defaultArea ? Math.min(16, available) : 0;
+      const row = document.createElement("div");
+      row.className = "micro-row";
+      row.innerHTML = `
+        <label for="microCount_${areaKey}">${AREAS[areaKey].icon} ${AREAS[areaKey].name}</label>
+        <input type="number" id="microCount_${areaKey}" min="0" max="${available}" value="${defaultValue}">
+        <span class="micro-max">/ ${available} disponibili</span>
+      `;
+      container.appendChild(row);
+      row.querySelector("input").addEventListener("input", updateMicroTotal);
+    });
+    updateMicroTotal();
+  }
+
+  function updateMicroTotal() {
+    const total = Object.keys(AREAS).reduce((sum, areaKey) => {
+      const input = el(`microCount_${areaKey}`);
+      return sum + (input ? Math.max(0, parseInt(input.value, 10) || 0) : 0);
+    }, 0);
+    el("microTotal").textContent = `Totale: ${total} domand${total === 1 ? "a" : "e"}`;
+  }
+
+  function startExamMicro() {
+    const counts = {};
+    let total = 0;
+    Object.keys(AREAS).forEach((areaKey) => {
+      const input = el(`microCount_${areaKey}`);
+      const max = parseInt(input.max, 10) || 0;
+      const requested = Math.max(0, Math.min(max, parseInt(input.value, 10) || 0));
+      input.value = requested;
+      counts[areaKey] = requested;
+      total += requested;
+    });
+    if (total === 0) { alert("Scegli almeno una domanda, per almeno una materia."); return; }
+    updateMicroTotal();
+
+    const minutesInput = el("microMinutes");
+    const minutes = Math.max(1, parseInt(minutesInput.value, 10) || 25);
+    minutesInput.value = minutes;
+
+    let queue = [];
+    Object.keys(counts).forEach((areaKey) => {
+      if (counts[areaKey] <= 0) return;
+      const pool = shuffle(QUESTIONS.filter((q) => topicsByArea(areaKey).includes(q.topic)));
+      queue = queue.concat(pool.slice(0, counts[areaKey]));
+    });
+
+    state.mode = "exam";
+    state.examArea = null;
+    state.examMicro = true;
+    state.queue = shuffle(queue);
+    state.index = 0;
+    state.answers = [];
+    state.locked = false;
+    state.secondsLeft = minutes * 60;
     el("timerBox").hidden = false;
     updateTimerDisplay();
     clearInterval(state.timerId);
@@ -678,7 +748,7 @@
     const total = state.queue.length;
 
     el("quizModeLabel").textContent = state.mode === "exam"
-      ? `${state.examMicro ? "Micro esame" : "Esame simulato"} · ${AREAS[state.examArea].icon} ${AREAS[state.examArea].name}`
+      ? (state.examMicro ? "Micro esame personalizzato" : `Esame simulato · ${AREAS[state.examArea].icon} ${AREAS[state.examArea].name}`)
       : "Modalità studio";
     el("quizCounter").textContent = `Domanda ${state.index + 1} di ${total}`;
     el("progressFill").style.width = `${(state.index / total) * 100}%`;
@@ -878,7 +948,7 @@
     });
     score = Math.max(0, score);
     const max = state.queue.length;
-    const threshold = state.examMicro ? EXAM_FORMAT.micro.threshold : EXAM_FORMAT.full.threshold;
+    const threshold = state.examMicro ? microThreshold(max) : EXAM_FORMAT.threshold;
     const passed = score >= threshold;
     const verdictText = passed ? `Superato ✅ (soglia ${threshold}/${max})` : `Non superato ❌ (soglia ${threshold}/${max})`;
     const title = state.examMicro ? "Micro esame completato" : "Esame simulato completato";
@@ -946,6 +1016,7 @@
   function init() {
     buildTopicFilters();
     buildExamAreaSelect();
+    buildMicroExamCustomizer();
     renderStats();
     renderProgressCalendar();
 
@@ -966,8 +1037,15 @@
     });
 
     el("startStudy").addEventListener("click", startStudy);
-    el("startExam").addEventListener("click", () => startExam(false));
-    el("startExamMicro").addEventListener("click", () => startExam(true));
+    el("startExam").addEventListener("click", startExam);
+    el("startExamMicro").addEventListener("click", startExamMicro);
+    el("microToggle").addEventListener("click", () => {
+      const body = el("microBody");
+      const btn = el("microToggle");
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      body.hidden = expanded;
+    });
     el("btnQuit").addEventListener("click", quitSession);
     el("btnNext").addEventListener("click", goNext);
     el("btnConfirmFill").addEventListener("click", submitFill);

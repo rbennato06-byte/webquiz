@@ -85,7 +85,21 @@
         <div class="area-select" id="examAreaSelect"></div>
 
         <button class="btn btn-exam" id="startExam">Inizia l'esame simulato</button>
-        <button class="btn btn-ghost exam-micro-btn" id="startExamMicro">🔹 Micro esame (metà: 16 domande, 25 min)</button>
+
+        <button type="button" class="rules-toggle micro-toggle" id="microToggle" aria-expanded="false">
+          <span>🔹 Micro esame personalizzabile</span>
+          <span class="chevron">▾</span>
+        </button>
+        <div class="rules-body" id="microBody" hidden>
+          <p class="micro-intro">Scegli quante domande casuali includere per ciascuna materia e il tempo a disposizione. Di default è impostato su metà dell'esame simulato ufficiale.</p>
+          <div id="microCustomizer"></div>
+          <div class="micro-row micro-row-minutes">
+            <label for="microMinutes">⏱️ Minuti a disposizione</label>
+            <input type="number" id="microMinutes" min="1" max="180" value="25">
+          </div>
+          <p class="micro-total" id="microTotal"></p>
+          <button class="btn btn-ghost" id="startExamMicro">Inizia il micro esame</button>
+        </div>
       </div>
     </div>
 
