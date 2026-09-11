@@ -85,13 +85,19 @@
         <div class="area-select" id="examAreaSelect"></div>
 
         <button class="btn btn-exam" id="startExam">Inizia l'esame simulato</button>
+        <button class="btn btn-ghost exam-micro-btn" id="startExamMicro">🔹 Micro esame (metà: 16 domande, 25 min)</button>
       </div>
     </div>
 
     <div class="card stats-card" id="statsCard" hidden>
-      <h2>📈 I tuoi progressi</h2>
-      <div id="statsBody"></div>
-      <button class="btn btn-ghost" id="resetStats">Azzera statistiche</button>
+      <button class="rules-toggle" id="statsToggle" aria-expanded="true">
+        <span>📈 I tuoi progressi</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="rules-body" id="statsBodyWrap">
+        <div id="statsBody"></div>
+        <button class="btn btn-ghost" id="resetStats">Azzera statistiche</button>
+      </div>
     </div>
 
     <div class="card cal-card">

@@ -14,6 +14,7 @@
     locked: false,       // true once the current question's answer has been confirmed
     pendingMc: null,      // index of the tentatively selected (not yet confirmed) MC option
     examArea: null,       // area selected for the current/last exam session
+    examMicro: false,     // true if the current/last exam is the half-length "micro esame"
     calView: null,        // { year, month } currently displayed in the progress calendar (month: 0-11)
     calSelectedDay: null   // "YYYY-MM-DD" of the day currently shown in the calendar detail panel
   };
@@ -141,9 +142,9 @@
 
     saveStats(stats);
   }
-  function recordExamResult(score, max, passed, area) {
+  function recordExamResult(score, max, passed, area, micro) {
     const stats = loadStats();
-    stats.examHistory.push({ score, max, passed, area: area || "", date: new Date().toISOString() });
+    stats.examHistory.push({ score, max, passed, area: area || "", micro: !!micro, date: new Date().toISOString() });
     if (stats.examHistory.length > 20) stats.examHistory.shift();
     saveStats(stats);
   }
@@ -178,7 +179,7 @@
       .map((h) => {
         const scoreX10 = Math.max(0, Math.round(h.score * 10));
         const dateSec = Math.floor(new Date(h.date).getTime() / 1000) || 0;
-        return `${scoreX10.toString(36)}:${h.max.toString(36)}:${h.passed ? 1 : 0}:${dateSec.toString(36)}:${h.area || ""}`;
+        return `${scoreX10.toString(36)}:${h.max.toString(36)}:${h.passed ? 1 : 0}:${dateSec.toString(36)}:${h.area || ""}:${h.micro ? 1 : 0}`;
       })
       .join(",");
 
@@ -223,12 +224,13 @@
 
       if (examsPart) {
         examsPart.split(",").forEach((entry) => {
-          const [scoreX10, max, passed, dateSec, area] = entry.split(":");
+          const [scoreX10, max, passed, dateSec, area, micro] = entry.split(":");
           stats.examHistory.push({
             score: (parseInt(scoreX10, 36) || 0) / 10,
             max: parseInt(max, 36) || 0,
             passed: passed === "1",
             area: area || "",
+            micro: micro === "1",
             date: new Date((parseInt(dateSec, 36) || 0) * 1000).toISOString()
           });
         });
@@ -283,6 +285,7 @@
             max: parseInt(max, 36) || 0,
             passed: passed === "1",
             area: "",
+            micro: false,
             date: new Date((parseInt(dateSec, 36) || 0) * 1000).toISOString()
           });
         });
@@ -319,9 +322,12 @@
     });
     if (stats.examHistory.length > 0) {
       const last = stats.examHistory[stats.examHistory.length - 1];
-      html += `<div class="stat-row"><span>Ultimo esame simulato</span><b>${last.score.toFixed(1)}/${last.max} — ${last.passed ? "Superato ✅" : "Non superato ❌"}</b></div>`;
-      const best = stats.examHistory.reduce((m, h) => (h.score > m ? h.score : m), -Infinity);
-      html += `<div class="stat-row"><span>Miglior punteggio esame</span><b>${best.toFixed(1)}/${last.max}</b></div>`;
+      const lastLabel = last.micro ? "Ultimo micro esame" : "Ultimo esame simulato";
+      html += `<div class="stat-row"><span>${lastLabel}</span><b>${last.score.toFixed(1)}/${last.max} — ${last.passed ? "Superato ✅" : "Non superato ❌"}</b></div>`;
+      // Confronto per percentuale, non per punteggio grezzo: esame completo (max 31) e
+      // micro esame (max 16) non sono altrimenti comparabili sulla stessa scala.
+      const best = stats.examHistory.reduce((m, h) => (h.score / h.max > m.score / m.max ? h : m));
+      html += `<div class="stat-row"><span>Miglior punteggio esame${best.micro ? " (micro)" : ""}</span><b>${best.score.toFixed(1)}/${best.max}</b></div>`;
     }
     body.innerHTML = html;
   }
@@ -411,7 +417,8 @@
       if (exams.length > 0) {
         html += `<div class="cal-day-section-title">Esami simulati</div>`;
         exams.forEach((h) => {
-          html += `<div class="stat-row"><span>${examAreaIcon(h.area)} ${h.area && AREAS[h.area] ? AREAS[h.area].name : "Esame"}</span><b>${h.score.toFixed(1)}/${h.max} — ${h.passed ? "Superato ✅" : "Non superato ❌"}</b></div>`;
+          const examLabel = (h.area && AREAS[h.area] ? AREAS[h.area].name : "Esame") + (h.micro ? " (micro)" : "");
+          html += `<div class="stat-row"><span>${examAreaIcon(h.area)} ${examLabel}</span><b>${h.score.toFixed(1)}/${h.max} — ${h.passed ? "Superato ✅" : "Non superato ❌"}</b></div>`;
         });
       }
     }
@@ -500,14 +507,24 @@
       group.className = "topic-area-group";
       const header = document.createElement("div");
       header.className = "topic-area-header";
-      const headerLabel = document.createElement("span");
-      headerLabel.textContent = `${AREAS[areaKey].icon} ${AREAS[areaKey].name}`;
+
+      // Collapse/expand this subject's topic list, so long lists can be
+      // tucked away without losing the checkbox selections underneath.
+      const collapseBtn = document.createElement("button");
+      collapseBtn.type = "button";
+      collapseBtn.className = "topic-area-collapse";
+      collapseBtn.setAttribute("aria-expanded", "true");
+      collapseBtn.innerHTML = `<span>${AREAS[areaKey].icon} ${AREAS[areaKey].name}</span><span class="chevron">▾</span>`;
+
       const toggleBtn = document.createElement("button");
       toggleBtn.type = "button";
       toggleBtn.className = "topic-area-toggle";
-      header.appendChild(headerLabel);
+      header.appendChild(collapseBtn);
       header.appendChild(toggleBtn);
       group.appendChild(header);
+
+      const body = document.createElement("div");
+      body.className = "topic-area-body";
 
       const areaTopics = topicsByArea(areaKey);
       const units = SYLLABUS[areaKey];
@@ -519,17 +536,24 @@
           const unitHeader = document.createElement("div");
           unitHeader.className = "topic-unit-header";
           unitHeader.textContent = `Unità ${u.unit} · ${u.name}`;
-          group.appendChild(unitHeader);
-          unitTopics.forEach((key) => group.appendChild(buildTopicRow(key)));
+          body.appendChild(unitHeader);
+          unitTopics.forEach((key) => body.appendChild(buildTopicRow(key)));
         });
       } else {
-        areaTopics.forEach((key) => group.appendChild(buildTopicRow(key)));
+        areaTopics.forEach((key) => body.appendChild(buildTopicRow(key)));
       }
+      group.appendChild(body);
       container.appendChild(group);
+
+      collapseBtn.addEventListener("click", () => {
+        const expanded = collapseBtn.getAttribute("aria-expanded") === "true";
+        collapseBtn.setAttribute("aria-expanded", String(!expanded));
+        body.hidden = expanded;
+      });
 
       // Select/deselect-all toggle for the whole subject block, so topics
       // can be added/removed in bulk without clicking each one.
-      const groupCheckboxes = () => Array.from(group.querySelectorAll('input[type="checkbox"]'));
+      const groupCheckboxes = () => Array.from(body.querySelectorAll('input[type="checkbox"]'));
       const refreshToggleLabel = () => {
         const boxes = groupCheckboxes();
         const allChecked = boxes.length > 0 && boxes.every((b) => b.checked);
@@ -595,21 +619,32 @@
     renderQuestion();
   }
 
-  function startExam() {
+  // Question counts, timer and passing threshold for each exam length. The
+  // "micro" exam mirrors the official format at half the size: 11 a risposta
+  // multipla + 5 a completamento = 16 domande (round of 31/2), 25 minuti
+  // invece di 50, soglia 9/16 (proporzionale a 18/31).
+  const EXAM_FORMAT = {
+    full:  { mc: 21, fill: 10, minutes: 50, threshold: 18 },
+    micro: { mc: 11, fill: 5, minutes: 25, threshold: 9 }
+  };
+
+  function startExam(micro) {
+    const format = micro ? EXAM_FORMAT.micro : EXAM_FORMAT.full;
     const area = selectedExamArea();
     const areaTopics = topicsByArea(area);
     const areaQuestions = QUESTIONS.filter((q) => areaTopics.includes(q.topic));
     const mcPool = shuffle(areaQuestions.filter((q) => q.type === "mc"));
     const fillPool = shuffle(areaQuestions.filter((q) => q.type === "fill"));
-    const mcPicked = mcPool.slice(0, 21);
-    const fillPicked = fillPool.slice(0, 10);
+    const mcPicked = mcPool.slice(0, format.mc);
+    const fillPicked = fillPool.slice(0, format.fill);
     state.mode = "exam";
     state.examArea = area;
+    state.examMicro = !!micro;
     state.queue = shuffle(mcPicked.concat(fillPicked));
     state.index = 0;
     state.answers = [];
     state.locked = false;
-    state.secondsLeft = 50 * 60;
+    state.secondsLeft = format.minutes * 60;
     el("timerBox").hidden = false;
     updateTimerDisplay();
     clearInterval(state.timerId);
@@ -643,7 +678,7 @@
     const total = state.queue.length;
 
     el("quizModeLabel").textContent = state.mode === "exam"
-      ? `Esame simulato · ${AREAS[state.examArea].icon} ${AREAS[state.examArea].name}`
+      ? `${state.examMicro ? "Micro esame" : "Esame simulato"} · ${AREAS[state.examArea].icon} ${AREAS[state.examArea].name}`
       : "Modalità studio";
     el("quizCounter").textContent = `Domanda ${state.index + 1} di ${total}`;
     el("progressFill").style.width = `${(state.index / total) * 100}%`;
@@ -834,7 +869,8 @@
   }
 
   function renderExamResults(timeUp) {
-    // Official scoring: +1 correct, -0.1 wrong, 0 omitted. Max = number of questions (31).
+    // Official scoring: +1 correct, -0.1 wrong, 0 omitted. Max = number of questions
+    // (31 per l'esame completo, 16 per il micro esame, metà arrotondata).
     let score = 0;
     state.answers.forEach((a) => {
       if (a.skipped) score += 0;
@@ -842,11 +878,13 @@
     });
     score = Math.max(0, score);
     const max = state.queue.length;
-    const passed = score >= 18;
-    const verdictText = passed ? `Superato ✅ (soglia 18/${max})` : `Non superato ❌ (soglia 18/${max})`;
+    const threshold = state.examMicro ? EXAM_FORMAT.micro.threshold : EXAM_FORMAT.full.threshold;
+    const passed = score >= threshold;
+    const verdictText = passed ? `Superato ✅ (soglia ${threshold}/${max})` : `Non superato ❌ (soglia ${threshold}/${max})`;
+    const title = state.examMicro ? "Micro esame completato" : "Esame simulato completato";
 
     el("resultsSummary").innerHTML = `
-      <h2>${timeUp ? "⏰ Tempo scaduto — " : ""}Esame simulato completato</h2>
+      <h2>${timeUp ? "⏰ Tempo scaduto — " : ""}${title}</h2>
       <div class="score-big">${score.toFixed(1)} <span style="font-size:1.2rem;color:var(--text-muted)">/ ${max}</span></div>
       <div class="score-verdict ${passed ? "pass" : "fail"}">${verdictText}</div>
       <p class="score-detail">Punteggio calcolato con le regole ufficiali: +1 risposta corretta, −0,1 risposta errata, 0 risposta omessa.</p>
@@ -856,7 +894,7 @@
     el("resultsReview").innerHTML = reviewHtml(false);
     renderMath(el("resultsReview"));
 
-    recordExamResult(score, max, passed, state.examArea);
+    recordExamResult(score, max, passed, state.examArea, state.examMicro);
   }
 
   function breakdownHtml() {
@@ -928,7 +966,8 @@
     });
 
     el("startStudy").addEventListener("click", startStudy);
-    el("startExam").addEventListener("click", startExam);
+    el("startExam").addEventListener("click", () => startExam(false));
+    el("startExamMicro").addEventListener("click", () => startExam(true));
     el("btnQuit").addEventListener("click", quitSession);
     el("btnNext").addEventListener("click", goNext);
     el("btnConfirmFill").addEventListener("click", submitFill);
@@ -945,6 +984,13 @@
       confirmMc();
     });
     el("btnRestart").addEventListener("click", () => { showScreen("home"); renderStats(); renderProgressCalendar(); });
+    el("statsToggle").addEventListener("click", () => {
+      const body = el("statsBodyWrap");
+      const btn = el("statsToggle");
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      body.hidden = expanded;
+    });
     el("resetStats").addEventListener("click", () => {
       if (confirm("Azzerare tutte le statistiche salvate su questo dispositivo?")) {
         localStorage.removeItem(STORAGE_KEY);
