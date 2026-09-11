@@ -223,7 +223,13 @@
       group.className = "topic-area-group";
       const header = document.createElement("div");
       header.className = "topic-area-header";
-      header.innerHTML = `<span>${AREAS[areaKey].icon} ${AREAS[areaKey].name}</span>`;
+      const headerLabel = document.createElement("span");
+      headerLabel.textContent = `${AREAS[areaKey].icon} ${AREAS[areaKey].name}`;
+      const toggleBtn = document.createElement("button");
+      toggleBtn.type = "button";
+      toggleBtn.className = "topic-area-toggle";
+      header.appendChild(headerLabel);
+      header.appendChild(toggleBtn);
       group.appendChild(header);
 
       const areaTopics = topicsByArea(areaKey);
@@ -243,6 +249,23 @@
         areaTopics.forEach((key) => group.appendChild(buildTopicRow(key)));
       }
       container.appendChild(group);
+
+      // Select/deselect-all toggle for the whole subject block, so topics
+      // can be added/removed in bulk without clicking each one.
+      const groupCheckboxes = () => Array.from(group.querySelectorAll('input[type="checkbox"]'));
+      const refreshToggleLabel = () => {
+        const boxes = groupCheckboxes();
+        const allChecked = boxes.length > 0 && boxes.every((b) => b.checked);
+        toggleBtn.textContent = allChecked ? "Deseleziona tutto" : "Seleziona tutto";
+      };
+      toggleBtn.addEventListener("click", () => {
+        const boxes = groupCheckboxes();
+        const allChecked = boxes.length > 0 && boxes.every((b) => b.checked);
+        boxes.forEach((b) => (b.checked = !allChecked));
+        refreshToggleLabel();
+      });
+      groupCheckboxes().forEach((b) => b.addEventListener("change", refreshToggleLabel));
+      refreshToggleLabel();
     });
   }
 

@@ -119,9 +119,17 @@ main.wrap { padding-block: 28px 60px; }
 .topic-filters { display: flex; flex-direction: column; gap: 18px; margin-bottom: 14px; }
 .topic-area-group { display: flex; flex-direction: column; gap: 8px; }
 .topic-area-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
   font-size: .8rem; font-weight: 800; letter-spacing: .02em; text-transform: uppercase;
   color: var(--text-muted); padding-left: 2px;
 }
+.topic-area-toggle {
+  flex-shrink: 0; font-size: .72rem; font-weight: 700; letter-spacing: 0; text-transform: none;
+  color: var(--primary); background: color-mix(in srgb, var(--primary) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  border-radius: 8px; padding: 4px 9px; cursor: pointer;
+}
+.topic-area-toggle:hover { background: color-mix(in srgb, var(--primary) 18%, var(--surface)); }
 .topic-unit-header {
   font-size: .74rem; font-weight: 700; color: var(--text-muted);
   padding: 2px 2px 2px 10px; border-left: 2px solid var(--border);

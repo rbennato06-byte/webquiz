@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Appunti di Biologia | Semestre Filtro</title>
-<meta name="description" content="Appunti di Biologia per il semestre filtro: le 7 unità del syllabus, dalla teoria cellulare alla biologia molecolare, con tabelle ed esercizi commentati per gli argomenti trattati nelle slide del corso.">
+<title>Appunti di Biologia | Kirkises</title>
+<meta name="description" content="Appunti di Biologia per il semestre filtro: le 7 unità del syllabus, dalla teoria cellulare alla biologia molecolare, con tabelle ed esercizi commentati basati sulle slide del corso e sui manuali di riferimento (Fasano, Biologia e Genetica).">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/appunti.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
@@ -29,6 +29,8 @@
   <a href="#enzimi"><span class="qn-dot" style="background:#ca8a04"></span>Enzimi</a>
   <a href="#lipidi"><span class="qn-dot" style="background:#be123c"></span>Lipidi</a>
   <a href="#membrane"><span class="qn-dot" style="background:#7c3aed"></span>Membrane</a>
+  <a href="#acidi-nucleici"><span class="qn-dot" style="background:#1d4ed8"></span>Acidi nucleici</a>
+  <a href="#organelli"><span class="qn-dot" style="background:#c2410c"></span>Organelli</a>
   <a href="#ud2"><span class="qn-dot" style="background:#2563eb"></span>Genoma/epigenetica</a>
   <a href="#ud3"><span class="qn-dot" style="background:#ea580c"></span>Flusso dell'informazione</a>
   <a href="#ud4"><span class="qn-dot" style="background:#a21caf"></span>Genetica/mutazioni</a>
@@ -49,9 +51,34 @@
       <li><b>Procarioti</b>: privi di un vero nucleo delimitato da membrana. <b>Eucarioti</b>: nucleo vero, sistema di endomembrane.</li>
       <li>Struttura procariotica: membrana plasmatica, parete di <b>peptidoglicano</b>, capsula (protezione da fagocitosi), fimbrie/pili (adesione), pilo sessuale (coniugazione), flagelli (movimento).</li>
       <li><b>Trasferimento genico orizzontale</b>: trasformazione (DNA libero dall'ambiente), coniugazione (pilo sessuale), trasduzione (mediata da un batteriofago).</li>
-      <li>3 domini della vita: <b>Bacteria</b>, <b>Archaea</b>, <b>Eukarya</b>, tutti discendenti da LUCA (Last Universal Common Ancestor).</li>
-      <li><b>Teoria endosimbiontica</b>: i mitocondri deriverebbero da batteri endosimbionti inglobati da una cellula ospite ancestrale.</li>
+      <li>3 domini della vita: <b>Bacteria</b>, <b>Archaea</b>, <b>Eukarya</b>, tutti discendenti da un progenitore comune (LUCA). Il sequenziamento genico ha mostrato che gli Archaea sono per certi aspetti più simili agli eucarioti che ai batteri, pur essendo procarioti.</li>
+      <li><b>Archaea</b>: spesso adattati ad ambienti estremi (estremofili: alte temperature, salinità, pH); lipidi di membrana con legami etere (anziché estere come in Bacteria ed Eucarya) e parete priva di peptidoglicano classico; macchinario di trascrizione/traduzione più simile a quello eucariotico.</li>
+      <li><b>Teoria endosimbiontica</b>: i mitocondri (e i cloroplasti nei vegetali) deriverebbero da batteri aerobi (e cianobatteri fotosintetici) endosimbionti, inglobati per fagocitosi da una cellula ospite procariotica ancestrale. A supporto: doppia membrana, DNA circolare proprio, ribosomi di tipo procariotico (70S), divisione per scissione binaria.</li>
     </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Tassonomia e albero della vita</h3>
+    <ul class="notes-points">
+      <li>La <b>tassonomia</b> classifica gli organismi in categorie gerarchiche via via più ampie: <b>specie → genere → famiglia → ordine → classe → phylum → regno</b> (fino ai 3 domini).</li>
+      <li><b>Nomenclatura binomiale</b> (Linneo, 1746): ogni specie è identificata da due nomi latini, <i>genere</i> (maiuscolo) e <i>specie</i> (minuscolo, in corsivo) — es. <i>Homo sapiens</i>.</li>
+      <li><b>Filogenesi</b>: ricostruzione delle relazioni evolutive tra organismi, rappresentata come un albero in cui ogni diramazione è un evento di speciazione; oggi si basa soprattutto sul confronto di sequenze molecolari (DNA, proteine).</li>
+      <li>Classificazione classica in 6 regni (Eubacteria, Archaebacteria, Protista, Fungi, Plantae, Animalia), raggruppati nei 3 domini Bacteria, Archaea ed Eukarya.</li>
+    </ul>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Categoria</th><th>Taxon (es. <i>Homo sapiens</i>)</th></tr></thead>
+        <tbody>
+          <tr><td>Regno</td><td>Animalia</td></tr>
+          <tr><td>Phylum</td><td>Chordata</td></tr>
+          <tr><td>Classe</td><td>Mammalia</td></tr>
+          <tr><td>Ordine</td><td>Primates</td></tr>
+          <tr><td>Famiglia</td><td>Hominidae</td></tr>
+          <tr><td>Genere</td><td><i>Homo</i></td></tr>
+          <tr><td>Specie</td><td><i>sapiens</i></td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="notes-block">
@@ -108,6 +135,9 @@
       <li><b>Ciclo lisogenico</b>: il genoma virale si integra nel cromosoma dell'ospite come <b>profago</b>, silente, replicato passivamente insieme al DNA batterico.</li>
       <li><b>Retrovirus</b>: possiedono <b>trascrittasi inversa</b> (RNA→DNA) e <b>integrasi</b>, per integrare una copia a DNA nel genoma ospite.</li>
       <li>Ingresso: legame a recettori specifici della cellula ospite (tropismo), spesso via endocitosi. Uscita: lisi (virus nudi) o gemmazione/esocitosi (virus con envelope).</li>
+      <li><b>Classificazione per tipo di genoma</b> (classificazione di Baltimore): DNA a doppio o singolo filamento, RNA a doppio o singolo filamento (a sua volta a polarità positiva, negativa, o retrotrascritto). Il tipo di genoma determina la strategia di replicazione: solo i virus a DNA e quelli a RNA(+) possono, in linea di principio, essere "letti" direttamente dalla cellula ospite.</li>
+      <li><b>Virus oncogeni</b>: alcuni virus possono promuovere la trasformazione neoplastica delle cellule infettate, ad esempio inserendo oncogeni virali nel genoma ospite o inattivando oncosoppressori — esempi ben noti sono HPV (carcinoma della cervice), virus dell'epatite B e C (carcinoma epatico), EBV (linfomi) e HTLV-1 (leucemia a cellule T).</li>
+      <li><b>Viroidi</b> (piccoli RNA circolari infettivi privi di capside, patogeni solo nelle piante) e <b>prioni</b> (proteine a conformazione alterata, autopropagantesi, prive di acido nucleico — es. malattie neurodegenerative come il morbo di Creutzfeldt-Jakob) sono agenti infettivi "atipici", ancora più semplici dei virus.</li>
     </ul>
   </div>
 
@@ -232,8 +262,9 @@
     <h3>Punti chiave</h3>
     <ul class="notes-points">
       <li>Ogni amminoacido ha un gruppo amminico ($-NH_3^+$), un gruppo carbossilico ($-COO^-$), una catena laterale R e un carbonio α (chirale, tranne nella glicina).</li>
-      <li>20 amminoacidi standard, classificati in base alla polarità di R: apolari, polari non carichi, carichi positivamente o negativamente.</li>
-      <li><b>Legame peptidico</b>: tra il $-COOH$ di un amminoacido e l'$-NH_2$ del successivo, con perdita di H₂O.</li>
+      <li>20 amminoacidi standard, classificati in base alla polarità di R: <b>apolari/idrofobici</b> (es. glicina, alanina, valina, leucina), <b>polari non carichi</b> (es. serina, treonina, asparagina), <b>carichi negativamente</b> o acidi (aspartato, glutammato) e <b>carichi positivamente</b> o basici (lisina, arginina, istidina).</li>
+      <li><b>Legame peptidico</b>: tra il $-COOH$ di un amminoacido e l'$-NH_2$ del successivo, con perdita di H₂O; ha parziale carattere di doppio legame (planare, rigido) per risonanza.</li>
+      <li><b>Proteine coniugate</b>: associano alla parte proteica (apoproteina) un gruppo prostetico non amminoacidico — es. <b>glicoproteine</b> (zuccheri), <b>lipoproteine</b> (lipidi, es. trasporto del colesterolo nel sangue), <b>metalloproteine</b> (ioni metallici), <b>emeproteine</b> (gruppo eme, es. emoglobina), <b>fosfoproteine</b> (gruppi fosfato) e <b>nucleoproteine</b> (acidi nucleici, es. istoni).</li>
       <li><b>Modificazioni post-traduzionali</b>: fosforilazione, glicosilazione, acetilazione, ubiquitinazione, lipidazione — regolano attività, localizzazione e destino della proteina.</li>
       <li><b>Denaturazione</b>: perdita della struttura 3D (per calore, pH estremo, agenti chimici) senza rottura dei legami peptidici.</li>
       <li><b>Dominio proteico</b>: regione strutturalmente autonoma e compatta di una proteina, spesso associata a una specifica funzione (es. il sito attivo di un enzima, vedi Enzimi); una stessa proteina può contenere più domini con funzioni diverse.</li>
@@ -393,7 +424,9 @@
       <li><b>Acidi grassi</b>: catena idrocarburica + gruppo carbossilico. <b>Saturi</b> (nessun doppio legame, catena lineare) vs <b>insaturi</b> (≥1 doppio legame, ripiegamento cis).</li>
       <li><b>Trigliceridi</b>: glicerolo + 3 acidi grassi (legame estereo) — principale riserva energetica.</li>
       <li><b>Fosfolipidi</b>: glicerolo + 2 acidi grassi + gruppo fosfato → molecole <b>anfipatiche</b> (testa polare idrofila + code apolari idrofobiche), costituenti delle membrane.</li>
-      <li><b>Colesterolo</b>: steroide che modula la fluidità della membrana.</li>
+      <li><b>Sfingolipidi</b>: basati sulla <b>sfingosina</b> (non sul glicerolo); il ceramide (sfingosina + acido grasso) dà origine alla <b>sfingomielina</b> (+ gruppo fosforil-colina, componente di membrana e della guaina mielinica) e ai <b>glicolipidi</b> (+ uno o più zuccheri, esposti sul versante esterno della membrana, parte del glicocalice).</li>
+      <li>I lipidi si distinguono in <b>saponificabili</b> (contengono acidi grassi legati con legame estereo, idrolizzabili: trigliceridi, fosfolipidi, sfingolipidi, cere) e <b>non saponificabili</b> (privi di acidi grassi esterificati: colesterolo e steroidi, terpeni, vitamine liposolubili).</li>
+      <li><b>Colesterolo</b>: steroide che modula la fluidità della membrana (la irrigidisce a temperature alte, la fluidifica a temperature basse) ed è precursore di ormoni steroidei, vitamina D e acidi biliari.</li>
     </ul>
   </div>
 
@@ -460,6 +493,8 @@
       <li>Proteine di membrana: <b>integrali</b> (attraversano il doppio strato, mono o multipasso), <b>periferiche</b> (legate solo superficialmente), <b>ancorate a GPI</b>.</li>
       <li><b>Permeabilità selettiva</b>: molecole piccole e apolari attraversano liberamente; ioni e molecole polari richiedono canali o trasportatori specifici.</li>
       <li>La <b>fluidità di membrana</b> dipende da temperatura, grado di insaturazione degli acidi grassi e contenuto di colesterolo.</li>
+      <li><b>Asimmetria di membrana</b>: i due foglietti del doppio strato hanno composizione diversa; i glicolipidi e la maggior parte delle glicoproteine si trovano solo sul versante extracellulare, dove formano il <b>glicocalice</b> (funzioni di riconoscimento cellulare, es. gruppi sanguigni AB0).</li>
+      <li><b>Zattere lipidiche (lipid raft)</b>: microdomini di membrana arricchiti in colesterolo e sfingolipidi, più ordinati e meno fluidi del resto della membrana, che concentrano specifiche proteine coinvolte nella segnalazione cellulare.</li>
     </ul>
   </div>
 
@@ -516,6 +551,169 @@
           <li><span class="step-n">1</span>Contro gradiente + consumo di ATP → non è diffusione (né semplice né facilitata).</li>
         </ol>
         <div class="ex-answer">Trasporto attivo</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ACIDI NUCLEICI E CROMATINA ============================= -->
+<section id="acidi-nucleici" class="notes-topic" style="--topic-color:#1d4ed8;">
+  <div class="notes-topic-header"><h2>Acidi nucleici: struttura del DNA e cromatina</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li>Il DNA è una <b>doppia elica antiparallela</b>: i due filamenti corrono in direzioni opposte (uno 5'→3', l'altro 3'→5'), tenuti insieme da legami idrogeno tra basi complementari — <b>A=T</b> (2 legami H) e <b>G≡C</b> (3 legami H) — e stabilizzati anche dall'impilamento (stacking) delle basi aromatiche.</li>
+      <li>Lo scheletro zucchero-fosfato (desossiribosio + gruppi fosfato in legame fosfodiestereo) è carico negativamente; nella cellula le cariche sono neutralizzate da proteine basiche (istoni negli eucarioti) o da controioni (Mg²⁺, K⁺) nei procarioti e nei virus.</li>
+      <li><b>Denaturazione</b>: separazione delle due eliche per rottura dei legami idrogeno (calore, pH estremi); è reversibile (<b>rinaturazione/ibridazione</b>) se le condizioni tornano favorevoli. La <b>temperatura di fusione ($T_m$)</b> è la temperatura a cui il 50% del DNA è denaturato: più alto il contenuto di coppie G-C (3 legami H), più alta è $T_m$.</li>
+      <li>La dimensione del genoma <b>non</b> è proporzionale alla complessità dell'organismo (es. alcune piante hanno genomi enormemente più grandi di quello umano): gran parte del DNA eucariotico è costituito da sequenze ripetute, non codificanti.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Dal DNA nudo al cromosoma: i livelli di compattamento</h3>
+    <p class="notes-topic-intro" style="margin:0 0 .6rem;">Nel nucleo eucariotico il DNA (nell'uomo, circa 1,7 metri se disteso) deve essere compattato in una struttura che entri in un nucleo di pochi µm. Il compattamento avviene per livelli gerarchici successivi.</p>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Livello</th><th>Spessore</th><th>Struttura</th></tr></thead>
+        <tbody>
+          <tr><td>DNA "nudo"</td><td>2 nm</td><td>Doppia elica libera</td></tr>
+          <tr><td>Nucleosoma ("collana di perle")</td><td>10 nm</td><td>DNA avvolto attorno a un <b>ottamero di istoni</b> (2 copie ciascuno di H2A, H2B, H3, H4), circa 146 coppie di basi per nucleosoma, separati da tratti di <b>DNA linker</b></td></tr>
+          <tr><td>Fibra cromatinica (solenoide)</td><td>30 nm</td><td>I nucleosomi si avvicinano grazie all'istone <b>H1</b>, che lega il DNA linker in entrata e uscita</td></tr>
+          <tr><td>Domini ad ansa</td><td>300 nm</td><td>La fibra da 30 nm forma anse ancorate a uno "scaffold" di proteine non istoniche</td></tr>
+          <tr><td>Eterocromatina</td><td>700 nm</td><td>Ulteriore condensazione delle anse</td></tr>
+          <tr><td>Cromosoma metafasico</td><td>1400 nm</td><td>Massimo livello di compattamento, tipico della divisione cellulare</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="notes-points">
+      <li>Il complesso DNA + proteine (istoniche e non) è detto <b>cromatina</b>; si presenta in due stati: <b>eucromatina</b> (lassa, trascrizionalmente attiva) ed <b>eterocromatina</b> (fortemente compattata). L'eterocromatina <b>costitutiva</b> resta sempre condensata e non trascritta (es. sequenze ripetute); quella <b>facoltativa</b> è inattivata solo in specifiche fasi o tipi cellulari.</li>
+      <li>Le differenze tra i due stati dipendono da modificazioni chimiche degli istoni (acetilazione, metilazione, fosforilazione, ubiquitinazione) e dal grado di interazione tra istone H1 e DNA linker.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Il cromosoma metafasico</h3>
+    <ul class="notes-points">
+      <li>Alla metafase ogni cromosoma è costituito da due <b>cromatidi fratelli</b> identici, uniti al <b>centromero</b> (costrizione primaria) e tenuti insieme dalle proteine <b>coesine</b>.</li>
+      <li>In base alla posizione del centromero i cromosomi si classificano in: <b>metacentrico</b> (centromero centrale, bracci di lunghezza simile), <b>submetacentrico</b> o <b>acrocentrico</b> (centromero spostato verso un'estremità) e <b>telocentrico</b> (centromero terminale — non presente nel cariotipo umano).</li>
+      <li>I due bracci sono indicati con <b>p</b> (corto, dal francese "petit") e <b>q</b> (lungo); le estremità sono protette dai <b>telomeri</b>.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — temperatura di fusione</div>
+      <div class="ex-statement">Due molecole di DNA a doppia elica, A e B, hanno la stessa lunghezza ma A è più ricca in coppie G-C mentre B è più ricca in coppie A-T. Quale delle due ha una $T_m$ più alta?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Le coppie G≡C formano 3 legami idrogeno, contro i 2 delle coppie A=T.</li>
+          <li><span class="step-n">2</span>Più legami idrogeno da rompere → serve più energia (temperatura più alta) per separare le eliche.</li>
+        </ol>
+        <div class="ex-answer">A (più ricca in G-C) ha $T_m$ più alta</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — livelli di compattamento</div>
+      <div class="ex-statement">Un ricercatore osserva al microscopio elettronico una fibra di cromatina spessa circa 10 nm, che ha l'aspetto di una "collana di perle". Che struttura sta osservando?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Lo spessore di 10 nm e l'aspetto "a perle" sono caratteristici del primo livello di compattamento del DNA.</li>
+          <li><span class="step-n">2</span>Le "perle" sono i nucleosomi (DNA avvolto sull'ottamero di istoni), il "filo" è il DNA linker.</li>
+        </ol>
+        <div class="ex-answer">Nucleosomi ("collana di perle")</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ORGANELLI E CITOSCHELETRO ============================= -->
+<section id="organelli" class="notes-topic" style="--topic-color:#c2410c;">
+  <div class="notes-topic-header"><h2>La cellula eucariotica: organelli e citoscheletro</h2><span class="notes-topic-unit">U.D. 1</span></div>
+
+  <div class="notes-block">
+    <h3>Nucleo</h3>
+    <ul class="notes-points">
+      <li><b>Involucro nucleare</b>: doppia membrana continua con il reticolo endoplasmatico, perforata da <b>pori nucleari</b> — grandi complessi proteici che regolano il trasporto selettivo tra nucleo e citoplasma (ioni e piccole molecole per diffusione passiva; proteine e RNP di grandi dimensioni per trasporto attivo, mediato da segnali di localizzazione nucleare, NLS).</li>
+      <li><b>Lamina nucleare</b>: rete di filamenti intermedi (lamine A, B, C) che riveste la faccia interna dell'involucro, sostenendone la forma e fungendo da sito di ancoraggio per la cromatina.</li>
+      <li><b>Nucleolo</b>: regione non delimitata da membrana, sede della trascrizione dei geni per l'rRNA (a opera della RNA polimerasi I) e del primo assemblaggio delle subunità ribosomali; scompare e si riforma a ogni divisione cellulare.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Reticolo endoplasmatico e ribosomi</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th></th><th>Reticolo ruvido (RER)</th><th>Reticolo liscio (SER)</th></tr></thead>
+        <tbody>
+          <tr><td>Aspetto</td><td>Ribosomi adesi sul versante citosolico</td><td>Privo di ribosomi, tubulare</td></tr>
+          <tr><td>Funzioni principali</td><td>Sintesi e <i>N</i>-glicosilazione di proteine di membrana e secrete</td><td>Sintesi di lipidi/steroidi, detossificazione (citocromo P450), stoccaggio del Ca²⁺</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="notes-points">
+      <li>I <b>ribosomi</b> sono complessi ribonucleoproteici (RNA ribosomiale + proteine), privi di membrana, sede della sintesi proteica; sono <b>liberi</b> nel citosol (sintetizzano proteine citoplasmatiche) oppure <b>legati al RER</b> (sintetizzano proteine di membrana, da secernere o destinate a lisosomi/Golgi).</li>
+      <li>Il ribosoma procariotico (<b>70S</b> = subunità 50S + 30S) è più piccolo di quello eucariotico citoplasmatico (<b>80S</b> = 60S + 40S); i ribosomi di mitocondri e cloroplasti sono invece di tipo procariotico — ulteriore prova dell'origine endosimbiontica di questi organelli.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Mitocondri e apparato di Golgi</h3>
+    <ul class="notes-points">
+      <li><b>Mitocondri</b>: delimitati da doppia membrana; quella interna forma ripiegamenti (<b>creste</b>) che aumentano la superficie per la fosforilazione ossidativa, racchiudendo la <b>matrice</b>. Possiedono un proprio <b>DNA circolare</b> (mtDNA) e ribosomi 70S: sono <b>organelli semiautonomi</b>, dato che gran parte delle loro proteine è comunque codificata dal genoma nucleare.</li>
+      <li><b>Apparato del Golgi</b>: pila di cisterne appiattite con polarità funzionale — riceve vescicole dal RE sulla faccia <b>cis</b>, modifica le molecole in transito (glicosilazione, solfatazione) attraverso le cisterne mediali, e le smista dalla faccia <b>trans</b> verso la membrana plasmatica, i lisosomi o le vescicole di secrezione.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Lisosomi e perossisomi</h3>
+    <ul class="notes-points">
+      <li><b>Lisosomi</b>: vescicole a singola membrana contenenti enzimi idrolitici (proteasi, nucleasi, lipasi, glicosidasi) attivi a <b>pH acido</b>, mantenuto da una pompa protonica; digeriscono materiale interno (<b>autofagia</b>, tramite gli autofagosomi) o esterno alla cellula, introdotto per endocitosi/fagocitosi (<b>eterofagia</b>). Difetti negli enzimi lisosomiali causano le <b>malattie da accumulo lisosomiale</b> (es. malattia di Tay-Sachs, malattia di Gaucher).</li>
+      <li><b>Perossisomi</b>: vescicole a singola membrana contenenti enzimi ossidativi (tra cui la <b>catalasi</b>, che neutralizza il perossido di idrogeno) coinvolti nella β-ossidazione degli acidi grassi a catena molto lunga e nella detossificazione; a differenza dei lisosomi non derivano dal sistema del Golgi ma crescono e si dividono autonomamente (come i mitocondri), pur non possedendo DNA proprio.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Citoscheletro</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Filamento</th><th>Diametro</th><th>Subunità</th><th>Funzione principale</th></tr></thead>
+        <tbody>
+          <tr><td>Microfilamenti (actina)</td><td>~7 nm</td><td>Actina G (globulare)</td><td>Forma cellulare, movimento, citodieresi, microvilli</td></tr>
+          <tr><td>Microtubuli</td><td>~25 nm</td><td>Dimeri di tubulina α/β</td><td>Trasporto intracellulare, fuso mitotico, ciglia e flagelli</td></tr>
+          <tr><td>Filamenti intermedi</td><td>8-12 nm</td><td>Variabile (cheratine, vimentina, lamine, neurofilamenti…)</td><td>Resistenza meccanica, mantenimento della forma</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="notes-points">
+      <li><b>Proteine motrici</b>: convertono l'energia dell'idrolisi di ATP (o GTP) in movimento lungo il citoscheletro. La <b>miosina</b> si muove lungo i microfilamenti; la <b>chinesina</b> e la <b>dineina</b> si muovono lungo i microtubuli, in direzioni opposte (rispettivamente verso l'estremità "+" e verso quella "−").</li>
+      <li><b>Ciglia e flagelli</b>: estroflessioni della membrana plasmatica sostenute da un fascio di microtubuli, l'<b>assonema</b>, organizzato nella caratteristica struttura <b>"9+2"</b> (9 coppie periferiche di microtubuli + 1 coppia centrale); il movimento è prodotto dallo scorrimento delle coppie di microtubuli ad opera della dineina assonemale, ancorato al <b>corpo basale</b> (struttura simile a un centriolo).</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — RER o SER?</div>
+      <div class="ex-statement">Una cellula del testicolo, specializzata nella sintesi di ormoni steroidei, presenta un reticolo endoplasmatico particolarmente esteso e privo di ribosomi. Di che tipo di reticolo si tratta?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Assenza di ribosomi → non è il reticolo ruvido.</li>
+          <li><span class="step-n">2</span>La sintesi di steroidi è una funzione tipica del reticolo endoplasmatico liscio.</li>
+        </ol>
+        <div class="ex-answer">Reticolo endoplasmatico liscio (SER)</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — organelli semiautonomi</div>
+      <div class="ex-statement">Perché i mitocondri sono descritti come organelli "semiautonomi"?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Possiedono un proprio DNA circolare e ribosomi 70S, e possono dividersi autonomamente per scissione.</li>
+          <li><span class="step-n">2</span>Tuttavia la maggior parte delle proteine mitocondriali è codificata dal DNA nucleare, sintetizzata nel citosol e importata nell'organulo.</li>
+        </ol>
+        <div class="ex-answer">Perché hanno un genoma proprio ma dipendono comunque dal nucleo per la maggior parte delle loro proteine</div>
       </details>
     </div>
   </div>
@@ -716,7 +914,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>Appunti schematici basati sulle slide dei corsi di Biologia e sul formato delle prove del semestre filtro. Non sostituiscono i testi consigliati né il syllabus ministeriale ufficiale.</p>
+    <p>Appunti schematici basati sulle slide dei corsi di Biologia, sui capitoli dei manuali di riferimento (Fasano, Biologia e Genetica per il semestre filtro) e sul formato delle prove del semestre filtro. Non sostituiscono i testi consigliati né il syllabus ministeriale ufficiale.</p>
   </div>
 </footer>
 

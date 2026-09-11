@@ -1,4 +1,4 @@
-# Quiz Chimica – Semestre Filtro
+# Kirkises — Quiz per il semestre filtro
 
 Sito statico di autovalutazione con **100 domande** di Chimica su:
 
