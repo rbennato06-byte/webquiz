@@ -9,7 +9,9 @@
  * semestre filtro 2025 (primo e secondo appello) su unità di misura, cinematica, dinamica,
  * lavoro-energia-potenza, integrate con domande originali sugli stessi argomenti.
  * Biologia: slide del corso (macromolecole biologiche, amminoacidi e proteine, enzimi e
- * metabolismo, lipidi, membrane cellulari, teoria cellulare, cellula procariotica e virus) +
+ * metabolismo, lipidi, membrane cellulari, teoria cellulare, cellula procariotica e virus,
+ * meccanismi di trasporto di membrana) + capitoli del manuale Fasano "Biologia e Genetica per
+ * il semestre filtro" (acidi nucleici/cromatina, organelli cellulari e citoscheletro) +
  * domande ufficiali delle prove del semestre filtro 2025 (primo e secondo appello) + Syllabus
  * ufficiale Biologia 2026/27 (MUR).
  * Formato coerente con le prove ufficiali del semestre filtro 2025/26: domande a risposta
@@ -70,7 +72,9 @@ const TOPICS = {
   lipidi:       { name: "Lipidi",                               color: "#be123c", area: "biologia", unit: 1 },
   procarioti:   { name: "Teoria cellulare e cellula procariotica", color: "#0369a1", area: "biologia", unit: 1 },
   virus:        { name: "Virus e cicli replicativi",            color: "#b91c1c", area: "biologia", unit: 1 },
-  membrane:     { name: "Membrane cellulari",                   color: "#7c3aed", area: "biologia", unit: 5 }
+  membrane:     { name: "Membrane cellulari",                   color: "#7c3aed", area: "biologia", unit: 5 },
+  acidinucleici:{ name: "Acidi nucleici e cromatina",           color: "#1d4ed8", area: "biologia", unit: 1 },
+  organelli:    { name: "Organelli e citoscheletro",            color: "#c2410c", area: "biologia", unit: 5 }
 };
 
 // type: 'mc' (scelta multipla, options[5], correct = indice 0-4)
@@ -2211,6 +2215,129 @@ const QUESTIONS = [
   q:"Le membrane cellulari sono pochissimo permeabili agli ________, che richiedono canali o trasportatori specifici per attraversarle.",
   answer:"IONI" },
 
+{ id:"membr-25", topic:"membrane", type:"mc",
+  q:"Quali sono le tre proprietà fondamentali delle membrane biologiche?",
+  options:["Sono rigide, simmetriche e impermeabili","Sono asimmetriche, fluide/dinamiche e semipermeabili","Sono statiche, omogenee e impermeabili","Sono cristalline, anisotrope e permeabili a tutto","Sono solide, simmetriche e selettive solo per l'acqua"], correct:1 },
+
+{ id:"membr-26", topic:"membrane", type:"mc",
+  q:"Il passaggio di un fosfolipide da un foglietto all'altro della membrana (flip-flop) è un evento:",
+  options:["Frequente e spontaneo, più veloce della diffusione laterale","Raro, perché richiede il passaggio della testa polare attraverso l'interno idrofobico; è catalizzato dalle flippasi","Impossibile in ogni condizione","Caratteristico solo delle membrane procariotiche","Indipendente dall'energia e molto rapido"], correct:1 },
+
+{ id:"membr-27", topic:"membrane", type:"mc",
+  q:"Cosa dimostrò l'esperimento di fusione cellulare topo-uomo di Frey ed Edidin, con anticorpi fluorescenti contro le proteine di membrana?",
+  options:["Che il DNA si trasferisce tra cellule di specie diverse","Che le proteine di membrana possono diffondere lateralmente e mescolarsi nella membrana plasmatica","Che le membrane sono completamente rigide e immobili","Che i lipidi di membrana non si muovono mai","Che le cellule di specie diverse non possono fondersi"], correct:1,
+  explain:"Dopo la fusione tra una cellula di topo e una umana, le proteine di membrana marcate con anticorpi diversi (fluoresceina/rodamina) si mescolano progressivamente sulla superficie dell'eterocarionte, dimostrando la mobilità laterale delle proteine." },
+
+{ id:"membr-28", topic:"membrane", type:"mc",
+  q:"Quali fattori influenzano la fluidità delle membrane biologiche?",
+  options:["Solo il pH extracellulare","La temperatura, la lunghezza e il grado di saturazione delle catene idrocarburiche dei fosfolipidi, e il livello di colesterolo","Solo la concentrazione di glucosio extracellulare","Esclusivamente la pressione osmotica","Solo la presenza di ioni calcio"], correct:1 },
+
+{ id:"membr-29", topic:"membrane", type:"mc",
+  q:"Catene idrocarburiche insature, con doppi legami cis, rispetto a catene sature di pari lunghezza:",
+  options:["Rendono la membrana meno fluida, impacchettandosi più strettamente","Introducono un piegamento nella catena che aumenta la fluidità di membrana","Non hanno alcun effetto sulla fluidità di membrana","Impediscono la formazione del doppio strato lipidico","Rendono la membrana completamente impermeabile all'acqua"], correct:1 },
+
+{ id:"membr-30", topic:"membrane", type:"mc",
+  q:"L'asimmetria delle membrane biologiche, cioè la diversa composizione dei due foglietti del doppio strato, dipende da:",
+  options:["Solo dalla temperatura ambientale","Il sito di sintesi dei lipidi, le loro proprietà biofisiche, la presenza di specifici traslocatori (flippasi) e meccanismi di ritenzione","Esclusivamente dalla pressione osmotica","La sola presenza di colesterolo","Il pH del citosol"], correct:1 },
+
+{ id:"membr-31", topic:"membrane", type:"mc",
+  q:"Durante l'apoptosi, l'esposizione della fosfatidilserina (PS) sul foglietto esterno della membrana plasmatica funge da:",
+  options:["Segnale di proliferazione cellulare","'Eat-me signal' che favorisce il riconoscimento e la fagocitosi della cellula apoptotica da parte dei macrofagi","Segnale che induce la mitosi","Barriera che impedisce la fagocitosi","Attivatore della sintesi proteica ribosomiale"], correct:1,
+  explain:"L'esposizione della PS è dovuta alla disattivazione di una flippasi specifica per la PS e all'attivazione di una scramblasi, che trasferisce fosfolipidi in entrambe le direzioni." },
+
+{ id:"membr-32", topic:"membrane", type:"mc",
+  q:"Il glicocalice, il rivestimento glucidico che si affaccia sul lato esterno della membrana plasmatica, è composto da:",
+  options:["Solo colesterolo libero","Catene di zuccheri legate a proteine (glicoproteine) e a lipidi (glicolipidi) di membrana","Esclusivamente molecole di DNA","Filamenti di actina del citoscheletro","Ioni calcio legati direttamente ai fosfolipidi"], correct:1 },
+
+{ id:"membr-33", topic:"membrane", type:"mc",
+  q:"Tra le funzioni del glicocalice NON rientra:",
+  options:["La protezione della superficie cellulare (es. epiteli)","Il riconoscimento tra cellule","La funzione antigenica (es. sistema AB0)","L'isolamento elettrico (es. a livello dei nodi di Ranvier)","La catalisi diretta della duplicazione del DNA"], correct:4 },
+
+{ id:"membr-34", topic:"membrane", type:"mc",
+  q:"Il sistema AB0 dei gruppi sanguigni si basa su differenze strutturali in:",
+  options:["Proteine del citoscheletro degli eritrociti","Glicolipidi di membrana dei globuli rossi, che espongono zuccheri terminali diversi a seconda dell'antigene (A, B, 0)","Ormoni steroidei circolanti nel plasma","La sequenza del DNA mitocondriale","Il numero di mitocondri presenti nei globuli rossi"], correct:1 },
+
+{ id:"membr-35", topic:"membrane", type:"mc",
+  q:"In base al coefficiente di permeabilità della membrana, quale categoria di molecole la attraversa più facilmente per diffusione semplice?",
+  options:["Ioni come $Na^+$ e $K^+$","Molecole idrofobe e piccoli gas apolari come $O_2$","Grosse molecole polari come il glucosio","Piccole molecole polari cariche","Macromolecole proteiche"], correct:1 },
+
+{ id:"membr-36", topic:"membrane", type:"mc",
+  q:"Il trasporto attivo di membrana si distingue da quello passivo perché:",
+  options:["Avviene sempre più lentamente","Avviene contro gradiente (di concentrazione o elettrochimico) e richiede consumo di energia","Non richiede mai una proteina di membrana","Riguarda esclusivamente il trasporto dei gas respiratori","Non può mai essere mediato da una pompa"], correct:1 },
+
+{ id:"membr-37", topic:"membrane", type:"mc",
+  q:"La diffusione facilitata, a differenza della diffusione semplice:",
+  options:["Richiede il consumo diretto di ATP","È mediata da proteine di trasporto (canali o trasportatori), ma come la diffusione semplice avviene secondo gradiente senza consumo diretto di energia","Avviene sempre contro gradiente di concentrazione","Non presenta mai un fenomeno di saturazione","Riguarda solo il trasporto di ioni metallici"], correct:1 },
+
+{ id:"membr-38", topic:"membrane", type:"mc",
+  q:"I trasportatori (carrier) di membrana muovono il soluto attraverso:",
+  options:["Un poro sempre aperto, privo di regolazione","Un cambiamento conformazionale che alterna l'esposizione del sito di legame verso l'esterno e verso l'interno della cellula","La formazione di una vescicola di endocitosi","Un legame covalente permanente con il soluto trasportato","La rottura temporanea del doppio strato lipidico"], correct:1 },
+
+{ id:"membr-39", topic:"membrane", type:"mc",
+  q:"Un trasportatore di membrana che muove due soluti diversi in direzioni opposte, accoppiandone il trasporto, è detto:",
+  options:["Uniporto","Simporto","Antiporto","Canale a diffusione semplice","Pompa protonica passiva"], correct:2 },
+
+{ id:"membr-40", topic:"membrane", type:"mc",
+  q:"I canali ionici agiscono come filtri selettivi per specifici ioni e:",
+  options:["Restano sempre in uno stato aperto","Restano sempre in uno stato chiuso","Oscillano tra uno stato aperto e uno chiuso, regolati da meccanismi diversi (voltaggio, ligando, stimoli meccanici)","Trasportano solo acqua per osmosi","Funzionano esclusivamente per ossidoriduzione"], correct:2 },
+
+{ id:"membr-41", topic:"membrane", type:"mc",
+  q:"I canali ionici regolati da voltaggio (voltage-gated) si aprono o chiudono in risposta a:",
+  options:["Variazioni del potenziale di membrana, rilevate da un dominio sensore (elica S4)","Il legame con un ormone steroideo","Variazioni di temperatura ambientale","La concentrazione di glucosio extracellulare","Il pH del citosol esclusivamente"], correct:0,
+  explain:"I canali regolati da ligando extracellulare o intracellulare e quelli regolati meccanicamente sono gli altri tre principali meccanismi di apertura dei canali ionici." },
+
+{ id:"membr-42", topic:"membrane", type:"mc",
+  q:"La pompa $Na^+/K^+$-ATPasi, a ogni ciclo catalitico e con consumo di un ATP, trasporta:",
+  options:["2 ioni $Na^+$ fuori e 3 ioni $K^+$ dentro la cellula","3 ioni $Na^+$ fuori e 2 ioni $K^+$ dentro la cellula","3 ioni $Na^+$ dentro e 2 ioni $K^+$ fuori dalla cellula","Solo ioni $Na^+$, senza coinvolgere il $K^+$","Un numero variabile e non fisso di ioni ad ogni ciclo"], correct:1 },
+
+{ id:"membr-43", topic:"membrane", type:"mc",
+  q:"L'attività della pompa $Na^+/K^+$-ATPasi è cruciale per:",
+  options:["La sintesi proteica ribosomiale","Generare e mantenere il potenziale di membrana a riposo, regolare il volume cellulare e fornire il gradiente di $Na^+$ sfruttato dal trasporto secondario","La duplicazione del DNA nucleare","La fotosintesi nei cloroplasti","La glicolisi anaerobica nel citosol"], correct:1 },
+
+{ id:"membr-44", topic:"membrane", type:"mc",
+  q:"I trasportatori ABC (ATP-Binding Cassette), di cui fanno parte MDR e CFTR, sono proteine di trasporto attivo che:",
+  options:["Non legano mai l'ATP","Legano e idrolizzano ATP per pompare piccole molecole (amminoacidi, peptidi, steroli) attraverso la membrana","Trasportano esclusivamente molecole d'acqua","Sono presenti solo nei batteri, mai negli eucarioti","Sono canali ionici regolati da voltaggio"], correct:1 },
+
+{ id:"membr-45", topic:"membrane", type:"mc",
+  q:"Una cellula immersa in una soluzione ipotonica rispetto al suo citoplasma:",
+  options:["Perde acqua netta e si raggrinzisce","Guadagna acqua netta per osmosi e tende a rigonfiarsi","Non subisce alcun movimento netto di acqua","Perde immediatamente ioni $Na^+$","Va incontro a mitosi immediata"], correct:1 },
+
+{ id:"membr-46", topic:"membrane", type:"mc",
+  q:"Una soluzione isotonica rispetto al citoplasma di una cellula determina:",
+  options:["Un guadagno netto di acqua e il rigonfiamento della cellula","Una perdita netta di acqua e il raggrinzimento della cellula","Né un guadagno né una perdita netta di acqua","La lisi immediata della cellula","La denaturazione delle proteine di membrana"], correct:2 },
+
+{ id:"membr-47", topic:"membrane", type:"fill",
+  q:"Il passaggio di un fosfolipide da un foglietto all'altro della membrana è detto ________ ed è un evento raro.",
+  answer:"FLIP-FLOP", answerAlt:["FLIP FLOP"] },
+
+{ id:"membr-48", topic:"membrane", type:"fill",
+  q:"Le proteine che catalizzano il flip-flop dei fosfolipidi in maniera energia-dipendente e unidirezionale sono dette ________.",
+  answer:"FLIPPASI" },
+
+{ id:"membr-49", topic:"membrane", type:"fill",
+  q:"Il rivestimento di zuccheri legati a proteine e lipidi sul lato esterno della membrana plasmatica è detto ________.",
+  answer:"GLICOCALICE" },
+
+{ id:"membr-50", topic:"membrane", type:"fill",
+  q:"Un trasportatore di membrana che muove un solo tipo di soluto in una direzione è detto ________.",
+  answer:"UNIPORTO" },
+
+{ id:"membr-51", topic:"membrane", type:"fill",
+  q:"Un trasportatore che muove due soluti nella stessa direzione, accoppiando il moto di uno al gradiente elettrochimico dell'altro, è detto ________.",
+  answer:"SIMPORTO" },
+
+{ id:"membr-52", topic:"membrane", type:"fill",
+  q:"La pompa $Na^+/K^+$-ATPasi trasporta 3 ioni sodio fuori e 2 ioni ________ dentro la cellula, con consumo di ATP.",
+  answer:"POTASSIO" },
+
+{ id:"membr-53", topic:"membrane", type:"fill",
+  q:"Il fenomeno fisico per cui il solvente fluisce attraverso una membrana semipermeabile è detto ________.",
+  answer:"OSMOSI" },
+
+{ id:"membr-54", topic:"membrane", type:"fill",
+  q:"Una soluzione con concentrazione di soluti maggiore rispetto al citoplasma cellulare è detta ________ rispetto alla cellula.",
+  answer:"IPERTONICA" },
+
 /* ============================= TEORIA CELLULARE E CELLULA PROCARIOTICA ============================= */
 
 { id:"proc-01", topic:"procarioti", type:"mc",
@@ -2441,7 +2568,163 @@ const QUESTIONS = [
 
 { id:"vir-25", topic:"virus", type:"fill",
   q:"I virus che infettano specificamente i batteri sono detti ________ (o fagi).",
-  answer:"BATTERIOFAGI" }
+  answer:"BATTERIOFAGI" },
+
+/* ============================= ACIDI NUCLEICI E CROMATINA ============================= */
+
+{ id:"acnu-01", topic:"acidinucleici", type:"mc",
+  q:"Nella doppia elica del DNA, i due filamenti sono:",
+  options:["Paralleli, con la stessa polarità 5'→3'","Antiparalleli: un filamento è orientato 5'→3', l'altro 3'→5'","Privi di una polarità definita","Legati tra loro solo da legami covalenti diretti tra le basi","Sempre presenti a singolo filamento"], correct:1 },
+
+{ id:"acnu-02", topic:"acidinucleici", type:"mc",
+  q:"Nell'appaiamento delle basi del DNA, quanti legami idrogeno si formano in una coppia G≡C rispetto a una coppia A=T?",
+  options:["2 legami H in entrambi i casi","3 legami H per G≡C, 2 legami H per A=T","2 legami H per G≡C, 3 legami H per A=T","Nessun legame idrogeno: solo legami covalenti","4 legami H in entrambi i casi"], correct:1 },
+
+{ id:"acnu-03", topic:"acidinucleici", type:"mc",
+  q:"Una molecola di DNA ricca in coppie G-C, rispetto a una di pari lunghezza ricca in coppie A-T, presenta una temperatura di fusione ($T_m$):",
+  options:["Più bassa, perché le coppie G-C sono meno stabili","Più alta, perché le coppie G-C formano più legami idrogeno e richiedono più energia per separarsi","Identica in ogni caso","Non misurabile sperimentalmente","Indipendente dalla composizione in basi"], correct:1 },
+
+{ id:"acnu-04", topic:"acidinucleici", type:"mc",
+  q:"La denaturazione del DNA consiste in:",
+  options:["La rottura dei legami fosfodiestere dello scheletro zucchero-fosfato","La separazione delle due eliche per rottura dei legami idrogeno tra le basi appaiate","La sintesi di un nuovo filamento di DNA complementare","La metilazione delle citosine del DNA","La formazione di nuovi legami covalenti tra le due eliche"], correct:1 },
+
+{ id:"acnu-05", topic:"acidinucleici", type:"mc",
+  q:"Il nucleosoma, unità di base della cromatina, è costituito da DNA avvolto attorno a:",
+  options:["Un singolo istone H1","Un ottamero di istoni (2 copie ciascuno di H2A, H2B, H3, H4)","Una molecola di RNA polimerasi","Un tetramero di tubulina","Nessuna proteina: è DNA nudo"], correct:1 },
+
+{ id:"acnu-06", topic:"acidinucleici", type:"mc",
+  q:"Il ruolo dell'istone H1 nella struttura della cromatina è:",
+  options:["Formare l'ottamero centrale del nucleosoma","Legare il DNA linker in entrata e in uscita dal nucleosoma, favorendo il compattamento nella fibra da 30 nm","Catalizzare la duplicazione del DNA","Digerire il DNA danneggiato","Trasportare il DNA fuori dal nucleo"], correct:1 },
+
+{ id:"acnu-07", topic:"acidinucleici", type:"mc",
+  q:"Nell'ordine corretto, i livelli di compattamento del DNA eucariotico, dal meno al più condensato, sono:",
+  options:["Cromosoma metafasico → fibra da 30 nm → DNA nudo → nucleosoma","DNA nudo (2 nm) → nucleosoma (10 nm) → fibra da 30 nm/solenoide → domini ad ansa (300 nm) → eterocromatina (700 nm) → cromosoma metafasico (1400 nm)","Nucleosoma → DNA nudo → cromosoma metafasico → fibra da 30 nm","Eterocromatina → eucromatina → DNA nudo, senza altri passaggi","Il DNA passa direttamente da nudo a cromosoma metafasico"], correct:1 },
+
+{ id:"acnu-08", topic:"acidinucleici", type:"mc",
+  q:"L'eucromatina, rispetto all'eterocromatina, è:",
+  options:["Più condensata e sempre trascrizionalmente inattiva","Meno condensata (lassa) e generalmente trascrizionalmente attiva","Identica per grado di condensazione","Presente solo nelle cellule procariotiche","Priva di istoni associati"], correct:1 },
+
+{ id:"acnu-09", topic:"acidinucleici", type:"mc",
+  q:"L'eterocromatina facoltativa, a differenza di quella costitutiva:",
+  options:["Resta sempre condensata e non trascritta in tutte le cellule","È inattivata solo in specifiche fasi dello sviluppo o in determinati tipi cellulari, potendo tornare attiva","Non è mai presente nel genoma eucariotico","È composta esclusivamente da RNA, senza DNA","Si trova solo nel DNA mitocondriale"], correct:1 },
+
+{ id:"acnu-10", topic:"acidinucleici", type:"mc",
+  q:"Alla metafase, i due cromatidi fratelli di un cromosoma sono tenuti insieme, a livello del centromero, da:",
+  options:["I telomeri","Le proteine coesine","I ribosomi","La lamina nucleare","Le DNA polimerasi"], correct:1 },
+
+{ id:"acnu-11", topic:"acidinucleici", type:"mc",
+  q:"Un cromosoma con il centromero in posizione centrale, con bracci p e q di lunghezza simile, è classificato come:",
+  options:["Acrocentrico","Telocentrico","Metacentrico","Aneuploide","Poliploide"], correct:2 },
+
+{ id:"acnu-12", topic:"acidinucleici", type:"mc",
+  q:"La dimensione del genoma di un organismo:",
+  options:["È sempre direttamente proporzionale alla sua complessità biologica","Non è necessariamente proporzionale alla complessità dell'organismo, poiché gran parte del DNA eucariotico è costituito da sequenze ripetute non codificanti","Determina univocamente il numero di specie di un taxon","È identica in tutti gli organismi eucarioti","Dipende esclusivamente dal numero di cromosomi"], correct:1 },
+
+{ id:"acnu-13", topic:"acidinucleici", type:"fill",
+  q:"Nell'appaiamento delle basi del DNA, l'adenina forma legami idrogeno con la ________.",
+  answer:"TIMINA" },
+
+{ id:"acnu-14", topic:"acidinucleici", type:"fill",
+  q:"L'unità di base della cromatina, costituita da DNA avvolto attorno a un ottamero di istoni, è detta ________.",
+  answer:"NUCLEOSOMA" },
+
+{ id:"acnu-15", topic:"acidinucleici", type:"fill",
+  q:"La temperatura alla quale il 50% del DNA a doppia elica risulta denaturato è detta temperatura di ________.",
+  answer:"FUSIONE" },
+
+{ id:"acnu-16", topic:"acidinucleici", type:"fill",
+  q:"Il tratto di DNA compreso fra due nucleosomi successivi è detto DNA ________.",
+  answer:"LINKER" },
+
+{ id:"acnu-17", topic:"acidinucleici", type:"fill",
+  q:"Le proteine che tengono uniti i due cromatidi fratelli di un cromosoma sono dette ________.",
+  answer:"COESINE" },
+
+{ id:"acnu-18", topic:"acidinucleici", type:"fill",
+  q:"Un cromosoma con il centromero quasi all'estremità, il cui braccio corto è molto ridotto, è detto ________.",
+  answer:"ACROCENTRICO" },
+
+/* ============================= ORGANELLI E CITOSCHELETRO ============================= */
+
+{ id:"org-01", topic:"organelli", type:"mc",
+  q:"L'involucro nucleare è costituito da una doppia membrana che è in continuità con:",
+  options:["La membrana plasmatica","Il reticolo endoplasmatico","L'apparato del Golgi","I lisosomi","I perossisomi"], correct:1 },
+
+{ id:"org-02", topic:"organelli", type:"mc",
+  q:"Il trasporto selettivo di proteine di grandi dimensioni attraverso i pori nucleari richiede:",
+  options:["Nessun segnale specifico: avviene sempre per diffusione libera","Una sequenza segnale di localizzazione nucleare (NLS)","Solo la presenza di flippasi","Un legame covalente permanente con il DNA","L'idrolisi diretta di NADH"], correct:1 },
+
+{ id:"org-03", topic:"organelli", type:"mc",
+  q:"La lamina nucleare, che sostiene la forma del nucleo e ancora la cromatina, è costituita da una rete di:",
+  options:["Microtubuli","Filamenti intermedi (lamine A, B, C)","Microfilamenti di actina","Molecole di rRNA","Fosfolipidi di membrana"], correct:1 },
+
+{ id:"org-04", topic:"organelli", type:"mc",
+  q:"Il nucleolo è la sede principale:",
+  options:["Della duplicazione del DNA","Della trascrizione dei geni per l'rRNA e del primo assemblaggio delle subunità ribosomali","Della sintesi proteica citoplasmatica","Della glicolisi","Della β-ossidazione degli acidi grassi"], correct:1 },
+
+{ id:"org-05", topic:"organelli", type:"mc",
+  q:"Il reticolo endoplasmatico ruvido (RER), grazie ai ribosomi adesi alla sua superficie citosolica, è specializzato nella:",
+  options:["Sintesi di lipidi e steroidi","Sintesi e N-glicosilazione di proteine di membrana o destinate alla secrezione","Detossificazione da farmaci e xenobiotici","Stoccaggio esclusivo del $Ca^{2+}$","Digestione di macromolecole a pH acido"], correct:1 },
+
+{ id:"org-06", topic:"organelli", type:"mc",
+  q:"Il reticolo endoplasmatico liscio (SER) è coinvolto principalmente in:",
+  options:["La sintesi e N-glicosilazione di proteine secrete","La sintesi di lipidi/steroidi, la detossificazione (citocromo P450) e lo stoccaggio del $Ca^{2+}$","L'assemblaggio delle subunità ribosomali","La duplicazione del DNA mitocondriale","La fagocitosi di particelle estranee"], correct:1 },
+
+{ id:"org-07", topic:"organelli", type:"mc",
+  q:"I ribosomi liberi nel citoplasma delle cellule eucariotiche sono di tipo:",
+  options:["70S, come quelli procariotici","80S, costituiti da una subunità maggiore 60S e una minore 40S","Privi di componente RNA","Presenti solo nel nucleo","Costituiti da un'unica subunità"], correct:1 },
+
+{ id:"org-08", topic:"organelli", type:"mc",
+  q:"I mitocondri sono definiti organelli 'semiautonomi' perché:",
+  options:["Non contengono alcuna proteina propria","Possiedono un proprio DNA circolare e ribosomi di tipo 70S, ma dipendono comunque dal nucleo per la maggior parte delle loro proteine","Sono completamente indipendenti dal resto della cellula","Derivano direttamente dall'apparato del Golgi","Non sono mai in grado di dividersi"], correct:1 },
+
+{ id:"org-09", topic:"organelli", type:"mc",
+  q:"Le creste mitocondriali sono ripiegamenti:",
+  options:["Della membrana esterna del mitocondrio","Della membrana interna del mitocondrio, che aumentano la superficie disponibile per la fosforilazione ossidativa","Della membrana plasmatica","Dell'involucro nucleare","Della membrana dei perossisomi"], correct:1 },
+
+{ id:"org-10", topic:"organelli", type:"mc",
+  q:"Nell'apparato del Golgi, le vescicole provenienti dal reticolo endoplasmatico arrivano sulla faccia:",
+  options:["Trans, da cui il materiale viene poi rispedito al RE","Cis, da cui il materiale procede attraverso le cisterne mediali verso la faccia trans","Non esiste una polarità funzionale nel Golgi","Laterale","Basale"], correct:1 },
+
+{ id:"org-11", topic:"organelli", type:"mc",
+  q:"Gli enzimi idrolitici contenuti nei lisosomi sono attivi a:",
+  options:["pH basico, circa 9","pH acido, circa 5, mantenuto da una pompa protonica di membrana","pH neutro, uguale a quello del citosol","Temperature superiori a 60 °C","Completa assenza di acqua"], correct:1 },
+
+{ id:"org-12", topic:"organelli", type:"mc",
+  q:"I perossisomi, che contengono l'enzima catalasi, sono coinvolti principalmente in:",
+  options:["La sintesi di rRNA","La β-ossidazione degli acidi grassi a catena molto lunga e in reazioni di detossificazione","La duplicazione del DNA nucleare","La glicolisi anaerobica","La sintesi esclusiva di ormoni steroidei"], correct:1 },
+
+{ id:"org-13", topic:"organelli", type:"mc",
+  q:"Il citoscheletro delle cellule eucariotiche è costituito da tre tipi di filamenti proteici:",
+  options:["Solo microtubuli","Microfilamenti di actina, microtubuli e filamenti intermedi","Solo filamenti di miosina","Solo filamenti di cheratina","Fibre di collagene"], correct:1 },
+
+{ id:"org-14", topic:"organelli", type:"mc",
+  q:"Lungo i microtubuli si muovono le proteine motrici chinesina e dineina, dirette rispettivamente verso l'estremità:",
+  options:["'−' entrambe","'+' entrambe","'+' la chinesina e '−' la dineina, nella maggior parte dei casi","'−' la chinesina e '+' la dineina","Nessuna delle due si muove lungo i microtubuli"], correct:2 },
+
+{ id:"org-15", topic:"organelli", type:"fill",
+  q:"Il trasporto selettivo di macromolecole tra nucleo e citoplasma avviene attraverso i ________ nucleari.",
+  answer:"PORI" },
+
+{ id:"org-16", topic:"organelli", type:"fill",
+  q:"La sede della trascrizione dei geni per l'rRNA e del primo assemblaggio dei ribosomi è il ________.",
+  answer:"NUCLEOLO" },
+
+{ id:"org-17", topic:"organelli", type:"fill",
+  q:"Il reticolo endoplasmatico privo di ribosomi, specializzato nella sintesi lipidica, è detto reticolo endoplasmatico ________.",
+  answer:"LISCIO" },
+
+{ id:"org-18", topic:"organelli", type:"fill",
+  q:"Gli organelli a singola membrana contenenti enzimi idrolitici attivi a pH acido, coinvolti nella digestione intracellulare, sono i ________.",
+  answer:"LISOSOMI" },
+
+{ id:"org-19", topic:"organelli", type:"fill",
+  q:"Le strutture cilindriche del citoscheletro, di circa 25 nm di diametro, costituite da dimeri di tubulina, sono i ________.",
+  answer:"MICROTUBULI" },
+
+{ id:"org-20", topic:"organelli", type:"fill",
+  q:"Il fascio di microtubuli che sostiene internamente ciglia e flagelli è detto ________.",
+  answer:"ASSONEMA" }
 
 ];
 
