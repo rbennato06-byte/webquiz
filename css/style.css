@@ -77,9 +77,14 @@ body {
   color: #fff;
   padding-block: 32px 40px;
 }
-.site-header h1 { margin: 0 0 6px; font-size: 1.7rem; font-weight: 800; letter-spacing: -.02em; }
+.site-header h1 { margin: 0; font-size: 1.7rem; font-weight: 800; letter-spacing: -.02em; }
 .site-header .accent { font-weight: 600; opacity: .9; }
 .site-header .subtitle { margin: 0; opacity: .92; font-size: .95rem; }
+.site-header .brand-row { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+.site-header .avatar {
+  width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,.55); box-shadow: 0 2px 8px rgba(0,0,0,.18);
+}
 
 main.wrap { padding-block: 28px 60px; }
 
