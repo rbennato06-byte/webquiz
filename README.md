@@ -10,7 +10,7 @@ Sito statico di autovalutazione con **100 domande** di Chimica su:
 Le domande sono state ricavate dalle slide del corso (comprese quelle già
 proposte come quiz al termine di ciascuna presentazione) e integrate con
 domande originali sugli stessi argomenti, nello stesso stile e formato
-delle prove ufficiali del **semestre filtro 2025/26** (Chimica e
+delle prove ufficiali del **semestre filtro 2026/27** (Chimica e
 propedeutica biochimica):
 
 - 31 domande per prova: 21 a risposta multipla (5 opzioni A–E) + 10 a completamento
