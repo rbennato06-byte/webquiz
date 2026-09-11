@@ -12,10 +12,41 @@
     timerId: null,
     secondsLeft: 50 * 60,
     locked: false,       // true once the current question's answer has been confirmed
-    pendingMc: null       // index of the tentatively selected (not yet confirmed) MC option
+    pendingMc: null,      // index of the tentatively selected (not yet confirmed) MC option
+    examArea: null,       // area selected for the current/last exam session
+    calView: null,        // { year, month } currently displayed in the progress calendar (month: 0-11)
+    calSelectedDay: null   // "YYYY-MM-DD" of the day currently shown in the calendar detail panel
   };
 
   const STORAGE_KEY = "webquiz_semestrefiltro_stats_v1";
+
+  /* ---------------------------------------------------------------- */
+  /* Calendario A.K. (All Kevin): stesso calendario di sempre, solo     */
+  /* l'anno è ricontato a partire dal giorno di lancio del sito,        */
+  /* in onore di Kevin, che ha aiutato a svilupparlo. Anno 1 A.K. = */
+  /* anno solare di lancio; il confine tra un anno e l'altro resta il  */
+  /* 1° gennaio, come nel calendario normale.                          */
+  /* ---------------------------------------------------------------- */
+  const AK_EPOCH_YEAR = 2026;
+  const MONTH_NAMES_IT = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+  const WEEKDAY_NAMES_IT = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"];
+
+  function akYear(gregorianYear) { return gregorianYear - AK_EPOCH_YEAR + 1; }
+
+  function dateKeyFromDate(d) {
+    const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, "0"), day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  }
+  function todayKey() { return dateKeyFromDate(new Date()); }
+  function dayKeyToBase36(key) {
+    const [y, m, d] = key.split("-").map(Number);
+    return Math.floor(Date.UTC(y, m - 1, d) / 86400000).toString(36);
+  }
+  function base36ToDayKey(b36) {
+    const days = parseInt(b36, 36) || 0;
+    const dt = new Date(days * 86400000);
+    return `${dt.getUTCFullYear()}-${String(dt.getUTCMonth() + 1).padStart(2, "0")}-${String(dt.getUTCDate()).padStart(2, "0")}`;
+  }
 
   /* ---------------------------------------------------------------- */
   /* DOM refs                                                          */
@@ -89,7 +120,7 @@
     }
   }
   function defaultStats() {
-    return { studyCorrect: 0, studyTotal: 0, examHistory: [], byTopic: {} };
+    return { studyCorrect: 0, studyTotal: 0, examHistory: [], byTopic: {}, dailyLog: {} };
   }
   function saveStats(stats) {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); } catch (e) { /* ignore */ }
@@ -101,11 +132,18 @@
     if (!stats.byTopic[topic]) stats.byTopic[topic] = { correct: 0, total: 0 };
     stats.byTopic[topic].total++;
     if (correct) stats.byTopic[topic].correct++;
+
+    const dayKey = todayKey();
+    if (!stats.dailyLog[dayKey]) stats.dailyLog[dayKey] = {};
+    if (!stats.dailyLog[dayKey][topic]) stats.dailyLog[dayKey][topic] = { correct: 0, total: 0 };
+    stats.dailyLog[dayKey][topic].total++;
+    if (correct) stats.dailyLog[dayKey][topic].correct++;
+
     saveStats(stats);
   }
-  function recordExamResult(score, max, passed) {
+  function recordExamResult(score, max, passed, area) {
     const stats = loadStats();
-    stats.examHistory.push({ score, max, passed, date: new Date().toISOString() });
+    stats.examHistory.push({ score, max, passed, area: area || "", date: new Date().toISOString() });
     if (stats.examHistory.length > 20) stats.examHistory.shift();
     saveStats(stats);
   }
@@ -116,7 +154,8 @@
   /* testo autosufficiente (algoritmo deterministico, reversibile) da   */
   /* copiare su un altro dispositivo per riprendere da lì.              */
   /* ---------------------------------------------------------------- */
-  const SYNC_MAGIC = "KRK1";
+  const SYNC_MAGIC_LEGACY = "KRK1"; // formato precedente, senza calendario giornaliero né materia dell'esame
+  const SYNC_MAGIC = "KRK2";
 
   function fnv1aHash(str) {
     let h = 0x811c9dc5;
@@ -139,48 +178,120 @@
       .map((h) => {
         const scoreX10 = Math.max(0, Math.round(h.score * 10));
         const dateSec = Math.floor(new Date(h.date).getTime() / 1000) || 0;
-        return `${scoreX10.toString(36)}:${h.max.toString(36)}:${h.passed ? 1 : 0}:${dateSec.toString(36)}`;
+        return `${scoreX10.toString(36)}:${h.max.toString(36)}:${h.passed ? 1 : 0}:${dateSec.toString(36)}:${h.area || ""}`;
       })
       .join(",");
 
-    const payload = [SYNC_MAGIC, studyPart, topicsPart, examsPart].join("~");
+    const dailyPart = Object.keys(stats.dailyLog)
+      .filter((k) => stats.dailyLog[k] && Object.keys(stats.dailyLog[k]).length > 0)
+      .sort()
+      .map((dayKey) => {
+        const topics = stats.dailyLog[dayKey];
+        const topicsStr = Object.keys(topics)
+          .filter((k) => topics[k] && topics[k].total > 0)
+          .map((k) => `${k}.${topics[k].correct.toString(36)}.${topics[k].total.toString(36)}`)
+          .join(";");
+        return `${dayKeyToBase36(dayKey)}:${topicsStr}`;
+      })
+      .join(",");
+
+    const payload = [SYNC_MAGIC, studyPart, topicsPart, examsPart, dailyPart].join("~");
     return `${payload}~${fnv1aHash(payload)}`;
   }
 
   function decodeSyncCode(code) {
     const parts = String(code || "").trim().split("~");
-    if (parts.length !== 5) throw new Error("Formato del codice non riconosciuto.");
-    const [magic, studyPart, topicsPart, examsPart, checksum] = parts;
-    if (magic !== SYNC_MAGIC) throw new Error("Codice non valido o generato da una versione diversa del sito.");
-    const payload = [magic, studyPart, topicsPart, examsPart].join("~");
-    if (fnv1aHash(payload) !== checksum) throw new Error("Il codice risulta incompleto o alterato: ricopialo per intero.");
-
-    const [scStr, stStr] = studyPart.split(",");
     const stats = defaultStats();
-    stats.studyCorrect = parseInt(scStr, 36) || 0;
-    stats.studyTotal = parseInt(stStr, 36) || 0;
 
-    if (topicsPart) {
-      topicsPart.split(",").forEach((entry) => {
-        const [key, c, t] = entry.split(":");
-        if (!key) return;
-        stats.byTopic[key] = { correct: parseInt(c, 36) || 0, total: parseInt(t, 36) || 0 };
-      });
-    }
+    if (parts.length === 6) {
+      const [magic, studyPart, topicsPart, examsPart, dailyPart, checksum] = parts;
+      if (magic !== SYNC_MAGIC) throw new Error("Codice non valido o generato da una versione diversa del sito.");
+      const payload = [magic, studyPart, topicsPart, examsPart, dailyPart].join("~");
+      if (fnv1aHash(payload) !== checksum) throw new Error("Il codice risulta incompleto o alterato: ricopialo per intero.");
 
-    if (examsPart) {
-      examsPart.split(",").forEach((entry) => {
-        const [scoreX10, max, passed, dateSec] = entry.split(":");
-        stats.examHistory.push({
-          score: (parseInt(scoreX10, 36) || 0) / 10,
-          max: parseInt(max, 36) || 0,
-          passed: passed === "1",
-          date: new Date((parseInt(dateSec, 36) || 0) * 1000).toISOString()
+      const [scStr, stStr] = studyPart.split(",");
+      stats.studyCorrect = parseInt(scStr, 36) || 0;
+      stats.studyTotal = parseInt(stStr, 36) || 0;
+
+      if (topicsPart) {
+        topicsPart.split(",").forEach((entry) => {
+          const [key, c, t] = entry.split(":");
+          if (!key) return;
+          stats.byTopic[key] = { correct: parseInt(c, 36) || 0, total: parseInt(t, 36) || 0 };
         });
-      });
+      }
+
+      if (examsPart) {
+        examsPart.split(",").forEach((entry) => {
+          const [scoreX10, max, passed, dateSec, area] = entry.split(":");
+          stats.examHistory.push({
+            score: (parseInt(scoreX10, 36) || 0) / 10,
+            max: parseInt(max, 36) || 0,
+            passed: passed === "1",
+            area: area || "",
+            date: new Date((parseInt(dateSec, 36) || 0) * 1000).toISOString()
+          });
+        });
+      }
+
+      if (dailyPart) {
+        dailyPart.split(",").forEach((dayEntry) => {
+          const sepIdx = dayEntry.indexOf(":");
+          if (sepIdx === -1) return;
+          const dayB36 = dayEntry.slice(0, sepIdx);
+          const topicsStr = dayEntry.slice(sepIdx + 1);
+          const dayKey = base36ToDayKey(dayB36);
+          const topics = {};
+          if (topicsStr) {
+            topicsStr.split(";").forEach((t) => {
+              const [key, c, tot] = t.split(".");
+              if (!key) return;
+              topics[key] = { correct: parseInt(c, 36) || 0, total: parseInt(tot, 36) || 0 };
+            });
+          }
+          stats.dailyLog[dayKey] = topics;
+        });
+      }
+
+      return stats;
     }
 
-    return stats;
+    if (parts.length === 5) {
+      // Formato precedente (KRK1): nessun calendario giornaliero, esami senza materia.
+      const [magic, studyPart, topicsPart, examsPart, checksum] = parts;
+      if (magic !== SYNC_MAGIC_LEGACY) throw new Error("Codice non valido o generato da una versione diversa del sito.");
+      const payload = [magic, studyPart, topicsPart, examsPart].join("~");
+      if (fnv1aHash(payload) !== checksum) throw new Error("Il codice risulta incompleto o alterato: ricopialo per intero.");
+
+      const [scStr, stStr] = studyPart.split(",");
+      stats.studyCorrect = parseInt(scStr, 36) || 0;
+      stats.studyTotal = parseInt(stStr, 36) || 0;
+
+      if (topicsPart) {
+        topicsPart.split(",").forEach((entry) => {
+          const [key, c, t] = entry.split(":");
+          if (!key) return;
+          stats.byTopic[key] = { correct: parseInt(c, 36) || 0, total: parseInt(t, 36) || 0 };
+        });
+      }
+
+      if (examsPart) {
+        examsPart.split(",").forEach((entry) => {
+          const [scoreX10, max, passed, dateSec] = entry.split(":");
+          stats.examHistory.push({
+            score: (parseInt(scoreX10, 36) || 0) / 10,
+            max: parseInt(max, 36) || 0,
+            passed: passed === "1",
+            area: "",
+            date: new Date((parseInt(dateSec, 36) || 0) * 1000).toISOString()
+          });
+        });
+      }
+
+      return stats;
+    }
+
+    throw new Error("Formato del codice non riconosciuto.");
   }
 
   function renderStats() {
@@ -213,6 +324,99 @@
       html += `<div class="stat-row"><span>Miglior punteggio esame</span><b>${best.toFixed(1)}/${last.max}</b></div>`;
     }
     body.innerHTML = html;
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Calendario dei progressi (datazione A.K.)                         */
+  /* ---------------------------------------------------------------- */
+  function examAreaIcon(areaKey) {
+    return areaKey && AREAS[areaKey] ? AREAS[areaKey].icon : "📝";
+  }
+
+  function renderProgressCalendar() {
+    if (!state.calView) {
+      const now = new Date();
+      state.calView = { year: now.getFullYear(), month: now.getMonth() };
+    }
+    const stats = loadStats();
+    const { year, month } = state.calView;
+
+    el("calLabel").textContent = `${MONTH_NAMES_IT[month]} — Anno ${akYear(year)} A.K.`;
+
+    const isAtEpoch = year < AK_EPOCH_YEAR || (year === AK_EPOCH_YEAR && month <= 8); // 8 = settembre (0-indicizzato)
+    el("calPrev").disabled = isAtEpoch;
+
+    const examsByDay = {};
+    stats.examHistory.forEach((h) => {
+      const key = dateKeyFromDate(new Date(h.date));
+      if (!examsByDay[key]) examsByDay[key] = [];
+      examsByDay[key].push(h);
+    });
+
+    const firstOfMonth = new Date(year, month, 1);
+    const startWeekday = (firstOfMonth.getDay() + 6) % 7; // Lun=0 ... Dom=6
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const todayStr = todayKey();
+    const now = new Date();
+
+    let cells = "";
+    for (let i = 0; i < startWeekday; i++) cells += `<span class="cal-cell cal-empty"></span>`;
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateObj = new Date(year, month, day);
+      const key = dateKeyFromDate(dateObj);
+      const dayLog = stats.dailyLog[key];
+      let studyTotal = 0;
+      if (dayLog) Object.values(dayLog).forEach((t) => (studyTotal += t.total));
+      const exams = examsByDay[key] || [];
+      const hasActivity = studyTotal > 0 || exams.length > 0;
+      const isFuture = dateObj > now;
+      const level = studyTotal >= 30 ? 4 : studyTotal >= 15 ? 3 : studyTotal >= 5 ? 2 : studyTotal > 0 ? 1 : 0;
+      const classes = ["cal-cell", `cal-level-${level}`];
+      if (key === todayStr) classes.push("cal-today");
+      if (hasActivity) classes.push("cal-has-activity");
+      if (key === state.calSelectedDay) classes.push("cal-selected");
+      cells += `<button type="button" class="${classes.join(" ")}" data-day="${key}" ${isFuture ? "disabled" : ""}>
+        <span class="cal-daynum">${day}</span>${exams.length ? `<span class="cal-exam-dot" title="Esame sostenuto"></span>` : ""}
+      </button>`;
+    }
+    el("calGrid").innerHTML = cells;
+
+    if (state.calSelectedDay) renderCalDayDetail(state.calSelectedDay);
+  }
+
+  function renderCalDayDetail(dayKey) {
+    const stats = loadStats();
+    const [y, m, d] = dayKey.split("-").map(Number);
+    const dateObj = new Date(y, m - 1, d);
+    const weekday = WEEKDAY_NAMES_IT[(dateObj.getDay() + 6) % 7];
+    const label = `${weekday} ${d} ${MONTH_NAMES_IT[m - 1].toLowerCase()} — Anno ${akYear(y)} A.K.`;
+
+    const dayLog = stats.dailyLog[dayKey] || {};
+    const topicKeys = Object.keys(dayLog).filter((k) => TOPICS[k] && dayLog[k].total > 0);
+    const exams = stats.examHistory.filter((h) => dateKeyFromDate(new Date(h.date)) === dayKey);
+
+    let html = `<h3>${label}</h3>`;
+    if (topicKeys.length === 0 && exams.length === 0) {
+      html += `<p class="cal-empty-note">Nessuna attività registrata in questo giorno.</p>`;
+    } else {
+      if (topicKeys.length > 0) {
+        html += `<div class="cal-day-section-title">Modalità Studio</div>`;
+        topicKeys.forEach((k) => {
+          const t = TOPICS[k];
+          const d2 = dayLog[k];
+          const pct = Math.round((d2.correct / d2.total) * 100);
+          html += `<div class="stat-row"><span>${AREAS[t.area].icon} ${escapeHtml(t.name)}</span><b>${d2.correct}/${d2.total} (${pct}%)</b></div>`;
+        });
+      }
+      if (exams.length > 0) {
+        html += `<div class="cal-day-section-title">Esami simulati</div>`;
+        exams.forEach((h) => {
+          html += `<div class="stat-row"><span>${examAreaIcon(h.area)} ${h.area && AREAS[h.area] ? AREAS[h.area].name : "Esame"}</span><b>${h.score.toFixed(1)}/${h.max} — ${h.passed ? "Superato ✅" : "Non superato ❌"}</b></div>`;
+        });
+      }
+    }
+    el("calDayDetail").innerHTML = html;
+    el("calDayDetail").hidden = false;
   }
 
   /* ---------------------------------------------------------------- */
@@ -652,7 +856,7 @@
     el("resultsReview").innerHTML = reviewHtml(false);
     renderMath(el("resultsReview"));
 
-    recordExamResult(score, max, passed);
+    recordExamResult(score, max, passed, state.examArea);
   }
 
   function breakdownHtml() {
@@ -705,6 +909,7 @@
     buildTopicFilters();
     buildExamAreaSelect();
     renderStats();
+    renderProgressCalendar();
 
     el("rulesToggle").addEventListener("click", () => {
       const body = el("rulesBody");
@@ -739,12 +944,44 @@
       e.preventDefault();
       confirmMc();
     });
-    el("btnRestart").addEventListener("click", () => { showScreen("home"); renderStats(); });
+    el("btnRestart").addEventListener("click", () => { showScreen("home"); renderStats(); renderProgressCalendar(); });
     el("resetStats").addEventListener("click", () => {
       if (confirm("Azzerare tutte le statistiche salvate su questo dispositivo?")) {
         localStorage.removeItem(STORAGE_KEY);
         renderStats();
+        state.calSelectedDay = null;
+        el("calDayDetail").hidden = true;
+        renderProgressCalendar();
       }
+    });
+
+    el("calToggle").addEventListener("click", () => {
+      const body = el("calBody");
+      const btn = el("calToggle");
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      body.hidden = expanded;
+    });
+    el("calPrev").addEventListener("click", () => {
+      state.calView.month--;
+      if (state.calView.month < 0) { state.calView.month = 11; state.calView.year--; }
+      renderProgressCalendar();
+    });
+    el("calNext").addEventListener("click", () => {
+      state.calView.month++;
+      if (state.calView.month > 11) { state.calView.month = 0; state.calView.year++; }
+      renderProgressCalendar();
+    });
+    el("calToday").addEventListener("click", () => {
+      const now = new Date();
+      state.calView = { year: now.getFullYear(), month: now.getMonth() };
+      renderProgressCalendar();
+    });
+    el("calGrid").addEventListener("click", (e) => {
+      const btn = e.target.closest(".cal-cell[data-day]");
+      if (!btn || btn.disabled) return;
+      state.calSelectedDay = btn.dataset.day;
+      renderProgressCalendar();
     });
 
     el("syncToggle").addEventListener("click", () => {
@@ -792,6 +1029,9 @@
       if (!confirm(summary)) return;
       saveStats(incoming);
       renderStats();
+      state.calSelectedDay = null;
+      el("calDayDetail").hidden = true;
+      renderProgressCalendar();
       statusEl.textContent = "✅ Progressi importati con successo.";
       statusEl.className = "sync-status sync-status-ok";
       el("syncImportInput").value = "";

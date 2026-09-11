@@ -94,6 +94,37 @@
       <button class="btn btn-ghost" id="resetStats">Azzera statistiche</button>
     </div>
 
+    <div class="card cal-card">
+      <button class="rules-toggle" id="calToggle" aria-expanded="false">
+        <span>🗓️ Calendario dei progressi <span class="cal-ak-badge">A.K.</span></span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="rules-body" id="calBody" hidden>
+        <p>
+          Stesso calendario di sempre — mesi e giorni invariati — solo l'anno segue una datazione personale <strong>A.K.
+          (All Kevin)</strong>: l'Anno 1 A.K. inizia il giorno in cui questo sito è stato condiviso con i colleghi di
+          università, in onore di Kevin, che ha aiutato a svilupparlo. Ogni giorno mostra quante domande hai fatto,
+          materia per materia e argomento per argomento.
+        </p>
+        <div class="cal-nav">
+          <button type="button" class="btn btn-ghost cal-nav-btn" id="calPrev" aria-label="Mese precedente">←</button>
+          <span id="calLabel" class="cal-label"></span>
+          <button type="button" class="btn btn-ghost cal-nav-btn" id="calNext" aria-label="Mese successivo">→</button>
+        </div>
+        <button type="button" class="btn btn-ghost cal-today-btn" id="calToday">Oggi</button>
+        <div class="cal-grid cal-head">
+          <span>Lun</span><span>Mar</span><span>Mer</span><span>Gio</span><span>Ven</span><span>Sab</span><span>Dom</span>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend">
+          <span class="cal-legend-item"><span class="cal-swatch cal-level-1"></span>poche domande</span>
+          <span class="cal-legend-item"><span class="cal-swatch cal-level-4"></span>molte domande</span>
+          <span class="cal-legend-item"><span class="cal-exam-dot" style="position:static;"></span>esame sostenuto</span>
+        </div>
+        <div id="calDayDetail" class="cal-day-detail" hidden></div>
+      </div>
+    </div>
+
     <div class="card sync-card">
       <button class="rules-toggle" id="syncToggle" aria-expanded="false">
         <span>🔄 Sincronizza i progressi tra dispositivi</span>
@@ -101,9 +132,9 @@
       </button>
       <div class="rules-body" id="syncBody" hidden>
         <p>
-          Genera un codice che racchiude tutti i tuoi progressi su questo dispositivo — nessun account, nessun server:
-          il codice <em>è</em> il dato, ricostruito con un calcolo puramente locale. Copialo e incollalo su un altro
-          dispositivo per riprendere da lì.
+          Genera un codice che racchiude tutti i tuoi progressi su questo dispositivo — inclusi il calendario
+          giornaliero e lo storico esami — nessun account, nessun server: il codice <em>è</em> il dato, ricostruito
+          con un calcolo puramente locale. Copialo e incollalo su un altro dispositivo per riprendere da lì.
         </p>
 
         <button class="btn btn-ghost" id="syncGenerate">Genera codice da questo dispositivo</button>

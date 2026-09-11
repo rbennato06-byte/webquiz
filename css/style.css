@@ -212,6 +212,51 @@ main.wrap { padding-block: 28px 60px; }
 .stat-row:last-child { border-bottom: none; }
 .stat-row b { color: var(--primary); }
 
+/* ---- progress calendar (A.K.) ---- */
+.cal-ak-badge {
+  display: inline-block; font-size: .68rem; font-weight: 800; letter-spacing: .03em;
+  color: var(--primary); background: color-mix(in srgb, var(--primary) 14%, var(--surface));
+  border-radius: 8px; padding: 1px 7px; vertical-align: middle; margin-left: 2px;
+}
+.cal-card .rules-body p { margin: 0 0 16px; }
+.cal-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 10px; }
+.cal-nav-btn { padding: 8px 16px; }
+.cal-label { font-weight: 800; font-size: .98rem; min-width: 170px; text-align: center; }
+.cal-today-btn { display: block; margin: 0 auto 16px; padding: 6px 16px; font-size: .82rem; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.cal-grid.cal-head { margin-bottom: 6px; }
+.cal-grid.cal-head span { text-align: center; font-size: .72rem; font-weight: 700; color: var(--text-muted); }
+.cal-cell {
+  position: relative; aspect-ratio: 1 / 1; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--surface-2); cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center;
+  transition: background .15s ease, transform .1s ease;
+}
+.cal-cell:not(:disabled):hover { transform: scale(1.06); }
+.cal-cell:disabled { cursor: default; opacity: .35; }
+.cal-cell.cal-empty { border: none; background: none; cursor: default; }
+.cal-daynum { font-size: .78rem; font-weight: 600; color: var(--text); }
+.cal-cell.cal-level-1 { background: color-mix(in srgb, var(--primary) 20%, var(--surface-2)); }
+.cal-cell.cal-level-2 { background: color-mix(in srgb, var(--primary) 40%, var(--surface-2)); }
+.cal-cell.cal-level-3 { background: color-mix(in srgb, var(--primary) 65%, var(--surface-2)); }
+.cal-cell.cal-level-4 { background: var(--primary); }
+.cal-cell.cal-level-3 .cal-daynum, .cal-cell.cal-level-4 .cal-daynum { color: var(--primary-contrast); }
+.cal-cell.cal-today { border: 2px solid var(--exam); }
+.cal-cell.cal-selected { box-shadow: 0 0 0 2px var(--primary) inset; }
+.cal-exam-dot {
+  position: absolute; top: 3px; right: 3px; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--exam); display: inline-block;
+}
+.cal-legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 14px 0 4px; font-size: .78rem; color: var(--text-muted); }
+.cal-legend-item { display: flex; align-items: center; gap: 6px; }
+.cal-swatch { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
+.cal-day-detail {
+  margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border);
+}
+.cal-day-detail h3 { margin: 0 0 10px; font-size: .95rem; }
+.cal-day-section-title { font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; color: var(--text-muted); margin: 12px 0 4px; }
+.cal-day-section-title:first-of-type { margin-top: 0; }
+.cal-empty-note { color: var(--text-muted); font-size: .88rem; font-style: italic; margin: 0; }
+
 /* ---- sync card ---- */
 .sync-card .rules-body p { margin: 0 0 14px; }
 .sync-textarea {
