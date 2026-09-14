@@ -120,6 +120,19 @@
   </div>
 
   <div class="notes-block">
+    <h3>Prodotto scalare e prodotto vettoriale</h3>
+    <ul class="notes-points">
+      <li><b>Prodotto scalare</b>: $\vec{A}\cdot\vec{B}=AB\cos\theta$, con θ l'angolo compreso tra i due vettori — restituisce uno <b>scalare</b>. È nullo se i vettori sono perpendicolari; $\vec{A}\cdot\vec{A}=A^2$.</li>
+      <li><b>Prodotto vettoriale</b>: $|\vec{A}\times\vec{B}|=AB\sin\theta$ — restituisce un <b>vettore</b> perpendicolare al piano di A e B, con verso dato dalla regola della mano destra. È nullo se i vettori sono paralleli; è <b>anticommutativo</b>, $\vec{A}\times\vec{B}=-(\vec{B}\times\vec{A})$.</li>
+    </ul>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">prodotto scalare</span><span>$\vec{A}\cdot\vec{B}=AB\cos\theta$</span></div>
+      <div class="f-item"><span class="f-label">prodotto vettoriale</span><span>$|\vec{A}\times\vec{B}|=AB\sin\theta$</span></div>
+    </div>
+    <p class="notes-topic-intro" style="margin:8px 0 0;">Il prodotto scalare comparirà nella definizione del lavoro di una forza ($W=Fd\cos\theta$); il prodotto vettoriale nella definizione del momento di una forza (vedi <a href="#corpirigidi">Corpi rigidi, leve</a>).</p>
+  </div>
+
+  <div class="notes-block">
     <h3>Esercizi commentati</h3>
     <div class="exercise-card">
       <div class="ex-title">Esercizio 1 — conversione di unità</div>
@@ -206,6 +219,51 @@
   </div>
 
   <div class="notes-block">
+    <h3>Moto del proiettile (moto parabolico)</h3>
+    <ul class="notes-points">
+      <li>Un proiettile lanciato con velocità $v_0$ e angolo $\theta_0$ dall'orizzontale ha componenti iniziali $v_{0x}=v_0\cos\theta_0$ (costante nel tempo) e $v_{0y}=v_0\sin\theta_0$ (che cambia per effetto di g).</li>
+      <li>Al <b>culmine</b> della traiettoria si annulla solo $v_y$; $v_x$ resta invariata e l'accelerazione rimane $-g$ in ogni istante, culmine incluso.</li>
+      <li>Per un lancio che ritorna alla stessa quota, la <b>gittata</b> R è massima per $\theta_0=45°$; due angoli complementari (es. 30° e 60°) danno la stessa gittata ma tempi di volo e altezze massime diverse.</li>
+      <li>Il <b>lancio orizzontale da un'altezza h</b> (caso particolare, $v_{0y}=0$) ha lo stesso tempo di caduta di un corpo lasciato cadere dalla stessa altezza: il moto orizzontale non influenza quello verticale.</li>
+    </ul>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">componenti iniziali</span><span>$v_{0x}=v_0\cos\theta_0,\ v_{0y}=v_0\sin\theta_0$</span></div>
+      <div class="f-item"><span class="f-label">posizione</span><span>$x=x_0+v_{0x}t,\ \ y=y_0+v_{0y}t-\tfrac12 gt^2$</span></div>
+      <div class="f-item"><span class="f-label">tempo di volo (stessa quota)</span><span>$t_f=\dfrac{2v_0\sin\theta_0}{g}$</span></div>
+      <div class="f-item"><span class="f-label">altezza massima</span><span>$\Delta h_{max}=\dfrac{v_{0y}^2}{2g}$</span></div>
+      <div class="f-item"><span class="f-label">gittata (stessa quota)</span><span>$R=\dfrac{v_0^2\sin(2\theta_0)}{g}$</span></div>
+      <div class="f-item"><span class="f-label">lancio orizzontale da h</span><span>$t_f=\sqrt{\dfrac{2h}{g}},\ \ R=v_0 t_f$</span></div>
+    </div>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 280 130" width="280" height="130">
+        <line x1="20" y1="110" x2="270" y2="110" stroke="var(--text-muted)" stroke-width="1.5"/>
+        <path d="M20,110 Q145,10 270,110" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+        <line x1="145" y1="30" x2="145" y2="110" stroke="var(--text-muted)" stroke-dasharray="2,2"/>
+        <text x="145" y="22" font-size="8" fill="var(--text-muted)" text-anchor="middle">culmine: v_y = 0</text>
+        <text x="270" y="122" font-size="8" fill="var(--text-muted)" text-anchor="end">gittata R</text>
+      </svg>
+      <figcaption>Traiettoria parabolica: al culmine si annulla solo la componente verticale della velocità.</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
+    <h3>Moto circolare uniforme (quantitativo)</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Grandezza</th><th>Significato</th><th>Formula</th></tr></thead>
+        <tbody>
+          <tr><td>Periodo T</td><td>Tempo per un giro completo</td><td>$T=1/f=2\pi/\omega$</td></tr>
+          <tr><td>Frequenza f</td><td>Giri al secondo</td><td>$f=1/T$</td></tr>
+          <tr><td>Velocità angolare ω</td><td>Angolo percorso al secondo</td><td>$\omega=2\pi f=2\pi/T$</td></tr>
+          <tr><td>Velocità tangenziale v</td><td>Velocità lineare lungo la circonferenza</td><td>$v=\omega r$</td></tr>
+          <tr><td>Accelerazione centripeta $a_c$</td><td>Diretta verso il centro</td><td>$a_c=v^2/r=\omega^2 r$</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="notes-topic-intro" style="margin:8px 0 0;">A parità di raggio, raddoppiare v quadruplica $a_c$ (dipende da $v^2$); a parità di ω, raddoppiare r raddoppia $a_c$ (perché anche v cresce con r).</p>
+  </div>
+
+  <div class="notes-block">
     <h3>Esercizi commentati</h3>
     <div class="exercise-card">
       <div class="ex-title">Esercizio 1 — accelerazione da fermo</div>
@@ -227,6 +285,29 @@
           <li><span class="step-n">2</span>$t = \sqrt{\dfrac{2\times20}{9{,}8}} = \sqrt{4{,}08}$</li>
         </ol>
         <div class="ex-answer">t ≈ 2,0 s</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 3 — gittata di un proiettile</div>
+      <div class="ex-statement">Un proiettile parte con $v_0=20\ \text{m/s}$ e $\theta_0=30°$, tornando alla stessa quota di lancio. Calcola tempo di volo e gittata ($g=9{,}8\ \text{m/s}^2$).</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$t_f=\dfrac{2v_0\sin\theta_0}{g}=\dfrac{2\times20\times\sin30°}{9{,}8}=\dfrac{20}{9{,}8}$</li>
+          <li><span class="step-n">2</span>$R=\dfrac{v_0^2\sin(2\theta_0)}{g}=\dfrac{20^2\times\sin60°}{9{,}8}$</li>
+        </ol>
+        <div class="ex-answer">t ≈ 2,04 s, R ≈ 35,3 m</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 4 — moto circolare uniforme</div>
+      <div class="ex-statement">Una giostra compie un giro ogni 8 s con raggio 2 m. Calcola velocità angolare, velocità tangenziale e accelerazione centripeta.</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$\omega=\dfrac{2\pi}{T}=\dfrac{2\pi}{8}\approx0{,}785\ \text{rad/s}$</li>
+          <li><span class="step-n">2</span>$v=\omega r\approx0{,}785\times2\approx1{,}57\ \text{m/s}$</li>
+          <li><span class="step-n">3</span>$a_c=\omega^2 r\approx0{,}785^2\times2\approx1{,}23\ \text{m/s}^2$</li>
+        </ol>
+        <div class="ex-answer">ω ≈ 0,785 rad/s, v ≈ 1,57 m/s, a_c ≈ 1,23 m/s²</div>
       </details>
     </div>
   </div>
@@ -285,6 +366,21 @@
   </div>
 
   <div class="notes-block">
+    <h3>Legge di gravitazione universale</h3>
+    <ul class="notes-points">
+      <li>La forza gravitazionale tra due corpi di massa $m_1$ e $m_2$, posti a distanza r, è un'attrazione lungo la retta che li congiunge: $F_g=G\dfrac{m_1m_2}{r^2}$, con G costante di gravitazione universale.</li>
+      <li>A distanza fissa, raddoppiare una massa raddoppia la forza; a masse fisse, raddoppiare la distanza riduce la forza a un quarto (dipendenza dall'<b>inverso del quadrato</b> della distanza).</li>
+      <li>L'accelerazione di gravità g, vicino alla superficie di un pianeta di massa M e raggio R, vale $g=\dfrac{GM}{R^2}$: dipende dal pianeta e dalla distanza dal suo centro, <b>non</b> dalla massa del corpo che cade — per questo, senza aria, corpi di massa diversa cadono con la stessa accelerazione.</li>
+      <li><b>G</b> è una costante universale; <b>g</b> è un'accelerazione locale (vicino al suolo terrestre, $g\approx9{,}8\ \text{m/s}^2$) — non vanno confuse.</li>
+    </ul>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">forza gravitazionale</span><span>$F_g=G\dfrac{m_1m_2}{r^2}$</span></div>
+      <div class="f-item"><span class="f-label">costante G</span><span>$6{,}67\times10^{-11}\ \text{N}\cdot\text{m}^2/\text{kg}^2$</span></div>
+      <div class="f-item"><span class="f-label">accelerazione di gravità</span><span>$g=\dfrac{GM}{r^2},\ \ r=R+h$</span></div>
+    </div>
+  </div>
+
+  <div class="notes-block">
     <h3>Esercizi commentati</h3>
     <div class="exercise-card">
       <div class="ex-title">Esercizio 1 — secondo principio</div>
@@ -305,6 +401,16 @@
           <li><span class="step-n">2</span>$F_{attr,max} = \mu_s N = 0{,}3 \times 10 \times 9{,}8$</li>
         </ol>
         <div class="ex-answer">F ≈ 29,4 N</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 3 — gravitazione universale</div>
+      <div class="ex-statement">Due masse di 5 kg e 8 kg sono poste a 2 m di distanza. Calcola la forza gravitazionale tra loro ($G=6{,}67\times10^{-11}\ \text{N}\cdot\text{m}^2/\text{kg}^2$).</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$F_g=G\dfrac{m_1m_2}{r^2}=6{,}67\times10^{-11}\times\dfrac{5\times8}{2^2}$</li>
+        </ol>
+        <div class="ex-answer">F ≈ 6,67 × 10⁻¹⁰ N (trascurabile per masse ordinarie: la gravità è significativa solo con masse planetarie)</div>
       </details>
     </div>
   </div>

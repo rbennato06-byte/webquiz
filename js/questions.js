@@ -474,6 +474,59 @@ const QUESTIONS = [
   q:"Le molecole in un liquido occupano posizioni ________, pur essendo consentiti movimenti reciproci tra loro.",
   answer:"CASUALI" },
 
+{ id:"liq-26", topic:"liquido", type:"mc",
+  q:"Quantitativamente, la tensione superficiale (γ) di un liquido è definita come:",
+  options:["Il rapporto tra la forza F e la lunghezza L lungo cui agisce (equivalente all'energia per unità di superficie), $\\gamma=F/L$","Il rapporto tra la massa e il volume del liquido","La pressione esercitata dal vapore in equilibrio col liquido","Il calore necessario per vaporizzare un grammo di liquido","La viscosità del liquido"], correct:0 },
+
+{ id:"liq-27", topic:"liquido", type:"mc",
+  q:"Le molecole tensioattive (surfattanti), come quelle del sapone, sono molecole anfipatiche che abbassano la tensione superficiale dell'acqua perché:",
+  options:["Si dispongono in superficie interrompendo la rete di legami idrogeno tra le molecole d'acqua","Aumentano la coesione tra le molecole d'acqua","Reagiscono chimicamente con l'acqua formando un nuovo composto","Aumentano la viscosità del liquido","Non hanno alcun effetto sulla superficie del liquido"], correct:0 },
+
+{ id:"liq-28", topic:"liquido", type:"mc",
+  q:"La capillarità, cioè la risalita (o discesa) di un liquido in un tubo sottile, dipende dal bilancio tra:",
+  options:["Le forze di coesione (liquido-liquido) e le forze di adesione (liquido-parete)","La sola temperatura del liquido","La sola pressione atmosferica","La densità del liquido e la gravità soltanto","Il calore latente di vaporizzazione"], correct:0 },
+
+{ id:"liq-29", topic:"liquido", type:"mc",
+  q:"Se l'adesione (liquido-parete) è maggiore della coesione (liquido-liquido), come nel caso dell'acqua in un tubo di vetro, il liquido:",
+  options:["Bagna la parete, risale nel capillare e forma un menisco concavo","È respinto dalla parete e forma un menisco convesso","Non risale né scende nel capillare","Evapora immediatamente","Forma un menisco piatto"], correct:0 },
+
+{ id:"liq-30", topic:"liquido", type:"mc",
+  q:"Nel caso del mercurio in un tubo di vetro, dove la coesione supera l'adesione, il liquido:",
+  options:["È respinto dalla parete, forma un menisco convesso e scende rispetto al livello esterno","Bagna la parete e forma un menisco concavo","Risale indefinitamente nel capillare","Si comporta esattamente come l'acqua","Non risente affatto della parete del tubo"], correct:0 },
+
+{ id:"liq-31", topic:"liquido", type:"mc",
+  q:"La relazione tra la tensione di vapore di un liquido e la temperatura, descritta dall'equazione di Clausius-Clapeyron, è di tipo:",
+  options:["Esponenziale: un piccolo aumento di temperatura provoca un aumento molto più che proporzionale della tensione di vapore","Lineare: la tensione di vapore aumenta in proporzione diretta alla temperatura","Inversamente proporzionale alla temperatura","Indipendente dalla temperatura","Quadratica rispetto alla pressione esterna"], correct:0 },
+
+{ id:"liq-32", topic:"liquido", type:"mc",
+  q:"La tensione di vapore di un liquido, a una data temperatura, NON dipende da:",
+  options:["La quantità di liquido presente nel recipiente (né dal volume del recipiente, finché c'è equilibrio liquido-vapore)","La temperatura del sistema","La natura chimica della sostanza","La forza delle interazioni intermolecolari","Nessuna delle precedenti: dipende da tutte"], correct:0,
+  explain:"La tensione di vapore è una proprietà intensiva: dipende solo dalla temperatura e dalla natura chimica della sostanza, non dalla quantità di liquido presente." },
+
+{ id:"liq-33", topic:"liquido", type:"mc",
+  q:"Un liquido si definisce 'volatile' quando, a temperatura ambiente, presenta:",
+  options:["Un'elevata tensione di vapore, dovuta a forze intermolecolari deboli (es. etere dietilico, acetone)","Una bassissima tensione di vapore","Un punto di ebollizione molto alto","Una viscosità molto elevata","Una densità molto alta"], correct:0 },
+
+{ id:"liq-34", topic:"liquido", type:"mc",
+  q:"Tra i fattori che determinano il punto di ebollizione di una sostanza, quello che 'domina su tutto' quando presente è:",
+  options:["La presenza del legame a idrogeno (F, O o N legati direttamente a H)","La sola massa molecolare","La sola forma della molecola","La sola pressione esterna","Il colore della sostanza"], correct:0 },
+
+{ id:"liq-35", topic:"liquido", type:"mc",
+  q:"A parità di tipo di forze intermolecolari, tra due molecole di massa diversa, quella più pesante ha generalmente:",
+  options:["Un punto di ebollizione più alto, per la maggiore forza di dispersione di London","Un punto di ebollizione più basso","Lo stesso punto di ebollizione, indipendentemente dalla massa","Una tensione di vapore più alta","Nessuna relazione prevedibile con il punto di ebollizione"], correct:0 },
+
+{ id:"liq-36", topic:"liquido", type:"mc",
+  q:"A parità di formula e massa molecolare, una molecola allungata rispetto a una compatta (sferica) presenta generalmente:",
+  options:["Un punto di ebollizione più alto, per la maggiore superficie di contatto disponibile per le interazioni di London","Un punto di ebollizione più basso","La stessa tensione di vapore della molecola compatta","Nessuna differenza nelle proprietà fisiche","Una minore massa molecolare"], correct:0 },
+
+{ id:"liq-37", topic:"liquido", type:"fill",
+  q:"Le molecole anfipatiche come il sapone, che abbassano la tensione superficiale dell'acqua interrompendo i legami idrogeno in superficie, si chiamano tensioattivi o ________.",
+  answer:"SURFATTANTI" },
+
+{ id:"liq-38", topic:"liquido", type:"fill",
+  q:"Nella capillarità, quando il liquido bagna la parete del tubo (adesione maggiore della coesione), si forma un menisco ________.",
+  answer:"CONCAVO" },
+
 /* ============================= TERMODINAMICA ============================= */
 
 { id:"term-01", topic:"termodinamica", type:"mc",
@@ -525,13 +578,14 @@ const QUESTIONS = [
   explain:"$\\Delta G = \\Delta H - T\\Delta S = -30 - 300\\times 0{,}1 = -60\\text{ kJ/mol} < 0$ → spontanea. Le altre opzioni danno $\\Delta G \\ge 0$." },
 
 { id:"term-11", topic:"termodinamica", type:"mc",
-  q:"Quale delle seguenti affermazioni NON descrive correttamente il I principio della termodinamica?",
+  q:"Quale delle seguenti affermazioni è ERRATA rispetto al I principio della termodinamica (cioè lo contraddice)?",
   options:[
-    "L'energia non può essere né creata né distrutta, ma solo trasformata",
+    "La trasformazione dell'energia da una forma all'altra determina un aumento dell'energia totale dell'universo",
     "La quantità totale di energia nell'universo è costante",
     "L'energia può trasformarsi da una forma all'altra senza che la somma totale cambi",
     "In un sistema isolato la somma delle energie rimane invariata nel tempo",
-    "La trasformazione dell'energia da una forma all'altra determina un aumento dell'energia totale dell'universo"], correct:4 },
+    "L'energia non può essere né creata né distrutta, ma solo trasformata"], correct:0,
+  explain:"Il I principio (conservazione dell'energia) afferma che l'energia totale di un sistema isolato/dell'universo resta costante: non può quindi 'aumentare' semplicemente trasformandosi da una forma all'altra. Questa domanda riguarda il I principio, non il II (che riguarda invece l'aumento di entropia, non di energia — vedi la domanda successiva)." },
 
 { id:"term-12", topic:"termodinamica", type:"mc",
   q:"Un sistema si definisce aperto se scambia con l'esterno:",
@@ -735,6 +789,46 @@ const QUESTIONS = [
   q:"Il Sistema Internazionale di unità di misura si basa su ________ grandezze fondamentali.",
   answer:"SETTE", answerAlt:["7"] },
 
+{ id:"mis-21", topic:"misure", type:"mc",
+  q:"Il prodotto scalare di due vettori $\\vec{A}$ e $\\vec{B}$ è definito come:",
+  options:["$\\vec{A}\\cdot\\vec{B}=AB\\cos\\theta$, con θ l'angolo compreso tra i due vettori","$\\vec{A}\\cdot\\vec{B}=AB\\sin\\theta$","Un vettore perpendicolare al piano di A e B","La somma dei moduli di A e B","Sempre uguale a zero"], correct:0 },
+
+{ id:"mis-22", topic:"misure", type:"mc",
+  q:"Il prodotto scalare di due vettori restituisce come risultato:",
+  options:["Una grandezza scalare","Un vettore perpendicolare ai due vettori di partenza","Sempre un numero negativo","Un vettore parallelo a entrambi","Una grandezza priva di significato fisico"], correct:0 },
+
+{ id:"mis-23", topic:"misure", type:"mc",
+  q:"Se due vettori sono perpendicolari tra loro (θ = 90°), il loro prodotto scalare vale:",
+  options:["Zero","Il prodotto dei loro moduli","La somma dei loro moduli","Il quadrato del modulo maggiore","Non è calcolabile"], correct:0 },
+
+{ id:"mis-24", topic:"misure", type:"mc",
+  q:"Il prodotto scalare di un vettore per se stesso, $\\vec{A}\\cdot\\vec{A}$, è uguale a:",
+  options:["Il quadrato del modulo del vettore, $A^2$","Zero sempre","Il doppio del modulo del vettore","Un vettore nullo","Il modulo del vettore, senza elevamento al quadrato"], correct:0 },
+
+{ id:"mis-25", topic:"misure", type:"mc",
+  q:"Il prodotto vettoriale di due vettori $\\vec{A}$ e $\\vec{B}$ ha modulo:",
+  options:["$|\\vec{A}\\times\\vec{B}|=AB\\sin\\theta$, con θ l'angolo compreso tra i due vettori","$AB\\cos\\theta$","La somma dei moduli di A e B","Sempre nullo se A e B sono paralleli o antiparalleli", "Indipendente dall'angolo tra i due vettori"], correct:0 },
+
+{ id:"mis-26", topic:"misure", type:"mc",
+  q:"A differenza del prodotto scalare, il risultato del prodotto vettoriale $\\vec{A}\\times\\vec{B}$ è:",
+  options:["Un vettore, perpendicolare al piano individuato da A e B, con verso dato dalla regola della mano destra","Uno scalare","Sempre uguale a zero","Una grandezza priva di direzione e verso","Identico al prodotto scalare"], correct:0 },
+
+{ id:"mis-27", topic:"misure", type:"mc",
+  q:"Se due vettori sono paralleli (θ = 0° oppure 180°), il loro prodotto vettoriale è:",
+  options:["Il vettore nullo, perché $\\sin 0° = \\sin 180° = 0$","Massimo in modulo","Uguale al prodotto scalare","Indipendente dai moduli dei vettori","Sempre diretto lungo l'asse z"], correct:0 },
+
+{ id:"mis-28", topic:"misure", type:"mc",
+  q:"Invertendo l'ordine dei fattori nel prodotto vettoriale, cioè calcolando $\\vec{B}\\times\\vec{A}$ invece di $\\vec{A}\\times\\vec{B}$:",
+  options:["Si ottiene un vettore di uguale modulo ma verso opposto: il prodotto vettoriale è anticommutativo","Si ottiene esattamente lo stesso risultato","Il modulo del vettore risultante cambia","Il risultato diventa uno scalare","L'operazione non è definita"], correct:0 },
+
+{ id:"mis-29", topic:"misure", type:"fill",
+  q:"Il prodotto tra due vettori che restituisce come risultato una grandezza scalare, pari a $AB\\cos\\theta$, si chiama prodotto ________.",
+  answer:"SCALARE" },
+
+{ id:"mis-30", topic:"misure", type:"fill",
+  q:"Il prodotto tra due vettori che restituisce come risultato un vettore perpendicolare al piano dei due vettori di partenza si chiama prodotto ________.",
+  answer:"VETTORIALE" },
+
 /* ============================= CINEMATICA ============================= */
 
 { id:"cin-01", topic:"cinematica", type:"mc",
@@ -840,6 +934,102 @@ const QUESTIONS = [
 { id:"cin-28", topic:"cinematica", type:"fill",
   q:"La velocità media si misura, nel Sistema Internazionale, in ________.",
   answer:"M/S", answerAlt:["METRI AL SECONDO","METRI/SECONDO","M/SEC"] },
+
+{ id:"cin-29", topic:"cinematica", type:"mc",
+  q:"Il moto di un proiettile (lanciato con una componente orizzontale della velocità) può essere studiato scomponendo il moto in due direzioni indipendenti:",
+  options:["Un moto orizzontale a velocità costante (MRU) e un moto verticale uniformemente accelerato dalla sola gravità","Due moti uniformemente accelerati identici lungo x e y","Un moto circolare uniforme composto con un MRU","Un unico moto uniformemente accelerato lungo la traiettoria","Due moti rettilinei uniformi identici"], correct:0 },
+
+{ id:"cin-30", topic:"cinematica", type:"mc",
+  q:"Le componenti della velocità iniziale di un proiettile lanciato con velocità $v_0$ e angolo $\\theta_0$ rispetto all'orizzontale sono:",
+  options:["$v_{0x}=v_0\\cos\\theta_0,\\ v_{0y}=v_0\\sin\\theta_0$","$v_{0x}=v_0\\sin\\theta_0,\\ v_{0y}=v_0\\cos\\theta_0$","$v_{0x}=v_{0y}=v_0$","$v_{0x}=v_0\\tan\\theta_0,\\ v_{0y}=v_0$","$v_{0x}=v_0,\\ v_{0y}=0$ sempre"], correct:0 },
+
+{ id:"cin-31", topic:"cinematica", type:"mc",
+  q:"Nel moto di un proiettile, trascurando l'attrito dell'aria, la componente orizzontale della velocità $v_x$:",
+  options:["Resta costante durante tutto il moto","Diminuisce progressivamente per effetto della gravità","Aumenta progressivamente","Si annulla al culmine della traiettoria","È sempre uguale alla componente verticale"], correct:0 },
+
+{ id:"cin-32", topic:"cinematica", type:"mc",
+  q:"Nel moto di un proiettile, la componente verticale della velocità $v_y$ al culmine della traiettoria (punto più alto) vale:",
+  options:["Zero","Il valore massimo raggiunto durante il moto","Uguale a $v_{0y}$","Uguale alla componente orizzontale $v_x$","Non è mai nulla durante il moto"], correct:0,
+  explain:"Al culmine si annulla solo la componente verticale della velocità; l'accelerazione resta g, diretta verso il basso, e la componente orizzontale resta invariata." },
+
+{ id:"cin-33", topic:"cinematica", type:"mc",
+  q:"Per un proiettile lanciato con velocità $v_0$ e angolo $\\theta_0$, che ritorna alla stessa quota di lancio, il tempo totale di volo è dato da:",
+  options:["$t_f=\\dfrac{2v_0\\sin\\theta_0}{g}$","$t_f=\\dfrac{v_0\\cos\\theta_0}{g}$","$t_f=\\dfrac{v_0}{g}$","$t_f=\\dfrac{2v_0}{g\\sin\\theta_0}$","$t_f=\\dfrac{g}{2v_0\\sin\\theta_0}$"], correct:0 },
+
+{ id:"cin-34", topic:"cinematica", type:"mc",
+  q:"Per un proiettile lanciato con velocità $v_0$ e angolo $\\theta_0$, che ritorna alla stessa quota di lancio, la gittata (distanza orizzontale percorsa) è data da:",
+  options:["$R=\\dfrac{v_0^2\\sin(2\\theta_0)}{g}$","$R=\\dfrac{v_0^2}{g}$","$R=v_0^2\\sin\\theta_0$","$R=\\dfrac{v_0\\cos\\theta_0}{g}$","$R=2v_0\\sin\\theta_0$"], correct:0 },
+
+{ id:"cin-35", topic:"cinematica", type:"mc",
+  q:"A parità di velocità iniziale $v_0$, la gittata di un proiettile (che ritorna alla stessa quota di lancio) è massima per un angolo di lancio $\\theta_0$ pari a:",
+  options:["45°","30°","90°","0°","60°"], correct:0 },
+
+{ id:"cin-36", topic:"cinematica", type:"mc",
+  q:"Due angoli di lancio complementari (che sommati danno 90°, come 30° e 60°), a parità di velocità iniziale $v_0$:",
+  options:["Producono la stessa gittata, ma tempi di volo e altezze massime diverse","Producono sempre gittate diverse","Sono equivalenti in ogni aspetto del moto, incluso il tempo di volo","Non hanno alcuna relazione tra loro","Producono sempre la stessa altezza massima"], correct:0,
+  explain:"Il lancio con l'angolo maggiore (es. 60°) sale di più e resta in aria più a lungo, ma i due lanci raggiungono la stessa distanza orizzontale." },
+
+{ id:"cin-37", topic:"cinematica", type:"mc",
+  q:"L'altezza massima raggiunta da un proiettile rispetto al punto di lancio, in funzione della componente verticale iniziale $v_{0y}$, è data da:",
+  options:["$\\Delta h_{max}=\\dfrac{v_{0y}^2}{2g}$","$\\Delta h_{max}=\\dfrac{v_{0y}}{g}$","$\\Delta h_{max}=2v_{0y}g$","$\\Delta h_{max}=v_{0y}^2g$","$\\Delta h_{max}=\\dfrac{g}{2v_{0y}^2}$"], correct:0 },
+
+{ id:"cin-38", topic:"cinematica", type:"mc",
+  q:"Un corpo lanciato orizzontalmente da un'altezza h (velocità iniziale verticale nulla) tocca il suolo dopo un tempo:",
+  options:["$t_f=\\sqrt{2h/g}$, indipendente dalla velocità orizzontale di lancio","Che dipende dalla velocità orizzontale di lancio","Uguale a $h/g$","Uguale a $\\sqrt{h/g}$","Infinito, se la velocità orizzontale è molto alta"], correct:0,
+  explain:"Il moto orizzontale e quello verticale sono indipendenti: il tempo di caduta dipende solo dall'altezza h e da g, non dalla velocità orizzontale." },
+
+{ id:"cin-39", topic:"cinematica", type:"mc",
+  q:"Una pallina lasciata cadere da un'altezza h e un'altra lanciata orizzontalmente dalla stessa altezza, nello stesso istante, trascurando l'aria:",
+  options:["Toccano il suolo esattamente nello stesso istante, perché hanno la stessa velocità verticale iniziale nulla e la stessa accelerazione verticale $-g$","La pallina lanciata orizzontalmente tocca il suolo prima","La pallina lasciata cadere tocca il suolo prima","Nessuna delle due tocca mai il suolo","Il risultato dipende dalla massa delle due palline"], correct:0 },
+
+{ id:"cin-40", topic:"cinematica", type:"mc",
+  q:"Il modulo della velocità totale di un proiettile in un dato istante, note le componenti $v_x$ e $v_y$, si calcola come:",
+  options:["$v=\\sqrt{v_x^2+v_y^2}$", "$v=v_x+v_y$", "$v=v_x\\cdot v_y$", "$v=v_x-v_y$", "$v=\\dfrac{v_x}{v_y}$"], correct:0,
+  explain:"Le componenti sono perpendicolari tra loro, quindi si combinano secondo il teorema di Pitagora, non si sommano direttamente." },
+
+{ id:"cin-41", topic:"cinematica", type:"mc",
+  q:"Nel moto circolare uniforme, il periodo T (tempo necessario per compiere un giro completo) e la frequenza f (numero di giri al secondo) sono legati dalla relazione:",
+  options:["$f=1/T$","$f=T$","$f=T^2$","$f=2T$","$f=\\sqrt{T}$"], correct:0 },
+
+{ id:"cin-42", topic:"cinematica", type:"mc",
+  q:"La velocità angolare ω di un corpo in moto circolare uniforme è legata al periodo T dalla relazione:",
+  options:["$\\omega=\\dfrac{2\\pi}{T}=2\\pi f$","$\\omega=\\dfrac{T}{2\\pi}$","$\\omega=T$","$\\omega=\\pi T$","$\\omega=\\dfrac{1}{2\\pi T}$"], correct:0 },
+
+{ id:"cin-43", topic:"cinematica", type:"mc",
+  q:"Nel moto circolare uniforme, la velocità tangenziale (lineare) v di un punto a distanza r dal centro è legata alla velocità angolare ω dalla relazione:",
+  options:["$v=\\omega r$","$v=\\omega/r$","$v=\\omega+r$","$v=\\omega^2 r$","$v=r/\\omega$"], correct:0 },
+
+{ id:"cin-44", topic:"cinematica", type:"mc",
+  q:"L'accelerazione centripeta $a_c$ nel moto circolare uniforme può essere espressa, in funzione della velocità tangenziale v o della velocità angolare ω, come:",
+  options:["$a_c=\\dfrac{v^2}{r}=\\omega^2 r$","$a_c=vr$","$a_c=\\dfrac{v}{r^2}$","$a_c=\\omega r$ soltanto","$a_c=\\dfrac{r}{v^2}$"], correct:0 },
+
+{ id:"cin-45", topic:"cinematica", type:"mc",
+  q:"A parità di raggio r, se la velocità tangenziale v di un corpo in moto circolare uniforme raddoppia, l'accelerazione centripeta:",
+  options:["Diventa quattro volte maggiore, perché $a_c$ dipende dal quadrato di v","Raddoppia soltanto","Resta invariata","Si dimezza","Si riduce a un quarto"], correct:0 },
+
+{ id:"cin-46", topic:"cinematica", type:"mc",
+  q:"A parità di velocità angolare ω, se il raggio r di un moto circolare uniforme raddoppia, l'accelerazione centripeta:",
+  options:["Raddoppia, perché in questo caso anche la velocità tangenziale v aumenta proporzionalmente a r","Si dimezza","Resta invariata","Diventa quattro volte maggiore","Si annulla"], correct:0 },
+
+{ id:"cin-47", topic:"cinematica", type:"mc",
+  q:"Nel moto circolare uniforme, l'angolo Δθ percorso in un intervallo di tempo Δt, e l'arco di circonferenza s corrispondente, sono legati dalle relazioni:",
+  options:["$\\Delta\\theta=\\omega\\Delta t,\\ s=r\\Delta\\theta$","$\\Delta\\theta=r\\Delta t$","$s=\\omega\\Delta t$","$\\Delta\\theta=s/\\omega$","$s=r/\\Delta\\theta$"], correct:0 },
+
+{ id:"cin-48", topic:"cinematica", type:"fill",
+  q:"La distanza orizzontale percorsa da un proiettile che ritorna alla stessa quota di lancio si chiama ________.",
+  answer:"GITTATA" },
+
+{ id:"cin-49", topic:"cinematica", type:"fill",
+  q:"A parità di velocità iniziale, la gittata massima di un proiettile (stessa quota di lancio e arrivo) si ottiene con un angolo di lancio di ________ gradi.",
+  answer:"45" },
+
+{ id:"cin-50", topic:"cinematica", type:"fill",
+  q:"Nel moto circolare uniforme, il tempo necessario per compiere un giro completo si chiama ________.",
+  answer:"PERIODO" },
+
+{ id:"cin-51", topic:"cinematica", type:"fill",
+  q:"Nel moto circolare uniforme, l'accelerazione è sempre diretta verso il centro della circonferenza e per questo si chiama accelerazione ________.",
+  answer:"CENTRIPETA" },
 
 /* ============================= DINAMICA ============================= */
 
@@ -956,6 +1146,40 @@ const QUESTIONS = [
 { id:"din-25", topic:"dinamica", type:"fill",
   q:"Secondo il secondo principio della dinamica, l'accelerazione di un corpo è ________ proporzionale alla forza netta applicata.",
   answer:"DIRETTAMENTE" },
+
+{ id:"din-26", topic:"dinamica", type:"mc",
+  q:"La legge di gravitazione universale di Newton afferma che la forza attrattiva tra due corpi di massa $m_1$ e $m_2$, posti a distanza r, è data da:",
+  options:["$F_g=G\\dfrac{m_1 m_2}{r^2}$","$F_g=G\\dfrac{m_1+m_2}{r}$","$F_g=G(m_1+m_2)r^2$","$F_g=G\\dfrac{r^2}{m_1 m_2}$","$F_g=Gm_1m_2r$"], correct:0 },
+
+{ id:"din-27", topic:"dinamica", type:"mc",
+  q:"Nella legge di gravitazione universale, se la distanza tra due corpi raddoppia mentre le masse restano invariate, la forza gravitazionale:",
+  options:["Si riduce a un quarto del valore iniziale","Raddoppia","Si dimezza","Resta invariata","Quadruplica"], correct:0,
+  explain:"La forza è inversamente proporzionale al quadrato della distanza: raddoppiando r, F diminuisce di un fattore $2^2=4$." },
+
+{ id:"din-28", topic:"dinamica", type:"mc",
+  q:"Nella legge di gravitazione universale, se entrambe le masse raddoppiano mentre la distanza resta invariata, la forza gravitazionale:",
+  options:["Quadruplica","Raddoppia","Resta invariata","Si dimezza","Si riduce a un quarto"], correct:0 },
+
+{ id:"din-29", topic:"dinamica", type:"mc",
+  q:"L'accelerazione di gravità g in prossimità della superficie di un pianeta è legata alla massa M e al raggio R del pianeta dalla relazione:",
+  options:["$g=\\dfrac{GM}{R^2}$","$g=GMR^2$","$g=\\dfrac{GR}{M}$","$g=\\dfrac{G}{MR}$","$g=GM+R^2$"], correct:0 },
+
+{ id:"din-30", topic:"dinamica", type:"mc",
+  q:"Il valore dell'accelerazione di gravità g:",
+  options:["Dipende dal pianeta considerato e dalla distanza dal suo centro, ma non dalla massa dell'oggetto che cade","Dipende dalla massa dell'oggetto che cade: un corpo più pesante accelera di più","È una costante universale identica su ogni pianeta","Dipende solo dalla forma dell'oggetto che cade","Non dipende in alcun modo dalla distanza dal centro del pianeta"], correct:0,
+  explain:"Per questo motivo, in assenza di resistenza dell'aria, corpi di massa diversa cadono con la stessa accelerazione nello stesso luogo." },
+
+{ id:"din-31", topic:"dinamica", type:"mc",
+  q:"La costante di gravitazione universale G vale circa:",
+  options:["$6{,}67\\times10^{-11}\\ \\text{N}\\cdot\\text{m}^2/\\text{kg}^2$","$9{,}8\\ \\text{m/s}^2$","$6{,}022\\times10^{23}\\ \\text{mol}^{-1}$","$3\\times10^8\\ \\text{m/s}$","$1{,}6\\times10^{-19}\\ \\text{C}$"], correct:0 },
+
+{ id:"din-32", topic:"dinamica", type:"mc",
+  q:"La differenza fondamentale tra la costante G e l'accelerazione di gravità g è che:",
+  options:["G è una costante universale, mentre g è un'accelerazione locale che dipende dal pianeta e dalla distanza dal suo centro","G e g sono la stessa identica grandezza fisica","G dipende dal pianeta, mentre g è sempre costante nell'universo","G si misura in m/s², mentre g è adimensionale","Non esiste alcuna differenza concettuale tra le due"], correct:0 },
+
+{ id:"din-33", topic:"dinamica", type:"fill",
+  q:"La legge secondo cui la forza gravitazionale tra due corpi è direttamente proporzionale al prodotto delle masse e inversamente proporzionale al quadrato della distanza è la legge di gravitazione ________.",
+  answer:"UNIVERSALE" },
 
 /* ============================= LAVORO, ENERGIA E POTENZA ============================= */
 
@@ -1216,6 +1440,82 @@ const QUESTIONS = [
   q:"Il principio di ________ afferma che in un atomo non possono esistere due elettroni con la stessa sequenza dei quattro numeri quantici.",
   answer:"PAULI", answerAlt:["ESCLUSIONE DI PAULI"] },
 
+{ id:"atom-32", topic:"atomo", type:"mc",
+  q:"La legge di Lavoisier (conservazione della massa) afferma che, in una reazione chimica:",
+  options:["La massa totale dei reagenti è uguale alla massa totale dei prodotti","La massa dei prodotti è sempre maggiore di quella dei reagenti","La massa dei reagenti è sempre maggiore di quella dei prodotti","Solo l'energia si conserva, non la massa","La massa si conserva solo nelle reazioni tra gas"], correct:0 },
+
+{ id:"atom-33", topic:"atomo", type:"mc",
+  q:"La legge di Proust (delle proporzioni definite) afferma che, in un composto chimico puro:",
+  options:["Gli elementi che lo costituiscono sono sempre combinati secondo rapporti di massa definiti e costanti, indipendentemente dall'origine del composto","Gli elementi possono combinarsi in qualsiasi rapporto di massa","Il rapporto di massa tra gli elementi varia a seconda di come il composto viene preparato","Solo i composti organici obbediscono a questa legge","La massa totale del composto è sempre uguale a quella di un solo elemento"], correct:0,
+  explain:"Ad esempio, nell'acqua il rapporto in massa idrogeno:ossigeno è sempre 1:8, qualunque sia la fonte del campione analizzato." },
+
+{ id:"atom-34", topic:"atomo", type:"mc",
+  q:"La legge di Dalton (delle proporzioni multiple) afferma che, quando due elementi formano composti diversi tra loro:",
+  options:["Le masse di un elemento che si combinano con una massa fissa dell'altro stanno tra loro secondo rapporti espressi da numeri interi e piccoli","Le masse dei due elementi sono sempre uguali in tutti i composti","Non esiste alcuna relazione numerica tra le masse dei composti diversi","Il rapporto di massa è sempre 1:1","Solo il primo composto formato rispetta rapporti definiti"], correct:0,
+  explain:"Esempio classico: gli ossidi di azoto N₂O, NO, NO₂, N₂O₅ contengono, per una quantità fissa di azoto, masse di ossigeno nel rapporto 1:2:4:5." },
+
+{ id:"atom-35", topic:"atomo", type:"mc",
+  q:"Secondo la teoria atomica di Dalton, gli atomi di uno stesso elemento sono:",
+  options:["Tutti identici tra loro per massa e proprietà, e diversi dagli atomi di altri elementi","Tutti diversi tra loro per massa","Privi di massa propria","Identici agli atomi di qualunque altro elemento","Suddivisibili in particelle più piccole con le stesse proprietà"], correct:0 },
+
+{ id:"atom-36", topic:"atomo", type:"mc",
+  q:"Secondo la teoria atomica di Dalton, nelle reazioni chimiche gli atomi:",
+  options:["Non si creano né si distruggono, ma si combinano o si separano soltanto — spiegando così direttamente la legge di Lavoisier","Vengono sempre creati dal nulla","Vengono sempre distrutti completamente","Cambiano identità elementare durante la reazione","Si dividono sempre in particelle subatomiche"], correct:0 },
+
+{ id:"atom-37", topic:"atomo", type:"mc",
+  q:"Thomson, studiando i raggi catodici, scoprì l'elettrone osservando che questi raggi:",
+  options:["Erano deviati da campi elettrici e magnetici, avevano carica negativa e si comportavano allo stesso modo indipendentemente dal gas o dal metallo usato","Non erano mai influenzati da campi elettrici","Avevano sempre carica positiva","Erano visibili solo nel vuoto assoluto, senza alcuna deviazione possibile","Erano costituiti da fotoni privi di massa"], correct:0 },
+
+{ id:"atom-38", topic:"atomo", type:"mc",
+  q:"Nel modello atomico di Thomson (\"a panettone\" o plum pudding model), l'atomo è descritto come:",
+  options:["Una sfera di carica positiva diffusa, con gli elettroni (carica negativa) immersi al suo interno, complessivamente neutro","Un nucleo centrale piccolissimo circondato da elettroni orbitanti a grande distanza","Un insieme di orbitali a forma definita attorno a un nucleo","Una particella indivisibile priva di struttura interna","Un sistema di livelli energetici quantizzati"], correct:0 },
+
+{ id:"atom-39", topic:"atomo", type:"mc",
+  q:"Nell'esperimento della lamina d'oro, Rutherford bombardò una sottile lamina metallica con un fascio di particelle α (nuclei di elio); il risultato inatteso fu che:",
+  options:["La maggior parte delle particelle attraversava la lamina senza deviazioni, ma alcune venivano deviate con angoli ampi e una piccola frazione rimbalzava indietro","Tutte le particelle attraversavano la lamina senza alcuna deviazione","Tutte le particelle rimbalzavano indietro","Le particelle venivano assorbite completamente dalla lamina","Le particelle si trasformavano in elettroni durante l'attraversamento"], correct:0 },
+
+{ id:"atom-40", topic:"atomo", type:"mc",
+  q:"Dai risultati dell'esperimento della lamina d'oro, Rutherford dedusse che:",
+  options:["Quasi tutta la massa e la carica positiva dell'atomo sono concentrate in un nucleo centrale piccolissimo, mentre gli elettroni orbitano a grande distanza in uno spazio quasi vuoto","La carica positiva è distribuita uniformemente in tutto l'atomo","L'atomo non ha alcuna struttura interna","Gli elettroni si trovano all'interno del nucleo, insieme ai protoni","Il nucleo occupa la maggior parte del volume atomico"], correct:0,
+  explain:"Per questa analogia con il Sistema Solare (nucleo centrale come il Sole, elettroni orbitanti come i pianeti) il modello di Rutherford è detto anche 'modello planetario'." },
+
+{ id:"atom-41", topic:"atomo", type:"mc",
+  q:"Il modello atomico di Bohr risolse un problema del modello di Rutherford, secondo cui gli elettroni, accelerando continuamente lungo l'orbita, avrebbero dovuto perdere energia e collassare sul nucleo. Bohr postulò che:",
+  options:["Gli elettroni si muovono solo su orbite (livelli energetici) ben definite, senza perdere energia, e cambiano livello solo assorbendo o emettendo un quanto di energia esatto","Gli elettroni non hanno mai energia definita","Gli elettroni possono occupare qualsiasi orbita a qualsiasi distanza dal nucleo","Il nucleo emette continuamente energia per compensare la perdita degli elettroni","Gli elettroni restano sempre fermi rispetto al nucleo"], correct:0 },
+
+{ id:"atom-42", topic:"atomo", type:"mc",
+  q:"Nel modello di Bohr, quando un elettrone eccitato ricade da un'orbita più esterna a una più interna, l'atomo:",
+  options:["Emette un fotone con energia esattamente pari al salto energetico tra le due orbite","Assorbe energia dall'ambiente","Non subisce alcun cambiamento energetico","Emette un elettrone aggiuntivo","Distrugge il nucleo"], correct:0,
+  explain:"Poiché ogni salto tra livelli specifici produce sempre la stessa energia (e quindi la stessa frequenza di luce), il modello di Bohr spiega perché gli spettri di emissione atomici sono costituiti da righe discrete, non da un continuo." },
+
+{ id:"atom-43", topic:"atomo", type:"mc",
+  q:"Un limite importante del modello di Bohr è che:",
+  options:["Funzionava bene solo per l'atomo di idrogeno (con un solo elettrone), ma dava previsioni sbagliate per atomi con più elettroni","Non spiegava alcun fenomeno sperimentale osservato","Prevedeva correttamente lo spettro di ogni atomo, senza eccezioni","Negava l'esistenza del nucleo atomico","Era identico in tutto e per tutto al modello di Rutherford"], correct:0 },
+
+{ id:"atom-44", topic:"atomo", type:"mc",
+  q:"All'interno del nucleo atomico, nonostante la reciproca repulsione elettrostatica tra i protoni (carichi positivamente), i nucleoni restano uniti grazie a:",
+  options:["La forza nucleare forte, una forza attrattiva molto intensa ma a raggio d'azione cortissimo, efficace solo a distanze dell'ordine delle dimensioni nucleari","La sola forza di gravità tra i nucleoni","La forza elettrostatica attrattiva tra i protoni","Il campo magnetico terrestre","L'assenza di carica nei protoni"], correct:0 },
+
+{ id:"atom-45", topic:"atomo", type:"mc",
+  q:"I nuclei atomici molto grandi, con un numero elevato di protoni, tendono a diventare instabili e radioattivi perché:",
+  options:["La forza nucleare forte, a corto raggio, non riesce più a compensare efficacemente la crescente repulsione elettrostatica tra tutti i protoni","La forza nucleare forte aumenta indefinitamente con le dimensioni del nucleo","I neutroni diventano carichi positivamente nei nuclei grandi","Il numero di elettroni supera sempre quello dei protoni","La gravità nucleare diventa negativa"], correct:0 },
+
+{ id:"atom-46", topic:"atomo", type:"fill",
+  q:"La legge secondo cui la massa totale dei reagenti è uguale alla massa totale dei prodotti in una reazione chimica è la legge di ________.",
+  answer:"LAVOISIER" },
+
+{ id:"atom-47", topic:"atomo", type:"fill",
+  q:"La legge secondo cui in un composto puro gli elementi sono sempre combinati in rapporti di massa definiti e costanti è la legge di ________.",
+  answer:"PROUST" },
+
+{ id:"atom-48", topic:"atomo", type:"fill",
+  q:"L'esperimento con cui Rutherford dedusse l'esistenza del nucleo atomico, bombardando una sottile lamina d'oro con particelle α, è noto come esperimento della lamina ________.",
+  answer:"D'ORO" },
+
+{ id:"atom-49", topic:"atomo", type:"fill",
+  q:"La forza attrattiva a cortissimo raggio che tiene uniti protoni e neutroni nel nucleo, vincendo la repulsione elettrostatica, si chiama forza nucleare ________.",
+  answer:"FORTE" },
+
 /* ============================= TAVOLA PERIODICA DEGLI ELEMENTI ============================= */
 
 { id:"tav-01", topic:"tavola", type:"mc",
@@ -1348,6 +1648,36 @@ const QUESTIONS = [
 { id:"tav-32", topic:"tavola", type:"fill",
   q:"Il peso molecolare dell'acqua ($H_2O$), sapendo che $H=1{,}008$ u e $O=15{,}999$ u, è pari a ________ u.m.a.",
   answer:"18,015", answerAlt:["18,02","18","18.015"] },
+
+{ id:"tav-33", topic:"tavola", type:"mc",
+  q:"La carica nucleare efficace ($Z_{eff}$), percepita da un elettrone di valenza, è definita come:",
+  options:["La carica positiva netta di cui risente l'elettrone, tenendo conto dell'effetto di schermo degli elettroni più interni","La carica nucleare totale, senza alcuna correzione","Il numero di elettroni di valenza dell'atomo","Il numero di neutroni nel nucleo","La massa atomica dell'elemento"], correct:0,
+  explain:"Per il litio (1s²2s¹), Z = 3 ma gli elettroni interni 1s² schermano quasi completamente il nucleo: $Z_{eff}\\approx 3-2=1$ per l'elettrone di valenza 2s." },
+
+{ id:"tav-34", topic:"tavola", type:"mc",
+  q:"Lungo un periodo (da sinistra a destra), la carica nucleare efficace $Z_{eff}$ percepita dagli elettroni di valenza:",
+  options:["Aumenta, perché il numero atomico cresce ma il numero di elettroni schermanti resta invariato","Diminuisce","Resta costante","Diventa negativa","Dipende solo dal gruppo, non dal periodo"], correct:0 },
+
+{ id:"tav-35", topic:"tavola", type:"mc",
+  q:"Un atomo può avere più potenziali di ionizzazione successivi, uno per ogni elettrone rimosso; il secondo potenziale di ionizzazione, rispetto al primo, è:",
+  options:["Sempre maggiore del primo, perché rimuovere un elettrone da uno ione già carico positivamente richiede più energia","Sempre minore del primo","Sempre uguale al primo","Nullo","Negativo"], correct:0,
+  explain:"Dopo aver rimosso il primo elettrone, la repulsione elettrone-elettrone diminuisce e l'attrazione netta del nucleo sugli elettroni rimanenti aumenta." },
+
+{ id:"tav-36", topic:"tavola", type:"mc",
+  q:"Per il sodio Na (configurazione $[Ne]3s^1$), il secondo potenziale di ionizzazione è enormemente più alto del primo perché:",
+  options:["Dopo aver rimosso l'unico elettrone 3s, si raggiunge la configurazione stabile del gas nobile neon, molto difficile da rompere ulteriormente","Il sodio non può perdere un secondo elettrone","Il primo e il secondo potenziale sono sempre identici per i metalli alcalini","La seconda rimozione avviene da un orbitale più esterno","Il sodio diventa un anione dopo la prima ionizzazione"], correct:0 },
+
+{ id:"tav-37", topic:"tavola", type:"mc",
+  q:"La scala di elettronegatività di Mulliken definisce l'elettronegatività di un elemento come:",
+  options:["La media aritmetica tra la sua energia di ionizzazione e la sua affinità elettronica","Il solo valore dell'energia di ionizzazione","Il solo valore dell'affinità elettronica","Il rapporto tra energia di ionizzazione e affinità elettronica","La differenza tra energia di ionizzazione e affinità elettronica"], correct:0 },
+
+{ id:"tav-38", topic:"tavola", type:"mc",
+  q:"Gli elementi con configurazione $s^2$ piena (gruppo 2) o $p^3$ semipiena (gruppo 15) presentano affinità elettroniche anomale, spesso vicine allo zero o positive, perché:",
+  options:["Aggiungere un elettrone romperebbe una configurazione elettronica già particolarmente stabile","Questi elementi non possono mai formare anioni","Hanno sempre la più alta affinità elettronica del periodo","Sono tutti gas nobili","Non hanno elettroni di valenza"], correct:0 },
+
+{ id:"tav-39", topic:"tavola", type:"fill",
+  q:"La carica positiva netta percepita da un elettrone di valenza, tenendo conto dell'effetto di schermo degli elettroni interni, si chiama carica nucleare ________.",
+  answer:"EFFICACE", answerAlt:["EFFETTIVA"] },
 
 /* ============================= LEGAMI CHIMICI ============================= */
 
@@ -3157,6 +3487,78 @@ const QUESTIONS = [
 { id:"acnu-59", topic:"acidinucleici", type:"fill",
   q:"I brevi frammenti di DNA con cui viene sintetizzato in modo discontinuo il filamento lento (lagging strand) durante la replicazione si chiamano frammenti di ________.",
   answer:"OKAZAKI" },
+
+{ id:"acnu-60", topic:"acidinucleici", type:"mc",
+  q:"A differenza del cromosoma procariotico, circolare, i cromosomi eucariotici sono:",
+  options:["Lineari, il che pone due problemi biologici: la vulnerabilità delle estremità libere e la difficoltà di replicarle completamente","Circolari come quelli batterici","Privi di DNA a doppio filamento","Costituiti da RNA anziché DNA","Sempre presenti in una sola copia per cellula"], correct:0 },
+
+{ id:"acnu-61", topic:"acidinucleici", type:"mc",
+  q:"Le estremità libere di un cromosoma lineare sono un potenziale bersaglio perché possono essere erroneamente riconosciute come un danno al DNA (una rottura a doppio filamento), rischiando di attivare:",
+  options:["L'arresto del ciclo cellulare o l'apoptosi","Solo la duplicazione immediata del cromosoma","L'attivazione della telomerasi in ogni cellula","La trascrizione di tutto il genoma","Nessuna risposta cellulare"], correct:0 },
+
+{ id:"acnu-62", topic:"acidinucleici", type:"mc",
+  q:"Il 'problema della replicazione terminale' nasce dal fatto che:",
+  options:["La DNA polimerasi, sintetizzando solo in direzione 5'→3' e richiedendo sempre un primer, non può colmare il piccolo tratto lasciato scoperto dalla rimozione dell'ultimo primer di RNA vicino all'estremità del filamento lento","La DNA polimerasi non può mai sintetizzare DNA nei cromosomi lineari","Il cromosoma si allunga a ogni ciclo di replicazione","La DNA ligasi non esiste negli eucarioti","I telomeri impediscono completamente la replicazione del DNA"], correct:0,
+  explain:"Il risultato è che, a ogni ciclo di replicazione, il cromosoma si accorcia leggermente alle estremità — problema che nei procarioti non esiste, poiché il cromosoma circolare non ha estremità libere da replicare." },
+
+{ id:"acnu-63", topic:"acidinucleici", type:"mc",
+  q:"I telomeri, sequenze ripetute non codificanti alle estremità dei cromosomi lineari (nell'uomo, ripetizioni di TTAGGG), risolvono il problema della replicazione terminale principalmente perché:",
+  options:["Fungono da 'tampone' sacrificabile: il loro progressivo accorciamento non intacca, almeno fino a un certo limite, i geni essenziali","Si allungano indefinitamente senza mai accorciarsi","Codificano proteine essenziali per la sopravvivenza cellulare","Impediscono completamente qualsiasi accorciamento del cromosoma","Sono identici alle sequenze centromeriche"], correct:0 },
+
+{ id:"acnu-64", topic:"acidinucleici", type:"mc",
+  q:"L'enzima telomerasi, capace di allungare i telomeri contrastandone l'accorciamento, è una trascrittasi inversa particolare perché:",
+  options:["Porta con sé un proprio stampo a RNA interno, che usa per sintetizzare nuovo DNA telomerico","Sintetizza DNA senza mai usare uno stampo","È attiva in tutte le cellule somatiche adulte allo stesso livello","Agisce solo sul filamento veloce (leading strand)","Non richiede alcuna componente RNA"], correct:0,
+  explain:"Nella maggior parte delle cellule somatiche adulte la telomerasi è inattiva, e il progressivo accorciamento dei telomeri è collegato alla senescenza cellulare (limite di Hayflick); resta attiva in cellule germinali, staminali e nella maggior parte delle cellule tumorali." },
+
+{ id:"acnu-65", topic:"acidinucleici", type:"mc",
+  q:"Un cromosoma eucariotico funzionale richiede tre elementi strutturali minimi e indispensabili: origine di replicazione, centromero e:",
+  options:["Telomeri","Un promotore genico","Un solo gene codificante","Una sola coppia di basi","Un ribosoma associato"], correct:0,
+  explain:"La dimostrazione sperimentale di questa necessità venne dai cromosomi artificiali di lievito (YAC): un frammento di DNA lineare a cui si aggiungono solo un'origine di replicazione, un centromero e due telomeri si comporta come un vero cromosoma funzionale." },
+
+{ id:"acnu-66", topic:"acidinucleici", type:"mc",
+  q:"Il nucleosoma, unità fondamentale di impacchettamento del DNA, è costituito da circa 147 coppie di basi di DNA avvolte attorno a un ottamero istonico formato da due copie ciascuno di:",
+  options:["Istoni H2A, H2B, H3 e H4","Un solo tipo di istone, ripetuto otto volte","Istoni H1 soltanto","Quattro tipi diversi di RNA istonico","Proteine non istoniche di membrana"], correct:0 },
+
+{ id:"acnu-67", topic:"acidinucleici", type:"mc",
+  q:"L'interazione tra il DNA (carico negativamente per lo scheletro fosfato) e gli istoni del nucleosoma è resa possibile dal fatto che gli istoni sono:",
+  options:["Proteine fortemente basiche, ricche di residui di lisina e arginina, carichi positivamente a pH fisiologico","Proteine cariche negativamente come il DNA","Prive di carica elettrica netta","Costituite prevalentemente da acidi grassi","Solubili solo in ambiente fortemente acido"], correct:0 },
+
+{ id:"acnu-68", topic:"acidinucleici", type:"mc",
+  q:"Quando l'istone linker H1 si lega al punto in cui il DNA entra ed esce dal nucleosoma, la particella risultante prende il nome di:",
+  options:["Cromatosoma","Nucleosoma nudo","Centromero","Telomero","Solenoide"], correct:0 },
+
+{ id:"acnu-69", topic:"acidinucleici", type:"mc",
+  q:"La presenza sistematica dell'istone H1 su nucleosomi consecutivi fa ripiegare la fibra da 11 nm ('collana di perle') in una struttura più compatta, di circa 30 nm di diametro; due modelli geometrici sono stati proposti per questa fibra:",
+  options:["Il modello a solenoide (elica continua) e il modello a zig-zag (due file di nucleosomi intrecciate)","Solo il modello a doppia elica","Il modello del mare di elettroni","Solo il modello a foglietto β","Il modello planetario"], correct:0 },
+
+{ id:"acnu-70", topic:"acidinucleici", type:"mc",
+  q:"L'eterocromatina costitutiva, a differenza di quella facoltativa:",
+  options:["Resta sempre condensata e trascrizionalmente silente, in ogni tipo cellulare e in ogni fase del ciclo, e corrisponde soprattutto a DNA satellite ripetuto (regioni centromeriche e telomeriche)","Può alternarsi tra stato condensato e decondensato a seconda del tipo cellulare","Contiene la maggior parte dei geni codificanti espressi","È presente solo nelle cellule tumorali","Si trova esclusivamente nel citoplasma"], correct:0 },
+
+{ id:"acnu-71", topic:"acidinucleici", type:"mc",
+  q:"L'eterocromatina facoltativa può alternarsi tra uno stato condensato (silente) e uno decondensato (attivo) a seconda del tipo cellulare; l'esempio classico nei mammiferi è:",
+  options:["Il corpo di Barr, cioè uno dei due cromosomi X delle cellule femminili, inattivato casualmente e condensato in eterocromatina","Il nucleolo","Il cromosoma Y","Il DNA mitocondriale","Il centromero di tutti i cromosomi"], correct:0 },
+
+{ id:"acnu-72", topic:"acidinucleici", type:"mc",
+  q:"I complessi di rimodellamento della cromatina (es. famiglia SWI/SNF), a differenza delle modificazioni chimiche come acetilazione e metilazione:",
+  options:["Usano l'energia dell'idrolisi dell'ATP per spostare, spaziare o sostituire fisicamente i nucleosomi, senza aggiungere o rimuovere gruppi chimici","Aggiungono gruppi acetile agli istoni","Non richiedono alcun apporto energetico","Degradano il DNA in frammenti più piccoli","Agiscono esclusivamente sul DNA mitocondriale"], correct:0 },
+
+{ id:"acnu-73", topic:"acidinucleici", type:"mc",
+  q:"Il meccanismo dell'acetilazione degli istoni, catalizzato dagli enzimi istone-acetiltransferasi (HAT), favorisce una cromatina più aperta e trascrizionalmente attiva perché:",
+  options:["Il gruppo acetile neutralizza la carica positiva della lisina, indebolendo l'interazione elettrostatica tra istone e DNA carico negativamente","Aggiunge una carica negativa aggiuntiva al DNA","Rimuove fisicamente gli istoni dal DNA","Taglia il DNA in frammenti più accessibili","Non ha alcun effetto sulla struttura della cromatina"], correct:0,
+  explain:"L'enzima opposto, l'istone-deacetilasi (HDAC), rimuove il gruppo acetile, ripristinando la carica positiva e favorendo una cromatina più condensata e silente." },
+
+{ id:"acnu-74", topic:"acidinucleici", type:"fill",
+  q:"L'enzima che allunga i telomeri contrastandone l'accorciamento progressivo, portando con sé un proprio stampo a RNA, si chiama ________.",
+  answer:"TELOMERASI" },
+
+{ id:"acnu-75", topic:"acidinucleici", type:"fill",
+  q:"Le sequenze ripetute non codificanti che proteggono le estremità dei cromosomi lineari dalla degradazione e dalla fusione si chiamano ________.",
+  answer:"TELOMERI" },
+
+{ id:"acnu-76", topic:"acidinucleici", type:"fill",
+  q:"Gli enzimi che aggiungono un gruppo acetile ai residui di lisina delle code istoniche, rendendo la cromatina più accessibile, si chiamano istone-________.",
+  answer:"ACETILTRANSFERASI", answerAlt:["HAT"] },
 
 /* ============================= ORGANELLI E CITOSCHELETRO ============================= */
 
