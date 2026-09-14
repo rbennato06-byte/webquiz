@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Appunti di Fisica | Kirkises</title>
-<meta name="description" content="Appunti schematici di Fisica per il semestre filtro: unità di misura, cinematica, dinamica, lavoro ed energia, con formule, tabelle ed esercizi commentati.">
+<meta name="description" content="Appunti schematici di Fisica per il semestre filtro: unità di misura, cinematica, dinamica, lavoro ed energia, quantità di moto e urti, dinamica rotazionale e leve, con formule, tabelle ed esercizi commentati.">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/appunti.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
@@ -17,7 +17,7 @@
   <div class="wrap">
     <a class="notes-backlink" href="index.html">← Tutti gli appunti</a>
     <h1>⚛️ Appunti di <span class="accent">Fisica</span></h1>
-    <p class="subtitle">Unità di misura, cinematica, dinamica, lavoro ed energia — schemi ed esercizi.</p>
+    <p class="subtitle">Unità di misura, cinematica, dinamica, lavoro ed energia, quantità di moto e dinamica rotazionale — schemi ed esercizi.</p>
   </div>
 </header>
 
@@ -26,6 +26,8 @@
   <a href="#cinematica"><span class="qn-dot" style="background:#ea580c"></span>Cinematica</a>
   <a href="#dinamica"><span class="qn-dot" style="background:#7c3aed"></span>Dinamica</a>
   <a href="#energia"><span class="qn-dot" style="background:#059669"></span>Lavoro ed energia</a>
+  <a href="#quantita_moto"><span class="qn-dot" style="background:#0ea5e9"></span>Quantità di moto e urti</a>
+  <a href="#corpirigidi"><span class="qn-dot" style="background:#b45309"></span>Corpi rigidi, leve</a>
 </nav>
 
 <main class="wrap">
@@ -387,6 +389,162 @@
           <li><span class="step-n">2</span>$P = \dfrac{W}{t} = \dfrac{5000}{20}$</li>
         </ol>
         <div class="ex-answer">P = 250 W</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= QUANTITÀ DI MOTO, URTI E CENTRO DI MASSA ============================= -->
+<section id="quantita_moto" class="notes-topic" style="--topic-color:#0ea5e9;">
+  <div class="notes-topic-header"><h2>Quantità di moto, urti e centro di massa</h2></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Quantità di moto</b>: grandezza vettoriale $\vec{q}=m\vec{v}$, associata al movimento di un corpo.</li>
+      <li><b>Impulso</b>: $I=F\Delta t$. Il <b>teorema dell'impulso</b> (dal secondo principio della dinamica) afferma che l'impulso di una forza è pari alla variazione della quantità di moto, $I=\Delta q$.</li>
+      <li><b>Conservazione della quantità di moto</b>: in un sistema isolato (soggetto a sole forze interne) la quantità di moto totale si conserva — diretta conseguenza del terzo principio della dinamica ($F_{AB}=-F_{BA}$).</li>
+      <li><b>Urto elastico</b>: si conservano sia la quantità di moto sia l'energia cinetica totale del sistema. <b>Urto anelastico</b>: si conserva solo la quantità di moto; l'energia cinetica si trasforma in parte in altre forme di energia. Nell'urto <b>completamente anelastico</b> i due corpi restano uniti dopo l'urto.</li>
+      <li><b>Centro di massa (CM)</b>: punto in cui si può idealmente concentrare tutta la massa di un sistema per analizzarne il moto rispetto all'esterno; dipende solo dalla distribuzione della massa, non dalle forze applicate.</li>
+      <li>Il centro di massa di un sistema si muove come un singolo corpo di massa totale M soggetto alla risultante delle sole forze <b>esterne</b>: le forze interne, a coppie azione-reazione, si annullano a vicenda nella somma.</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Formule utili</h3>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">quantità di moto</span><span>$\vec{q}=m\vec{v}$</span></div>
+      <div class="f-item"><span class="f-label">impulso</span><span>$I=F\Delta t=\Delta q$</span></div>
+      <div class="f-item"><span class="f-label">urto completamente anelastico</span><span>$m_1v_{1i}+m_2v_{2i}=(m_1+m_2)v_f$</span></div>
+      <div class="f-item"><span class="f-label">centro di massa (2 corpi)</span><span>$r_{CM}=\dfrac{m_1r_1+m_2r_2}{m_1+m_2}$</span></div>
+      <div class="f-item"><span class="f-label">moto del CM</span><span>$\sum_i \vec{F}_i = M\vec{a}_{CM}$</span></div>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Urti elastici e anelastici a confronto</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Tipo di urto</th><th>Quantità di moto</th><th>Energia cinetica</th></tr></thead>
+        <tbody>
+          <tr><td>Elastico</td><td>Si conserva</td><td>Si conserva</td></tr>
+          <tr><td>Anelastico</td><td>Si conserva</td><td>Non si conserva (si dissipa in altre forme di energia)</td></tr>
+          <tr><td>Completamente anelastico</td><td>Si conserva</td><td>Non si conserva; i corpi restano uniti dopo l'urto</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — urto completamente anelastico</div>
+      <div class="ex-statement">Un carrello di massa 2 kg che si muove a 3 m/s si scontra e si unisce a un carrello fermo di massa 1 kg. Qual è la velocità finale del sistema?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>La quantità di moto si conserva anche negli urti anelastici: $m_1v_{1i}+m_2v_{2i}=(m_1+m_2)v_f$<span class="comment">Il carrello 2 è fermo: $v_{2i}=0$.</span></li>
+          <li><span class="step-n">2</span>$v_f=\dfrac{m_1v_{1i}}{m_1+m_2}=\dfrac{2\times3}{2+1}$</li>
+        </ol>
+        <div class="ex-answer">v_f = 2 m/s</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — momento di inerzia e conservazione (giostra)</div>
+      <div class="ex-statement">Una giostra a disco parte da ferma e in 15 s raggiunge $\omega=0{,}2\ \text{rad/s}$, poi mantiene velocità costante. All'improvviso salgono dei bambini e il momento di inerzia aumenta del 10%. Qual è la nuova velocità angolare, sapendo che il momento angolare si conserva?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Nessun momento esterno applicato durante la salita → $L=I\omega$ si conserva: $I\omega=I'\omega'$.</li>
+          <li><span class="step-n">2</span>$\omega'=\dfrac{I}{I'}\omega=\dfrac{1}{1{,}1}\times0{,}2$</li>
+        </ol>
+        <div class="ex-answer">ω′ ≈ 0,182 rad/s (rallenta perché I aumenta)</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= DINAMICA ROTAZIONALE, STATICA E LEVE ============================= -->
+<section id="corpirigidi" class="notes-topic" style="--topic-color:#b45309;">
+  <div class="notes-topic-header"><h2>Dinamica rotazionale, statica e leve</h2></div>
+
+  <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Corpo rigido</b>: oggetto ideale la cui forma e dimensione non cambiano sotto l'azione di forze. Il suo moto si scompone in <b>traslazione</b> (tutti i punti hanno la velocità del CM) e <b>rotazione</b> (tutti i punti hanno la stessa velocità angolare ω, con $v_i=r_i\omega$).</li>
+      <li><b>Momento di una forza</b> (momento torcente): $\vec{M}=\vec{r}\wedge\vec{F}$, $|M|=rF\sin\varphi$ — misura l'effetto rotatorio di una forza rispetto a un punto O; a parità di forza, un braccio r maggiore produce un momento maggiore.</li>
+      <li><b>Momento di inerzia I</b>: $I=\sum_i m_i r_i^2$, misura della resistenza di un corpo rigido alla rotazione; dipende dalla distribuzione della massa e dalla scelta dell'asse.</li>
+      <li><b>Momento angolare</b>: $L=I\omega$. La relazione fondamentale della dinamica rotazionale, analoga a $F=ma$, è $M=\dfrac{dL}{dt}=I\alpha$. Se $M_{TOT}=0$, il momento angolare si conserva.</li>
+      <li><b>Equilibrio di un corpo rigido</b> (statica): richiede che siano nulle sia la somma vettoriale delle forze ($\sum F_i=0$, equilibrio traslazionale) sia la somma vettoriale dei momenti ($\sum M_i=0$, equilibrio rotazionale).</li>
+      <li><b>Leva</b>: asta rigida vincolata a un fulcro, soggetta a forza motrice (potenza) e forza resistente (resistenza). Guadagno meccanico $G=F_R/F_M=b_M/b_R$: leva vantaggiosa se G&gt;1, svantaggiosa se G&lt;1. Nel corpo umano, i muscoli forniscono la potenza, le ossa la resistenza, le articolazioni il fulcro — quasi sempre in leve di 1° genere svantaggiose.</li>
+      <li><b>Corpi deformabili</b>: sforzo $\sigma=F/A$ (Pa), deformazione $\varepsilon=\Delta L/L$ (adimensionale). Legge di Hooke generalizzata: $\sigma=E\varepsilon$, con E modulo di Young. Deformazione <b>elastica</b> (reversibile) entro il <b>limite elastico</b>, oltre il quale diventa <b>plastica</b> (irreversibile).</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Formule utili</h3>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">momento di una forza</span><span>$|M|=rF\sin\varphi$</span></div>
+      <div class="f-item"><span class="f-label">momento di inerzia (sfera)</span><span>$I=\tfrac25 mr^2$</span></div>
+      <div class="f-item"><span class="f-label">momento di inerzia (disco/cilindro)</span><span>$I=\tfrac12 mr^2$</span></div>
+      <div class="f-item"><span class="f-label">momento angolare</span><span>$L=I\omega$</span></div>
+      <div class="f-item"><span class="f-label">dinamica rotazionale</span><span>$M=I\alpha$</span></div>
+      <div class="f-item"><span class="f-label">guadagno meccanico leva</span><span>$G=\dfrac{F_R}{F_M}=\dfrac{b_M}{b_R}$</span></div>
+      <div class="f-item"><span class="f-label">legge di Hooke generalizzata</span><span>$\sigma=E\varepsilon$</span></div>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Analogia moto traslatorio – moto rotazionale</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Moto traslatorio</th><th>Moto rotazionale</th><th>Significato</th></tr></thead>
+        <tbody>
+          <tr><td>$s$</td><td>$\theta$</td><td>Spostamento (lineare/angolare)</td></tr>
+          <tr><td>$v=ds/dt$</td><td>$\omega=d\theta/dt$</td><td>Velocità</td></tr>
+          <tr><td>$a=dv/dt$</td><td>$\alpha=d\omega/dt$</td><td>Accelerazione</td></tr>
+          <tr><td>$m$</td><td>$I$</td><td>Massa / momento di inerzia</td></tr>
+          <tr><td>$F=ma$</td><td>$M=I\alpha$</td><td>Equazione fondamentale del moto</td></tr>
+          <tr><td>$q=mv$</td><td>$L=I\omega$</td><td>Quantità di moto / momento angolare</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>I tre generi di leve</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Genere</th><th>Posizione del fulcro</th><th>Guadagno G</th><th>Esempio</th></tr></thead>
+        <tbody>
+          <tr><td>1°</td><td>Fulcro intermedio tra potenza e resistenza</td><td>&gt;, &lt; o = 1</td><td>Forbici; articolazione della testa (svantaggiosa)</td></tr>
+          <tr><td>2°</td><td>Resistenza intermedia tra fulcro e potenza</td><td>&gt; 1 (vantaggiosa)</td><td>Schiaccianoci</td></tr>
+          <tr><td>3°</td><td>Potenza intermedia tra fulcro e resistenza</td><td>&lt; 1 (svantaggiosa)</td><td>Bicipite sull'avambraccio</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — leva di terzo genere</div>
+      <div class="ex-statement">In una leva di terzo genere i due bracci misurano 80 mm e 55 mm. La leva è in equilibrio sotto l'azione di una forza resistente di 5,7 N. Quanto vale la forza motrice?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Equilibrio dei momenti: $M\cdot b_M = R\cdot b_R$, con $b_M=55\ \text{mm}$ (braccio motore) e $b_R=80\ \text{mm}$.</li>
+          <li><span class="step-n">2</span>$M=\dfrac{R\cdot b_R}{b_M}=\dfrac{5{,}7\times80}{55}$</li>
+        </ol>
+        <div class="ex-answer">M ≈ 8,3 N</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — statica della testa (leva svantaggiosa)</div>
+      <div class="ex-statement">La forza resistente dovuta al peso della testa è $F_R\approx80\ \text{N}$, applicata a $b_R\approx8\ \text{cm}$ dal fulcro (l'atlante); i muscoli splenici agiscono a $b_m\approx2\ \text{cm}$. Qual è la forza muscolare necessaria e il guadagno meccanico della leva?</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Equilibrio: $F_m\cdot b_m=F_R\cdot b_R \Rightarrow F_m=\dfrac{F_R\cdot b_R}{b_m}=\dfrac{80\times8}{2}$</li>
+          <li><span class="step-n">2</span>$G=\dfrac{F_R}{F_m}=\dfrac{b_m}{b_R}=\dfrac{2}{8}$</li>
+        </ol>
+        <div class="ex-answer">F_m = 320 N; G = 0,25 &lt; 1 → leva di 1° genere svantaggiosa</div>
       </details>
     </div>
   </div>

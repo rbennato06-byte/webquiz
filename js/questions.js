@@ -62,10 +62,13 @@ const TOPICS = {
   legami:       { name: "Legami chimici",                      color: "#0891b2", area: "chimica", unit: 1 },
   nomenclatura: { name: "Nomenclatura chimica",                color: "#db2777", area: "chimica", unit: 1 },
   geometria:    { name: "Struttura e geometria molecolare",    color: "#9333ea", area: "chimica", unit: 1 },
+  soluzioni:    { name: "Miscele, soluzioni e proprietà colligative", color: "#2563eb", area: "chimica", unit: 2 },
   misure:       { name: "Unità di misura e grandezze fisiche", color: "#e11d48", area: "fisica" },
   cinematica:   { name: "Cinematica",                          color: "#ea580c", area: "fisica" },
   dinamica:     { name: "Dinamica",                            color: "#7c3aed", area: "fisica" },
   energia:      { name: "Lavoro, energia e potenza",           color: "#059669", area: "fisica" },
+  quantita_moto:{ name: "Quantità di moto, urti e centro di massa", color: "#0ea5e9", area: "fisica" },
+  corpirigidi:  { name: "Dinamica rotazionale, statica e leve", color: "#b45309", area: "fisica" },
   biomolecole:  { name: "Basi molecolari della vita",          color: "#16a34a", area: "biologia", unit: 1 },
   proteine:     { name: "Amminoacidi e proteine",               color: "#0d9488", area: "biologia", unit: 1 },
   enzimi:       { name: "Enzimi e metabolismo",                 color: "#ca8a04", area: "biologia", unit: 1 },
@@ -2724,7 +2727,420 @@ const QUESTIONS = [
 
 { id:"org-20", topic:"organelli", type:"fill",
   q:"Il fascio di microtubuli che sostiene internamente ciglia e flagelli è detto ________.",
-  answer:"ASSONEMA" }
+  answer:"ASSONEMA" },
+
+/* ============================= SOLUZIONI E PROPRIETÀ COLLIGATIVE ============================= */
+
+{ id:"sol-01", topic:"soluzioni", type:"mc",
+  q:"Un elettrolita forte, sciolto in acqua:",
+  options:["Si dissocia completamente in ioni","Si dissocia solo parzialmente in ioni","Non si dissocia affatto","Forma sempre un precipitato insolubile","Conduce corrente solo allo stato fuso, mai in soluzione"], correct:0,
+  explain:"NaCl, HCl e NaOH sono esempi tipici di elettroliti forti, con grado di dissociazione α = 1." },
+
+{ id:"sol-02", topic:"soluzioni", type:"mc",
+  q:"Un elettrolita debole, come l'acido acetico $CH_3COOH$, in soluzione acquosa:",
+  options:["Si dissocia solo parzialmente in ioni, stabilendo un equilibrio con la forma indissociata","Si dissocia completamente in ioni","Non conduce affatto corrente elettrica","Ha grado di dissociazione α = 1","È insolubile in acqua"], correct:0 },
+
+{ id:"sol-03", topic:"soluzioni", type:"mc",
+  q:"Una sostanza come il glucosio, che in soluzione acquosa non si dissocia in ioni, si definisce:",
+  options:["Non elettrolita","Elettrolita forte","Elettrolita debole","Anfolita","Elettrolita anfotero"], correct:0 },
+
+{ id:"sol-04", topic:"soluzioni", type:"mc",
+  q:"Il grado di dissociazione α di un elettrolita esprime:",
+  options:["La frazione di moli di soluto che si dissocia in ioni rispetto al totale disciolto","La massa molare del soluto","Il numero di ioni prodotti da ciascuna formula unitaria","La solubilità massima del soluto in g/L","La conducibilità elettrica assoluta della soluzione"], correct:0 },
+
+{ id:"sol-05", topic:"soluzioni", type:"fill",
+  q:"Il grado di dissociazione di un elettrolita forte, completamente dissociato, vale α = ________ (in forma decimale).",
+  answer:"1", answerAlt:["1,0","100%"] },
+
+{ id:"sol-06", topic:"soluzioni", type:"mc",
+  q:"L'indice di dissociazione (o dislocazione) n di un sale indica:",
+  options:["Il numero di ioni in cui si dissocia una singola formula unitaria del sale","Il grado di dissociazione percentuale","La solubilità del sale in acqua","Il coefficiente isotonico della soluzione","La massa molare del sale"], correct:0,
+  explain:"Es. NaCl → n = 2 (Na⁺ e Cl⁻); CaCl₂ → n = 3 (Ca²⁺ e 2 Cl⁻)." },
+
+{ id:"sol-07", topic:"soluzioni", type:"mc",
+  q:"Il coefficiente isotonico (fattore di van't Hoff) i è legato al grado di dissociazione α e all'indice di dissociazione n dalla relazione:",
+  options:["$i = 1 + \\alpha(n-1)$","$i = \\alpha \\cdot n$","$i = n - \\alpha$","$i = \\dfrac{n}{\\alpha}$","$i = 1 - \\alpha(n-1)$"], correct:0 },
+
+{ id:"sol-08", topic:"soluzioni", type:"mc",
+  q:"Per un non elettrolita (α = 0), il coefficiente isotonico i vale:",
+  options:["1","0","n","n − 1","2"], correct:0,
+  explain:"Con α = 0: $i=1+0\\cdot(n-1)=1$, quindi la concentrazione effettiva coincide con quella teorica." },
+
+{ id:"sol-09", topic:"soluzioni", type:"mc",
+  q:"Per un elettrolita forte completamente dissociato (α = 1), il coefficiente isotonico i coincide con:",
+  options:["L'indice di dissociazione n","Il grado di dissociazione α","Sempre 1, indipendentemente da n","La molarità della soluzione","Zero"], correct:0,
+  explain:"Con α = 1: $i=1+1\\cdot(n-1)=n$." },
+
+{ id:"sol-10", topic:"soluzioni", type:"mc",
+  q:"Calcolare il coefficiente isotonico di una soluzione di CsBr (elettrolita forte, n = 2):",
+  options:["2","1","0,5","4","1,5"], correct:0 },
+
+{ id:"sol-11", topic:"soluzioni", type:"mc",
+  q:"Calcolare il coefficiente isotonico di $HNO_2$ (acido debole, α = 30%, n = 2):",
+  options:["1,3","1,0","2,0","0,3","0,7"], correct:0,
+  explain:"$i=1+0{,}30\\times(2-1)=1{,}3$." },
+
+{ id:"sol-12", topic:"soluzioni", type:"fill",
+  q:"Il coefficiente isotonico dell'acido acetico $CH_3COOH$, con grado di dissociazione α = 10%, vale i = ________.",
+  answer:"1,1", answerAlt:["1.1"] },
+
+{ id:"sol-13", topic:"soluzioni", type:"mc",
+  q:"La concentrazione effettiva (osmoticamente attiva) di una soluzione si ottiene moltiplicando la concentrazione molare teorica per:",
+  options:["Il coefficiente isotonico i","Il grado di dissociazione α","L'indice di dissociazione n","Il volume della soluzione","La costante crioscopica"], correct:0 },
+
+{ id:"sol-14", topic:"soluzioni", type:"fill",
+  q:"L'unità che contiene un numero di Avogadro di particelle osmoticamente attive (ioni o molecole indissociate) si chiama ________.",
+  answer:"OSMOLE", answerAlt:["OSMOLI"] },
+
+{ id:"sol-15", topic:"soluzioni", type:"mc",
+  q:"L'osmolarità (osM) di una soluzione è definita come:",
+  options:["Numero di osmoli per litro di soluzione","Numero di moli per litro di soluzione","Numero di osmoli per kg di solvente","Massa di soluto per litro di soluzione","Numero di ioni per mole di soluto"], correct:0,
+  explain:"Da non confondere con la molalità (mol soluto/kg solvente): l'osmolarità è riferita al litro di soluzione." },
+
+{ id:"sol-16", topic:"soluzioni", type:"mc",
+  q:"La relazione tra osmolarità (osM) e molarità (M) di una soluzione è:",
+  options:["$osM = M \\cdot i$","$osM = M / i$","$osM = M + i$","$osM = M - i$","$osM = i / M$"], correct:0 },
+
+{ id:"sol-17", topic:"soluzioni", type:"mc",
+  q:"Per le soluzioni non elettrolitiche (i = 1), l'osmolarità:",
+  options:["Coincide numericamente con la molarità","È sempre doppia della molarità","È sempre nulla","Dipende dalla temperatura, non dalla molarità","È indipendente dalla concentrazione"], correct:0 },
+
+{ id:"sol-18", topic:"soluzioni", type:"mc",
+  q:"L'osmolarità del plasma sanguigno umano è approssimativamente:",
+  options:["310 mosM","100 mosM","1000 mosM","50 mosM","750 mosM"], correct:0 },
+
+{ id:"sol-19", topic:"soluzioni", type:"mc",
+  q:"Una soluzione fisiologica di NaCl allo 0,9% (p/V) ha un'osmolarità di circa:",
+  options:["308 mosM, sostanzialmente isotonica al plasma","154 mosM, ipotonica al plasma","616 mosM, ipertonica al plasma","900 mosM","90 mosM"], correct:0,
+  explain:"$M\\approx0{,}154\\ \\text{mol/L}$; poiché NaCl è un elettrolita forte con i = 2, $osM=0{,}154\\times2=0{,}308\\ \\text{osM/L}=308$ mosM." },
+
+{ id:"sol-20", topic:"soluzioni", type:"mc",
+  q:"Rispetto a una soluzione di riferimento, una soluzione con osmolarità inferiore si definisce:",
+  options:["Ipotonica","Ipertonica","Isotonica","Satura","Sovrassatura"], correct:0 },
+
+{ id:"sol-21", topic:"soluzioni", type:"mc",
+  q:"Rispetto a una soluzione di riferimento, una soluzione con osmolarità superiore si definisce:",
+  options:["Ipertonica","Ipotonica","Isotonica","Diluita","Neutra"], correct:0 },
+
+{ id:"sol-22", topic:"soluzioni", type:"mc",
+  q:"Se un eritrocita viene immerso in una soluzione ipotonica rispetto al citoplasma, si osserva:",
+  options:["Emolisi: rottura della cellula per rigonfiamento, causato dall'ingresso netto di acqua","Plasmolisi: raggrinzimento per uscita netta di acqua","Nessuna variazione di volume","Solidificazione della membrana","Un aumento dell'osmolarità intracellulare"], correct:0 },
+
+{ id:"sol-23", topic:"soluzioni", type:"mc",
+  q:"Se un eritrocita viene immerso in una soluzione ipertonica rispetto al citoplasma, si osserva:",
+  options:["Plasmolisi: raggrinzimento della cellula per uscita netta di acqua","Emolisi: rottura per rigonfiamento","Nessuna variazione di volume","Un aumento del volume cellulare","La fusione con altre cellule"], correct:0 },
+
+{ id:"sol-24", topic:"soluzioni", type:"fill",
+  q:"La rottura del globulo rosso per rigonfiamento, causata dall'ingresso netto di acqua in seguito a trattamento con soluzioni ipotoniche, si chiama ________.",
+  answer:"EMOLISI" },
+
+{ id:"sol-25", topic:"soluzioni", type:"fill",
+  q:"Il raggrinzimento del globulo rosso, causato dall'uscita netta di acqua in seguito a trattamento con soluzioni ipertoniche, si chiama ________.",
+  answer:"PLASMOLISI" },
+
+{ id:"sol-26", topic:"soluzioni", type:"mc",
+  q:"La legge di Raoult afferma che, in una soluzione, la tensione di vapore del solvente:",
+  options:["Diminuisce in proporzione alla frazione molare del soluto disciolto","Aumenta in proporzione alla frazione molare del soluto","Resta invariata rispetto al solvente puro","Dipende solo dalla temperatura, non dal soluto","È indipendente dalla natura del solvente"], correct:0 },
+
+{ id:"sol-27", topic:"soluzioni", type:"mc",
+  q:"Le proprietà colligative di una soluzione (abbassamento crioscopico, innalzamento ebullioscopico, pressione osmotica, abbassamento della tensione di vapore) dipendono:",
+  options:["Dal numero di particelle di soluto disciolte, non dalla loro natura chimica","Esclusivamente dalla natura chimica del soluto","Solo dalla temperatura della soluzione","Solo dal volume del solvente","Dalla massa molare del solvente"], correct:0 },
+
+{ id:"sol-28", topic:"soluzioni", type:"mc",
+  q:"L'abbassamento crioscopico di una soluzione è dato dalla relazione:",
+  options:["$\\Delta T_{cr} = K_{cr} \\cdot m \\cdot i$","$\\Delta T_{cr} = K_{cr} / (m \\cdot i)$","$\\Delta T_{cr} = K_{cr} \\cdot M \\cdot i$ (con M molarità)","$\\Delta T_{cr} = K_{cr} + m + i$","$\\Delta T_{cr} = K_{cr} \\cdot m^2$"], correct:0,
+  explain:"La costante crioscopica va moltiplicata per la molalità m (non la molarità) e per il coefficiente isotonico i." },
+
+{ id:"sol-29", topic:"soluzioni", type:"mc",
+  q:"L'innalzamento ebullioscopico di una soluzione è dato dalla relazione:",
+  options:["$\\Delta T_{eb} = K_{eb} \\cdot m \\cdot i$","$\\Delta T_{eb} = K_{eb} \\cdot M$","$\\Delta T_{eb} = K_{eb} / m$","$\\Delta T_{eb} = K_{eb} - m \\cdot i$","$\\Delta T_{eb} = K_{eb} \\cdot i / m$"], correct:0 },
+
+{ id:"sol-30", topic:"soluzioni", type:"mc",
+  q:"Calcolare l'innalzamento ebullioscopico di una soluzione ottenuta sciogliendo 3,20 g di metanolo (non elettrolita, $PM=32{,}0\\ \\text{g/mol}$) in 100 g di acqua ($K_{eb}=0{,}56\\ °\\text{C}\\cdot\\text{m}^{-1}$):",
+  options:["0,56 °C","1,12 °C","0,28 °C","5,6 °C","0,056 °C"], correct:0,
+  explain:"$n=3{,}20/32{,}0=0{,}10\\ \\text{mol}$; $m=0{,}10\\ \\text{mol}/0{,}100\\ \\text{kg}=1{,}0\\ m$; $\\Delta T_{eb}=0{,}56\\times1{,}0\\times1=0{,}56\\ °\\text{C}$." },
+
+{ id:"sol-31", topic:"soluzioni", type:"mc",
+  q:"Secondo la legge di Fick, la diffusione di un soluto attraverso una membrana è direttamente proporzionale a:",
+  options:["La differenza di concentrazione tra i due lati della membrana, e inversamente proporzionale allo spessore","Solo alla temperatura assoluta","Solo alla superficie della membrana, indipendentemente dalla concentrazione","Il quadrato della differenza di concentrazione","La viscosità del solvente"], correct:0 },
+
+{ id:"sol-32", topic:"soluzioni", type:"mc",
+  q:"Secondo la legge di Graham, la velocità di diffusione di un gas è:",
+  options:["Inversamente proporzionale alla radice quadrata della sua massa molecolare","Direttamente proporzionale alla sua massa molecolare","Indipendente dalla massa molecolare","Proporzionale al quadrato della massa molecolare","Inversamente proporzionale alla temperatura"], correct:0,
+  explain:"$v_1/v_2=\\sqrt{PM_2/PM_1}$: a parità di condizioni, i gas più leggeri diffondono più velocemente." },
+
+{ id:"sol-33", topic:"soluzioni", type:"mc",
+  q:"L'osmosi è definita come:",
+  options:["Il passaggio netto di solvente attraverso una membrana semipermeabile, dal comparto meno concentrato verso quello più concentrato di soluto","Il passaggio di soluto attraverso una membrana, indipendentemente dal solvente","Un tipo di diffusione che riguarda solo i gas","Il passaggio di ioni attraverso canali proteici","La formazione di un precipitato in soluzione"], correct:0 },
+
+{ id:"sol-34", topic:"soluzioni", type:"fill",
+  q:"Una membrana che lascia passare il solvente ma non (o solo in parte) il soluto si dice membrana ________.",
+  answer:"SEMIPERMEABILE" },
+
+{ id:"sol-35", topic:"soluzioni", type:"mc",
+  q:"La pressione osmotica π di una soluzione, secondo l'equazione di van't Hoff, si calcola come:",
+  options:["$\\pi = i \\cdot M \\cdot R \\cdot T$","$\\pi = M / (R \\cdot T)$","$\\pi = i + M + R + T$","$\\pi = M \\cdot R / T$","$\\pi = i \\cdot M$"], correct:0 },
+
+{ id:"sol-36", topic:"soluzioni", type:"mc",
+  q:"La pressione osmotica si definisce operativamente come:",
+  options:["La pressione che deve essere applicata al comparto più concentrato per impedire il passaggio netto di solvente per osmosi","La pressione atmosferica esercitata sulla soluzione","La pressione di vapore del solvente puro","La pressione a cui avviene l'ebollizione della soluzione","La pressione osmotica delle sole proteine plasmatiche"], correct:0 },
+
+{ id:"sol-37", topic:"soluzioni", type:"mc",
+  q:"Se si applica a una soluzione una pressione maggiore della sua pressione osmotica, si provoca:",
+  options:["L'osmosi inversa, cioè il passaggio di solvente contro il gradiente di concentrazione","Un aumento della pressione osmotica stessa","La precipitazione del soluto","L'aumento della tensione di vapore","Nessun effetto misurabile"], correct:0 },
+
+{ id:"sol-38", topic:"soluzioni", type:"mc",
+  q:"La pressione oncotica (colloido-osmotica) del plasma è la pressione osmotica dovuta:",
+  options:["Alle sole proteine plasmatiche (es. albumina, globuline), che non attraversano l'endotelio capillare","A tutti i soluti plasmatici, inclusi gli elettroliti","Esclusivamente al glucosio ematico","Alla componente gassosa disciolta nel plasma","Ai globuli rossi in sospensione"], correct:0 },
+
+{ id:"sol-39", topic:"soluzioni", type:"mc",
+  q:"L'emodialisi è una pratica medica che sfrutta principalmente:",
+  options:["La diffusione e l'osmosi attraverso una membrana semipermeabile, per rimuovere dal sangue prodotti di scarto (es. urea, creatinina) e acqua in eccesso","Una reazione chimica di neutralizzazione acido-base","La sola forza di gravità, senza membrane","L'elettrolisi dell'acqua plasmatica","La centrifugazione del sangue"], correct:0 },
+
+{ id:"sol-40", topic:"soluzioni", type:"fill",
+  q:"Il passaggio di particelle attraverso una membrana semipermeabile, causato da un agente esterno come una pressione applicata anziché da un gradiente di concentrazione, si chiama ________.",
+  answer:"ULTRAFILTRAZIONE" },
+
+{ id:"sol-41", topic:"soluzioni", type:"mc",
+  q:"Per calcolare la massa molare (PM) di un soluto incognito a partire da una misura di pressione osmotica π, si usa la relazione:",
+  options:["$PM=\\dfrac{g_{sostanza}\\cdot R\\cdot T}{V\\cdot\\pi}$","$PM=\\pi\\cdot V\\cdot R\\cdot T$","$PM=\\dfrac{V\\cdot\\pi}{R\\cdot T}$","$PM=\\dfrac{R\\cdot T}{g_{sostanza}\\cdot\\pi}$","$PM=\\dfrac{g_{sostanza}\\cdot\\pi}{R\\cdot T\\cdot V}$"], correct:0 },
+
+{ id:"sol-42", topic:"soluzioni", type:"mc",
+  q:"Circa il 60% del peso corporeo umano è costituito da acqua, per il 40% nel liquido intracellulare e per il 20% nel liquido extracellulare. Quest'ultimo, a sua volta, è distribuito per circa:",
+  options:["Il 15% nel liquido interstiziale e il 5% nel liquido plasmatico","Il 5% interstiziale e il 15% plasmatico","Interamente nel plasma","Interamente nel liquido interstiziale","Per metà nel liquido intracellulare"], correct:0 },
+
+{ id:"sol-43", topic:"soluzioni", type:"mc",
+  q:"La membrana plasmatica è fisiologicamente impermeabile al sodio, il cui gradiente di concentrazione è mantenuto attivamente da:",
+  options:["La pompa sodio-potassio","La sola diffusione semplice","I canali per l'acqua (acquaporine)","Il trasportatore del glucosio","L'osmosi passiva"], correct:0 },
+
+/* ============================= LAVORO, ENERGIA E POTENZA (integrazione) ============================= */
+
+{ id:"en-31", topic:"energia", type:"mc",
+  q:"Un corpo di massa $m=50\\ \\text{kg}$ viene lasciato cadere da fermo da un'altezza $h=10\\ \\text{m}$ (attrito trascurabile). Con quale velocità tocca terra? ($g=9{,}8\\ \\text{m/s}^2$)",
+  options:["14 m/s","9,8 m/s","19,6 m/s","4,9 m/s","98 m/s"], correct:0,
+  explain:"Per conservazione dell'energia meccanica: $\\tfrac12 mv_f^2=mgh \\Rightarrow v_f=\\sqrt{2gh}=\\sqrt{2\\times9{,}8\\times10}\\approx14\\ \\text{m/s}$ (indipendente dalla massa)." },
+
+{ id:"en-32", topic:"energia", type:"mc",
+  q:"In un sistema massa-molla orizzontale senza attrito, quando la molla è compressa di x e il blocco è ancora fermo, l'energia meccanica del sistema è:",
+  options:["Interamente potenziale elastica, $U_{el}=\\tfrac12 kx^2$","Interamente cinetica","Nulla","Metà cinetica e metà potenziale","Dipendente dalla massa del blocco"], correct:0,
+  explain:"A blocco fermo $K=0$: tutta l'energia è immagazzinata come energia potenziale elastica della molla compressa; al rilascio si converte gradualmente in energia cinetica." },
+
+{ id:"en-33", topic:"energia", type:"fill",
+  q:"Nel teorema di conservazione dell'energia meccanica, un sistema si dice chiuso e isolato quando non vi sono scambi di ________ e di materia con l'esterno.",
+  answer:"ENERGIA" },
+
+{ id:"en-34", topic:"energia", type:"mc",
+  q:"Se su un corpo agisce, oltre a forze conservative, anche una forza di attrito (non conservativa), l'energia meccanica del sistema:",
+  options:["Non si conserva: diminuisce a causa della dissipazione","Si conserva comunque","Aumenta sempre","Resta nulla","Si conserva solo se il corpo è fermo"], correct:0 },
+
+{ id:"en-35", topic:"energia", type:"mc",
+  q:"Un motore solleva verticalmente, a velocità costante, un carico di 200 N per 15 m in 10 s. Qual è la potenza sviluppata dal motore?",
+  options:["300 W","3000 W","30 W","2000 W","13,3 W"], correct:0,
+  explain:"$P=\\dfrac{W}{t}=\\dfrac{Fd}{t}=\\dfrac{200\\times15}{10}=300\\ \\text{W}$." },
+
+/* ============================= QUANTITÀ DI MOTO, URTI E CENTRO DI MASSA ============================= */
+
+{ id:"qm-01", topic:"quantita_moto", type:"mc",
+  q:"La quantità di moto di un corpo di massa m che si muove con velocità v è la grandezza vettoriale:",
+  options:["$\\vec{q}=m\\vec{v}$","$\\vec{q}=\\tfrac12 mv^2$","$\\vec{q}=mg$","$\\vec{q}=m/v$","$\\vec{q}=v/m$"], correct:0 },
+
+{ id:"qm-02", topic:"quantita_moto", type:"mc",
+  q:"L'unità di misura della quantità di moto nel Sistema Internazionale è:",
+  options:["kg·m/s","kg·m²/s²","N","kg/s","m/s²"], correct:0 },
+
+{ id:"qm-03", topic:"quantita_moto", type:"mc",
+  q:"Partendo dal secondo principio della dinamica, si definisce impulso di una forza costante applicata per un intervallo di tempo Δt la grandezza:",
+  options:["$I=F\\Delta t$","$I=F/\\Delta t$","$I=m\\Delta t$","$I=F\\cdot m$","$I=\\Delta t/F$"], correct:0 },
+
+{ id:"qm-04", topic:"quantita_moto", type:"mc",
+  q:"Il teorema dell'impulso afferma che l'impulso di una forza applicata a un corpo è uguale a:",
+  options:["La variazione della quantità di moto del corpo, $I=\\Delta q$","La variazione di energia cinetica del corpo","Il lavoro compiuto dalla forza","La variazione di velocità, indipendentemente dalla massa","Zero, sempre"], correct:0 },
+
+{ id:"qm-05", topic:"quantita_moto", type:"mc",
+  q:"L'unità di misura dell'impulso nel Sistema Internazionale è:",
+  options:["N·s (equivalente a kg·m/s)","J","W","N/s","kg·m²"], correct:0 },
+
+{ id:"qm-06", topic:"quantita_moto", type:"mc",
+  q:"Il principio di conservazione della quantità di moto è diretta conseguenza:",
+  options:["Del terzo principio della dinamica (azione e reazione)","Del primo principio della dinamica","Della legge di gravitazione universale","Del teorema dell'energia cinetica","Della legge di Hooke"], correct:0 },
+
+{ id:"qm-07", topic:"quantita_moto", type:"mc",
+  q:"In un sistema isolato, cioè soggetto a sole forze interne:",
+  options:["La quantità di moto totale del sistema si conserva","L'energia cinetica totale si conserva sempre, in ogni tipo di urto","La massa totale del sistema diminuisce","Ogni corpo del sistema si ferma","Le forze interne producono un'accelerazione del centro di massa"], correct:0 },
+
+{ id:"qm-08", topic:"quantita_moto", type:"mc",
+  q:"Considerando due corpi A e B che interagiscono in un sistema isolato, per il terzo principio della dinamica $F_{AB}=-F_{BA}$, da cui segue che:",
+  options:["La variazione della quantità di moto di A è uguale e opposta a quella di B: $\\Delta q_A+\\Delta q_B=0$","Le velocità di A e B restano sempre costanti","Le masse di A e B devono essere uguali","L'energia cinetica di A è sempre uguale a quella di B","A e B non possono mai interagire"], correct:0 },
+
+{ id:"qm-09", topic:"quantita_moto", type:"mc",
+  q:"Un urto tra due corpi si definisce elastico quando:",
+  options:["Oltre alla quantità di moto, si conserva anche l'energia cinetica totale del sistema","Si conserva solo l'energia cinetica, non la quantità di moto","Nessuna delle due grandezze si conserva","I due corpi restano uniti dopo l'urto","L'energia cinetica totale aumenta"], correct:0 },
+
+{ id:"qm-10", topic:"quantita_moto", type:"mc",
+  q:"Un urto tra due corpi si definisce anelastico quando:",
+  options:["L'energia cinetica totale non si conserva (in parte si trasforma in altre forme di energia), mentre la quantità di moto si conserva comunque","Sia la quantità di moto sia l'energia cinetica si conservano","Nessuna delle due grandezze si conserva","Si conserva solo l'energia cinetica","I due corpi si respingono a distanza infinita"], correct:0 },
+
+{ id:"qm-11", topic:"quantita_moto", type:"mc",
+  q:"In un urto completamente anelastico, in cui le due masse restano unite dopo l'urto, la conservazione della quantità di moto si scrive come:",
+  options:["$m_1v_{1i}+m_2v_{2i}=(m_1+m_2)v_f$","$m_1v_{1i}+m_2v_{2i}=m_1v_{1f}+m_2v_{2f}$ con $v_{1f}\\ne v_{2f}$","$\\tfrac12m_1v_{1i}^2=\\tfrac12(m_1+m_2)v_f^2$","$m_1v_{1i}=m_2v_{2i}$","$v_{1i}=v_{2i}=v_f$ sempre"], correct:0 },
+
+{ id:"qm-12", topic:"quantita_moto", type:"fill",
+  q:"In un urto elastico unidimensionale tra due particelle si conservano sia la quantità di moto sia l'energia ________.",
+  answer:"CINETICA" },
+
+{ id:"qm-13", topic:"quantita_moto", type:"fill",
+  q:"Negli urti anelastici, a differenza di quelli elastici, la grandezza che NON si conserva è l'energia ________.",
+  answer:"CINETICA" },
+
+{ id:"qm-14", topic:"quantita_moto", type:"mc",
+  q:"Il centro di massa (CM) di un sistema di particelle è definito dal vettore posizione:",
+  options:["$\\vec{r}_{CM}=\\dfrac{\\sum_i m_i \\vec{r}_i}{M}$","$\\vec{r}_{CM}=\\sum_i m_i \\vec{r}_i$","$\\vec{r}_{CM}=\\dfrac{M}{\\sum_i m_i \\vec{r}_i}$","$\\vec{r}_{CM}=\\dfrac{\\sum_i \\vec{r}_i}{\\sum_i m_i}$","$\\vec{r}_{CM}=M\\cdot\\sum_i \\vec{r}_i$"], correct:0 },
+
+{ id:"qm-15", topic:"quantita_moto", type:"mc",
+  q:"Per un sistema di due particelle di masse $m_1$ e $m_2$ poste rispettivamente in $r_1$ e $r_2$, la posizione del centro di massa è:",
+  options:["$r_{CM}=\\dfrac{m_1r_1+m_2r_2}{m_1+m_2}$","$r_{CM}=\\dfrac{r_1+r_2}{m_1+m_2}$","$r_{CM}=m_1r_1+m_2r_2$","$r_{CM}=\\dfrac{m_1+m_2}{r_1+r_2}$","$r_{CM}=\\dfrac{m_1r_2+m_2r_1}{2}$"], correct:0 },
+
+{ id:"qm-16", topic:"quantita_moto", type:"mc",
+  q:"Il centro di massa di un sistema di particelle:",
+  options:["Dipende solo dalla distribuzione della massa, non dalle forze esterne applicate","Dipende dalle forze esterne, non dalla distribuzione di massa","Coincide sempre con il centro geometrico del sistema, anche se le masse sono diverse","Non è definibile per sistemi di più di due corpi","Cambia posizione se cambiano le forze interne"], correct:0 },
+
+{ id:"qm-17", topic:"quantita_moto", type:"mc",
+  q:"Il moto del centro di massa di un sistema di particelle è descritto dalla relazione:",
+  options:["$\\sum_i \\vec{F}_i = M\\vec{a}_{CM}$: il CM si muove come un corpo di massa M soggetto alla risultante delle sole forze esterne","$\\sum_i \\vec{F}_i = m_i\\vec{a}_{CM}$","Il centro di massa non accelera mai","$\\sum_i \\vec{F}_i = 0$ sempre, indipendentemente dalle forze esterne","Il centro di massa si muove solo se tutte le forze interne sono nulle"], correct:0,
+  explain:"Le forze interne, nella sommatoria di tutte le forze del sistema, si elidono a vicenda per il terzo principio della dinamica: solo le forze esterne determinano l'accelerazione del CM." },
+
+{ id:"qm-18", topic:"quantita_moto", type:"fill",
+  q:"La grandezza vettoriale $\\vec{q}=m\\vec{v}$, associata al moto di un corpo, si chiama quantità di ________.",
+  answer:"MOTO" },
+
+{ id:"qm-19", topic:"quantita_moto", type:"mc",
+  q:"Un carrello di massa 2 kg che si muove a 3 m/s si scontra e si unisce a un carrello fermo di massa 1 kg (urto completamente anelastico). Qual è la velocità finale del sistema?",
+  options:["2 m/s","3 m/s","1,5 m/s","6 m/s","1 m/s"], correct:0,
+  explain:"$m_1v_{1i}=(m_1+m_2)v_f \\Rightarrow v_f=\\dfrac{2\\times3}{2+1}=2\\ \\text{m/s}$." },
+
+{ id:"qm-20", topic:"quantita_moto", type:"mc",
+  q:"Durante un urto, l'intervallo di tempo dell'interazione tra i due corpi è considerato:",
+  options:["Molto breve rispetto al tempo di osservazione del moto complessivo","Sempre uguale a un secondo","Sempre trascurabile per il calcolo della quantità di moto scambiata","Irrilevante ai fini della conservazione della quantità di moto","Uguale per ogni tipo di urto, elastico o anelastico"], correct:0 },
+
+/* ============================= DINAMICA ROTAZIONALE, STATICA E LEVE ============================= */
+
+{ id:"cr-01", topic:"corpirigidi", type:"mc",
+  q:"Un corpo rigido è un oggetto ideale:",
+  options:["La cui forma e le cui dimensioni non cambiano, indipendentemente dalle forze applicate","Che si deforma sempre sotto l'azione di una forza","Privo di massa","Che può esistere solo allo stato gassoso","Privo di volume"], correct:0 },
+
+{ id:"cr-02", topic:"corpirigidi", type:"mc",
+  q:"Nel moto traslatorio di un corpo rigido:",
+  options:["Tutti i punti del corpo compiono la stessa traiettoria e hanno la velocità del centro di massa","Ogni punto ha una velocità diversa in base alla distanza dall'asse","I punti descrivono traiettorie circolari attorno a un asse","Solo il centro di massa si muove, gli altri punti restano fermi","La velocità angolare è la stessa per tutti i punti"], correct:0 },
+
+{ id:"cr-03", topic:"corpirigidi", type:"mc",
+  q:"Nel moto rotatorio di un corpo rigido attorno a un asse fisso:",
+  options:["Tutti i punti hanno la stessa velocità angolare ω, mentre la velocità lineare dipende dalla distanza dall'asse: $v_i=r_i\\omega$","Tutti i punti hanno la stessa velocità lineare","La velocità angolare dipende dalla distanza dall'asse","I punti più vicini all'asse hanno velocità lineare maggiore","Non esiste un asse di rotazione definito"], correct:0 },
+
+{ id:"cr-04", topic:"corpirigidi", type:"mc",
+  q:"Il momento di una forza (momento torcente) rispetto a un punto O è definito dal prodotto vettoriale:",
+  options:["$\\vec{M}=\\vec{r}\\wedge\\vec{F}$, con modulo $|M|=rF\\sin\\varphi$","$\\vec{M}=\\vec{r}\\cdot\\vec{F}$ (prodotto scalare)","$\\vec{M}=F/r$","$\\vec{M}=\\vec{r}+\\vec{F}$","$\\vec{M}=m\\vec{r}$"], correct:0 },
+
+{ id:"cr-05", topic:"corpirigidi", type:"mc",
+  q:"L'unità di misura del momento di una forza nel Sistema Internazionale è:",
+  options:["N·m", "N", "J", "N/m", "kg·m²"], correct:0,
+  explain:"Dimensionalmente coincide con il joule (N·m), ma per convenzione il momento di una forza si esprime in N·m e non in joule, perché forza e braccio non sono paralleli come nel lavoro." },
+
+{ id:"cr-06", topic:"corpirigidi", type:"mc",
+  q:"A parità di forza applicata, il momento (e quindi l'effetto rotatorio) risulta maggiore quando:",
+  options:["La distanza r dal punto di applicazione all'asse di rotazione (braccio) è maggiore","La distanza r è minore","La forza è applicata parallelamente al braccio","La forza è nulla","Il corpo è più massiccio"], correct:0 },
+
+{ id:"cr-07", topic:"corpirigidi", type:"mc",
+  q:"Il momento di inerzia I di un corpo rigido rispetto a un asse è definito come:",
+  options:["$I=\\sum_i m_i r_i^2$","$I=\\sum_i m_i r_i$","$I=\\sum_i m_i v_i$","$I=\\tfrac12\\sum_i m_i v_i^2$","$I=Mr$"], correct:0 },
+
+{ id:"cr-08", topic:"corpirigidi", type:"mc",
+  q:"Il momento di inerzia di un corpo rigido:",
+  options:["Dipende dalla distribuzione della massa rispetto all'asse e dalla scelta dell'asse stesso","È una grandezza vettoriale","È indipendente dalla scelta dell'asse di rotazione","Dipende solo dalla massa totale, non dalla sua distribuzione","Ha le stesse unità di misura della quantità di moto"], correct:0 },
+
+{ id:"cr-09", topic:"corpirigidi", type:"mc",
+  q:"Il momento di inerzia di una sfera omogenea di massa m e raggio r, che ruota attorno a un proprio asse, vale:",
+  options:["$I=\\tfrac{2}{5}mr^2$","$I=mr^2$","$I=\\tfrac12 mr^2$","$I=\\tfrac13 mr^2$","$I=2mr^2$"], correct:0 },
+
+{ id:"cr-10", topic:"corpirigidi", type:"mc",
+  q:"Il momento di inerzia di un cilindro (o disco) omogeneo di massa m e raggio r, che ruota attorno al proprio asse principale, vale:",
+  options:["$I=\\tfrac12 mr^2$","$I=\\tfrac{2}{5}mr^2$","$I=mr^2$","$I=\\tfrac13 mr^2$","$I=\\tfrac14 mr^2$"], correct:0 },
+
+{ id:"cr-11", topic:"corpirigidi", type:"mc",
+  q:"Il momento angolare $\\vec{L}$ di un corpo rigido rispetto all'asse di rotazione è legato al momento di inerzia dalla relazione:",
+  options:["$L=I\\omega$","$L=I\\alpha$","$L=I/\\omega$","$L=I+\\omega$","$L=\\omega/I$"], correct:0 },
+
+{ id:"cr-12", topic:"corpirigidi", type:"mc",
+  q:"In dinamica rotazionale, la relazione tra il momento delle forze applicate e il momento angolare, analoga al secondo principio della dinamica traslazionale, è:",
+  options:["$M=\\dfrac{dL}{dt}=I\\alpha$ (analoga a $F=ma$)","$M=I\\omega$ soltanto","$M=\\dfrac{dv}{dt}$","$M=L\\cdot t$","$M=\\dfrac{d\\omega}{I}$"], correct:0 },
+
+{ id:"cr-13", topic:"corpirigidi", type:"mc",
+  q:"Se il momento totale delle forze esterne applicate a un corpo rigido è nullo ($M_{TOT}=0$):",
+  options:["Il momento angolare L si conserva","Il corpo si ferma istantaneamente","La velocità angolare aumenta indefinitamente","Il momento di inerzia diventa nullo","L'energia cinetica rotazionale aumenta indefinitamente"], correct:0 },
+
+{ id:"cr-14", topic:"corpirigidi", type:"mc",
+  q:"Un disco ruota con momento di inerzia $I=6\\times10^4\\ \\text{kg}\\cdot\\text{m}^2$ e velocità angolare $\\omega=0{,}2\\ \\text{rad/s}$. Se, a momento angolare costante, il momento di inerzia aumenta del 10%, la nuova velocità angolare vale circa:",
+  options:["0,182 rad/s","0,22 rad/s","0,20 rad/s","0,10 rad/s","0,242 rad/s"], correct:0,
+  explain:"Per conservazione del momento angolare: $I\\omega=I'\\omega' \\Rightarrow \\omega'=\\dfrac{I}{I'}\\omega=\\dfrac{1}{1{,}1}\\times0{,}2\\approx0{,}182\\ \\text{rad/s}$." },
+
+{ id:"cr-15", topic:"corpirigidi", type:"mc",
+  q:"Le condizioni di equilibrio (statica) di un corpo rigido richiedono che siano contemporaneamente nulle:",
+  options:["La somma vettoriale di tutte le forze applicate e la somma vettoriale dei loro momenti","Solo la somma delle forze applicate","Solo la somma dei momenti delle forze","Solo il momento di inerzia del corpo","Solo l'accelerazione angolare"], correct:0 },
+
+{ id:"cr-16", topic:"corpirigidi", type:"mc",
+  q:"Una leva è schematizzabile come:",
+  options:["Un'asta rigida vincolata in un punto (fulcro), soggetta a una forza motrice (potenza) e a una forza resistente (resistenza), che ruota attorno al fulcro","Una molla ideale priva di massa","Un corpo in caduta libera","Un sistema privo di punti fissi","Un fluido in equilibrio idrostatico"], correct:0 },
+
+{ id:"cr-17", topic:"corpirigidi", type:"mc",
+  q:"Il guadagno meccanico G di una leva, in condizione di equilibrio ($F_M b_M = F_R b_R$), è definito come:",
+  options:["$G=\\dfrac{F_R}{F_M}=\\dfrac{b_M}{b_R}$","$G=F_M \\cdot F_R$","$G=b_M+b_R$","$G=\\dfrac{F_M}{b_M}$","G è sempre uguale a 1"], correct:0 },
+
+{ id:"cr-18", topic:"corpirigidi", type:"mc",
+  q:"Una leva si dice vantaggiosa quando il guadagno meccanico G è:",
+  options:["Maggiore di 1 (la forza motrice necessaria è minore della resistenza)","Minore di 1","Uguale a 1","Uguale a 0","Sempre negativo"], correct:0 },
+
+{ id:"cr-19", topic:"corpirigidi", type:"mc",
+  q:"Nelle leve di primo genere, il fulcro si trova:",
+  options:["In posizione intermedia tra la forza motrice e quella resistente","Sempre a un'estremità della leva","Sempre a coincidere con il punto di applicazione della resistenza","Tra le due forze solo se la leva è svantaggiosa","Mai tra le due forze"], correct:0 },
+
+{ id:"cr-20", topic:"corpirigidi", type:"mc",
+  q:"Le articolazioni del corpo umano, considerate come leve, hanno tipicamente il ruolo di:",
+  options:["Fulcro, mentre i muscoli forniscono la forza motrice (potenza) e le ossa, per il loro peso, la forza resistente","Forza motrice","Forza resistente","Asse di simmetria, privo di funzione meccanica","Contrappeso"], correct:0 },
+
+{ id:"cr-21", topic:"corpirigidi", type:"mc",
+  q:"L'articolazione della testa sull'atlante (leva di 1° genere) è, dal punto di vista meccanico, tipicamente:",
+  options:["Svantaggiosa: richiede una forza muscolare maggiore del peso della testa", "Vantaggiosa: richiede una forza muscolare minore del peso della testa","Indifferente, con G = 1","Priva di fulcro","Non descrivibile come leva"], correct:0 },
+
+{ id:"cr-22", topic:"corpirigidi", type:"mc",
+  q:"In un materiale sottoposto a una forza esterna, lo sforzo (stress) σ è definito come:",
+  options:["$\\sigma=F/A$: forza interna per unità di superficie","$\\sigma=F\\cdot A$","$\\sigma=F/L$","$\\sigma=\\Delta L/L$","$\\sigma=E/F$"], correct:0 },
+
+{ id:"cr-23", topic:"corpirigidi", type:"mc",
+  q:"La deformazione (strain) $\\varepsilon=\\Delta L/L$ di un materiale è una grandezza:",
+  options:["Adimensionale","Espressa in pascal","Espressa in newton","Espressa in metri","Vettoriale"], correct:0 },
+
+{ id:"cr-24", topic:"corpirigidi", type:"mc",
+  q:"La legge di Hooke generalizzata, valida per un materiale elastico, si esprime come:",
+  options:["$\\sigma=E\\varepsilon$, con E modulo di Young","$\\sigma=k\\varepsilon^2$","$\\varepsilon=E\\sigma^2$","$\\sigma=\\varepsilon/E$","$E=\\sigma+\\varepsilon$"], correct:0 },
+
+{ id:"cr-25", topic:"corpirigidi", type:"mc",
+  q:"Una deformazione si dice elastica quando:",
+  options:["Il corpo ritorna alla forma originale dopo la rimozione della forza applicata (deformazione reversibile)","Il corpo resta permanentemente deformato","Il materiale si rompe immediatamente","Avviene solo nei liquidi","È indipendente dal limite elastico del materiale"], correct:0 },
+
+{ id:"cr-26", topic:"corpirigidi", type:"fill",
+  q:"Il limite oltre il quale un corpo deformato non recupera più la propria forma originale si chiama limite ________.",
+  answer:"ELASTICO" },
+
+{ id:"cr-27", topic:"corpirigidi", type:"fill",
+  q:"La costante di proporzionalità E che compare nella legge di Hooke generalizzata $\\sigma=E\\varepsilon$ si chiama modulo di ________.",
+  answer:"YOUNG" },
+
+{ id:"cr-28", topic:"corpirigidi", type:"fill",
+  q:"Nell'analogia tra moto traslatorio e rotazionale, alla massa m corrisponde, in dinamica rotazionale, il ________ di inerzia I.",
+  answer:"MOMENTO" },
+
+{ id:"cr-29", topic:"corpirigidi", type:"fill",
+  q:"Nella leva di secondo genere (es. schiaccianoci), la resistenza R è intermedia tra il ________ e la forza motrice.",
+  answer:"FULCRO" }
 
 ];
 

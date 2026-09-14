@@ -31,7 +31,7 @@
   <a href="#legami"><span class="qn-dot" style="background:#0891b2"></span>Legami</a>
   <a href="#nomenclatura"><span class="qn-dot" style="background:#db2777"></span>Nomenclatura</a>
   <a href="#geometria"><span class="qn-dot" style="background:#9333ea"></span>Geometria molecolare</a>
-  <a href="#ud2"><span class="qn-dot" style="background:#2563eb"></span>Soluzioni</a>
+  <a href="#soluzioni"><span class="qn-dot" style="background:#2563eb"></span>Soluzioni e colligative</a>
   <a href="#ud3"><span class="qn-dot" style="background:#16a34a"></span>Cinetica/equilibrio</a>
   <a href="#ud4"><span class="qn-dot" style="background:#ea580c"></span>Acidi-basi/redox</a>
   <a href="#ud5"><span class="qn-dot" style="background:#a21caf"></span>Idrocarburi</a>
@@ -739,40 +739,121 @@
   </div>
 </section>
 
-<!-- ============================= U.D. 2 — MISCELE, SOLUZIONI, PROPRIETÀ COLLIGATIVE ============================= -->
-<section id="ud2" class="notes-topic" style="--topic-color:#2563eb;">
+<!-- ============================= SOLUZIONI E PROPRIETÀ COLLIGATIVE ============================= -->
+<section id="soluzioni" class="notes-topic" style="--topic-color:#2563eb;">
   <div class="notes-topic-header"><h2>Miscele, soluzioni e proprietà colligative</h2><span class="notes-topic-unit">U.D. 2</span></div>
-  <p class="notes-topic-intro">Argomento del syllabus non coperto dalle slide del corso caricate su questo sito: sintesi dei concetti principali, utile come riferimento rapido e non come sostituto dello studio del testo consigliato.</p>
+
   <div class="notes-block">
+    <h3>Punti chiave</h3>
+    <ul class="notes-points">
+      <li><b>Miscela omogenea</b>: composizione uniforme in tutto il volume (es. soluzione). <b>Miscela eterogenea</b>: componenti/fasi distinguibili (sospensioni, colloidi, aerosol).</li>
+      <li><b>Non elettrolita</b> (es. glucosio): non si dissocia in soluzione. <b>Elettrolita debole</b> (es. $CH_3COOH$): si dissocia solo parzialmente, con un grado di dissociazione $\alpha$ compreso tra 0 e 1. <b>Elettrolita forte</b> (es. NaCl, HCl): si dissocia completamente, $\alpha=1$.</li>
+      <li><b>Indice di dissociazione n</b>: numero di ioni prodotti da una formula unitaria (NaCl → n=2; $CaCl_2$ → n=3).</li>
+      <li><b>Coefficiente isotonico (fattore di van't Hoff) i</b>: lega grado e indice di dissociazione, $i=1+\alpha(n-1)$; serve a convertire la concentrazione teorica in concentrazione <b>effettiva</b> (osmoticamente attiva).</li>
+      <li><b>Osmole</b>: contiene un numero di Avogadro di particelle osmoticamente attive. <b>Osmolarità (osM)</b> = n° osmoli / L di soluzione = $M\cdot i$.</li>
+      <li><b>Proprietà colligative</b>: dipendono dal numero di particelle di soluto disciolte, non dalla loro natura chimica (legge di Raoult, crioscopia, ebullioscopia, pressione osmotica).</li>
+      <li><b>Tonicità</b>: confronto tra l'osmolarità di una soluzione e quella di riferimento (es. il citoplasma, o il plasma ≈ 310 mosM). Una soluzione può essere <b>isotonica</b>, <b>ipotonica</b> o <b>ipertonica</b>.</li>
+      <li><b>Osmosi</b>: passaggio netto di solvente attraverso una membrana <b>semipermeabile</b>, dal comparto meno concentrato verso quello più concentrato di soluto, fino all'equilibrio. La <b>pressione osmotica (π)</b> è la pressione da applicare al comparto più concentrato per impedire questo flusso netto.</li>
+      <li><b>Ultrafiltrazione</b>: passaggio di particelle attraverso una membrana semipermeabile causato da un agente esterno (pressione, gravità/centrifugazione), non dal gradiente di concentrazione — a differenza dell'osmosi.</li>
+      <li>Applicazioni mediche: <b>soluzione fisiologica</b> (NaCl 0,9%, isotonica al plasma), <b>emodialisi</b> (rimozione di scorie ematiche per diffusione/osmosi attraverso membrana semipermeabile), <b>pressione oncotica</b> (pressione osmotica dovuta alle sole proteine plasmatiche, regola gli scambi tra plasma e liquido interstiziale).</li>
+    </ul>
+  </div>
+
+  <div class="notes-block">
+    <h3>Formule utili</h3>
+    <div class="formula-box">
+      <div class="f-item"><span class="f-label">coefficiente isotonico</span><span>$i = 1+\alpha(n-1)$</span></div>
+      <div class="f-item"><span class="f-label">osmolarità</span><span>$osM = M \cdot i$</span></div>
+      <div class="f-item"><span class="f-label">abbassamento crioscopico</span><span>$\Delta T_{cr} = K_{cr}\cdot m \cdot i$</span></div>
+      <div class="f-item"><span class="f-label">innalzamento ebullioscopico</span><span>$\Delta T_{eb} = K_{eb}\cdot m \cdot i$</span></div>
+      <div class="f-item"><span class="f-label">pressione osmotica</span><span>$\pi = i\cdot M \cdot R \cdot T$</span></div>
+      <div class="f-item"><span class="f-label">massa molare da π</span><span>$PM = \dfrac{g_{sostanza}\cdot R\cdot T}{V\cdot \pi}$</span></div>
+    </div>
+    <p class="notes-topic-intro" style="margin:8px 0 0;">Nelle formule crioscopica ed ebullioscopica compare la <b>molalità</b> m (mol soluto/kg solvente), non la molarità M. In tutte le formule i = 1 per i non elettroliti.</p>
+  </div>
+
+  <div class="notes-block">
+    <h3>Grado e coefficiente di dissociazione per tipo di soluto</h3>
     <div class="notes-table-wrap">
       <table class="notes-table">
-        <thead><tr><th>Concetto</th><th>Definizione essenziale</th></tr></thead>
+        <thead><tr><th>Tipo di soluto</th><th>Grado di dissociazione α</th><th>Coefficiente isotonico i</th><th>Esempio</th></tr></thead>
         <tbody>
-          <tr><td>Miscela omogenea</td><td>Composizione uniforme in tutto il volume (es. soluzione)</td></tr>
-          <tr><td>Miscela eterogenea</td><td>Componenti/fasi distinguibili (es. sospensione)</td></tr>
-          <tr><td>Sospensione</td><td>Particelle solide disperse in un liquido, visibili e sedimentabili</td></tr>
-          <tr><td>Colloide</td><td>Particelle di dimensioni intermedie disperse, non sedimentano (effetto Tyndall)</td></tr>
-          <tr><td>Aerosol</td><td>Particelle solide o liquide disperse in un gas</td></tr>
-          <tr><td>Elettrolita</td><td>Sostanza che in soluzione si dissocia in ioni e conduce corrente</td></tr>
-          <tr><td>Legge di Henry</td><td>La solubilità di un gas in un liquido è proporzionale alla sua pressione parziale</td></tr>
-          <tr><td>% peso/peso, peso/volume, volume/volume</td><td>g soluto/100 g soluzione; g soluto/100 mL soluzione; mL soluto/100 mL soluzione</td></tr>
-          <tr><td>Molarità (M)</td><td>Moli di soluto per litro di soluzione</td></tr>
-          <tr><td>Molalità (m)</td><td>Moli di soluto per kg di solvente</td></tr>
-          <tr><td>Frazione molare (x)</td><td>Moli di un componente / moli totali della soluzione</td></tr>
-          <tr><td>Equivalente</td><td>Quantità di sostanza che scambia una mole di cariche o protoni</td></tr>
-          <tr><td>Legge di Dalton (miscele gassose)</td><td>$P_{tot}=\sum P_i$ — vedi anche la sezione Gas; applicazione: aria inspirata/espirata</td></tr>
-          <tr><td>Proprietà colligative</td><td>Dipendono dal numero di particelle di soluto disciolte, non dalla loro natura chimica</td></tr>
-          <tr><td>Legge di Raoult</td><td>La tensione di vapore del solvente diminuisce in proporzione alla frazione molare del soluto</td></tr>
-          <tr><td>Innalzamento ebullioscopico / abbassamento crioscopico</td><td>Una soluzione bolle a temperatura più alta e congela a temperatura più bassa del solvente puro</td></tr>
-          <tr><td>Pressione osmotica (π)</td><td>Pressione necessaria per impedire il flusso netto di solvente attraverso una membrana semipermeabile; $\pi = MRT$</td></tr>
-          <tr><td>Fattore di van't Hoff (i)</td><td>Numero di particelle in cui si dissocia un elettrolita (es. $i=2$ per NaCl)</td></tr>
-          <tr><td>Osmosi</td><td>Diffusione del solvente attraverso una membrana semipermeabile verso il comparto più concentrato di soluto</td></tr>
-          <tr><td>Osmolarità / osmolalità</td><td>Concentrazione totale di particelle osmoticamente attive per litro di soluzione / per kg di solvente</td></tr>
-          <tr><td>Soluzione isotonica</td><td>Stessa osmolarità del citoplasma: nessun flusso netto d'acqua attraverso la membrana</td></tr>
-          <tr><td>Soluzione ipertonica</td><td>Osmolarità maggiore del citoplasma: la cellula perde acqua e si raggrinzisce</td></tr>
-          <tr><td>Soluzione ipotonica</td><td>Osmolarità minore del citoplasma: la cellula acquista acqua, rischio di emolisi/edema</td></tr>
+          <tr><td>Non elettrolita</td><td>0</td><td>$i=1$</td><td>Glucosio, urea</td></tr>
+          <tr><td>Elettrolita debole</td><td>$0<\alpha<1$</td><td>$1<i<n$</td><td>$CH_3COOH$ (α≈10%)</td></tr>
+          <tr><td>Elettrolita forte</td><td>1</td><td>$i=n$</td><td>NaCl (i=2), $CaCl_2$ (i=3)</td></tr>
         </tbody>
       </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Tonicità e comportamento degli eritrociti</h3>
+    <div class="notes-table-wrap">
+      <table class="notes-table">
+        <thead><tr><th>Soluzione</th><th>Osmolarità vs. citoplasma</th><th>Flusso netto d'acqua</th><th>Effetto sull'eritrocita</th></tr></thead>
+        <tbody>
+          <tr><td>Isotonica</td><td>Uguale (≈310 mosM)</td><td>Nessuno</td><td>Volume invariato</td></tr>
+          <tr><td>Ipotonica</td><td>Minore</td><td>Verso l'interno della cellula</td><td>Rigonfiamento → <b>emolisi</b></td></tr>
+          <tr><td>Ipertonica</td><td>Maggiore</td><td>Verso l'esterno della cellula</td><td>Raggrinzimento → <b>plasmolisi</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes-block">
+    <h3>Osmosi e pressione osmotica</h3>
+    <figure class="notes-diagram">
+      <svg viewBox="0 0 300 140" width="300" height="140">
+        <rect x="20" y="20" width="120" height="90" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+        <rect x="160" y="20" width="120" height="90" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+        <line x1="140" y1="15" x2="140" y2="115" stroke="#2563eb" stroke-width="2" stroke-dasharray="3,2"/>
+        <text x="80" y="12" font-size="8" fill="var(--text-muted)" text-anchor="middle">A (solvente puro)</text>
+        <text x="220" y="12" font-size="8" fill="var(--text-muted)" text-anchor="middle">B (più concentrato)</text>
+        <circle cx="45" cy="55" r="3" fill="#2563eb"/><circle cx="65" cy="80" r="3" fill="#2563eb"/><circle cx="90" cy="45" r="3" fill="#2563eb"/>
+        <circle cx="190" cy="50" r="3" fill="#2563eb"/><circle cx="210" cy="75" r="3" fill="#2563eb"/><circle cx="240" cy="40" r="3" fill="#2563eb"/>
+        <circle cx="185" cy="90" r="5" fill="#f59e0b"/><circle cx="220" cy="55" r="5" fill="#f59e0b"/><circle cx="255" cy="85" r="5" fill="#f59e0b"/><circle cx="200" cy="30" r="5" fill="#f59e0b"/>
+        <line x1="110" y1="65" x2="148" y2="65" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrS)"/>
+        <defs><marker id="arrS" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2563eb"/></marker></defs>
+      </svg>
+      <figcaption>Il solvente (punti blu) attraversa la membrana semipermeabile verso il comparto B, più concentrato di soluto (cerchi arancioni), fino a raggiungere l'equilibrio o fino a incontrare una contropressione pari a π.</figcaption>
+    </figure>
+  </div>
+
+  <div class="notes-block">
+    <h3>Esercizi commentati</h3>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 1 — coefficiente isotonico e osmolarità</div>
+      <div class="ex-statement">Calcolare l'osmolarità di una soluzione 0,10 M di $HNO_2$ (acido debole, α = 30%).</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$HNO_2$ si dissocia in 2 ioni ($H^+$ e $NO_2^-$): n = 2.</li>
+          <li><span class="step-n">2</span>$i=1+\alpha(n-1)=1+0{,}30\times(2-1)=1{,}3$</li>
+          <li><span class="step-n">3</span>$osM = M\cdot i = 0{,}10\times1{,}3$</li>
+        </ol>
+        <div class="ex-answer">osM = 0,13 osM (130 mosM)</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 2 — pressione osmotica e massa molare</div>
+      <div class="ex-statement">Una soluzione acquosa contenente 2,00 g/500 mL di insulina (non elettrolita) ha una pressione osmotica di 12,8 mmHg a 25 °C. Calcolare la massa molare dell'insulina ($R=62{,}4\ \text{L}\cdot\text{mmHg}\cdot\text{mol}^{-1}\text{K}^{-1}$).</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>Insulina non elettrolita → i = 1. $T = 25+273 = 298\ \text{K}$, $V=0{,}500\ \text{L}$.</li>
+          <li><span class="step-n">2</span>$PM = \dfrac{g_{sostanza}\cdot R\cdot T}{V\cdot \pi} = \dfrac{2{,}00\times62{,}4\times298}{0{,}500\times12{,}8}$</li>
+        </ol>
+        <div class="ex-answer">PM ≈ 5882 Da (g/mol)</div>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <div class="ex-title">Esercizio 3 — abbassamento crioscopico</div>
+      <div class="ex-statement">Calcolare l'abbassamento della temperatura di fusione di una soluzione ottenuta sciogliendo 360,0 g di glucosio $C_6H_{12}O_6$ ($PM=180\ \text{g/mol}$, non elettrolita) in 1,0 kg di acqua ($K_{cr}=1{,}76\ °\text{C}\cdot\text{m}^{-1}$).</div>
+      <details><summary>Mostra svolgimento</summary>
+        <ol class="ex-steps">
+          <li><span class="step-n">1</span>$n = \dfrac{360{,}0}{180} = 2{,}0\ \text{mol}$; molalità $m=\dfrac{2{,}0\ \text{mol}}{1{,}0\ \text{kg}}=2{,}0\ m$</li>
+          <li><span class="step-n">2</span>Glucosio non elettrolita → i = 1. $\Delta T_{cr}=K_{cr}\cdot m\cdot i = 1{,}76\times2{,}0\times1$</li>
+        </ol>
+        <div class="ex-answer">ΔT ≈ 3,52 °C</div>
+      </details>
     </div>
   </div>
 </section>
