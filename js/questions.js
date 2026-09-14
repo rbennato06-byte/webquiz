@@ -1812,6 +1812,63 @@ const QUESTIONS = [
   q:"L'unità monomerica degli acidi nucleici è il ________.",
   answer:"NUCLEOTIDE" },
 
+{ id:"bio-21", topic:"biomolecole", type:"mc",
+  q:"I carboidrati sono molecole polari la cui formula generale approssimata è:",
+  options:["$CH_2O$","$C_2H_5OH$","$COOH$","$NH_2CHRCOOH$","$C_nH_{2n}$"], correct:0 },
+
+{ id:"bio-22", topic:"biomolecole", type:"mc",
+  q:"I gruppi funzionali caratteristici dei carboidrati sono:",
+  options:["Il gruppo carbonilico (aldeidico o chetonico) e il gruppo ossidrilico","Il gruppo amminico e il gruppo carbossilico","Il gruppo fosfato e la base azotata","Il gruppo solfidrilico","Il gruppo carbossilico soltanto"], correct:0 },
+
+{ id:"bio-23", topic:"biomolecole", type:"mc",
+  q:"I monosaccaridi vengono classificati in base alla posizione del gruppo carbonilico in:",
+  options:["Aldosi e chetosi","Furani e pirani","Alfa e beta","Ciclici e lineari","Riducenti e non riducenti"], correct:0 },
+
+{ id:"bio-24", topic:"biomolecole", type:"mc",
+  q:"In soluzione acquosa, un monosaccaride come il glucosio ciclizza spontaneamente formando un centro chirale addizionale, detto:",
+  options:["Carbonio anomerico","Carbonio asimmetrico primario","Carbonio anomerico beta soltanto","Centro racemico","Carbonio terminale"], correct:0 },
+
+{ id:"bio-25", topic:"biomolecole", type:"mc",
+  q:"I due stereoisomeri che il glucosio può assumere dopo la ciclizzazione, a seconda dell'orientazione dell'ossidrile sul carbonio anomerico, si chiamano:",
+  options:["Anomero α e anomero β","Isomero D e isomero L","Forma cis e forma trans","Aldosio e chetosio","Furanosio e glucosio"], correct:0 },
+
+{ id:"bio-26", topic:"biomolecole", type:"mc",
+  q:"Il legame che unisce due monosaccaridi, formatosi con perdita di una molecola d'acqua, si chiama:",
+  options:["Legame glicosidico","Legame peptidico","Legame fosfodiesterico","Legame estere semplice","Legame a idrogeno"], correct:0 },
+
+{ id:"bio-27", topic:"biomolecole", type:"mc",
+  q:"Il disaccaride saccarosio (zucchero da cucina) è formato dall'unione, tramite legame α1-2, di:",
+  options:["Glucosio e fruttosio","Glucosio e galattosio","Due molecole di glucosio","Galattosio e fruttosio","Due molecole di fruttosio"], correct:0 },
+
+{ id:"bio-28", topic:"biomolecole", type:"mc",
+  q:"Il disaccaride lattosio, presente nel latte, è costituito da:",
+  options:["Galattosio legato con legame β1-4 al glucosio","Due molecole di glucosio legate α1-4","Glucosio e fruttosio legati α1-2","Due molecole di galattosio","Fruttosio legato al galattosio"], correct:0 },
+
+{ id:"bio-29", topic:"biomolecole", type:"mc",
+  q:"Gli oligosaccaridi, legati a proteine o lipidi di membrana per formare rispettivamente glicoproteine e glicolipidi, svolgono principalmente una funzione di:",
+  options:["Riconoscimento cellulare (es. determinazione dei gruppi sanguigni nel sistema AB0)","Riserva energetica primaria","Catalisi enzimatica","Trasmissione dell'informazione genetica","Trasporto di ossigeno"], correct:0 },
+
+{ id:"bio-30", topic:"biomolecole", type:"mc",
+  q:"I polisaccaridi costituiti da un unico tipo di monosaccaride ripetuto si dicono:",
+  options:["Omopolisaccaridi","Eteropolisaccaridi","Oligosaccaridi","Disaccaridi","Glicoproteine"], correct:0 },
+
+{ id:"bio-31", topic:"biomolecole", type:"mc",
+  q:"L'amido, polisaccaride di riserva delle piante, è costituito da:",
+  options:["Amilosio (catena lineare, legami α1-4) e amilopectina (ramificata, legami α1-4 con ramificazioni α1-6)","Solo amilosio ramificato","Catene di glucosio unite da legami β1-4","Un'unica catena non ramificata di fruttosio","Unità alternate di glucosio e galattosio"], correct:0 },
+
+{ id:"bio-32", topic:"biomolecole", type:"mc",
+  q:"Il glicogeno, principale polisaccaride di riserva energetica negli animali, è accumulato soprattutto in:",
+  options:["Fegato e muscoli","Tessuto adiposo ed encefalo","Reni e polmoni","Sangue e linfa","Pelle e ossa"], correct:0 },
+
+{ id:"bio-33", topic:"biomolecole", type:"mc",
+  q:"La cellulosa, a differenza dell'amido e del glicogeno, è formata da unità di glucosio unite da legami:",
+  options:["β1-4, che generano una catena lineare rigida non digeribile dall'uomo","α1-4, facilmente digeribili","α1-6, tipici delle ramificazioni","Peptidici","Fosfodiesterici"], correct:0,
+  explain:"L'uomo non possiede l'enzima in grado di idrolizzare il legame β1-4 della cellulosa, che per questo risulta indigeribile (fibra alimentare)." },
+
+{ id:"bio-34", topic:"biomolecole", type:"fill",
+  q:"L'unità più semplice dei carboidrati, non ulteriormente idrolizzabile, è il ________.",
+  answer:"MONOSACCARIDE" },
+
 /* ============================= AMMINOACIDI E PROTEINE ============================= */
 
 { id:"prot-01", topic:"proteine", type:"mc",
@@ -1950,6 +2007,79 @@ const QUESTIONS = [
   q:"Gli amminoacidi non polari come leucina e valina tendono a raggrupparsi all'interno di una proteina ripiegata, formando un core ________.",
   answer:"IDROFOBICO" },
 
+{ id:"prot-34", topic:"proteine", type:"mc",
+  q:"Gli amminoacidi con catena laterale prevalentemente idrofobica, che nelle proteine globulari si trovano spesso all'interno della molecola, si dicono:",
+  options:["Apolari (es. glicina, alanina, valina, leucina, isoleucina, metionina, prolina)","Polari carichi negativamente","Polari carichi positivamente","Aromatici soltanto","Essenziali"], correct:0 },
+
+{ id:"prot-35", topic:"proteine", type:"mc",
+  q:"Gli amminoacidi in grado di interagire con l'acqua e di formare legami idrogeno, spesso esposti sulla superficie della proteina, sono detti:",
+  options:["Polari non carichi (es. serina, treonina, asparagina, glutammina, tirosina, cisteina)","Apolari","Basici","Essenziali soltanto","Acidi"], correct:0 },
+
+{ id:"prot-36", topic:"proteine", type:"mc",
+  q:"Gli amminoacidi carichi negativamente a pH fisiologico, come l'acido aspartico e l'acido glutammico, si dicono amminoacidi:",
+  options:["Acidi","Basici","Apolari","Aromatici","Essenziali"], correct:0 },
+
+{ id:"prot-37", topic:"proteine", type:"mc",
+  q:"Lisina, arginina e istidina, capaci di accettare protoni e presentare carica positiva, appartengono alla classe degli amminoacidi:",
+  options:["Basici","Acidi","Apolari","Polari non carichi","Aromatici soltanto"], correct:0 },
+
+{ id:"prot-38", topic:"proteine", type:"mc",
+  q:"Gli amminoacidi essenziali sono quelli che:",
+  options:["L'organismo non è in grado di sintetizzare e devono essere assunti con la dieta","Vengono sintetizzati a partire da altri intermedi metabolici","Non partecipano mai alla struttura delle proteine","Sono presenti solo negli organismi vegetali","Non possiedono un centro chirale"], correct:0,
+  explain:"Nell'uomo sono nove: fenilalanina, valina, treonina, triptofano, metionina, leucina, isoleucina, lisina e istidina." },
+
+{ id:"prot-39", topic:"proteine", type:"mc",
+  q:"Un amminoacido si definisce anfotero perché:",
+  options:["Possiede sia un gruppo acido (-COOH) sia un gruppo basico (-NH₂) e può comportarsi come acido o come base a seconda del pH","Non ha mai carica netta","Non può dissociarsi in acqua","È sempre carico positivamente","Non presenta un gruppo carbossilico"], correct:0 },
+
+{ id:"prot-40", topic:"proteine", type:"mc",
+  q:"Al pH fisiologico, detto punto isoelettrico, un amminoacido si trova prevalentemente nella forma di:",
+  options:["Zwitterione, con gruppo carbossilico dissociato (-COO⁻) e gruppo amminico protonato (-NH₃⁺), a carica netta nulla","Forma completamente anionica, a carica netta -1","Forma completamente cationica, a carica netta +1","Forma neutra priva di cariche parziali","Forma radicalica"], correct:0 },
+
+{ id:"prot-41", topic:"proteine", type:"mc",
+  q:"Il 'dogma di Anfisen', formulato in seguito a esperimenti sulla ribonucleasi, afferma che:",
+  options:["Tutta l'informazione necessaria per il corretto ripiegamento tridimensionale di una proteina è già contenuta nella sua sequenza di amminoacidi (struttura primaria)", "Il ripiegamento di una proteina richiede sempre un manuale di istruzioni esterno", "Le proteine denaturate non possono mai recuperare la loro struttura originale", "Il ripiegamento proteico dipende esclusivamente dalla temperatura", "Ogni proteina ha una struttura primaria diversa da quella codificata dal gene"], correct:0 },
+
+{ id:"prot-42", topic:"proteine", type:"mc",
+  q:"Lo chaperone molecolare Hsp70 (heat shock protein 70) assiste il ripiegamento di una proteina nascente:",
+  options:["Legandosi temporaneamente ai tratti idrofobici esposti mentre la catena esce dal ribosoma, impedendo aggregazioni scorrette","Tagliando la catena polipeptidica in frammenti più piccoli","Isolando la proteina in un compartimento cavo chiuso da un coperchio","Aggiungendo gruppi fosfato alla catena nascente","Degradando la proteina non ripiegata correttamente"], correct:0 },
+
+{ id:"prot-43", topic:"proteine", type:"mc",
+  q:"Il sistema chaperonina GroEL/GroES assiste il folding di proteine che faticano a ripiegarsi da sole:",
+  options:["Isolandole in una cavità simile a un 'barile' chiuso da un coperchio, dove possono esplorare le conformazioni possibili usando energia (ATP)","Legandosi solo ai tratti idrofilici della proteina","Tagliando la proteina in pezzi più piccoli e riassemblandola casualmente","Marcandola con ubiquitina per la degradazione","Trasportandola direttamente al nucleo"], correct:0 },
+
+{ id:"prot-44", topic:"proteine", type:"mc",
+  q:"Molte proteine vengono sintetizzate come precursori inattivi (pro-proteine): un esempio è la proinsulina, che contiene un tratto in più (il peptide C) rimosso da un taglio proteolitico prima che la proteina assuma la forma attiva dell'ormone. Questo meccanismo serve principalmente a:",
+  options:["Evitare che la proteina sia già attiva, e quindi potenzialmente dannosa, all'interno della cellula che la produce","Aumentare la stabilità termica della proteina","Facilitarne il trasporto nel nucleo","Aumentare la sua massa molecolare in modo permanente","Impedirne la degradazione da parte del proteasoma"], correct:0 },
+
+{ id:"prot-45", topic:"proteine", type:"mc",
+  q:"I ponti disolfuro tra residui di cisteina si formano tipicamente:",
+  options:["Solo in ambiente ossidante, come il lume del reticolo endoplasmatico, e sono quindi frequenti nelle proteine extracellulari o di membrana","Solo nel citoplasma, ambiente riducente","In qualunque compartimento cellulare indifferentemente","Solo nei mitocondri","Solo durante la trascrizione del gene"], correct:0 },
+
+{ id:"prot-46", topic:"proteine", type:"mc",
+  q:"Le proteine destinate al reticolo endoplasmatico possiedono, all'estremità N-terminale, una breve sequenza di amminoacidi chiamata:",
+  options:["Peptide segnale, riconosciuto dalla particella SRP (Signal Recognition Particle)","Codone di stop","Anticodone","Peptide C","Cappuccio 5'"], correct:0 },
+
+{ id:"prot-47", topic:"proteine", type:"mc",
+  q:"Le proteine mal ripiegate, riconosciute dal sistema di sorveglianza cellulare, vengono marcate per la degradazione tramite legame covalente ripetuto a piccole molecole di ubiquitina, in una cascata a tre enzimi indicati come:",
+  options:["E1, E2, E3","A1, A2, A3","P1, P2, P3","K1, K2, K3","U1, U2, U3"], correct:0 },
+
+{ id:"prot-48", topic:"proteine", type:"mc",
+  q:"La catena di poliubiquitina che marca una proteina bersaglio per la degradazione viene riconosciuta ed elaborata da:",
+  options:["Il proteasoma 26S","I ribosomi liberi","Il reticolo endoplasmatico liscio","I perossisomi","Il nucleolo"], correct:0 },
+
+{ id:"prot-49", topic:"proteine", type:"mc",
+  q:"In base alla forma generale e alla funzione biologica, le proteine si distinguono in:",
+  options:["Proteine fibrose (allungate, spesso insolubili, funzioni strutturali, es. collagene, cheratina) e proteine globulari (compatte, solubili, funzioni dinamiche, es. emoglobina, enzimi)","Solo proteine di membrana e proteine citosoliche","Proteine acide e proteine basiche soltanto","Proteine primarie e proteine secondarie","Proteine essenziali e non essenziali"], correct:0 },
+
+{ id:"prot-50", topic:"proteine", type:"fill",
+  q:"A pH molto acido, un amminoacido assume la forma cationica, con carica netta pari a ________.",
+  answer:"+1" },
+
+{ id:"prot-51", topic:"proteine", type:"fill",
+  q:"L'addizione di catene di zuccheri alla superficie di una proteina, che ne favorisce il riconoscimento, la stabilità e la funzione, si chiama ________.",
+  answer:"GLICOSILAZIONE" },
+
 /* ============================= ENZIMI E METABOLISMO ============================= */
 
 { id:"enz-01", topic:"enzimi", type:"mc",
@@ -2033,6 +2163,59 @@ const QUESTIONS = [
   q:"Gli enzimi che catalizzano il trasferimento di un gruppo fosfato da ATP a un substrato sono detti ________.",
   answer:"CHINASI" },
 
+{ id:"enz-21", topic:"enzimi", type:"mc",
+  q:"Molti enzimi necessitano, per la loro attività catalitica, di molecole più piccole chiamate cofattori, spesso costituite da:",
+  options:["Ioni metallici (es. $Zn^{2+}$, $Mg^{2+}$, $Fe^{2+}$), che stabilizzano cariche nel sito attivo o partecipano a trasferimenti di elettroni","Solo altre proteine","Solo carboidrati semplici","Solo acidi grassi","Solo acqua"], correct:0 },
+
+{ id:"enz-22", topic:"enzimi", type:"mc",
+  q:"I coenzimi organici, come il NADH e il FAD/FADH₂, svolgono principalmente la funzione di:",
+  options:["Trasportare elettroni nelle reazioni di ossidoriduzione","Fornire energia meccanica diretta","Formare il sito attivo dell'enzima da soli","Sostituire il substrato nella reazione","Inibire irreversibilmente l'enzima"], correct:0 },
+
+{ id:"enz-23", topic:"enzimi", type:"mc",
+  q:"Se manca il coenzima necessario, ad esempio per una carenza vitaminica, un enzima può risultare:",
+  options:["Strutturalmente intatto ma funzionalmente inattivo","Immediatamente degradato dal proteasoma","Più attivo del normale","Trasformato in un inibitore competitivo","Privo di struttura primaria"], correct:0 },
+
+{ id:"enz-24", topic:"enzimi", type:"mc",
+  q:"Nel modello 'chiave-serratura' dell'interazione enzima-substrato:",
+  options:["Il sito attivo ha una forma rigida, complementare a quella del substrato","Il sito attivo cambia forma per adattarsi al substrato","L'enzima si lega solo a substrati carichi negativamente","Non è previsto alcun legame specifico enzima-substrato","Il substrato modifica permanentemente la struttura primaria dell'enzima"], correct:0 },
+
+{ id:"enz-25", topic:"enzimi", type:"mc",
+  q:"Nel modello dell'adattamento indotto (induced fit):",
+  options:["Il sito attivo dell'enzima si adatta alla forma del substrato al momento del legame","Il substrato deve avere già una forma identica al sito attivo","Non avviene alcun cambiamento conformazionale","L'enzima perde la sua struttura terziaria","Il legame avviene solo in assenza di cofattori"], correct:0 },
+
+{ id:"enz-26", topic:"enzimi", type:"mc",
+  q:"Il pH influenza l'attività enzimatica principalmente perché:",
+  options:["Determina lo stato di protonazione dei gruppi chimici coinvolti nel legame col substrato, e un pH troppo diverso dall'optimum può denaturare l'enzima","Non ha alcun effetto sull'enzima","Modifica solo la temperatura della soluzione","Cambia la sequenza amminoacidica dell'enzima","Agisce solo sugli enzimi extracellulari"], correct:0 },
+
+{ id:"enz-27", topic:"enzimi", type:"mc",
+  q:"Aumentando la temperatura oltre l'optimum di un enzima, l'attività enzimatica:",
+  options:["Crolla, perché l'energia termica rompe i legami deboli che tengono in piedi la struttura terziaria, denaturando la proteina","Continua ad aumentare indefinitamente","Resta sempre costante","Aumenta solo se l'enzima ha cofattori metallici","Diventa indipendente dalla concentrazione di substrato"], correct:0 },
+
+{ id:"enz-28", topic:"enzimi", type:"mc",
+  q:"Aumentando la concentrazione di substrato oltre un certo valore, la velocità di una reazione enzimatica:",
+  options:["Raggiunge un massimo (Vmax) perché tutti i siti attivi disponibili sono occupati contemporaneamente","Continua ad aumentare linearmente senza limite","Diminuisce sempre","Diventa negativa","Si azzera immediatamente"], correct:0 },
+
+{ id:"enz-29", topic:"enzimi", type:"mc",
+  q:"Nell'inibizione competitiva, l'inibitore:",
+  options:["Assomiglia chimicamente al substrato e compete con esso per il sito attivo, senza essere trasformato","Si lega sempre in un sito diverso dal sito attivo","Non può mai essere spiazzato aumentando la concentrazione di substrato","Distrugge permanentemente il sito attivo","Aumenta sempre la Vmax dell'enzima"], correct:0 },
+
+{ id:"enz-30", topic:"enzimi", type:"mc",
+  q:"Nell'inibizione non competitiva, l'inibitore:",
+  options:["Si lega in un sito diverso dal sito attivo, deformando leggermente la struttura terziaria e alterando la conformazione del sito attivo a distanza","Compete direttamente con il substrato per lo stesso sito","Viene sempre spiazzato aumentando la concentrazione di substrato","Non ha alcun effetto sulla struttura dell'enzima","Agisce solo sui cofattori metallici"], correct:0 },
+
+{ id:"enz-31", topic:"enzimi", type:"mc",
+  q:"Nella regolazione allosterica, un enzima 'chiave' all'inizio di una via metabolica viene tipicamente inibito da:",
+  options:["Il prodotto finale della via stessa, tramite legame a un sito allosterico (feedback negativo)", "Il primo substrato della via", "Un coenzima non correlato", "Un gene regolatore direttamente", "La temperatura corporea"], correct:0,
+  explain:"Questo meccanismo di controllo intelligente evita sprechi di risorse quando il prodotto finale è già presente in quantità sufficiente." },
+
+{ id:"enz-32", topic:"enzimi", type:"fill",
+  q:"Le molecole organiche come il NADH, che assistono l'attività catalitica di molti enzimi trasportando elettroni, si chiamano ________.",
+  answer:"COENZIMI" },
+
+{ id:"enz-33", topic:"enzimi", type:"fill",
+  q:"Un inibitore che si lega allo stesso sito attivo del substrato, competendo con esso, dà luogo a un'inibizione di tipo ________.",
+  answer:"COMPETITIVA" },
+
 /* ============================= LIPIDI ============================= */
 
 { id:"lip-01", topic:"lipidi", type:"mc",
@@ -2115,6 +2298,67 @@ const QUESTIONS = [
 { id:"lip-20", topic:"lipidi", type:"fill",
   q:"L'idrolisi del $PI(4,5)P_2$ produce due principali messaggeri chimici, tra cui il diacilglicerolo e l'________.",
   answer:"IP3", answerAlt:["INOSITOLO TRIFOSFATO","IP₃"] },
+
+{ id:"lip-21", topic:"lipidi", type:"mc",
+  q:"Nella nomenclatura omega degli acidi grassi polinsaturi, il numero (es. omega-3, omega-6) indica:",
+  options:["La posizione del primo doppio legame, contando dal metile terminale della catena","Il numero totale di doppi legami presenti","Il numero di atomi di carbonio della catena","La posizione del gruppo carbossilico","Il numero di atomi di ossigeno"], correct:0 },
+
+{ id:"lip-22", topic:"lipidi", type:"mc",
+  q:"L'acido linoleico (serie omega-6) e l'acido linolenico (serie omega-3) sono definiti acidi grassi essenziali perché:",
+  options:["L'organismo umano non è in grado di sintetizzarli e devono essere assunti con la dieta","Sono gli unici acidi grassi presenti nelle membrane cellulari","Vengono sintetizzati esclusivamente dal fegato","Non hanno alcuna funzione biologica nota","Sono sempre saturi"], correct:0 },
+
+{ id:"lip-23", topic:"lipidi", type:"mc",
+  q:"In base alla funzione svolta nell'organismo, i lipidi si distinguono in:",
+  options:["Lipidi di deposito (es. trigliceridi negli adipociti), lipidi strutturali (membrane) e lipidi regolatori (precursori di vitamine e ormoni)","Solo lipidi saturi e insaturi","Solo lipidi animali e vegetali","Lipidi polari e lipidi acidi soltanto","Lipidi essenziali e lipidi tossici"], correct:0 },
+
+{ id:"lip-24", topic:"lipidi", type:"mc",
+  q:"In base al numero di acidi grassi esterificati con il glicerolo, si distinguono, in ordine crescente:",
+  options:["Monogliceride, digliceride, trigliceride","Trigliceride, digliceride, monogliceride","Solo mono- e trigliceridi","Digliceride, trigliceride, tetragliceride","Non esiste tale classificazione"], correct:0 },
+
+{ id:"lip-25", topic:"lipidi", type:"mc",
+  q:"Poiché i lipidi sono poco solubili in acqua, per essere trasportati nel sangue devono associarsi a una proteina, formando complessi chiamati:",
+  options:["Lipoproteine","Glicoproteine","Metalloproteine","Fosfoproteine","Nucleoproteine"], correct:0 },
+
+{ id:"lip-26", topic:"lipidi", type:"mc",
+  q:"Gli acidi grassi liberi non esterificati (NEFA), mobilizzati dal tessuto adiposo durante il digiuno o l'esercizio fisico, circolano nel sangue legati principalmente a:",
+  options:["L'albumina","L'emoglobina","Il colesterolo","Il glicogeno","Le immunoglobuline"], correct:0 },
+
+{ id:"lip-27", topic:"lipidi", type:"mc",
+  q:"I chilomicroni, la lipoproteina di maggiori dimensioni, hanno origine intestinale e trasportano principalmente:",
+  options:["Trigliceridi di origine alimentare verso i tessuti", "Colesterolo endogeno verso il fegato", "Trigliceridi endogeni sintetizzati dal fegato", "Solo fosfolipidi", "Solo acidi grassi liberi"], correct:0,
+  explain:"I chilomicroni sono presenti nel sangue solo dopo i pasti." },
+
+{ id:"lip-28", topic:"lipidi", type:"mc",
+  q:"Le VLDL (lipoproteine a densità molto bassa), di origine epatica, trasportano principalmente:",
+  options:["Trigliceridi endogeni sintetizzati dal fegato", "Trigliceridi alimentari", "Solo colesterolo", "Proteine plasmatiche", "Glucosio"], correct:0 },
+
+{ id:"lip-29", topic:"lipidi", type:"mc",
+  q:"Le LDL (lipoproteine a bassa densità), spesso chiamate 'colesterolo cattivo', trasportano il colesterolo:",
+  options:["Dal fegato ai tessuti, ed è responsabile del danno arterioso se in eccesso","Dai tessuti al fegato, per essere eliminato","Solo dall'intestino al fegato","Solo dopo i pasti","Esclusivamente ai reni"], correct:0 },
+
+{ id:"lip-30", topic:"lipidi", type:"mc",
+  q:"Le HDL (lipoproteine ad alta densità), spesso chiamate 'colesterolo buono', hanno la funzione di:",
+  options:["Trasportare il colesterolo in eccesso dai tessuti verso il fegato per la sua eliminazione","Trasportare i trigliceridi alimentari ai tessuti subito dopo i pasti","Danneggiare le pareti arteriose","Sintetizzare acidi grassi nel fegato","Trasportare glucosio nei muscoli"], correct:0 },
+
+{ id:"lip-31", topic:"lipidi", type:"mc",
+  q:"La β-ossidazione, il principale processo di degradazione degli acidi grassi per produrre energia, avviene principalmente:",
+  options:["Nella matrice mitocondriale","Nel nucleo","Nel reticolo endoplasmatico liscio","Nel citosol","Nell'apparato del Golgi"], correct:0 },
+
+{ id:"lip-32", topic:"lipidi", type:"mc",
+  q:"Poiché l'acil-CoA non può attraversare la membrana mitocondriale interna, il suo ingresso nel mitocondrio per la β-ossidazione è mediato da una molecola 'navetta' chiamata:",
+  options:["Carnitina","Ubiquitina","Coenzima A soltanto","Albumina","Clatrina"], correct:0 },
+
+{ id:"lip-33", topic:"lipidi", type:"mc",
+  q:"L'enzima CPT-I (carnitina palmitoiltransferasi I), localizzato sulla membrana mitocondriale esterna, è fondamentale per:",
+  options:["Regolare l'ingresso degli acidi grassi nel mitocondrio", "Sintetizzare acidi grassi de novo", "Degradare il glicogeno", "Trasportare il colesterolo nel sangue", "Formare i ponti disolfuro delle lipoproteine"], correct:0 },
+
+{ id:"lip-34", topic:"lipidi", type:"mc",
+  q:"Al termine della β-ossidazione, l'acetil-CoA prodotto entra nel ciclo di Krebs, mentre il NADH e il $FADH_2$ prodotti cedono i loro elettroni:",
+  options:["Alla catena respiratoria, permettendo la produzione di ATP","Direttamente al glucosio","Alla carnitina, per essere riciclati","Ai ribosomi mitocondriali","All'acido piruvico"], correct:0 },
+
+{ id:"lip-35", topic:"lipidi", type:"fill",
+  q:"La sostanza che funziona da 'navetta' per il trasporto degli acidi grassi attivati all'interno del mitocondrio si chiama ________.",
+  answer:"CARNITINA" },
 
 /* ============================= MEMBRANE CELLULARI ============================= */
 
@@ -2469,6 +2713,34 @@ const QUESTIONS = [
   q:"I batteri si riproducono in modo asessuato tramite un processo chiamato scissione ________.",
   answer:"BINARIA" },
 
+{ id:"proc-32", topic:"procarioti", type:"mc",
+  q:"I mesosomi, invaginazioni della membrana plasmatica batterica, hanno la funzione di:",
+  options:["Aumentare la superficie disponibile per la respirazione e la replicazione del DNA","Racchiudere il materiale genetico in un compartimento separato","Sintetizzare proteine di membrana","Produrre energia luminosa","Digerire macromolecole extracellulari"], correct:0 },
+
+{ id:"proc-33", topic:"procarioti", type:"mc",
+  q:"I plasmidi sono:",
+  options:["Molecole di DNA extracromosomico circolare, a replicazione indipendente, non essenziali alla sopravvivenza ma spesso vantaggiose (es. resistenza agli antibiotici)","Il cromosoma principale del batterio","Organelli membranosi tipici degli eucarioti","Proteine strutturali della parete cellulare","RNA messaggeri batterici"], correct:0 },
+
+{ id:"proc-34", topic:"procarioti", type:"mc",
+  q:"Nella scissione binaria batterica, la replicazione del cromosoma circolare parte da un'unica origine (ori) e procede:",
+  options:["In modo bidirezionale, tramite due forcelle, fino al punto opposto (ter)","In modo unidirezionale soltanto","Da più origini simultanee sempre","Solo dopo la formazione del setto","Senza l'intervento di alcuna DNA polimerasi"], correct:0 },
+
+{ id:"proc-35", topic:"procarioti", type:"mc",
+  q:"La proteina batterica FtsZ, omologa procariotica della tubulina, è responsabile della:",
+  options:["Formazione dell'anello contrattile a livello del futuro punto di divisione cellulare","Replicazione del DNA plasmidico","Sintesi della parete cellulare soltanto","Colorazione di Gram","Formazione dei pili sessuali"], correct:0 },
+
+{ id:"proc-36", topic:"procarioti", type:"mc",
+  q:"Nella fase finale della scissione binaria, detta citodieresi:",
+  options:["L'anello contrattile si restringe e membrana e parete si chiudono verso l'interno, separando il citoplasma in due cellule figlie geneticamente identiche","La cellula si arresta definitivamente senza dividersi","Il DNA viene degradato","Si formano solo mesosomi","Avviene la coniugazione con un'altra cellula"], correct:0 },
+
+{ id:"proc-37", topic:"procarioti", type:"fill",
+  q:"Le invaginazioni della membrana plasmatica batterica che aumentano la superficie per la respirazione e la replicazione del DNA si chiamano ________.",
+  answer:"MESOSOMI" },
+
+{ id:"proc-38", topic:"procarioti", type:"fill",
+  q:"Il DNA extracromosomico circolare batterico, non essenziale ma spesso vantaggioso (es. geni di resistenza agli antibiotici), è detto ________.",
+  answer:"PLASMIDE", answerAlt:["PLASMIDI"] },
+
 /* ============================= VIRUS E CICLI REPLICATIVI ============================= */
 
 { id:"vir-01", topic:"virus", type:"mc",
@@ -2573,6 +2845,79 @@ const QUESTIONS = [
   q:"I virus che infettano specificamente i batteri sono detti ________ (o fagi).",
   answer:"BATTERIOFAGI" },
 
+{ id:"vir-26", topic:"virus", type:"mc",
+  q:"Lo schema di classificazione di Baltimore raggruppa i virus in base a:",
+  options:["Quanti e quali passaggi servono per arrivare dal genoma virale a un mRNA funzionante","La sola forma del capside","Le sole dimensioni del virione","Il solo tipo di cellula ospite infettata","La presenza o assenza di envelope soltanto"], correct:0,
+  explain:"Il criterio è centrato sull'mRNA perché i ribosomi leggono solo RNA a singolo filamento con polarità positiva, l'unico vero punto di contatto obbligato tra genoma virale e macchinario cellulare." },
+
+{ id:"vir-27", topic:"virus", type:"mc",
+  q:"Un filamento di acido nucleico virale si definisce a polarità positiva quando:",
+  options:["Ha la stessa sequenza dell'mRNA e può essere tradotto direttamente","È complementare all'mRNA e deve essere trascritto prima di poter essere tradotto","Non contiene informazione genetica","È sempre a doppio filamento","Può essere letto solo dalla trascrittasi inversa"], correct:0 },
+
+{ id:"vir-28", topic:"virus", type:"mc",
+  q:"Nella classificazione di Baltimore, i retrovirus (es. HIV), dotati di genoma a RNA a singolo filamento e dell'enzima trascrittasi inversa, appartengono alla classe:",
+  options:["VI","I","III","IV","VII"], correct:0 },
+
+{ id:"vir-29", topic:"virus", type:"mc",
+  q:"Nella classificazione di Baltimore, virus a DNA a doppio filamento come Adenovirus e Herpesvirus appartengono alla classe:",
+  options:["I","IV","V","VI","VII"], correct:0 },
+
+{ id:"vir-30", topic:"virus", type:"mc",
+  q:"Le sei fasi principali del ciclo replicativo di un virus eucariotico, nel loro ordine, sono:",
+  options:["Attacco, penetrazione, liberazione dell'acido nucleico, replicazione e biosintesi, assemblaggio, rilascio","Rilascio, attacco, penetrazione, assemblaggio, biosintesi, liberazione","Penetrazione, attacco, assemblaggio, rilascio, biosintesi, liberazione","Biosintesi, attacco, liberazione, rilascio, penetrazione, assemblaggio","Assemblaggio, penetrazione, attacco, rilascio, biosintesi, liberazione"], correct:0 },
+
+{ id:"vir-31", topic:"virus", type:"mc",
+  q:"La penetrazione di un virus con envelope nella cellula ospite può avvenire per fusione (processo pH-indipendente, in cui l'involucro virale si fonde con la membrana plasmatica) oppure per:",
+  options:["Endocitosi (processo pH-dipendente, mediata da una vescicola rivestita di clatrina)","Osmosi diretta","Diffusione semplice attraverso la parete cellulare","Fagocitosi da parte del virus stesso","Trasporto attivo ATP-dipendente del virus"], correct:0 },
+
+{ id:"vir-32", topic:"virus", type:"mc",
+  q:"La fase del ciclo virale in cui le proteine capsidiche vengono degradate e il genoma virale viene liberato nel citoplasma è detta:",
+  options:["Uncoating (liberazione dell'acido nucleico)","Attacco","Assemblaggio","Gemmazione","Lisogenia"], correct:0 },
+
+{ id:"vir-33", topic:"virus", type:"mc",
+  q:"L'auto-assemblaggio dei nuovi virioni, dopo la sintesi di acido nucleico e proteine virali, è favorito da proteine chiamate:",
+  options:["Chaperonine","Integrasi","Topoisomerasi","Primasi","Ligasi"], correct:0 },
+
+{ id:"vir-34", topic:"virus", type:"mc",
+  q:"I virus dotati di involucro membranoso vengono tipicamente rilasciati dalla cellula ospite tramite:",
+  options:["Gemmazione o esocitosi","Solo ed esclusivamente lisi cellulare","Fagocitosi","Scissione binaria","Coniugazione"], correct:0 },
+
+{ id:"vir-35", topic:"virus", type:"mc",
+  q:"In alcune cellule dette 'non permissive', l'infezione virale può innescare una trasformazione cellulare con crescita incontrollata e potenziale di crescita prolungato, detta:",
+  options:["Immortalizzazione","Lisogenia","Uncoating","Gemmazione","Sporulazione"], correct:0 },
+
+{ id:"vir-36", topic:"virus", type:"mc",
+  q:"I virus oncogeni 'trasformatori' (oncogeni diretti), come alcuni ceppi ad alto rischio di HPV, favoriscono il cancro principalmente perché:",
+  options:["Possiedono geni che codificano proteine virali capaci di interferire direttamente con il controllo del ciclo cellulare e la stabilità genomica","Non hanno alcuna interazione con la cellula ospite","Causano solo infezioni acute autolimitanti","Non sono mai in grado di integrarsi nel genoma ospite","Agiscono esclusivamente per via extracellulare"], correct:0 },
+
+{ id:"vir-37", topic:"virus", type:"mc",
+  q:"I virus oncogeni 'non trasformanti' (oncogeni indiretti), come HCV e HBV, favoriscono il cancro (es. carcinoma epatocellulare) principalmente:",
+  options:["Creando nel tempo un contesto patologico favorevole, con infiammazione cronica e cicli ripetuti di danno e rigenerazione tissutale","Tramite un oncogene virale dominante diretto","Solo tramite trascrittasi inversa","Solo per contatto diretto con il DNA ospite","Non essendo in alcun modo associati a neoplasie"], correct:0 },
+
+{ id:"vir-38", topic:"virus", type:"mc",
+  q:"I geni v-src, v-ras e v-myc, trasportati da alcuni retrovirus acutamente trasformanti, derivano originariamente da:",
+  options:["Proto-oncogeni cellulari (c-onc), acquisiti dal virus durante cicli di infezione e ricombinazione con il genoma ospite","Geni batterici","Sequenze non codificanti del genoma virale","Geni oppressori tumorali mutati soltanto nell'ospite","Frammenti di rRNA"], correct:0 },
+
+{ id:"vir-39", topic:"virus", type:"mc",
+  q:"Il genoma di un retrovirus come HIV contiene almeno tre geni principali: gag (proteine strutturali interne), env (proteine dell'envelope) e:",
+  options:["Pol (proteine enzimatiche: trascrittasi inversa, proteasi, integrasi)","Tat soltanto","LTR","Rev soltanto","Ori"], correct:0 },
+
+{ id:"vir-40", topic:"virus", type:"mc",
+  q:"Le sequenze LTR (long terminal repeats), presenti alle estremità del DNA provirale integrato di un retrovirus, sono fondamentali per:",
+  options:["Il controllo della trascrizione virale, contenendo siti promotori e enhancer","Il taglio del capside","La sintesi del solo RNA ribosomiale","La colorazione di Gram","La formazione dei pili batterici"], correct:0 },
+
+{ id:"vir-41", topic:"virus", type:"mc",
+  q:"Nel ciclo litico di un batteriofago, le proteine fagiche sintetizzate nella prima parte del ciclo (early proteins) servono, tra l'altro, a:",
+  options:["Degradare il DNA della cellula ospite e modificare l'RNA polimerasi batterica per favorire l'espressione dei geni fagici","Assemblare direttamente il capside maturo","Lisare immediatamente la cellula","Integrare il profago nel cromosoma batterico","Sintetizzare la parete cellulare batterica"], correct:0 },
+
+{ id:"vir-42", topic:"virus", type:"mc",
+  q:"Nel ciclo lisogenico, le proteine di repressione prodotte da pochi geni del profago:",
+  options:["Impediscono la trascrizione di tutti gli altri geni del profago, mantenendolo silente","Attivano immediatamente il ciclo litico","Distruggono il cromosoma batterico","Vengono espresse solo durante la lisi","Non hanno alcuna funzione regolatoria"], correct:0 },
+
+{ id:"vir-43", topic:"virus", type:"fill",
+  q:"Lo schema di classificazione dei virus basato sui passaggi necessari per produrre mRNA funzionante a partire dal genoma virale è detto schema di ________.",
+  answer:"BALTIMORE" },
+
 /* ============================= ACIDI NUCLEICI E CROMATINA ============================= */
 
 { id:"acnu-01", topic:"acidinucleici", type:"mc",
@@ -2646,6 +2991,172 @@ const QUESTIONS = [
 { id:"acnu-18", topic:"acidinucleici", type:"fill",
   q:"Un cromosoma con il centromero quasi all'estremità, il cui braccio corto è molto ridotto, è detto ________.",
   answer:"ACROCENTRICO" },
+
+{ id:"acnu-19", topic:"acidinucleici", type:"mc",
+  q:"Un nucleotide, unità di base degli acidi nucleici, è composto da tre parti:",
+  options:["Uno zucchero pentoso, un gruppo fosfato e una base azotata","Due zuccheri pentosi e una base azotata","Un amminoacido, un fosfato e uno zucchero","Solo una base azotata e un fosfato","Uno zucchero esoso e due basi azotate"], correct:0 },
+
+{ id:"acnu-20", topic:"acidinucleici", type:"mc",
+  q:"La differenza chimica fondamentale tra ribosio (RNA) e desossiribosio (DNA) riguarda il carbonio 2', che nel ribosio presenta:",
+  options:["Un gruppo -OH, assente nel desossiribosio (che ha solo -H)","Un gruppo fosfato aggiuntivo","Un atomo di azoto in più","Un doppio legame aggiuntivo","Un gruppo amminico"], correct:0 },
+
+{ id:"acnu-21", topic:"acidinucleici", type:"mc",
+  q:"Il gruppo -OH aggiuntivo del ribosio, rispetto al desossiribosio, rende l'RNA:",
+  options:["Chimicamente più reattivo e strutturalmente meno stabile, più soggetto a idrolisi spontanea","Chimicamente inerte","Più stabile del DNA","Privo di carica elettrica","Incapace di formare legami fosfodiesterici"], correct:0 },
+
+{ id:"acnu-22", topic:"acidinucleici", type:"mc",
+  q:"Le basi azotate puriniche, caratterizzate da un anello doppio (un anello a 6 e uno a 5 atomi fusi), sono:",
+  options:["Adenina e guanina","Citosina e timina","Timina e uracile","Adenina e citosina","Guanina e uracile"], correct:0 },
+
+{ id:"acnu-23", topic:"acidinucleici", type:"mc",
+  q:"Le basi azotate pirimidiniche, con un anello singolo a sei termini, sono citosina, timina e:",
+  options:["Uracile (presente solo nell'RNA)","Guanina","Adenina","Ribosio","Desossiribosio"], correct:0 },
+
+{ id:"acnu-24", topic:"acidinucleici", type:"mc",
+  q:"La base azotata si lega allo zucchero pentoso tramite un legame:",
+  options:["N-glicosidico, tra il carbonio 1' dello zucchero e un azoto della base","Fosfodiesterico","Peptidico","Idrogeno covalente","Estere tra due zuccheri"], correct:0 },
+
+{ id:"acnu-25", topic:"acidinucleici", type:"mc",
+  q:"In termini di nomenclatura, l'unione di sola base azotata e zucchero (senza fosfato) prende il nome di:",
+  options:["Nucleoside","Nucleotide","Nucleosoma","Nucleolo","Nucleina"], correct:0 },
+
+{ id:"acnu-26", topic:"acidinucleici", type:"mc",
+  q:"Il legame che unisce due nucleotidi successivi nella catena di un acido nucleico, formatosi tra il gruppo -OH in 3' di uno zucchero e il gruppo fosfato in 5' del nucleotide successivo, si chiama legame:",
+  options:["Fosfodiesterico","N-glicosidico","Peptidico","A idrogeno","Glicosidico O"], correct:0 },
+
+{ id:"acnu-27", topic:"acidinucleici", type:"mc",
+  q:"Gli enzimi che sintetizzano acidi nucleici (DNA e RNA polimerasi) allungano la catena in crescita esclusivamente in direzione:",
+  options:["5' → 3', aggiungendo nuovi nucleotidi all'estremità 3'-OH libera","3' → 5'","In entrambe le direzioni indifferentemente","Dal centro verso le due estremità","Solo in direzione 3' → 3'"], correct:0 },
+
+{ id:"acnu-28", topic:"acidinucleici", type:"mc",
+  q:"Le due estremità di un filamento di acido nucleico sono chimicamente diverse: l'estremità 5' termina con un gruppo fosfato libero, mentre l'estremità 3' termina con:",
+  options:["Un gruppo ossidrile (-OH) libero","Un'altra base azotata libera","Un secondo gruppo fosfato","Un gruppo amminico libero","Un legame peptidico"], correct:0 },
+
+{ id:"acnu-29", topic:"acidinucleici", type:"mc",
+  q:"Griffith (1928), studiando ceppi di Streptococcus pneumoniae, scoprì il cosiddetto 'principio trasformante' osservando che:",
+  options:["Batteri R vivi, iniettati insieme a batteri S morti per calore, acquisivano la capacità di essere virulenti come i batteri S","I batteri S da soli non erano mai virulenti","I batteri R non potevano mai essere trasformati","Il principio trasformante era certamente una proteina","Il topo sopravviveva sempre a qualunque combinazione di batteri"], correct:0,
+  explain:"Griffith dimostrò che un'informazione ereditaria poteva essere trasferita da una cellula batterica a un'altra, senza però identificare la natura chimica del principio trasformante." },
+
+{ id:"acnu-30", topic:"acidinucleici", type:"mc",
+  q:"Avery, McLeod e McCarty (1944), trattando selettivamente l'estratto di batteri S morti con enzimi che distruggevano proteine, RNA o DNA, dimostrarono che il principio trasformante di Griffith era:",
+  options:["Il DNA","Le proteine","L'RNA","I lipidi di membrana","I polisaccaridi della capsula"], correct:0 },
+
+{ id:"acnu-31", topic:"acidinucleici", type:"mc",
+  q:"Chargaff (1950), analizzando la composizione in basi del DNA di organismi diversi, scoprì la regolarità secondo cui:",
+  options:["La quantità di adenina è sempre uguale a quella di timina, e quella di guanina a quella di citosina (A=T, G=C)","Tutte le basi sono sempre presenti in eguale quantità tra loro","La quantità di purine è sempre doppia rispetto a quella delle pirimidine","Il DNA contiene sempre più uracile che timina","La composizione in basi è identica in tutti gli organismi"], correct:0 },
+
+{ id:"acnu-32", topic:"acidinucleici", type:"mc",
+  q:"Hershey e Chase (1952), utilizzando un batteriofago marcato con isotopi radioattivi ($^{32}P$ per il DNA e $^{35}S$ per le proteine), dimostrarono definitivamente che:",
+  options:["Il materiale genetico trasmesso alla progenie virale è il DNA, non le proteine","Il materiale genetico è costituito da proteine","DNA e proteine contribuiscono in egual misura al materiale genetico","I batteriofagi non contengono acidi nucleici","Il fosforo non è mai presente negli acidi nucleici"], correct:0 },
+
+{ id:"acnu-33", topic:"acidinucleici", type:"mc",
+  q:"Le immagini di diffrazione a raggi X ottenute da Franklin e Wilkins sul DNA, caratterizzate da una tipica forma a X, fornirono una forte indicazione della presenza di:",
+  options:["Una struttura elicoidale, con gruppi fosfato rivolti verso l'esterno","Una struttura completamente lineare e non ripetitiva","Una struttura a foglietto piatto","Un'assenza totale di periodicità nella molecola","Una struttura globulare compatta priva di simmetria"], correct:0 },
+
+{ id:"acnu-34", topic:"acidinucleici", type:"mc",
+  q:"Watson e Crick (1953) proposero un modello di DNA costituito da due filamenti antiparalleli avvolti l'uno attorno all'altro, con le basi appaiate secondo il principio di complementarità: adenina con timina (2 legami idrogeno) e guanina con:",
+  options:["Citosina, tramite 3 legami idrogeno","Adenina, tramite 1 legame idrogeno","Uracile, tramite 2 legami idrogeno","Guanina stessa","Timina, tramite 4 legami idrogeno"], correct:0 },
+
+{ id:"acnu-35", topic:"acidinucleici", type:"mc",
+  q:"Nella struttura B-DNA, la conformazione fisiologica predominante nella cellula, un giro completo dell'elica misura circa 3,4 nm e contiene:",
+  options:["10 paia di basi","1 paio di basi","100 paia di basi","2 paia di basi","1000 paia di basi"], correct:0 },
+
+{ id:"acnu-36", topic:"acidinucleici", type:"mc",
+  q:"Sulla superficie della doppia elica del DNA sono presenti due solchi di ampiezza diversa; è all'interno del solco maggiore che:",
+  options:["Le proteine regolatrici (fattori di trascrizione, enzimi) leggono la sequenza di basi senza dover aprire l'elica","Avviene sempre la denaturazione del DNA","Si legano esclusivamente gli istoni","Ha luogo la sintesi dei ribosomi","Si formano i nucleosomi"], correct:0 },
+
+{ id:"acnu-37", topic:"acidinucleici", type:"mc",
+  q:"Nella denaturazione del DNA, il riscaldamento o il pH estremo rompono:",
+  options:["I legami idrogeno tra le basi appaiate, lasciando intatto lo scheletro zucchero-fosfato","I legami fosfodiesterici covalenti dello scheletro","Sia i legami idrogeno sia quelli fosfodiesterici in modo permanente","Solo i legami tra zucchero e base","Nessun tipo di legame, ma solo interazioni idrofobiche"], correct:0 },
+
+{ id:"acnu-38", topic:"acidinucleici", type:"mc",
+  q:"A parità di lunghezza, una molecola di DNA con un contenuto maggiore di coppie G-C, rispetto a una ricca in coppie A-T, denatura a una temperatura di melting:",
+  options:["Più alta, perché le coppie G-C sono tenute insieme da 3 legami idrogeno invece di 2","Più bassa","Uguale, perché la Tm non dipende dalla composizione in basi","Pari a 0 °C in ogni caso","Indipendente dalla lunghezza della molecola"], correct:0 },
+
+{ id:"acnu-39", topic:"acidinucleici", type:"mc",
+  q:"L'effetto ipercromico osservato durante la denaturazione del DNA consiste in:",
+  options:["Un aumento dell'assorbanza a 260 nm, perché le basi impilate nel doppio filamento assorbivano meno UV rispetto a quando sono libere in un singolo filamento","Una diminuzione dell'assorbanza a 260 nm","Un aumento della fluorescenza visibile","Una perdita totale di assorbimento UV","Un cambiamento di colore visibile a occhio nudo"], correct:0 },
+
+{ id:"acnu-40", topic:"acidinucleici", type:"mc",
+  q:"Se, dopo denaturazione, due filamenti complementari provenienti da fonti diverse (es. specie diverse, o DNA ed RNA) si riappaiano, il processo prende il nome di:",
+  options:["Ibridazione","Rinaturazione semplice","Trascrizione","Traduzione","Ricombinazione"], correct:0 },
+
+{ id:"acnu-41", topic:"acidinucleici", type:"mc",
+  q:"A differenza del DNA, l'RNA utilizza come base pirimidinica l'uracile al posto della timina; questa scelta, nel DNA, permette al sistema di riparazione cellulare di:",
+  options:["Riconoscere come errore l'uracile generato dalla deaminazione spontanea della citosina, distinguendolo da una base corretta","Aumentare la velocità di replicazione","Impedire la trascrizione dei geni","Formare più facilmente i nucleosomi","Stabilizzare i legami idrogeno con la guanina"], correct:0 },
+
+{ id:"acnu-42", topic:"acidinucleici", type:"mc",
+  q:"L'RNA, a differenza del DNA, è generalmente:",
+  options:["A singolo filamento, ma capace di ripiegarsi su se stesso formando strutture secondarie (anse, forcine, strutture a stelo)","Sempre a doppio filamento rigido","Privo di basi azotate","Incapace di legare proteine","Privo di gruppo fosfato"], correct:0 },
+
+{ id:"acnu-43", topic:"acidinucleici", type:"mc",
+  q:"L'RNA messaggero (mRNA), unico tra i principali tipi di RNA a portare un'informazione diversa a ogni sintesi, presenta tipicamente:",
+  options:["Un cappuccio (cap) in 5' e una coda poli-A in 3', che ne aumentano la stabilità e ne regolano l'espressione","Solo un anticodone in 5'","Una struttura a trifoglio permanente","Una sequenza identica in ogni cellula, indipendentemente dal gene trascritto","Nessuna modificazione alle estremità"], correct:0 },
+
+{ id:"acnu-44", topic:"acidinucleici", type:"mc",
+  q:"Il tRNA (transfer), che fa da adattatore tra il linguaggio dei codoni e quello degli amminoacidi, si ripiega in una tipica struttura a due dimensioni detta:",
+  options:["Trifoglio (cloverleaf), che nello spazio si avvolge in una forma a L","Doppia elica rigida","Foglietto β continuo","Anello privo di struttura secondaria","Struttura globulare compatta priva di basi appaiate"], correct:0 },
+
+{ id:"acnu-45", topic:"acidinucleici", type:"mc",
+  q:"L'rRNA (ribosomiale), componente strutturale e catalitico dei ribosomi, è responsabile della catalisi della formazione del legame peptidico durante la sintesi proteica: questo rende il ribosoma un esempio di:",
+  options:["Ribozima, cioè un enzima costituito da RNA","Proteasoma","Spliceosoma","Chaperonina","Complesso SRP"], correct:0,
+  explain:"Il fatto che l'RNA possa sia conservare informazione sia catalizzare reazioni è una delle prove più forti a sostegno dell'ipotesi del mondo a RNA (RNA world)." },
+
+{ id:"acnu-46", topic:"acidinucleici", type:"mc",
+  q:"La replicazione del DNA è definita semiconservativa, in base al modello confermato dall'esperimento di Meselson e Stahl, perché:",
+  options:["Ogni molecola di DNA figlia contiene un filamento parentale (stampo) e uno di nuova sintesi","Entrambi i filamenti figli sono completamente nuovi","Entrambi i filamenti figli sono completamente conservati dal genitore","I filamenti si mescolano in segmenti alternati casuali (modello dispersivo)","Solo metà delle molecole figlie contiene DNA nuovo"], correct:0 },
+
+{ id:"acnu-47", topic:"acidinucleici", type:"mc",
+  q:"L'enzima che apre la doppia elica rompendo i legami idrogeno tra le basi, durante la replicazione del DNA, è:",
+  options:["L'elicasi","La DNA polimerasi","La ligasi","La primasi","La topoisomerasi soltanto"], correct:0 },
+
+{ id:"acnu-48", topic:"acidinucleici", type:"mc",
+  q:"Le proteine SSB (single-strand binding proteins), durante la replicazione del DNA, hanno la funzione di:",
+  options:["Legarsi ai filamenti singoli appena separati, impedendo che si riappaino prematuramente","Sintetizzare il primer di RNA","Tagliare e risaldare il DNA per rilasciare la tensione torsionale","Correggere gli errori di appaiamento delle basi","Saldare i frammenti di Okazaki"], correct:0 },
+
+{ id:"acnu-49", topic:"acidinucleici", type:"mc",
+  q:"La tensione torsionale generata dall'apertura della doppia elica durante la replicazione viene rilasciata dall'azione di:",
+  options:["La topoisomerasi, che taglia e risalda il DNA a monte della forcella","La DNA ligasi","La proteina FtsZ","Le proteine SSB","La telomerasi"], correct:0 },
+
+{ id:"acnu-50", topic:"acidinucleici", type:"mc",
+  q:"Poiché la DNA polimerasi non è in grado di iniziare la sintesi di una nuova catena da zero, ma solo di allungarne una già esistente, è necessaria la sintesi preliminare di un breve primer a RNA, ad opera dell'enzima:",
+  options:["Primasi","Elicasi","Ligasi","Topoisomerasi","Esonucleasi"], correct:0 },
+
+{ id:"acnu-51", topic:"acidinucleici", type:"mc",
+  q:"Poiché la DNA polimerasi sintetizza solo in direzione 5'→3' e i due filamenti stampo sono antiparalleli, uno dei due nuovi filamenti (leading strand) viene sintetizzato in modo continuo, mentre l'altro (lagging strand) viene sintetizzato in modo discontinuo, a piccoli tratti chiamati:",
+  options:["Frammenti di Okazaki","Introni","Nucleosomi","Codoni","Anticodoni"], correct:0 },
+
+{ id:"acnu-52", topic:"acidinucleici", type:"mc",
+  q:"Dopo la rimozione dei primer di RNA e il loro completamento con DNA, l'interruzione (nick) residua nello scheletro zucchero-fosfato tra un frammento di Okazaki e il successivo viene saldata dall'enzima:",
+  options:["DNA ligasi, formando il legame fosfodiesterico mancante","DNA polimerasi soltanto","Elicasi","Primasi","Topoisomerasi"], correct:0 },
+
+{ id:"acnu-53", topic:"acidinucleici", type:"mc",
+  q:"L'elevata fedeltà della replicazione del DNA è garantita anche dall'attività esonucleasica di correzione di bozze (proofreading) della DNA polimerasi, che agisce in direzione:",
+  options:["3' → 5', controllando e correggendo ogni base appena aggiunta","5' → 3' soltanto, nella stessa direzione della sintesi","In direzione casuale","Solo dopo il completamento dell'intera molecola","Solo sui frammenti di Okazaki, mai sul filamento veloce"], correct:0 },
+
+{ id:"acnu-54", topic:"acidinucleici", type:"fill",
+  q:"Il legame che unisce la base azotata al carbonio 1' dello zucchero pentoso in un nucleotide è detto legame ________.",
+  answer:"N-GLICOSIDICO", answerAlt:["GLICOSIDICO"] },
+
+{ id:"acnu-55", topic:"acidinucleici", type:"fill",
+  q:"L'unione di sola base azotata e zucchero pentoso, senza il gruppo fosfato, si chiama ________.",
+  answer:"NUCLEOSIDE" },
+
+{ id:"acnu-56", topic:"acidinucleici", type:"fill",
+  q:"L'esperimento del 1952 che, marcando DNA e proteine di un batteriofago con isotopi radioattivi diversi, dimostrò che il materiale genetico è il DNA, fu condotto da Hershey e ________.",
+  answer:"CHASE" },
+
+{ id:"acnu-57", topic:"acidinucleici", type:"fill",
+  q:"Il modello a doppia elica del DNA, basato sui dati di diffrazione a raggi X di Franklin, fu proposto nel 1953 da Watson e ________.",
+  answer:"CRICK" },
+
+{ id:"acnu-58", topic:"acidinucleici", type:"fill",
+  q:"L'enzima che sintetizza il breve primer di RNA necessario per l'avvio della sintesi di un nuovo filamento di DNA si chiama ________.",
+  answer:"PRIMASI" },
+
+{ id:"acnu-59", topic:"acidinucleici", type:"fill",
+  q:"I brevi frammenti di DNA con cui viene sintetizzato in modo discontinuo il filamento lento (lagging strand) durante la replicazione si chiamano frammenti di ________.",
+  answer:"OKAZAKI" },
 
 /* ============================= ORGANELLI E CITOSCHELETRO ============================= */
 
@@ -2912,6 +3423,157 @@ const QUESTIONS = [
 { id:"sol-43", topic:"soluzioni", type:"mc",
   q:"La membrana plasmatica è fisiologicamente impermeabile al sodio, il cui gradiente di concentrazione è mantenuto attivamente da:",
   options:["La pompa sodio-potassio","La sola diffusione semplice","I canali per l'acqua (acquaporine)","Il trasportatore del glucosio","L'osmosi passiva"], correct:0 },
+
+{ id:"sol-44", topic:"soluzioni", type:"mc",
+  q:"Una miscela si definisce omogenea quando:",
+  options:["Si presenta come un'unica fase, con composizione identica in ogni suo punto","Coesistono più fasi distinguibili","Contiene un solo componente puro","È sempre allo stato liquido","Non può contenere sali disciolti"], correct:0 },
+
+{ id:"sol-45", topic:"soluzioni", type:"mc",
+  q:"In una miscela, la componente più abbondante è detta fase disperdente, mentre la componente in minore quantità è detta:",
+  options:["Fase dispersa","Fase continua","Fase disperdente","Fase satura","Fase colloidale"], correct:0 },
+
+{ id:"sol-46", topic:"soluzioni", type:"mc",
+  q:"In base alle dimensioni delle particelle della fase dispersa, una sospensione (es. il sangue) è caratterizzata da particelle di diametro:",
+  options:["Maggiore di 1 µm, separabili per gravità","Minore di 1 nm","Compreso tra 1 nm e 1 µm","Sempre nullo","Uguale a quello delle molecole di solvente"], correct:0 },
+
+{ id:"sol-47", topic:"soluzioni", type:"mc",
+  q:"Un colloide, a differenza di una sospensione, è caratterizzato da particelle di diametro:",
+  options:["Minore di 1 µm e maggiore di 1 nm, che non sedimentano","Sempre maggiore di 1 µm","Sempre minore di 1 nm","Uguale a quello degli ioni","Non misurabile"], correct:0 },
+
+{ id:"sol-48", topic:"soluzioni", type:"mc",
+  q:"Un sistema colloidale costituito da particelle liquide o solide disperse in un gas si definisce:",
+  options:["Aerosol","Sospensione","Soluzione vera","Emulsione","Schiuma"], correct:0 },
+
+{ id:"sol-49", topic:"soluzioni", type:"mc",
+  q:"In una soluzione vera (sistema omogeneo), il diametro delle particelle della fase dispersa è:",
+  options:["Inferiore a 1 nm","Sempre superiore a 1 µm","Compreso tra 1 e 100 µm","Variabile e non definibile","Uguale a quello di un colloide"], correct:0 },
+
+{ id:"sol-50", topic:"soluzioni", type:"mc",
+  q:"In una soluzione liquida, il solvente è definito come:",
+  options:["Il componente in eccesso (fase disperdente)","Il componente in minore quantità","Sempre e solo l'acqua","La sostanza allo stato solido","Il componente che non può mai dissociarsi"], correct:0 },
+
+{ id:"sol-51", topic:"soluzioni", type:"mc",
+  q:"In una soluzione possono essere presenti più soluti, ma:",
+  options:["Un unico solvente","Sempre esattamente due soluti","Un solo tipo di legame chimico","Nessun elettrolita","Sempre un solvente organico"], correct:0 },
+
+{ id:"sol-52", topic:"soluzioni", type:"mc",
+  q:"L'elevato potere solvente dell'acqua nei confronti di sostanze ioniche e polari è dovuto principalmente a:",
+  options:["La sua elevata costante dielettrica e alla capacità di idratare le particelle di soluto","La sua bassa polarità","L'assenza di legami a idrogeno","La sua elevata viscosità","La sua bassa capacità termica"], correct:0 },
+
+{ id:"sol-53", topic:"soluzioni", type:"mc",
+  q:"La solubilità di un soluto è definita come:",
+  options:["La quantità massima di soluto che può essere disciolta in una data quantità di solvente, a una data temperatura","La velocità con cui un soluto si scioglie","Il volume di una soluzione","La densità di una soluzione","Il numero di legami covalenti nel soluto"], correct:0 },
+
+{ id:"sol-54", topic:"soluzioni", type:"mc",
+  q:"Una soluzione satura è una soluzione che:",
+  options:["Contiene disciolta la massima quantità di soluto possibile a quella temperatura","Non contiene alcun soluto","È sempre a temperatura ambiente","Non può più essere diluita","Contiene soltanto soluti gassosi"], correct:0 },
+
+{ id:"sol-55", topic:"soluzioni", type:"mc",
+  q:"La solubilità di un soluto in un dato solvente dipende da:",
+  options:["Natura di soluto e solvente, temperatura e, per i soluti gassosi, pressione","Solo dal colore della soluzione","Solo dal volume del recipiente","Esclusivamente dal pH","Esclusivamente dalla massa molare del solvente"], correct:0 },
+
+{ id:"sol-56", topic:"soluzioni", type:"mc",
+  q:"La solubilità di solidi e liquidi in un solvente, in genere:",
+  options:["Aumenta con la temperatura, essendo un processo endotermico","Diminuisce sempre con la temperatura","È indipendente dalla temperatura","Aumenta solo se il soluto è un elettrolita","Dipende solo dalla pressione"], correct:0,
+  explain:"Esistono eccezioni, come il solfato di litio (Li₂SO₄), la cui solubilità decresce con la temperatura perché il processo di dissoluzione è esotermico." },
+
+{ id:"sol-57", topic:"soluzioni", type:"mc",
+  q:"A differenza di solidi e liquidi, la solubilità dei gas in un liquido, all'aumentare della temperatura:",
+  options:["In genere decresce","In genere aumenta","Resta sempre costante","Diventa infinita","Dipende solo dalla pressione osmotica"], correct:0,
+  explain:"Questo effetto ha conseguenze importanti per gli organismi acquatici: acque più calde contengono meno ossigeno disciolto." },
+
+{ id:"sol-58", topic:"soluzioni", type:"mc",
+  q:"La legge di Henry afferma che, a temperatura costante:",
+  options:["La quantità di un gas che si scioglie in un liquido è direttamente proporzionale alla pressione parziale del gas","La solubilità di un gas è indipendente dalla pressione","La solubilità di un gas diminuisce all'aumentare della pressione","Solo i gas nobili obbediscono a questa legge","La legge si applica solo ai liquidi puri"], correct:0 },
+
+{ id:"sol-59", topic:"soluzioni", type:"mc",
+  q:"La legge di Henry spiega perché un sommozzatore che risale troppo rapidamente in superficie può incorrere:",
+  options:["Nell'embolia gassosa, per formazione di bolle di azoto nel sangue","In una crisi ipoglicemica","In un'acidosi metabolica improvvisa","In una disidratazione acuta","In un aumento della pressione osmotica plasmatica"], correct:0 },
+
+{ id:"sol-60", topic:"soluzioni", type:"mc",
+  q:"La $CO_2$ ha una solubilità in acqua molto maggiore di quella prevista in base alla sola legge di Henry, perché:",
+  options:["Reagisce con l'acqua formando acido carbonico ($H_2CO_3$)","È un gas molto pesante","Non obbedisce alle leggi dei gas","È completamente insolubile in acqua pura","Si lega covalentemente all'emoglobina come l'ossigeno"], correct:0 },
+
+{ id:"sol-61", topic:"soluzioni", type:"mc",
+  q:"Secondo la legge di Dalton delle pressioni parziali, la pressione totale di una miscela di gas è:",
+  options:["La somma delle pressioni parziali di ciascun gas componente","Il prodotto delle pressioni parziali","Sempre uguale a 1 atm","Indipendente dalla composizione della miscela","La pressione parziale del gas più abbondante"], correct:0 },
+
+{ id:"sol-62", topic:"soluzioni", type:"mc",
+  q:"La pressione parziale di un componente di una miscela di gas si ottiene moltiplicando la pressione totale per:",
+  options:["La frazione molare (o la percentuale in volume, %V/V) del componente","La sua massa molare","Il suo volume assoluto","La temperatura assoluta","Il numero totale di moli della miscela"], correct:0 },
+
+{ id:"sol-63", topic:"soluzioni", type:"mc",
+  q:"Nell'aria inspirata a livello del mare (1 atm ≈ 760 mmHg), composta per circa il 21% da ossigeno, la pressione parziale dell'ossigeno è di circa:",
+  options:["160 mmHg","760 mmHg","21 mmHg","400 mmHg","78 mmHg"], correct:0 },
+
+{ id:"sol-64", topic:"soluzioni", type:"mc",
+  q:"Negli scambi gassosi a livello degli alveoli polmonari, il movimento di ossigeno e anidride carbonica tra alveoli e sangue avviene:",
+  options:["Secondo un gradiente di pressione parziale, dalle zone a pressione parziale più alta a quelle a pressione parziale più bassa","Solo per trasporto attivo ATP-dipendente","In modo indipendente dalla pressione parziale dei gas","Solo durante l'espirazione","Esclusivamente per osmosi"], correct:0 },
+
+{ id:"sol-65", topic:"soluzioni", type:"mc",
+  q:"La frazione molare $X_A$ di un componente A in una soluzione è definita come:",
+  options:["Il rapporto tra le moli di A e le moli totali di tutti i componenti della soluzione","Il rapporto tra i grammi di A e il volume totale","Il rapporto tra le moli di A e i grammi di solvente","Sempre uguale a 1 per ogni componente","Il rapporto tra la massa di A e quella del solvente puro"], correct:0 },
+
+{ id:"sol-66", topic:"soluzioni", type:"mc",
+  q:"La percentuale peso/peso (% p/p) di una soluzione indica:",
+  options:["I grammi di soluto presenti in 100 g di soluzione","I grammi di soluto presenti in 100 mL di soluzione","I millilitri di soluto in 100 mL di soluzione","Le moli di soluto per litro di soluzione","Le moli di soluto per kg di solvente"], correct:0 },
+
+{ id:"sol-67", topic:"soluzioni", type:"mc",
+  q:"La percentuale peso/volume (% p/V) di una soluzione indica:",
+  options:["I grammi di soluto presenti in 100 mL di soluzione","I grammi di soluto presenti in 100 g di solvente","I millilitri di soluto in 100 g di soluzione","Le moli di soluto per kg di solvente","Gli equivalenti di soluto per litro di soluzione"], correct:0 },
+
+{ id:"sol-68", topic:"soluzioni", type:"mc",
+  q:"La molalità (m) di una soluzione è definita come:",
+  options:["Il numero di moli di soluto per kg di solvente","Il numero di moli di soluto per litro di soluzione","Il numero di grammi di soluto per litro di soluzione","Il numero di equivalenti di soluto per litro di soluzione","Il numero di moli di solvente per litro di soluzione"], correct:0,
+  explain:"A differenza della molarità, la molalità è un rapporto tra masse e per questo non è influenzata dalla temperatura." },
+
+{ id:"sol-69", topic:"soluzioni", type:"mc",
+  q:"La normalità (N) di una soluzione è definita come:",
+  options:["Il numero di equivalenti di soluto per litro di soluzione","Il numero di moli di soluto per litro di soluzione","Il numero di moli di soluto per kg di solvente","Il numero di grammi di soluto per 100 g di soluzione","Il numero di osmoli per litro di soluzione"], correct:0 },
+
+{ id:"sol-70", topic:"soluzioni", type:"mc",
+  q:"Il numero di equivalenti di uno ione si calcola come:",
+  options:["Numero di moli dello ione moltiplicato per la sua carica","Numero di moli dello ione diviso per la sua carica","Numero di grammi dello ione diviso per la sua carica","Sempre uguale al numero di moli, indipendentemente dalla carica","Numero di moli moltiplicato per la massa molare"], correct:0 },
+
+{ id:"sol-71", topic:"soluzioni", type:"mc",
+  q:"In ambito clinico, la concentrazione degli elettroliti plasmatici viene spesso espressa in milliequivalenti per litro (mEq/L); il Sistema Internazionale raccomanda invece, per uniformità, l'uso di:",
+  options:["Millimoli per litro (mmol/L)","Grammi per decilitro esclusivamente","Percentuale peso/volume","Osmoli per kg di solvente","Normalità"], correct:0 },
+
+{ id:"sol-72", topic:"soluzioni", type:"mc",
+  q:"La molarità (M) di una soluzione, la misura di concentrazione più utilizzata in chimica, è definita come:",
+  options:["Il numero di moli di soluto per litro di soluzione","Il numero di moli di soluto per kg di solvente","Il numero di grammi di soluto per litro di solvente","Il numero di equivalenti di soluto per kg di solvente","Il numero di osmoli per kg di solvente"], correct:0 },
+
+{ id:"sol-73", topic:"soluzioni", type:"mc",
+  q:"In una soluzione ideale, le interazioni tra le molecole di soluto e quelle di solvente sono:",
+  options:["Uguali alle interazioni tra le molecole dello stesso tipo nei rispettivi componenti puri, con entalpia di dissoluzione nulla","Sempre nulle","Sempre più forti delle interazioni nei componenti puri","Indipendenti dalla composizione della soluzione","Presenti solo se il soluto è un elettrolita"], correct:0 },
+
+{ id:"sol-74", topic:"soluzioni", type:"mc",
+  q:"Nello spazio intracellulare, i soluti non si comportano in modo ideale principalmente a causa:",
+  options:["Dell'alta concentrazione di macromolecole e della limitata acqua libera","Della temperatura corporea troppo bassa","Dell'assenza di elettroliti","Della pressione atmosferica","Dell'assenza di membrane semipermeabili"], correct:0 },
+
+{ id:"sol-75", topic:"soluzioni", type:"mc",
+  q:"Il coefficiente di attività (γ) di una soluzione, che corregge la concentrazione molale o molare per ottenere l'attività chimica (a = γm), assume valore γ = 1 quando:",
+  options:["La soluzione si comporta in modo ideale, e la concentrazione equivale all'attività","La soluzione è satura","Il soluto è un elettrolita forte","La temperatura è 0 °C","Il pH è neutro"], correct:0 },
+
+{ id:"sol-76", topic:"soluzioni", type:"fill",
+  q:"Una miscela in cui coesistono più fasi distinguibili, con composizione variabile da punto a punto, si dice miscela ________.",
+  answer:"ETEROGENEA" },
+
+{ id:"sol-77", topic:"soluzioni", type:"fill",
+  q:"Le soluzioni solide formate da due o più metalli mescolati allo stato fuso, come l'acciaio o l'ottone, si chiamano ________.",
+  answer:"LEGHE" },
+
+{ id:"sol-78", topic:"soluzioni", type:"fill",
+  q:"Nel rapporto peso/volume, la percentuale (% p/V) indica i grammi di soluto presenti in 100 ________ di soluzione.",
+  answer:"ML", answerAlt:["MILLILITRI"] },
+
+{ id:"sol-79", topic:"soluzioni", type:"fill",
+  q:"A temperatura costante, la quantità di gas che si scioglie in un liquido è direttamente proporzionale alla pressione parziale del gas: è la legge di ________.",
+  answer:"HENRY" },
+
+{ id:"sol-80", topic:"soluzioni", type:"fill",
+  q:"Secondo la legge di ________, la pressione totale di una miscela di gas è la somma delle pressioni parziali dei singoli gas componenti.",
+  answer:"DALTON" },
 
 /* ============================= LAVORO, ENERGIA E POTENZA (integrazione) ============================= */
 
