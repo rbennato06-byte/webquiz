@@ -110,6 +110,16 @@
           <button class="btn btn-ghost" id="startExamMicro">Inizia il micro esame</button>
         </div>
       </div>
+
+      <div class="card mode-card mode-card-wide" id="ripassoCard">
+        <h2>🔁 Ripasso</h2>
+        <p>Riprova, in ordine casuale, tutte le domande sbagliate finora — sia in Modalità Studio che in Esame. Rispondendo correttamente una domanda esce dal ripasso; sbagliandola di nuovo ci resta.</p>
+
+        <p class="ripasso-empty" id="ripassoEmpty" hidden>Nessun errore da ripassare al momento: continua così! 🎉</p>
+        <div class="ripasso-breakdown" id="ripassoBreakdown"></div>
+
+        <button class="btn btn-ripasso" id="startRipasso">Inizia il ripasso</button>
+      </div>
     </div>
 
     <div class="card stats-card" id="statsCard" hidden>

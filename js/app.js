@@ -123,10 +123,45 @@
     }
   }
   function defaultStats() {
-    return { studyCorrect: 0, studyTotal: 0, examHistory: [], byTopic: {}, dailyLog: {} };
+    return { studyCorrect: 0, studyTotal: 0, examHistory: [], byTopic: {}, dailyLog: {}, wrongQuestions: {} };
   }
   function saveStats(stats) {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); } catch (e) { /* ignore */ }
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Domande sbagliate (per la Modalità Ripasso): mappa id domanda ->   */
+  /* argomento, per ogni domanda attualmente "da ripassare". Una        */
+  /* domanda sbagliata (in Studio, Esame o Ripasso stesso) vi entra;    */
+  /* rispondendola correttamente (in qualunque modalità) la rimuove.    */
+  /* ---------------------------------------------------------------- */
+  function updateWrongTracking(q, isCorrect) {
+    const stats = loadStats();
+    if (!stats.wrongQuestions) stats.wrongQuestions = {};
+    if (isCorrect) delete stats.wrongQuestions[q.id];
+    else stats.wrongQuestions[q.id] = q.topic;
+    saveStats(stats);
+  }
+
+  // Scarta le domande sbagliate salvate che non esistono più nel banco
+  // corrente (es. dopo un aggiornamento del question bank).
+  function pruneWrongQuestions(stats) {
+    const validIds = new Set(QUESTIONS.map((q) => q.id));
+    let changed = false;
+    Object.keys(stats.wrongQuestions || {}).forEach((qid) => {
+      if (!validIds.has(qid)) { delete stats.wrongQuestions[qid]; changed = true; }
+    });
+    if (changed) saveStats(stats);
+    return stats;
+  }
+
+  function wrongCountByTopic(stats) {
+    const counts = {};
+    Object.values(stats.wrongQuestions || {}).forEach((topicKey) => {
+      if (!TOPICS[topicKey]) return;
+      counts[topicKey] = (counts[topicKey] || 0) + 1;
+    });
+    return counts;
   }
   function recordStudyAnswer(topic, correct) {
     const stats = loadStats();
@@ -219,7 +254,7 @@
     const answered = resolved.answers.length;
     const modeLabel = resolved.mode === "exam"
       ? (resolved.examMicro ? "Micro esame personalizzato" : `Esame simulato · ${AREAS[resolved.examArea].icon} ${AREAS[resolved.examArea].name}`)
-      : "Sessione di studio";
+      : resolved.mode === "ripasso" ? "Sessione di ripasso" : "Sessione di studio";
     let extra = "";
     if (resolved.mode === "exam" && resolved.examEndAt) {
       const msLeft = resolved.examEndAt - Date.now();
@@ -412,8 +447,9 @@
   }
 
   function renderStats() {
-    const stats = loadStats();
+    const stats = pruneWrongQuestions(loadStats());
     buildSyllabusProgress(stats);
+    buildRipassoCard(stats);
 
     const card = el("statsCard");
     const body = el("statsBody");
@@ -593,6 +629,35 @@
     container.innerHTML = html;
   }
 
+  function buildRipassoCard(stats) {
+    const startBtn = el("startRipasso");
+    const emptyEl = el("ripassoEmpty");
+    const breakdownEl = el("ripassoBreakdown");
+    if (!startBtn) return;
+
+    const counts = wrongCountByTopic(stats);
+    const topicKeys = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+    const total = topicKeys.reduce((sum, k) => sum + counts[k], 0);
+
+    if (total === 0) {
+      emptyEl.hidden = false;
+      breakdownEl.innerHTML = "";
+      startBtn.disabled = true;
+      startBtn.textContent = "Inizia il ripasso";
+      return;
+    }
+
+    emptyEl.hidden = true;
+    startBtn.disabled = false;
+    startBtn.textContent = `Inizia il ripasso (${total})`;
+    breakdownEl.innerHTML = topicKeys.map((k) => `
+      <div class="ripasso-topic-row">
+        <span class="topic-dot" style="background:${TOPICS[k].color}"></span>
+        <span class="ripasso-topic-name">${escapeHtml(TOPICS[k].name)}</span>
+        <span class="ripasso-topic-count">${counts[k]}</span>
+      </div>`).join("");
+  }
+
   /* ---------------------------------------------------------------- */
   /* Home screen setup                                                  */
   /* ---------------------------------------------------------------- */
@@ -764,6 +829,28 @@
     renderQuestion();
   }
 
+  // Ripassa in ordine casuale tutte le domande attualmente "sbagliate"
+  // (risposte errate in Studio, Esame o in un precedente Ripasso, non
+  // ancora corrette di nuovo da allora), a prescindere dalla modalità in
+  // cui erano state sbagliate.
+  function startRipasso() {
+    const stats = pruneWrongQuestions(loadStats());
+    const byId = {};
+    QUESTIONS.forEach((q) => (byId[q.id] = q));
+    const pool = shuffle(Object.keys(stats.wrongQuestions).map((id) => byId[id]).filter(Boolean));
+    if (pool.length === 0) { alert("Nessuna domanda da ripassare al momento."); return; }
+    state.mode = "ripasso";
+    state.queue = pool;
+    state.index = 0;
+    state.answers = [];
+    state.locked = false;
+    state.examEndAt = null;
+    clearInterval(state.timerId);
+    el("timerBox").hidden = true;
+    showScreen("quiz");
+    renderQuestion();
+  }
+
   // Question counts, timer and passing threshold of the official exam format.
   // The micro exam threshold scales proportionally to this ratio (18/31) to
   // whatever custom length the person chooses.
@@ -902,7 +989,7 @@
 
     el("quizModeLabel").textContent = state.mode === "exam"
       ? (state.examMicro ? "Micro esame personalizzato" : `Esame simulato · ${AREAS[state.examArea].icon} ${AREAS[state.examArea].name}`)
-      : "Modalità studio";
+      : state.mode === "ripasso" ? "Modalità ripasso" : "Modalità studio";
     el("quizCounter").textContent = `Domanda ${state.index + 1} di ${total}`;
     el("progressFill").style.width = `${(state.index / total) * 100}%`;
 
@@ -916,8 +1003,8 @@
     el("feedback").hidden = true;
     el("feedback").innerHTML = "";
     // In exam mode, questions may be left blank (omitted), so "Avanti" stays enabled;
-    // in study mode an answer is required before moving on.
-    el("btnNext").disabled = state.mode === "study";
+    // in study/ripasso mode an answer is required before moving on.
+    el("btnNext").disabled = state.mode !== "exam";
     el("btnNext").textContent = state.index === total - 1 ? "Termina →" : "Avanti →";
 
     const mcBox = el("mcOptions");
@@ -979,7 +1066,7 @@
     opts.forEach((o, idx) => {
       o.classList.remove("selected");
       o.classList.add("disabled");
-      if (state.mode === "study") {
+      if (state.mode !== "exam") {
         if (idx === q.correct) o.classList.add("correct");
         else if (idx === i) o.classList.add("wrong");
       } else if (idx === i) {
@@ -989,7 +1076,7 @@
     el("btnConfirmMc").hidden = true;
     el("mcHint").hidden = true;
 
-    if (state.mode === "study") showFeedback(isCorrect, q);
+    if (state.mode !== "exam") showFeedback(isCorrect, q);
     finalizeLock();
   }
 
@@ -1003,7 +1090,7 @@
     commitAnswer(q, given, isCorrect);
     input.disabled = true;
     el("btnConfirmFill").hidden = true;
-    if (state.mode === "study") {
+    if (state.mode !== "exam") {
       input.classList.add(isCorrect ? "correct" : "wrong");
       showFeedback(isCorrect, q);
     }
@@ -1012,7 +1099,8 @@
 
   function commitAnswer(q, given, isCorrect) {
     state.answers.push({ qid: q.id, topic: q.topic, given, correct: isCorrect, skipped: false });
-    if (state.mode === "study") recordStudyAnswer(q.topic, isCorrect);
+    if (state.mode === "study" || state.mode === "ripasso") recordStudyAnswer(q.topic, isCorrect);
+    updateWrongTracking(q, isCorrect);
     saveInProgress();
   }
 
@@ -1088,9 +1176,10 @@
     const total = state.answers.length;
     const correct = state.answers.filter((a) => a.correct).length;
     const pct = total ? Math.round((correct / total) * 100) : 0;
+    const title = state.mode === "ripasso" ? "Sessione di ripasso completata" : "Sessione di studio completata";
 
     el("resultsSummary").innerHTML = `
-      <h2>Sessione di studio completata</h2>
+      <h2>${title}</h2>
       <div class="score-big">${correct}/${total}</div>
       <div class="score-verdict ${pct >= 60 ? "pass" : "fail"}">${pct}% di risposte corrette</div>
     `;
@@ -1209,6 +1298,7 @@
     el("startStudy").addEventListener("click", startStudy);
     el("startExam").addEventListener("click", startExam);
     el("startExamMicro").addEventListener("click", startExamMicro);
+    el("startRipasso").addEventListener("click", startRipasso);
     el("microToggle").addEventListener("click", () => {
       const body = el("microBody");
       const btn = el("microToggle");

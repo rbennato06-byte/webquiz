@@ -131,8 +131,24 @@ main.wrap { padding-block: 28px 60px; }
 @media (max-width: 680px) { .mode-grid { grid-template-columns: 1fr; } }
 .mode-card h2 { margin: 0 0 8px; font-size: 1.15rem; }
 .mode-card p { color: var(--text-muted); font-size: .92rem; margin: 0 0 14px; }
+.mode-card-wide { grid-column: 1 / -1; }
 .mini-rules { margin: 0 0 16px; padding-left: 20px; color: var(--text-muted); font-size: .88rem; }
 .mini-rules li { margin-bottom: 4px; }
+
+.ripasso-empty { color: var(--text-muted); font-size: .9rem; font-style: italic; }
+.ripasso-breakdown {
+  display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;
+  max-height: 280px; overflow-y: auto;
+}
+.ripasso-topic-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 10px; border-radius: 8px; background: var(--surface-2); font-size: .88rem;
+}
+.ripasso-topic-name { flex: 1 1 auto; min-width: 0; }
+.ripasso-topic-count {
+  font-weight: 700; font-size: .78rem; color: var(--error);
+  background: var(--error-bg); padding: 2px 9px; border-radius: 10px; min-width: 22px; text-align: center;
+}
 
 .topic-filters { display: flex; flex-direction: column; gap: 18px; margin-bottom: 14px; }
 .topic-area-group { display: flex; flex-direction: column; gap: 8px; }
@@ -235,6 +251,9 @@ main.wrap { padding-block: 28px 60px; }
 .btn-exam:hover { background: var(--exam-hover); }
 .btn-ghost { background: var(--surface-2); color: var(--text); width: auto; }
 .btn-ghost:hover { background: var(--border); }
+.btn-ripasso { background: var(--error); color: #fff; }
+.btn-ripasso:hover { background: #c0392b; }
+.btn-ripasso:disabled { opacity: .45; cursor: not-allowed; }
 
 /* ---- micro esame personalizzabile ---- */
 .micro-toggle { margin-top: 14px; }

@@ -26,6 +26,11 @@ propedeutica biochimica):
   ufficiale (21 a risposta multipla + 10 a completamento), timer di 50
   minuti con invio automatico, punteggio calcolato con le regole ufficiali
   e revisione finale di tutte le domande sbagliate o omesse.
+- **Ripasso**: ripropone, in ordine casuale, tutte le domande sbagliate
+  finora (sia in Studio che in Esame); rispondendo correttamente una
+  domanda esce dal ripasso. Un contatore per argomento mostra quante
+  domande restano da ripassare, per individuare a colpo d'occhio i punti
+  deboli.
 
 Le statistiche (risposte corrette in studio, cronologia degli esami
 simulati) sono salvate localmente nel browser (`localStorage`), nessun dato
