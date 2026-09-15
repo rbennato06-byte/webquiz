@@ -48,8 +48,10 @@ repository.
 ```
 index.html        pagina unica (home, quiz, risultati)
 css/style.css      stile (chiaro/scuro automatico, responsive)
-js/questions.js     banca dati delle 100 domande
+js/questions.js     banca dati delle domande
 js/app.js           logica dell'applicazione
+appunti/            schemi riassuntivi ed esercizi svolti, per materia
+fonti/              slide dei corsi e syllabus da cui derivano quiz e appunti
 ```
 
 ## Nota
