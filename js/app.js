@@ -91,6 +91,14 @@
 
   function letterFor(i) { return "ABCDE"[i]; }
 
+  // Le sezioni di appunti/*.html usano come id l'esatta chiave dell'argomento
+  // in TOPICS, tranne le rare eccezioni elencate qui.
+  const APPUNTI_ANCHOR_OVERRIDES = { acidinucleici: "acidi-nucleici" };
+  function appuntiLinkFor(topicKey) {
+    const anchor = APPUNTI_ANCHOR_OVERRIDES[topicKey] || topicKey;
+    return `appunti/${TOPICS[topicKey].area}.html#${anchor}`;
+  }
+
   function renderMath(container) {
     if (window.renderMathInElement) {
       renderMathInElement(container, {
@@ -1075,6 +1083,9 @@
     const correctText = q.type === "mc" ? `${letterFor(q.correct)}) ${q.options[q.correct]}` : q.answer;
     let html = isCorrect ? "✅ Corretto!" : `❌ Sbagliato. Risposta corretta: <span class="correct-answer">${escapeHtml(correctText)}</span>`;
     if (q.explain) html += `<span class="explain">${escapeHtml(q.explain)}</span>`;
+    if (state.mode === "ripasso") {
+      html += `<a class="appunti-link" href="${appuntiLinkFor(q.topic)}" target="_blank" rel="noopener">📝 Vedi gli appunti su «${escapeHtml(TOPICS[q.topic].name)}»</a>`;
+    }
     fb.innerHTML = html;
     renderMath(fb);
   }

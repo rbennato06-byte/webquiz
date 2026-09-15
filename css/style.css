@@ -361,6 +361,12 @@ main.wrap { padding-block: 28px 60px; }
 .feedback.wrong { background: var(--error-bg); color: var(--error); }
 .feedback .explain { display: block; margin-top: 6px; color: var(--text-muted); font-weight: 400; }
 .feedback .correct-answer { font-weight: 700; }
+.feedback .appunti-link {
+  display: block; width: fit-content; margin-top: 10px;
+  font-size: .82rem; font-weight: 700; color: var(--primary); text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--primary) 40%, transparent);
+}
+.feedback .appunti-link:hover { color: var(--primary-hover); border-color: var(--primary-hover); }
 
 .quiz-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; }
 .quiz-nav .btn { width: auto; min-width: 130px; }
