@@ -113,6 +113,19 @@ main.wrap { padding-block: 28px 60px; }
 .rules-body strong { color: var(--text); }
 .rules-note { font-style: italic; font-size: .85rem; margin: 10px 0 0; }
 
+/* ---- resume card ---- */
+.resume-card { border-color: var(--warn); }
+.resume-card h2 { margin: 0 0 8px; font-size: 1.1rem; }
+.resume-info { color: var(--text-muted); font-size: .92rem; margin: 0 0 14px; }
+.resume-actions { display: flex; gap: 10px; }
+.resume-actions .btn-primary { flex: 2; background: var(--warn); }
+.resume-actions .btn-primary:hover { opacity: .9; }
+.resume-actions .btn-ghost { flex: 1; }
+@media (max-width: 480px) {
+  .resume-actions { flex-direction: column; }
+  .resume-actions .btn-primary, .resume-actions .btn-ghost { flex: 1; }
+}
+
 /* ---- mode grid ---- */
 .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 @media (max-width: 680px) { .mode-grid { grid-template-columns: 1fr; } }

@@ -11,6 +11,7 @@
     answers: [],         // per question: { qid, given, correct, skipped }
     timerId: null,
     secondsLeft: 50 * 60,
+    examEndAt: null,      // absolute timestamp (ms) at which the current exam's timer hits zero
     locked: false,       // true once the current question's answer has been confirmed
     pendingMc: null,      // index of the tentatively selected (not yet confirmed) MC option
     examArea: null,       // area selected for the current/last exam session
@@ -20,6 +21,7 @@
   };
 
   const STORAGE_KEY = "webquiz_semestrefiltro_stats_v1";
+  const PROGRESS_KEY = "webquiz_semestrefiltro_inprogress_v1";
 
   /* ---------------------------------------------------------------- */
   /* Calendario A.K. (All KRK): stesso calendario di sempre, solo       */
@@ -147,6 +149,118 @@
     stats.examHistory.push({ score, max, passed, area: area || "", micro: !!micro, date: new Date().toISOString() });
     if (stats.examHistory.length > 20) stats.examHistory.shift();
     saveStats(stats);
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Sessione interrotta (localStorage): salva in automatico lo stato   */
+  /* di studio/esame in corso a ogni domanda e a ogni risposta, così se */
+  /* l'esercitazione viene interrotta (pulsante "Interrompi", chiusura  */
+  /* della scheda, ricaricamento della pagina) resta possibile          */
+  /* riprenderla esattamente da dove si era rimasti. Per l'esame, si    */
+  /* salva l'istante assoluto di scadenza (non i secondi residui): il   */
+  /* tempo scorre comunque nel mondo reale, come in una prova vera, e   */
+  /* riprendendo dopo la scadenza la prova si chiude automaticamente    */
+  /* con le risposte già date.                                         */
+  /* ---------------------------------------------------------------- */
+  function saveInProgress() {
+    if (!state.mode || !state.queue.length) return;
+    try {
+      const payload = {
+        mode: state.mode,
+        examArea: state.examArea,
+        examMicro: state.examMicro,
+        queueIds: state.queue.map((q) => q.id),
+        index: state.index,
+        answers: state.answers,
+        examEndAt: state.mode === "exam" ? state.examEndAt : null,
+        savedAt: Date.now()
+      };
+      localStorage.setItem(PROGRESS_KEY, JSON.stringify(payload));
+    } catch (e) { /* ignore (storage full/unavailable) */ }
+  }
+
+  function clearInProgress() {
+    try { localStorage.removeItem(PROGRESS_KEY); } catch (e) { /* ignore */ }
+  }
+
+  // Ricostruisce la sessione salvata sostituendo gli id delle domande con gli
+  // oggetti reali del banco corrente: se una domanda salvata non esiste più
+  // (es. dopo un aggiornamento del sito) la sessione non è più ripristinabile
+  // in sicurezza e viene scartata.
+  function resolveInProgress() {
+    let saved;
+    try {
+      const raw = localStorage.getItem(PROGRESS_KEY);
+      if (!raw) return null;
+      saved = JSON.parse(raw);
+    } catch (e) { return null; }
+    if (!saved || !Array.isArray(saved.queueIds) || saved.queueIds.length === 0) return null;
+    const byId = {};
+    QUESTIONS.forEach((q) => (byId[q.id] = q));
+    const queue = saved.queueIds.map((id) => byId[id]);
+    if (queue.some((q) => !q)) return null;
+    if (typeof saved.index !== "number" || saved.index < 0 || saved.index >= queue.length) return null;
+    if (!Array.isArray(saved.answers)) return null;
+    saved.queue = queue;
+    return saved;
+  }
+
+  function renderResumeCard() {
+    const card = el("resumeCard");
+    if (!card) return;
+    const resolved = resolveInProgress();
+    if (!resolved) {
+      card.hidden = true;
+      clearInProgress();
+      return;
+    }
+    card.hidden = false;
+    const total = resolved.queue.length;
+    const answered = resolved.answers.length;
+    const modeLabel = resolved.mode === "exam"
+      ? (resolved.examMicro ? "Micro esame personalizzato" : `Esame simulato · ${AREAS[resolved.examArea].icon} ${AREAS[resolved.examArea].name}`)
+      : "Sessione di studio";
+    let extra = "";
+    if (resolved.mode === "exam" && resolved.examEndAt) {
+      const msLeft = resolved.examEndAt - Date.now();
+      extra = msLeft > 0
+        ? ` Tempo residuo: circa ${Math.max(1, Math.round(msLeft / 60000))} min.`
+        : " Il tempo a disposizione è scaduto: riprendendo, la prova verrà chiusa subito con le risposte già date.";
+    }
+    el("resumeInfo").textContent = `${modeLabel} — hai risposto a ${answered} domande su ${total}.${extra}`;
+  }
+
+  function resumeSession() {
+    const resolved = resolveInProgress();
+    if (!resolved) { renderResumeCard(); return; }
+    state.mode = resolved.mode;
+    state.examArea = resolved.examArea;
+    state.examMicro = resolved.examMicro;
+    state.queue = resolved.queue;
+    state.index = resolved.index;
+    state.answers = resolved.answers;
+    state.locked = false;
+    state.pendingMc = null;
+    clearInterval(state.timerId);
+
+    if (resolved.mode === "exam") {
+      state.examEndAt = resolved.examEndAt;
+      el("timerBox").hidden = false;
+      if (Date.now() >= state.examEndAt) {
+        // Il tempo è scaduto mentre l'esercitazione era interrotta: si chiude
+        // subito, con le risposte già date, come una prova a tempo vero.
+        finishSession(true);
+        return;
+      }
+      refreshSecondsLeft();
+      updateTimerDisplay();
+      state.timerId = setInterval(tickTimer, 1000);
+    } else {
+      state.examEndAt = null;
+      el("timerBox").hidden = true;
+    }
+    showScreen("quiz");
+    renderQuestion();
   }
 
   /* ---------------------------------------------------------------- */
@@ -615,6 +729,8 @@
     state.index = 0;
     state.answers = [];
     state.locked = false;
+    state.examEndAt = null;
+    clearInterval(state.timerId);
     el("timerBox").hidden = true;
     showScreen("quiz");
     renderQuestion();
@@ -641,7 +757,8 @@
     state.index = 0;
     state.answers = [];
     state.locked = false;
-    state.secondsLeft = EXAM_FORMAT.minutes * 60;
+    state.examEndAt = Date.now() + EXAM_FORMAT.minutes * 60000;
+    refreshSecondsLeft();
     el("timerBox").hidden = false;
     updateTimerDisplay();
     clearInterval(state.timerId);
@@ -714,7 +831,8 @@
     state.index = 0;
     state.answers = [];
     state.locked = false;
-    state.secondsLeft = minutes * 60;
+    state.examEndAt = Date.now() + minutes * 60000;
+    refreshSecondsLeft();
     el("timerBox").hidden = false;
     updateTimerDisplay();
     clearInterval(state.timerId);
@@ -723,8 +841,15 @@
     renderQuestion();
   }
 
+  // Il tempo residuo si ricalcola sempre dall'istante assoluto di scadenza
+  // (state.examEndAt), non da un contatore decrementato: così il tempo
+  // trascorso rimane corretto anche riprendendo una prova dopo aver chiuso
+  // la scheda o il browser, esattamente come in una prova cronometrata vera.
+  function refreshSecondsLeft() {
+    state.secondsLeft = Math.max(0, Math.round((state.examEndAt - Date.now()) / 1000));
+  }
   function tickTimer() {
-    state.secondsLeft--;
+    refreshSecondsLeft();
     updateTimerDisplay();
     if (state.secondsLeft <= 0) {
       clearInterval(state.timerId);
@@ -800,6 +925,8 @@
       el("btnConfirmFill").hidden = false;
       el("btnConfirmFill").disabled = false;
     }
+
+    saveInProgress();
   }
 
   /* Click on an option only selects it tentatively — it can be changed freely
@@ -858,6 +985,7 @@
   function commitAnswer(q, given, isCorrect) {
     state.answers.push({ qid: q.id, topic: q.topic, given, correct: isCorrect, skipped: false });
     if (state.mode === "study") recordStudyAnswer(q.topic, isCorrect);
+    saveInProgress();
   }
 
   function showFeedback(isCorrect, q) {
@@ -899,11 +1027,16 @@
     }
   }
 
+  // Interrompere non fa perdere nulla: la sessione (studio o esame) è già
+  // salvata in automatico dopo ogni domanda/risposta e resta ripristinabile
+  // dalla home tramite il pulsante "Riprendi", finché non la si porta a
+  // termine o non la si scarta esplicitamente.
   function quitSession() {
-    if (state.queue.length && !confirm("Interrompere la sessione corrente? I progressi di questa sessione andranno persi.")) return;
+    saveInProgress();
     clearInterval(state.timerId);
     showScreen("home");
     renderStats();
+    renderResumeCard();
   }
 
   /* ---------------------------------------------------------------- */
@@ -911,6 +1044,7 @@
   /* ---------------------------------------------------------------- */
   function finishSession(timeUp) {
     clearInterval(state.timerId);
+    clearInProgress();
     el("progressFill").style.width = "100%";
 
     if (state.mode === "exam") {
@@ -1019,6 +1153,14 @@
     buildMicroExamCustomizer();
     renderStats();
     renderProgressCalendar();
+    renderResumeCard();
+
+    el("resumeBtn").addEventListener("click", resumeSession);
+    el("discardResumeBtn").addEventListener("click", () => {
+      if (!confirm("Scartare l'esercitazione interrotta? Le risposte già date in questa sessione andranno perse (le statistiche di studio già registrate restano invece salvate).")) return;
+      clearInProgress();
+      renderResumeCard();
+    });
 
     el("rulesToggle").addEventListener("click", () => {
       const body = el("rulesBody");
