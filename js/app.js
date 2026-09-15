@@ -15,26 +15,18 @@
     locked: false,       // true once the current question's answer has been confirmed
     pendingMc: null,      // index of the tentatively selected (not yet confirmed) MC option
     examArea: null,       // area selected for the current/last exam session
-    examMicro: false,     // true if the current/last exam is the half-length "micro esame"
-    calView: null,        // { year, month } currently displayed in the progress calendar (month: 0-11)
-    calSelectedDay: null   // "YYYY-MM-DD" of the day currently shown in the calendar detail panel
+    examMicro: false      // true if the current/last exam is the half-length "micro esame"
   };
 
   const STORAGE_KEY = "webquiz_semestrefiltro_stats_v1";
   const PROGRESS_KEY = "webquiz_semestrefiltro_inprogress_v1";
 
   /* ---------------------------------------------------------------- */
-  /* Calendario A.K. (All KRK): stesso calendario di sempre, solo       */
-  /* l'anno è ricontato a partire dal giorno di lancio del sito,        */
-  /* in onore di KRK, che ha aiutato a svilupparlo. Anno 1 A.K. =       */
-  /* anno solare di lancio; il confine tra un anno e l'altro resta il  */
-  /* 1° gennaio, come nel calendario normale.                          */
+  /* Date del calendario normale, usate per la cronologia giornaliera   */
+  /* nei progressi e per il codice di sincronizzazione tra dispositivi. */
   /* ---------------------------------------------------------------- */
-  const AK_EPOCH_YEAR = 2026;
   const MONTH_NAMES_IT = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
   const WEEKDAY_NAMES_IT = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"];
-
-  function akYear(gregorianYear) { return gregorianYear - AK_EPOCH_YEAR + 1; }
 
   function dateKeyFromDate(d) {
     const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, "0"), day = String(d.getDate()).padStart(2, "0");
@@ -479,29 +471,19 @@
       const best = stats.examHistory.reduce((m, h) => (h.score / h.max > m.score / m.max ? h : m));
       html += `<div class="stat-row"><span>Miglior punteggio esame${best.micro ? " (micro)" : ""}</span><b>${best.score.toFixed(1)}/${best.max}</b></div>`;
     }
+    html += dailyBreakdownHtml(stats);
     body.innerHTML = html;
   }
 
   /* ---------------------------------------------------------------- */
-  /* Calendario dei progressi (datazione A.K.)                         */
+  /* Cronologia giornaliera dei progressi, in ordine cronologico        */
+  /* inverso, secondo il calendario normale (nessuna datazione custom). */
   /* ---------------------------------------------------------------- */
   function examAreaIcon(areaKey) {
     return areaKey && AREAS[areaKey] ? AREAS[areaKey].icon : "📝";
   }
 
-  function renderProgressCalendar() {
-    if (!state.calView) {
-      const now = new Date();
-      state.calView = { year: now.getFullYear(), month: now.getMonth() };
-    }
-    const stats = loadStats();
-    const { year, month } = state.calView;
-
-    el("calLabel").textContent = `${MONTH_NAMES_IT[month]} — Anno ${akYear(year)} A.K.`;
-
-    const isAtEpoch = year < AK_EPOCH_YEAR || (year === AK_EPOCH_YEAR && month <= 8); // 8 = settembre (0-indicizzato)
-    el("calPrev").disabled = isAtEpoch;
-
+  function dailyBreakdownHtml(stats) {
     const examsByDay = {};
     stats.examHistory.forEach((h) => {
       const key = dateKeyFromDate(new Date(h.date));
@@ -509,71 +491,45 @@
       examsByDay[key].push(h);
     });
 
-    const firstOfMonth = new Date(year, month, 1);
-    const startWeekday = (firstOfMonth.getDay() + 6) % 7; // Lun=0 ... Dom=6
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const todayStr = todayKey();
-    const now = new Date();
+    const dayKeys = new Set(Object.keys(stats.dailyLog).filter((k) => stats.dailyLog[k] && Object.keys(stats.dailyLog[k]).length > 0));
+    Object.keys(examsByDay).forEach((k) => dayKeys.add(k));
+    if (dayKeys.size === 0) return "";
 
-    let cells = "";
-    for (let i = 0; i < startWeekday; i++) cells += `<span class="cal-cell cal-empty"></span>`;
-    for (let day = 1; day <= daysInMonth; day++) {
-      const dateObj = new Date(year, month, day);
-      const key = dateKeyFromDate(dateObj);
-      const dayLog = stats.dailyLog[key];
-      let studyTotal = 0;
-      if (dayLog) Object.values(dayLog).forEach((t) => (studyTotal += t.total));
-      const exams = examsByDay[key] || [];
-      const hasActivity = studyTotal > 0 || exams.length > 0;
-      const isFuture = dateObj > now;
-      const level = studyTotal >= 30 ? 4 : studyTotal >= 15 ? 3 : studyTotal >= 5 ? 2 : studyTotal > 0 ? 1 : 0;
-      const classes = ["cal-cell", `cal-level-${level}`];
-      if (key === todayStr) classes.push("cal-today");
-      if (hasActivity) classes.push("cal-has-activity");
-      if (key === state.calSelectedDay) classes.push("cal-selected");
-      cells += `<button type="button" class="${classes.join(" ")}" data-day="${key}" ${isFuture ? "disabled" : ""}>
-        <span class="cal-daynum">${day}</span>${exams.length ? `<span class="cal-exam-dot" title="Esame sostenuto"></span>` : ""}
-      </button>`;
-    }
-    el("calGrid").innerHTML = cells;
-
-    if (state.calSelectedDay) renderCalDayDetail(state.calSelectedDay);
+    const sortedDays = Array.from(dayKeys).sort().reverse(); // "YYYY-MM-DD" ordina già cronologicamente
+    let html = `<div class="daylog-title">Cronologia giornaliera</div><div class="daylog-list">`;
+    sortedDays.forEach((dayKey) => {
+      html += dayLogEntryHtml(dayKey, stats.dailyLog[dayKey] || {}, examsByDay[dayKey] || []);
+    });
+    html += `</div>`;
+    return html;
   }
 
-  function renderCalDayDetail(dayKey) {
-    const stats = loadStats();
+  function dayLogEntryHtml(dayKey, dayLog, exams) {
     const [y, m, d] = dayKey.split("-").map(Number);
     const dateObj = new Date(y, m - 1, d);
     const weekday = WEEKDAY_NAMES_IT[(dateObj.getDay() + 6) % 7];
-    const label = `${weekday} ${d} ${MONTH_NAMES_IT[m - 1].toLowerCase()} — Anno ${akYear(y)} A.K.`;
-
-    const dayLog = stats.dailyLog[dayKey] || {};
+    const label = `${weekday} ${d} ${MONTH_NAMES_IT[m - 1].toLowerCase()} ${y}`;
     const topicKeys = Object.keys(dayLog).filter((k) => TOPICS[k] && dayLog[k].total > 0);
-    const exams = stats.examHistory.filter((h) => dateKeyFromDate(new Date(h.date)) === dayKey);
 
-    let html = `<h3>${label}</h3>`;
-    if (topicKeys.length === 0 && exams.length === 0) {
-      html += `<p class="cal-empty-note">Nessuna attività registrata in questo giorno.</p>`;
-    } else {
-      if (topicKeys.length > 0) {
-        html += `<div class="cal-day-section-title">Modalità Studio</div>`;
-        topicKeys.forEach((k) => {
-          const t = TOPICS[k];
-          const d2 = dayLog[k];
-          const pct = Math.round((d2.correct / d2.total) * 100);
-          html += `<div class="stat-row"><span>${AREAS[t.area].icon} ${escapeHtml(t.name)}</span><b>${d2.correct}/${d2.total} (${pct}%)</b></div>`;
-        });
-      }
-      if (exams.length > 0) {
-        html += `<div class="cal-day-section-title">Esami simulati</div>`;
-        exams.forEach((h) => {
-          const examLabel = (h.area && AREAS[h.area] ? AREAS[h.area].name : "Esame") + (h.micro ? " (micro)" : "");
-          html += `<div class="stat-row"><span>${examAreaIcon(h.area)} ${examLabel}</span><b>${h.score.toFixed(1)}/${h.max} — ${h.passed ? "Superato ✅" : "Non superato ❌"}</b></div>`;
-        });
-      }
+    let html = `<div class="daylog-day"><div class="daylog-day-label">${escapeHtml(label)}</div>`;
+    if (topicKeys.length > 0) {
+      html += `<div class="daylog-section-title">Modalità Studio</div>`;
+      topicKeys.forEach((k) => {
+        const t = TOPICS[k];
+        const d2 = dayLog[k];
+        const pct = Math.round((d2.correct / d2.total) * 100);
+        html += `<div class="stat-row"><span>${AREAS[t.area].icon} ${escapeHtml(t.name)}</span><b>${d2.correct}/${d2.total} (${pct}%)</b></div>`;
+      });
     }
-    el("calDayDetail").innerHTML = html;
-    el("calDayDetail").hidden = false;
+    if (exams.length > 0) {
+      html += `<div class="daylog-section-title">Esami simulati</div>`;
+      exams.forEach((h) => {
+        const examLabel = (h.area && AREAS[h.area] ? AREAS[h.area].name : "Esame") + (h.micro ? " (micro)" : "");
+        html += `<div class="stat-row"><span>${examAreaIcon(h.area)} ${examLabel}</span><b>${h.score.toFixed(1)}/${h.max} — ${h.passed ? "Superato ✅" : "Non superato ❌"}</b></div>`;
+      });
+    }
+    html += `</div>`;
+    return html;
   }
 
   /* ---------------------------------------------------------------- */
@@ -1269,7 +1225,6 @@
     buildExamAreaSelect();
     buildMicroExamCustomizer();
     renderStats();
-    renderProgressCalendar();
     renderResumeCard();
 
     el("resumeBtn").addEventListener("click", resumeSession);
@@ -1321,7 +1276,7 @@
       e.preventDefault();
       confirmMc();
     });
-    el("btnRestart").addEventListener("click", () => { showScreen("home"); renderStats(); renderProgressCalendar(); });
+    el("btnRestart").addEventListener("click", () => { showScreen("home"); renderStats(); });
     el("statsToggle").addEventListener("click", () => {
       const body = el("statsBodyWrap");
       const btn = el("statsToggle");
@@ -1333,39 +1288,7 @@
       if (confirm("Azzerare tutte le statistiche salvate su questo dispositivo?")) {
         localStorage.removeItem(STORAGE_KEY);
         renderStats();
-        state.calSelectedDay = null;
-        el("calDayDetail").hidden = true;
-        renderProgressCalendar();
       }
-    });
-
-    el("calToggle").addEventListener("click", () => {
-      const body = el("calBody");
-      const btn = el("calToggle");
-      const expanded = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!expanded));
-      body.hidden = expanded;
-    });
-    el("calPrev").addEventListener("click", () => {
-      state.calView.month--;
-      if (state.calView.month < 0) { state.calView.month = 11; state.calView.year--; }
-      renderProgressCalendar();
-    });
-    el("calNext").addEventListener("click", () => {
-      state.calView.month++;
-      if (state.calView.month > 11) { state.calView.month = 0; state.calView.year++; }
-      renderProgressCalendar();
-    });
-    el("calToday").addEventListener("click", () => {
-      const now = new Date();
-      state.calView = { year: now.getFullYear(), month: now.getMonth() };
-      renderProgressCalendar();
-    });
-    el("calGrid").addEventListener("click", (e) => {
-      const btn = e.target.closest(".cal-cell[data-day]");
-      if (!btn || btn.disabled) return;
-      state.calSelectedDay = btn.dataset.day;
-      renderProgressCalendar();
     });
 
     el("syncToggle").addEventListener("click", () => {
@@ -1413,9 +1336,6 @@
       if (!confirm(summary)) return;
       saveStats(incoming);
       renderStats();
-      state.calSelectedDay = null;
-      el("calDayDetail").hidden = true;
-      renderProgressCalendar();
       statusEl.textContent = "✅ Progressi importati con successo.";
       statusEl.className = "sync-status sync-status-ok";
       el("syncImportInput").value = "";
