@@ -607,9 +607,20 @@
     row.innerHTML = `
       <input type="checkbox" value="${key}" checked>
       <span class="topic-dot" style="background:${TOPICS[key].color}"></span>
-      <span>${TOPICS[key].name}</span>
-      <span class="topic-count">${count} domande</span>
+      <span class="topic-name">${TOPICS[key].name}</span>
+      <span class="topic-qty">
+        <input type="number" class="topic-qty-input" min="1" max="${count}" value="${count}" aria-label="Numero di domande da svolgere per ${TOPICS[key].name}">
+        <span class="topic-count">/ ${count}</span>
+      </span>
     `;
+    const checkbox = row.querySelector('input[type="checkbox"]');
+    const qtyInput = row.querySelector('input[type="number"]');
+    // Clicking/typing in the quantity stepper must not toggle the row's
+    // checkbox (the row is a <label> wrapping both controls).
+    ["click", "mousedown"].forEach((evt) => qtyInput.addEventListener(evt, (e) => e.stopPropagation()));
+    const syncQtyState = () => { qtyInput.disabled = !checkbox.checked; };
+    checkbox.addEventListener("change", syncQtyState);
+    syncQtyState();
     return row;
   }
 
@@ -684,8 +695,21 @@
     });
   }
 
-  function selectedTopics() {
-    return Array.from(document.querySelectorAll('#topicFilters input[type="checkbox"]:checked')).map((i) => i.value);
+  // Returns one entry per checked topic: { key, count, total }, where count
+  // is the (clamped) number of questions requested for that topic and total
+  // is how many exist. Lets Study Mode do a partial run per topic instead of
+  // always requiring every question of a selected topic.
+  function selectedTopicCounts() {
+    return Array.from(document.querySelectorAll("#topicFilters .topic-filter-row"))
+      .map((row) => {
+        const checkbox = row.querySelector('input[type="checkbox"]');
+        if (!checkbox.checked) return null;
+        const qtyInput = row.querySelector('input[type="number"]');
+        const total = parseInt(qtyInput.max, 10) || 0;
+        const count = Math.max(1, Math.min(total, parseInt(qtyInput.value, 10) || total));
+        return { key: checkbox.value, count, total };
+      })
+      .filter(Boolean);
   }
 
   function buildExamAreaSelect() {
@@ -720,9 +744,13 @@
   /* Starting a session                                                 */
   /* ---------------------------------------------------------------- */
   function startStudy() {
-    const topics = selectedTopics();
-    if (topics.length === 0) { alert("Seleziona almeno un argomento."); return; }
-    let pool = QUESTIONS.filter((q) => topics.includes(q.topic));
+    const selections = selectedTopicCounts();
+    if (selections.length === 0) { alert("Seleziona almeno un argomento."); return; }
+    let pool = [];
+    selections.forEach(({ key, count, total }) => {
+      const topicQuestions = QUESTIONS.filter((q) => q.topic === key);
+      pool = pool.concat(count >= total ? topicQuestions : shuffle(topicQuestions).slice(0, count));
+    });
     if (el("shuffleStudy").checked) pool = shuffle(pool);
     state.mode = "study";
     state.queue = pool;
