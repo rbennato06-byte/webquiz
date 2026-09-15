@@ -392,6 +392,15 @@ main.wrap { padding-block: 28px 60px; }
 
 .results-actions { margin-top: 8px; }
 
+/* ---- pausa concentrazione (3 errori di fila in Modalità Studio) ---- */
+.break-card { text-align: center; }
+.break-img {
+  display: block; margin: 0 auto 18px; max-width: 260px; width: 100%;
+  border-radius: 14px; box-shadow: var(--shadow);
+}
+.break-text { font-size: 1.05rem; font-weight: 600; line-height: 1.5; margin: 0 0 20px; }
+.break-text strong { color: var(--primary); }
+
 .site-footer { border-top: 1px solid var(--border); padding-block: 24px 40px; margin-top: 20px; }
 .site-footer p { color: var(--text-muted); font-size: .8rem; text-align: center; margin: 0; }
 

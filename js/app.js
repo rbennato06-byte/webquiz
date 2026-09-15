@@ -15,7 +15,8 @@
     locked: false,       // true once the current question's answer has been confirmed
     pendingMc: null,      // index of the tentatively selected (not yet confirmed) MC option
     examArea: null,       // area selected for the current/last exam session
-    examMicro: false      // true if the current/last exam is the half-length "micro esame"
+    examMicro: false,     // true if the current/last exam is the half-length "micro esame"
+    wrongStreak: 0        // consecutive wrong answers in study mode (resets on a correct answer or after the focus break)
   };
 
   const STORAGE_KEY = "webquiz_semestrefiltro_stats_v1";
@@ -50,6 +51,7 @@
   const screens = {
     home: el("screen-home"),
     quiz: el("screen-quiz"),
+    break: el("screen-break"),
     results: el("screen-results")
   };
 
@@ -268,6 +270,7 @@
     state.answers = resolved.answers;
     state.locked = false;
     state.pendingMc = null;
+    state.wrongStreak = 0;
     clearInterval(state.timerId);
 
     if (resolved.mode === "exam") {
@@ -778,6 +781,7 @@
     state.index = 0;
     state.answers = [];
     state.locked = false;
+    state.wrongStreak = 0;
     state.examEndAt = null;
     clearInterval(state.timerId);
     el("timerBox").hidden = true;
@@ -800,6 +804,7 @@
     state.index = 0;
     state.answers = [];
     state.locked = false;
+    state.wrongStreak = 0;
     state.examEndAt = null;
     clearInterval(state.timerId);
     el("timerBox").hidden = true;
@@ -828,6 +833,7 @@
     state.index = 0;
     state.answers = [];
     state.locked = false;
+    state.wrongStreak = 0;
     state.examEndAt = Date.now() + EXAM_FORMAT.minutes * 60000;
     refreshSecondsLeft();
     el("timerBox").hidden = false;
@@ -902,6 +908,7 @@
     state.index = 0;
     state.answers = [];
     state.locked = false;
+    state.wrongStreak = 0;
     state.examEndAt = Date.now() + minutes * 60000;
     refreshSecondsLeft();
     el("timerBox").hidden = false;
@@ -1057,6 +1064,7 @@
     state.answers.push({ qid: q.id, topic: q.topic, given, correct: isCorrect, skipped: false });
     if (state.mode === "study" || state.mode === "ripasso") recordStudyAnswer(q.topic, isCorrect);
     updateWrongTracking(q, isCorrect);
+    if (state.mode === "study") state.wrongStreak = isCorrect ? 0 : state.wrongStreak + 1;
     saveInProgress();
   }
 
@@ -1093,10 +1101,21 @@
     }
     if (state.index < state.queue.length - 1) {
       state.index++;
+      if (state.mode === "study" && state.wrongStreak >= 3) {
+        state.wrongStreak = 0;
+        saveInProgress();
+        showScreen("break");
+        return;
+      }
       renderQuestion();
     } else {
       finishSession(false);
     }
+  }
+
+  function continueAfterBreak() {
+    showScreen("quiz");
+    renderQuestion();
   }
 
   // Interrompere non fa perdere nulla: la sessione (studio o esame) è già
@@ -1263,6 +1282,7 @@
     });
     el("btnQuit").addEventListener("click", quitSession);
     el("btnNext").addEventListener("click", goNext);
+    el("btnContinueBreak").addEventListener("click", continueAfterBreak);
     el("btnConfirmFill").addEventListener("click", submitFill);
     el("btnConfirmMc").addEventListener("click", confirmMc);
 
